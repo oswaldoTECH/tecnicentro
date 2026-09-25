@@ -4,19 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#030308">
+<meta name="description" content="TecniColor Encalada — Especialistas en pinturas automotrices, insumos y accesorios profesionales en Biblián, Cañar, Ecuador. Mezcla computarizada 100% exacta.">
 
-<title>TecniColor Encalada | High-Performance Automotive Paint</title>
+<title>TecniColor Encalada | Pinturas Automotrices de Alto Rendimiento · Biblián</title>
 
 <!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- FontAwesome Icons -->
+<!-- FontAwesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
 <script>
   tailwind.config = {
@@ -27,13 +28,22 @@
           display: ['Syne', 'sans-serif'],
         },
         colors: {
-          dark: '#030308',
-          panel: '#0a0a12',
-          neonPink: '#ff007f',
-          neonCyan: '#00f0ff',
-          neonPurple: '#7000ff',
-          neonYellow: '#ffea00',
-          neonGreen: '#00ff66'
+          dark:    '#030308',
+          panel:   '#0a0a12',
+          neonPink:'#ff007f',
+          neonCyan:'#00f0ff',
+          neonPurple:'#7000ff',
+          neonYellow:'#ffea00',
+          neonGreen:'#00ff66'
+        },
+        keyframes: {
+          floaty: {
+            '0%,100%': { transform: 'translateY(0)' },
+            '50%':     { transform: 'translateY(-10px)' },
+          }
+        },
+        animation: {
+          floaty: 'floaty 5s ease-in-out infinite',
         }
       }
     }
@@ -41,9 +51,9 @@
 </script>
 
 <style>
-  :root {
-    --safe-bottom: env(safe-area-inset-bottom, 0px);
-  }
+  :root { --safe-bottom: env(safe-area-inset-bottom, 0px); }
+
+  html { -webkit-tap-highlight-color: transparent; }
 
   body {
     background-color: #030308;
@@ -51,582 +61,1355 @@
     overflow-x: hidden;
   }
 
-  /* Grid cibernético de fondo */
+  /* ---------- FONDO ---------- */
   .bg-grid-pattern {
-    background-size: 40px 40px;
-    background-image: 
-      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 44px 44px;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,.028) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,.028) 1px, transparent 1px);
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
   }
 
-  /* Animación de luces de fondo */
   @keyframes laserGlow {
-    0%, 100% { opacity: 0.4; transform: scale(1) translate(0, 0); }
-    50% { opacity: 0.8; transform: scale(1.2) translate(20px, -20px); }
+    0%,100% { opacity:.35; transform: scale(1) translate(0,0); }
+    50%     { opacity:.75; transform: scale(1.18) translate(24px,-24px); }
+  }
+  .glow-orb-1 { animation: laserGlow 9s ease-in-out infinite; }
+  .glow-orb-2 { animation: laserGlow 12s ease-in-out infinite 2s; }
+  .glow-orb-3 { animation: laserGlow 10s ease-in-out infinite 4s; }
+
+  /* ---------- TEXTO ---------- */
+  .text-glow-cyan { text-shadow: 0 0 24px rgba(0,240,255,.55), 0 0 60px rgba(0,240,255,.25); }
+  .text-glow-pink { text-shadow: 0 0 24px rgba(255,0,127,.55), 0 0 60px rgba(255,0,127,.25); }
+  .text-gradient {
+    background-image: linear-gradient(100deg,#ff007f,#7000ff 45%,#00f0ff);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
   }
 
-  .glow-orb-1 {
-    animation: laserGlow 8s ease-in-out infinite;
-  }
-  .glow-orb-2 {
-    animation: laserGlow 10s ease-in-out infinite 2s;
-  }
-
-  /* Textos de alta luminosidad */
-  .text-glow-cyan {
-    text-shadow: 0 0 20px rgba(0, 240, 255, 0.6), 0 0 40px rgba(0, 240, 255, 0.3);
-  }
-  .text-glow-pink {
-    text-shadow: 0 0 20px rgba(255, 0, 127, 0.6), 0 0 40px rgba(255, 0, 127, 0.3);
-  }
-
-  /* Glassmorphism Premium */
+  /* ---------- GLASS ---------- */
   .glass-card {
-    background: rgba(18, 18, 30, 0.6);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(18,18,30,.55);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,.08);
+    transition: border-color .35s ease, box-shadow .35s ease, transform .35s ease, background .35s ease;
   }
-
   .glass-card:hover {
-    border-color: rgba(0, 240, 255, 0.4);
-    box-shadow: 0 20px 40px -15px rgba(0, 240, 255, 0.2);
+    border-color: rgba(0,240,255,.35);
+    box-shadow: 0 24px 60px -22px rgba(0,240,255,.28);
+    transform: translateY(-4px);
   }
 
-  /* Bordes iridiscentes interactivos */
+  /* ---------- BORDE IRIDISCENTE ---------- */
   .gradient-border-card {
     position: relative;
     border-radius: 1.5rem;
     background: #0a0a14;
     z-index: 1;
   }
-
   .gradient-border-card::before {
     content: '';
     position: absolute;
     inset: -1.5px;
     border-radius: 1.6rem;
-    background: linear-gradient(135deg, #ff007f, #7000ff, #00f0ff);
+    background: linear-gradient(135deg,#ff007f,#7000ff,#00f0ff);
     z-index: -1;
-    opacity: 0.3;
-    transition: opacity 0.4s ease, filter 0.4s ease;
+    opacity: .35;
+    transition: opacity .4s ease, filter .4s ease;
+  }
+  .gradient-border-card:hover::before { opacity: 1; filter: blur(5px); }
+
+  /* ---------- BOTONES ---------- */
+  .btn {
+    position: relative;
+    display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+    padding: .95rem 1.7rem;
+    border-radius: 1rem;
+    font-weight: 800; font-size: .78rem; letter-spacing: .09em; text-transform: uppercase;
+    transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s ease, background .3s ease, color .3s ease;
+    white-space: nowrap;
+  }
+  .btn:active { transform: scale(.97); }
+
+  .btn-primary {
+    color: #fff;
+    background: linear-gradient(120deg,#ff007f,#7000ff);
+    box-shadow: 0 12px 34px -14px rgba(255,0,127,.9);
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 46px -14px rgba(255,0,127,1); }
+
+  .btn-ghost {
+    color: #fff;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.16);
+    backdrop-filter: blur(10px);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,.1); border-color: rgba(0,240,255,.5); transform: translateY(-3px); }
+
+  .btn-whatsapp {
+    color: #04120a;
+    background: linear-gradient(120deg,#00ff66,#00d959);
+    box-shadow: 0 12px 34px -14px rgba(0,255,102,.8);
+  }
+  .btn-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 20px 46px -14px rgba(0,255,102,1); }
+
+  /* ---------- NAV ---------- */
+  .nav-link { position: relative; padding-bottom: 4px; }
+  .nav-link::after {
+    content: ''; position: absolute; left: 0; bottom: -4px; height: 2px; width: 0;
+    border-radius: 2px; background: linear-gradient(90deg,#ff007f,#00f0ff);
+    transition: width .32s cubic-bezier(.16,1,.3,1);
+  }
+  .nav-link:hover::after, .nav-link.is-active::after { width: 100%; }
+  .nav-link.is-active { color: #fff; }
+
+  /* ---------- MARQUEE ---------- */
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .marquee-track { animation: marquee 32s linear infinite; will-change: transform; }
+  .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+
+  /* ---------- REVEAL ---------- */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+    transition-delay: var(--d, 0ms);
+  }
+  [data-reveal].is-visible { opacity: 1; transform: none; }
+
+  /* ---------- FILTROS ---------- */
+  .filter-btn {
+    padding: .55rem 1.15rem;
+    border-radius: 999px;
+    font-size: .72rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+    color: #94a3b8;
+    border: 1px solid rgba(255,255,255,.1);
+    background: rgba(255,255,255,.03);
+    transition: all .28s ease;
+    white-space: nowrap;
+  }
+  .filter-btn:hover { color: #fff; border-color: rgba(0,240,255,.4); }
+  .filter-btn.active {
+    color: #030308;
+    background: linear-gradient(120deg,#00f0ff,#00ff66);
+    border-color: transparent;
+    box-shadow: 0 10px 26px -12px rgba(0,240,255,.9);
   }
 
-  .gradient-border-card:hover::before {
-    opacity: 1;
-    filter: blur(4px);
+  /* ---------- SWATCH ---------- */
+  .swatch {
+    width: 30px; height: 30px; border-radius: 999px;
+    border: 2px solid rgba(255,255,255,.15);
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .swatch:hover { transform: scale(1.14); }
+  .swatch.active {
+    border-color: #fff;
+    box-shadow: 0 0 0 3px rgba(255,255,255,.12), 0 0 20px rgba(255,255,255,.35);
+    transform: scale(1.14);
   }
 
-  /* Custom Scrollbar */
-  ::-webkit-scrollbar { width: 6px; }
+  /* ---------- FAQ ---------- */
+  details summary::-webkit-details-marker { display: none; }
+  details summary { list-style: none; }
+  details[open] .faq-icon { transform: rotate(135deg); }
+  .faq-icon { transition: transform .35s cubic-bezier(.16,1,.3,1); }
+
+  /* ---------- SCROLLBAR ---------- */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
   ::-webkit-scrollbar-track { background: #030308; }
-  ::-webkit-scrollbar-thumb { background: #7000ff; border-radius: 999px; }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(#7000ff,#ff007f);
+    border-radius: 999px;
+    border: 2px solid #030308;
+  }
 
-  /* Animación de banner rotativo */
-  @keyframes marquee {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(-50%); }
+  /* ---------- UTIL ---------- */
+  .noise-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
   }
-  .animate-marquee {
-    display: flex;
-    width: 200%;
-    animation: marquee 25s linear infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: .001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .001ms !important;
+      scroll-behavior: auto !important;
+    }
+    [data-reveal] { opacity: 1; transform: none; }
   }
-  .animate-marquee:hover { animation-play-state: paused; }
+
+  /* Espacio para la barra móvil fija */
+  @media (max-width: 1023px) {
+    body { padding-bottom: calc(72px + var(--safe-bottom)); }
+  }
 </style>
 </head>
 
-<body class="selection:bg-neonPink selection:text-white relative bg-dark">
+<body class="selection:bg-neonPink selection:text-white relative bg-dark font-sans antialiased">
 
-<!-- GRID DE FONDO DE LUZ NEÓN -->
+<!-- ===================== FONDO DECORATIVO ===================== -->
 <div class="fixed inset-0 bg-grid-pattern pointer-events-none z-0"></div>
-<div class="fixed -top-40 -left-40 w-96 h-96 bg-neonPink/20 rounded-full blur-[120px] pointer-events-none glow-orb-1 z-0"></div>
-<div class="fixed top-1/2 -right-40 w-[500px] h-[500px] bg-neonCyan/20 rounded-full blur-[150px] pointer-events-none glow-orb-2 z-0"></div>
-<div class="fixed -bottom-40 left-1/3 w-[450px] h-[450px] bg-neonPurple/20 rounded-full blur-[140px] pointer-events-none glow-orb-1 z-0"></div>
+<div class="fixed -top-40 -left-40 w-96 h-96 bg-neonPink/20 rounded-full blur-[130px] pointer-events-none glow-orb-1 z-0"></div>
+<div class="fixed top-1/3 -right-40 w-[520px] h-[520px] bg-neonCyan/20 rounded-full blur-[160px] pointer-events-none glow-orb-2 z-0"></div>
+<div class="fixed -bottom-40 left-1/3 w-[460px] h-[460px] bg-neonPurple/20 rounded-full blur-[150px] pointer-events-none glow-orb-3 z-0"></div>
 
-<!-- MARQUEE SUPERIOR DINÁMICO -->
+<!-- ===================== MARQUEE SUPERIOR ===================== -->
 <div class="relative z-50 bg-gradient-to-r from-neonPink via-neonPurple to-neonCyan p-[1px]">
-  <div class="bg-dark/90 backdrop-blur-md py-2 overflow-hidden">
-    <div class="animate-marquee text-xs font-black tracking-widest uppercase gap-8 text-gray-300">
-      <span class="flex items-center gap-2"><i class="fa-solid fa-palette text-neonPink"></i> Mezcla Computarizada 100% Exacta</span>
-      <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-neonYellow"></i> Calidad Automotriz Premium</span>
-      <span class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-neonCyan"></i> Biblián · Cañar · Ecuador</span>
-      <span class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-neonGreen"></i> Pedidos Directos: 098 411 3081</span>
-      <span class="flex items-center gap-2"><i class="fa-solid fa-spray-can text-neonPurple"></i> Acabados de Alto Brillo HS</span>
-      <!-- Duplicado para loop continuo -->
-      <span class="flex items-center gap-2"><i class="fa-solid fa-palette text-neonPink"></i> Mezcla Computarizada 100% Exacta</span>
-      <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-neonYellow"></i> Calidad Automotriz Premium</span>
-      <span class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-neonCyan"></i> Biblián · Cañar · Ecuador</span>
-      <span class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-neonGreen"></i> Pedidos Directos: 098 411 3081</span>
-      <span class="flex items-center gap-2"><i class="fa-solid fa-spray-can text-neonPurple"></i> Acabados de Alto Brillo HS</span>
+  <div class="bg-dark/90 backdrop-blur-md py-2.5 overflow-hidden marquee-wrap">
+    <div class="marquee-track flex w-max">
+      <!-- Grupo A -->
+      <div class="flex items-center gap-10 pr-10 text-[11px] font-black tracking-[0.18em] uppercase text-gray-300">
+        <span class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-palette text-neonPink"></i> Mezcla computarizada 100% exacta</span>
+        <span class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-bolt text-neonYellow"></i> Calidad automotriz premium</span>
+        <span class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-location-dot text-neonCyan"></i> Biblián · Cañar · Ecuador</span>
+        <span class="flex items-center gap-2 shrink-0"><i class="fa-brands fa-whatsapp text-neonGreen"></i> Pedidos: 098 411 3081</span>
+        <span class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-spray-can text-neonPurple"></i> Acabados de alto brillo HS</span>
+        <span class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-truck-fast text-neonCyan"></i> Entrega rápida en la zona</span>
+      </div>
+      <!-- Grupo B (copia para loop) -->
+      <div class="flex items-center gap-10 pr-10 text-[11px] font-black tracking-[0.18em] uppercase text-gray-300" aria-hidden="true">
+        <span class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-palette text-neonPink"></i> Mezcla computarizada 100% exacta</span>
+        <span class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-bolt text-neonYellow"></i> Calidad automotriz premium</span>
+        <span class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-location-dot text-neonCyan"></i> Biblián · Cañar · Ecuador</span>
+        <span class="flex items-center gap-2 shrink-0"><i class="fa-brands fa-whatsapp text-neonGreen"></i> Pedidos: 098 411 3081</span>
+        <span class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-spray-can text-neonPurple"></i> Acabados de alto brillo HS</span>
+        <span class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-truck-fast text-neonCyan"></i> Entrega rápida en la zona</span>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- HEADER / NAVBAR -->
-<header class="sticky top-0 z-40 bg-dark/70 backdrop-blur-xl border-b border-white/10">
+<!-- ===================== HEADER ===================== -->
+<header id="siteHeader" class="sticky top-0 z-40 bg-dark/70 backdrop-blur-xl border-b border-white/10 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
-    
-    <!-- BRAND LOGO -->
-    <a href="#" class="flex items-center gap-3 group">
+
+    <!-- LOGO -->
+    <a href="#inicio" class="flex items-center gap-3 group shrink-0">
       <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-neonPink via-neonPurple to-neonCyan p-[2px] shadow-lg shadow-neonPurple/40 group-hover:scale-105 transition-transform duration-300">
         <div class="w-full h-full bg-dark rounded-[14px] flex items-center justify-center">
-          <i class="fa-solid fa-spray-can-sparkles text-xl text-transparent bg-clip-text bg-gradient-to-r from-neonPink to-neonCyan"></i>
+          <i class="fa-solid fa-spray-can text-xl text-neonCyan group-hover:text-neonPink transition-colors duration-300"></i>
         </div>
       </div>
-      <div>
-        <span class="font-display font-black text-2xl tracking-wider block leading-none text-white">
-          TECNI<span class="text-transparent bg-clip-text bg-gradient-to-r from-neonPink to-neonCyan">COLOR</span>
+      <div class="leading-none">
+        <span class="font-display font-black text-xl sm:text-2xl tracking-wider block text-white">
+          TECNI<span class="text-gradient">COLOR</span>
         </span>
-        <span class="text-[10px] font-bold tracking-[0.25em] text-gray-400 uppercase block mt-1">
+        <span class="text-[9px] sm:text-[10px] font-bold tracking-[0.28em] text-gray-400 uppercase block mt-1">
           ENCALADA · BIBLIÁN
         </span>
       </div>
     </a>
 
-    <!-- NAV LINKS -->
-    <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wide">
-      <a href="#pinturas" class="text-gray-300 hover:text-neonCyan transition-colors duration-200">PINTURAS</a>
-      <a href="#insumos" class="text-gray-300 hover:text-neonPink transition-colors duration-200">INSUMOS</a>
-      <a href="#accesorios" class="text-gray-300 hover:text-neonYellow transition-colors duration-200">ACCESORIOS</a>
-      <a href="#servicios" class="text-gray-300 hover:text-neonGreen transition-colors duration-200">SERVICIOS VIP</a>
+    <!-- NAV DESKTOP -->
+    <nav class="hidden lg:flex items-center gap-8 text-[13px] font-bold tracking-widest uppercase">
+      <a href="#pinturas"   data-navlink class="nav-link text-gray-300 hover:text-white transition-colors">Pinturas</a>
+      <a href="#insumos"    data-navlink class="nav-link text-gray-300 hover:text-white transition-colors">Insumos</a>
+      <a href="#accesorios" data-navlink class="nav-link text-gray-300 hover:text-white transition-colors">Accesorios</a>
+      <a href="#servicios"  data-navlink class="nav-link text-gray-300 hover:text-white transition-colors">Servicios</a>
+      <a href="#faq"        data-navlink class="nav-link text-gray-300 hover:text-white transition-colors">FAQ</a>
     </nav>
 
-    <!-- RIGHT ACTION & STATUS -->
-    <div class="flex items-center gap-4">
-      <div id="liveBadge" class="hidden sm:flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-xs font-medium">
-        <span class="w-2 h-2 rounded-full bg-neonGreen animate-ping"></span>
-        <span class="text-gray-300">Atención Abierta</span>
+    <!-- ACCIONES -->
+    <div class="flex items-center gap-3">
+      <div id="liveBadge" class="hidden xl:flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-[11px] font-semibold">
+        <span class="w-2 h-2 rounded-full bg-neonGreen animate-pulse"></span>
+        <span class="text-gray-300">Atención abierta</span>
       </div>
 
-      <a href="https://wa.me/593984113081?text=Hola%20TecniColor%20Encalada,%20deseo%20una%20cotizaci%C3%B3n" 
-         target="_blank" 
-         class="relative group overflow-hidden rounded-xl p-[1px] font-bold text-xs">
-        <span class="absolute inset-0 bg-gradient-to-r from-neonGreen via-neonCyan to-neonPink animate-pulse"></span>
-        <span class="relative block bg-dark px-4 py-2.5 rounded-[11px] text-white group-hover:bg-transparent transition-all duration-300 flex items-center gap-2">
-          <i class="fa-brands fa-whatsapp text-sm text-neonGreen group-hover:text-white"></i>
-          <span class="hidden md:inline">COTIZAR AHORA</span>
-        </span>
+      <a href="https://wa.me/593984113081?text=Hola%20TecniColor%20Encalada,%20deseo%20una%20cotizaci%C3%B3n"
+         target="_blank" rel="noopener"
+         class="btn btn-primary !px-4 sm:!px-6 !py-3 !text-[11px]">
+        <i class="fa-brands fa-whatsapp text-sm"></i>
+        <span class="hidden sm:inline">Cotizar ahora</span>
       </a>
-    </div>
 
+      <!-- HAMBURGUESA -->
+      <button id="menuBtn" aria-label="Abrir menú" aria-expanded="false"
+              class="lg:hidden w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition">
+        <i id="menuIcon" class="fa-solid fa-bars text-lg"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- MENÚ MÓVIL -->
+  <div id="mobileMenu" class="lg:hidden grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-[cubic-bezier(.16,1,.3,1)] border-t border-white/0">
+    <div class="overflow-hidden">
+      <nav class="px-4 sm:px-6 py-5 space-y-1 bg-dark/95 backdrop-blur-xl border-t border-white/10">
+        <a href="#pinturas"   class="mobile-link flex items-center justify-between px-4 py-3.5 rounded-xl text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white hover:bg-white/5 transition"><span>Pinturas</span><i class="fa-solid fa-chevron-right text-xs text-neonPink"></i></a>
+        <a href="#insumos"    class="mobile-link flex items-center justify-between px-4 py-3.5 rounded-xl text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white hover:bg-white/5 transition"><span>Insumos</span><i class="fa-solid fa-chevron-right text-xs text-neonCyan"></i></a>
+        <a href="#accesorios" class="mobile-link flex items-center justify-between px-4 py-3.5 rounded-xl text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white hover:bg-white/5 transition"><span>Accesorios</span><i class="fa-solid fa-chevron-right text-xs text-neonYellow"></i></a>
+        <a href="#servicios"  class="mobile-link flex items-center justify-between px-4 py-3.5 rounded-xl text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white hover:bg-white/5 transition"><span>Servicios</span><i class="fa-solid fa-chevron-right text-xs text-neonGreen"></i></a>
+        <a href="#faq"        class="mobile-link flex items-center justify-between px-4 py-3.5 rounded-xl text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-white hover:bg-white/5 transition"><span>Preguntas frecuentes</span><i class="fa-solid fa-chevron-right text-xs text-neonPurple"></i></a>
+
+        <a href="https://wa.me/593984113081" target="_blank" rel="noopener"
+           class="btn btn-whatsapp w-full mt-4">
+          <i class="fa-brands fa-whatsapp text-lg"></i> Escríbenos por WhatsApp
+        </a>
+      </nav>
+    </div>
   </div>
 </header>
 
-<!-- HERO SECTION -->
-<section class="relative z-10 py-16 lg:py-28 px-4 max-w-7xl mx-auto overflow-hidden">
-  <div class="grid lg:grid-cols-12 gap-12 items-center">
-    
-    <!-- LEFT TEXT CONTENT -->
+<!-- ===================== HERO ===================== -->
+<section id="inicio" class="relative z-10 pt-14 lg:pt-24 pb-16 px-4 max-w-7xl mx-auto">
+  <div class="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+
+    <!-- TEXTO -->
     <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
-      
-      <div class="inline-flex items-center gap-2 bg-gradient-to-r from-neonPink/20 to-neonPurple/20 border border-neonPink/40 px-4 py-2 rounded-full text-xs font-black tracking-widest text-neonPink uppercase">
-        <i class="fa-solid fa-fire text-neonYellow"></i> El Color Exacto Para Tu Vehículo
+
+      <div data-reveal class="inline-flex items-center gap-2.5 bg-gradient-to-r from-neonPink/15 to-neonPurple/15 border border-neonPink/35 px-4 py-2 rounded-full text-[11px] font-black tracking-[0.18em] text-neonPink uppercase">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neonPink opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-neonPink"></span>
+        </span>
+        El color exacto para tu vehículo
       </div>
 
-      <h1 class="font-display text-5xl sm:text-7xl lg:text-8xl font-black leading-[0.95] tracking-tight text-white">
-        ACABADOS DE 
-        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-neonPink via-neonPurple to-neonCyan text-glow-pink">
-          NIVEL SHOWROOM
-        </span>
+      <h1 data-reveal style="--d:80ms" class="font-display text-[2.6rem] leading-[0.95] sm:text-7xl lg:text-[5.2rem] font-black tracking-tight text-white">
+        ACABADOS DE
+        <span class="block text-gradient text-glow-pink">NIVEL SHOWROOM</span>
       </h1>
 
-      <p class="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
-        Especialistas en formulación de pinturas automotrices bicapa, poliuretano, insumos de alta gama y asesoría técnica directa en <strong class="text-white font-semibold">Biblián, Ecuador</strong>.
+      <p data-reveal style="--d:160ms" class="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+        Especialistas en formulación de pinturas automotrices bicapa, poliuretano, insumos de alta gama
+        y asesoría técnica directa en <strong class="text-white font-semibold">Biblián, Ecuador</strong>.
       </p>
 
-      <!-- HERO BUTTONS -->
-      <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-        <a href="#pinturas" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-neonPink to-neonPurple text-white font-black text-sm tracking-wider shadow-lg shadow-neonPink/30 hover:shadow-neonPink/60 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3">
-          <i class="fa-solid fa-palette"></i> EXPLORAR CATÁLOGO
+      <!-- CTAs -->
+      <div data-reveal style="--d:240ms" class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3.5">
+        <a href="#pinturas" class="btn btn-primary">
+          <i class="fa-solid fa-palette"></i> Explorar catálogo
         </a>
-        <a href="https://wa.me/593984113081" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-2xl glass-card text-white font-bold text-sm tracking-wider hover:bg-white/10 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 border border-white/20">
-          <i class="fa-solid fa-headset text-neonCyan"></i> CONTACTO DIRECTO
+        <a href="https://wa.me/593984113081" target="_blank" rel="noopener" class="btn btn-ghost">
+          <i class="fa-solid fa-headset text-neonCyan"></i> Contacto directo
         </a>
       </div>
 
-      <!-- FEATURES METRICS -->
-      <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10 max-w-lg mx-auto lg:mx-0">
+      <!-- MÉTRICAS -->
+      <div data-reveal style="--d:320ms" class="grid grid-cols-3 gap-4 pt-8 border-t border-white/10 max-w-lg mx-auto lg:mx-0">
         <div>
-          <span class="font-display text-3xl font-black text-neonCyan block">100%</span>
-          <span class="text-xs text-gray-400 font-medium">Precisión de Color</span>
+          <span class="font-display text-2xl sm:text-3xl font-black text-neonCyan block">100%</span>
+          <span class="text-[11px] text-gray-400 font-medium leading-tight block mt-1">Precisión de color</span>
+        </div>
+        <div class="border-x border-white/10 px-2">
+          <span class="font-display text-2xl sm:text-3xl font-black text-neonPink block">HS</span>
+          <span class="text-[11px] text-gray-400 font-medium leading-tight block mt-1">Altos sólidos premium</span>
         </div>
         <div>
-          <span class="font-display text-3xl font-black text-neonPink block">HS</span>
-          <span class="text-xs text-gray-400 font-medium">Altos Sólidos Premium</span>
-        </div>
-        <div>
-          <span class="font-display text-3xl font-black text-neonYellow block">EXPRESS</span>
-          <span class="text-xs text-gray-400 font-medium">Preparación Rápida</span>
+          <span class="font-display text-2xl sm:text-3xl font-black text-neonYellow block">EXPRESS</span>
+          <span class="text-[11px] text-gray-400 font-medium leading-tight block mt-1">Preparación rápida</span>
         </div>
       </div>
 
     </div>
 
-    <!-- RIGHT VISUAL / SHOWCASE CARD -->
-    <div class="lg:col-span-5 relative">
+    <!-- TARJETA SHOWCASE INTERACTIVA -->
+    <div class="lg:col-span-5 relative" data-reveal style="--d:200ms">
+
+      <div class="absolute -top-6 -right-4 hidden sm:flex items-center gap-2 glass-card rounded-2xl px-4 py-3 animate-floaty z-20">
+        <i class="fa-solid fa-circle-check text-neonGreen"></i>
+        <span class="text-[11px] font-bold text-white">Color validado</span>
+      </div>
+
       <div class="gradient-border-card p-6 sm:p-8 space-y-6">
-        
-        <!-- Header status card -->
+
+        <!-- Cabecera -->
         <div class="flex justify-between items-center">
-          <span class="text-xs font-black tracking-widest text-gray-400 uppercase">Pintura Destacada</span>
-          <span class="bg-neonGreen/20 text-neonGreen text-[10px] font-black px-2.5 py-1 rounded-md border border-neonGreen/30 uppercase">En Stock</span>
+          <span class="text-[10px] font-black tracking-[0.2em] text-gray-400 uppercase">Vista previa del acabado</span>
+          <span class="bg-neonGreen/15 text-neonGreen text-[10px] font-black px-2.5 py-1 rounded-md border border-neonGreen/30 uppercase">En stock</span>
         </div>
 
-        <!-- Animated Paint Display Box -->
-        <div class="relative h-64 rounded-2xl overflow-hidden bg-gradient-to-br from-purple-900/40 via-dark to-cyan-900/40 flex items-center justify-center border border-white/10 group">
-          <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neonPink/30 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
-          
-          <div class="text-center space-y-3 z-10 transform group-hover:scale-110 transition-transform duration-500">
-            <i class="fa-solid fa-spray-can-sparkles text-7xl text-transparent bg-clip-text bg-gradient-to-tr from-neonPink via-neonPurple to-neonCyan drop-shadow-[0_10px_20px_rgba(255,0,127,0.5)]"></i>
-            <h3 class="font-display text-2xl font-black text-white">BICAPA CANDY CUSTOM</h3>
-            <p class="text-xs text-neonCyan font-mono">Efecto Camaleón / Perlado Profundo</p>
+        <!-- Display -->
+        <div id="showcaseBox" class="relative h-60 sm:h-64 rounded-2xl overflow-hidden border border-white/10 flex items-center justify-center transition-all duration-700"
+             style="background: linear-gradient(135deg, rgba(255,0,127,.35), #030308 45%, rgba(112,0,255,.35));">
+          <div id="showcaseGlow" class="absolute inset-0 opacity-70 transition-opacity duration-700"
+               style="background: radial-gradient(circle at 50% 50%, rgba(255,0,127,.45), transparent 70%);"></div>
+
+          <div class="text-center space-y-3 z-10 px-6">
+            <i id="showcaseIcon" class="fa-solid fa-spray-can text-6xl text-white/90 drop-shadow-[0_12px_28px_rgba(255,0,127,.65)]"></i>
+            <h3 id="showcaseTitle" class="font-display text-xl sm:text-2xl font-black text-white leading-tight">BICAPA CANDY CUSTOM</h3>
+            <p id="showcaseDesc" class="text-[11px] text-neonCyan font-mono">Efecto camaleón / perlado profundo</p>
           </div>
         </div>
 
-        <!-- Quick Info list -->
-        <div class="space-y-3 text-xs text-gray-300">
-          <div class="flex justify-between py-2 border-b border-white/10">
-            <span class="text-gray-400">Secado:</span>
-            <span class="font-bold text-white">Ultra Rápido (15-20 min)</span>
-          </div>
-          <div class="flex justify-between py-2 border-b border-white/10">
-            <span class="text-gray-400">Acabado Recomendado:</span>
-            <span class="font-bold text-neonPink">Barniz Transparente HS</span>
+        <!-- Swatches -->
+        <div class="space-y-2.5">
+          <span class="text-[10px] font-black tracking-[0.2em] text-gray-500 uppercase block">Toca un acabado para verlo</span>
+          <div id="swatchRow" class="flex items-center gap-3">
+            <button class="swatch active" aria-label="Candy Custom" data-title="BICAPA CANDY CUSTOM" data-desc="Efecto camaleón / perlado profundo" data-icon="fa-spray-can"
+                    data-bg="linear-gradient(135deg, rgba(255,0,127,.35), #030308 45%, rgba(112,0,255,.35))"
+                    data-glow="radial-gradient(circle at 50% 50%, rgba(255,0,127,.45), transparent 70%)"
+                    style="background: linear-gradient(135deg,#ff007f,#7000ff);"></button>
+
+            <button class="swatch" aria-label="Plata Metálico" data-title="PLATA METÁLICO OEM" data-desc="Pigmento aluminio alta dispersión" data-icon="fa-car"
+                    data-bg="linear-gradient(135deg, rgba(0,240,255,.3), #030308 45%, rgba(148,163,184,.3))"
+                    data-glow="radial-gradient(circle at 50% 50%, rgba(0,240,255,.4), transparent 70%)"
+                    style="background: linear-gradient(135deg,#00f0ff,#94a3b8);"></button>
+
+            <button class="swatch" aria-label="Negro Profundo" data-title="NEGRO PROFUNDO 2K" data-desc="Brillo espejo directo de pistola" data-icon="fa-shield-halved"
+                    data-bg="linear-gradient(135deg, rgba(112,0,255,.3), #030308 50%, rgba(255,255,255,.12))"
+                    data-glow="radial-gradient(circle at 50% 50%, rgba(112,0,255,.45), transparent 70%)"
+                    style="background: linear-gradient(135deg,#7000ff,#0f0f18);"></button>
+
+            <button class="swatch" aria-label="Amarillo Racing" data-title="AMARILLO RACING" data-desc="Alta cobertura · secado rápido" data-icon="fa-bolt"
+                    data-bg="linear-gradient(135deg, rgba(255,234,0,.3), #030308 50%, rgba(255,0,127,.25))"
+                    data-glow="radial-gradient(circle at 50% 50%, rgba(255,234,0,.4), transparent 70%)"
+                    style="background: linear-gradient(135deg,#ffea00,#ff007f);"></button>
+
+            <button class="swatch" aria-label="Verde Esmeralda" data-title="VERDE ESMERALDA PEARL" data-desc="Perla fina con destello dorado" data-icon="fa-wand-magic-sparkles"
+                    data-bg="linear-gradient(135deg, rgba(0,255,102,.3), #030308 50%, rgba(0,240,255,.25))"
+                    data-glow="radial-gradient(circle at 50% 50%, rgba(0,255,102,.4), transparent 70%)"
+                    style="background: linear-gradient(135deg,#00ff66,#00f0ff);"></button>
           </div>
         </div>
 
-        <button onclick="solicitarCotizacion('Pintura Bicapa Candy Custom')" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-neonCyan to-blue-600 text-dark font-black text-xs tracking-widest uppercase hover:brightness-125 transition-all duration-200">
-          Solicitar Cotización Por WhatsApp
+        <!-- Info -->
+        <div class="space-y-1 text-xs text-gray-300">
+          <div class="flex justify-between py-2.5 border-b border-white/10">
+            <span class="text-gray-400">Secado al tacto</span>
+            <span class="font-bold text-white">15 – 20 min</span>
+          </div>
+          <div class="flex justify-between py-2.5 border-b border-white/10">
+            <span class="text-gray-400">Acabado recomendado</span>
+            <span class="font-bold text-neonPink">Barniz transparente HS</span>
+          </div>
+          <div class="flex justify-between py-2.5">
+            <span class="text-gray-400">Presentación</span>
+            <span class="font-bold text-white">1/4 galón · 1 galón</span>
+          </div>
+        </div>
+
+        <button onclick="solicitarCotizacion('Pintura Bicapa Candy Custom')"
+                class="w-full py-3.5 rounded-xl bg-gradient-to-r from-neonCyan to-blue-600 text-dark font-black text-[11px] tracking-[0.12em] uppercase hover:brightness-110 hover:shadow-lg hover:shadow-neonCyan/30 transition-all duration-300">
+          <i class="fa-brands fa-whatsapp mr-2"></i> Solicitar cotización
         </button>
 
       </div>
     </div>
 
   </div>
+
+  <!-- BARRA DE CONFIANZA -->
+  <div data-reveal style="--d:380ms" class="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="glass-card rounded-2xl p-5 flex items-center gap-4">
+      <i class="fa-solid fa-award text-2xl text-neonPink"></i>
+      <div>
+        <p class="text-xs font-bold text-white leading-tight">Calidad garantizada</p>
+        <p class="text-[10px] text-gray-400 mt-0.5">Marcas reconocidas</p>
+      </div>
+    </div>
+    <div class="glass-card rounded-2xl p-5 flex items-center gap-4">
+      <i class="fa-solid fa-stopwatch text-2xl text-neonCyan"></i>
+      <div>
+        <p class="text-xs font-bold text-white leading-tight">Preparación express</p>
+        <p class="text-[10px] text-gray-400 mt-0.5">Tu color el mismo día</p>
+      </div>
+    </div>
+    <div class="glass-card rounded-2xl p-5 flex items-center gap-4">
+      <i class="fa-solid fa-user-gear text-2xl text-neonYellow"></i>
+      <div>
+        <p class="text-xs font-bold text-white leading-tight">Asesoría técnica</p>
+        <p class="text-[10px] text-gray-400 mt-0.5">Te guiamos paso a paso</p>
+      </div>
+    </div>
+    <div class="glass-card rounded-2xl p-5 flex items-center gap-4">
+      <i class="fa-solid fa-truck-fast text-2xl text-neonGreen"></i>
+      <div>
+        <p class="text-xs font-bold text-white leading-tight">Entrega local</p>
+        <p class="text-[10px] text-gray-400 mt-0.5">Biblián y alrededores</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- MAIN CATALOG CONTENT -->
-<main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 space-y-24">
+<!-- ===================== CONTENIDO PRINCIPAL ===================== -->
+<main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 space-y-24 lg:space-y-32">
 
-  <!-- SECCIÓN 1: PINTURAS AUTOMOTRICES -->
-  <section id="pinturas" class="space-y-10 scroll-mt-28">
-    
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-6">
+  <!-- ============ 1. PINTURAS ============ -->
+  <section id="pinturas" class="scroll-mt-32 space-y-9">
+
+    <div data-reveal class="flex flex-col md:flex-row md:items-end justify-between gap-5 border-b border-white/10 pb-6">
       <div>
-        <span class="text-neonPink text-xs font-black tracking-widest uppercase block mb-1">// Formula Studio</span>
-        <h2 class="font-display text-4xl sm:text-5xl font-black text-white">CATÁLOGO DE <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonPink to-neonPurple">PINTURAS</span></h2>
+        <span class="text-neonPink text-[11px] font-black tracking-[0.22em] uppercase block mb-2">// Formula Studio</span>
+        <h2 class="font-display text-3xl sm:text-5xl font-black text-white leading-tight">
+          Catálogo de <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonPink to-neonPurple">pinturas</span>
+        </h2>
       </div>
-      <p class="text-xs sm:text-sm text-gray-400 max-w-md">
+      <p class="text-xs sm:text-sm text-gray-400 max-w-md leading-relaxed">
         Preparación exacta con bases de alta pigmentación para repintado parcial o total.
+        Trae tu código de color o una muestra física y lo igualamos.
       </p>
     </div>
 
-    <!-- CARDS GRID PINTURAS -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      
+    <!-- Filtros -->
+    <div data-reveal class="flex items-center gap-2.5 overflow-x-auto pb-1 -mx-1 px-1">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="bicapa">Bicapa</button>
+      <button class="filter-btn" data-filter="monocapa">Monocapa 2K</button>
+      <button class="filter-btn" data-filter="especial">Especiales</button>
+      <button class="filter-btn" data-filter="complemento">Complementos</button>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+
       <!-- CARD 1 -->
-      <div class="glass-card rounded-3xl p-6 space-y-5 flex flex-col justify-between group">
+      <article data-cat="bicapa" data-reveal class="glass-card rounded-3xl p-6 space-y-5 flex flex-col justify-between group">
         <div class="space-y-4">
           <div class="flex justify-between items-start">
-            <span class="bg-neonPink/20 text-neonPink border border-neonPink/30 text-[10px] font-black px-3 py-1 rounded-full uppercase">Bicapa Poliuretanica</span>
-            <i class="fa-solid fa-palette text-2xl text-neonPink group-hover:rotate-12 transition-transform"></i>
+            <span class="bg-neonPink/15 text-neonPink border border-neonPink/30 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider">Bicapa poliuretánica</span>
+            <i class="fa-solid fa-palette text-2xl text-neonPink group-hover:rotate-12 transition-transform duration-300"></i>
           </div>
-          <h3 class="font-display text-2xl font-black text-white group-hover:text-neonPink transition-colors">LINEA METÁLICOS & PERLADOS</h3>
+          <h3 class="font-display text-xl sm:text-2xl font-black text-white leading-tight group-hover:text-neonPink transition-colors">Línea metálicos & perlados</h3>
           <p class="text-xs text-gray-400 leading-relaxed">
             Formulaciones con pigmentos de aluminio y perla de alta dispersión para máxima luminosidad bajo el sol.
           </p>
+          <ul class="space-y-1.5 pt-1">
+            <li class="flex items-center gap-2 text-[11px] text-gray-400"><i class="fa-solid fa-check text-neonPink text-[10px]"></i> Igualación por espectrofotómetro</li>
+            <li class="flex items-center gap-2 text-[11px] text-gray-400"><i class="fa-solid fa-check text-neonPink text-[10px]"></i> Secado rápido y buen nivelado</li>
+          </ul>
         </div>
         <div class="space-y-3 pt-4 border-t border-white/10">
-          <div class="flex justify-between text-xs font-mono">
-            <span class="text-gray-400">Presentación:</span>
-            <span class="text-white font-bold">1/4 Galón · 1 Galón</span>
+          <div class="flex justify-between text-[11px] font-mono">
+            <span class="text-gray-400">Presentación</span>
+            <span class="text-white font-bold">1/4 galón · 1 galón</span>
           </div>
-          <button onclick="solicitarCotizacion('Pintura Línea Metálicos y Perlados')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-neonPink hover:text-white border border-white/10 font-bold text-xs tracking-wider transition-all duration-300">
-            COTIZAR ESTA LÍNEA
+          <button onclick="solicitarCotizacion('Pintura Línea Metálicos y Perlados')"
+                  class="w-full py-3 rounded-xl bg-white/5 hover:bg-neonPink hover:text-white border border-white/10 font-bold text-[11px] tracking-[0.1em] uppercase transition-all duration-300">
+            Cotizar esta línea
           </button>
         </div>
-      </div>
+      </article>
 
       <!-- CARD 2 -->
-      <div class="glass-card rounded-3xl p-6 space-y-5 flex flex-col justify-between group">
+      <article data-cat="monocapa" data-reveal style="--d:80ms" class="glass-card rounded-3xl p-6 space-y-5 flex flex-col justify-between group">
         <div class="space-y-4">
           <div class="flex justify-between items-start">
-            <span class="bg-neonCyan/20 text-neonCyan border border-neonCyan/30 text-[10px] font-black px-3 py-1 rounded-full uppercase">Monocapa 2K</span>
-            <i class="fa-solid fa-car text-2xl text-neonCyan group-hover:rotate-12 transition-transform"></i>
+            <span class="bg-neonCyan/15 text-neonCyan border border-neonCyan/30 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider">Monocapa 2K</span>
+            <i class="fa-solid fa-car text-2xl text-neonCyan group-hover:rotate-12 transition-transform duration-300"></i>
           </div>
-          <h3 class="font-display text-2xl font-black text-white group-hover:text-neonCyan transition-colors">POLIURETANO ALTO BRILLO</h3>
+          <h3 class="font-display text-xl sm:text-2xl font-black text-white leading-tight group-hover:text-neonCyan transition-colors">Poliuretano alto brillo</h3>
           <p class="text-xs text-gray-400 leading-relaxed">
             Sistema de un solo paso con excelente resistencia química, dureza y brillo directo de pistola.
           </p>
+          <ul class="space-y-1.5 pt-1">
+            <li class="flex items-center gap-2 text-[11px] text-gray-400"><i class="fa-solid fa-check text-neonCyan text-[10px]"></i> Resistente a rayos UV</li>
+            <li class="flex items-center gap-2 text-[11px] text-gray-400"><i class="fa-solid fa-check text-neonCyan text-[10px]"></i> Excelente relación precio / durabilidad</li>
+          </ul>
         </div>
         <div class="space-y-3 pt-4 border-t border-white/10">
-          <div class="flex justify-between text-xs font-mono">
-            <span class="text-gray-400">Resistencia:</span>
-            <span class="text-neonCyan font-bold">Rayos UV / Químicos</span>
+          <div class="flex justify-between text-[11px] font-mono">
+            <span class="text-gray-400">Resistencia</span>
+            <span class="text-neonCyan font-bold">UV · Químicos</span>
           </div>
-          <button onclick="solicitarCotizacion('Poliuretano Alto Brillo 2K')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-neonCyan hover:text-dark border border-white/10 font-bold text-xs tracking-wider transition-all duration-300">
-            COTIZAR ESTA LÍNEA
+          <button onclick="solicitarCotizacion('Poliuretano Alto Brillo 2K')"
+                  class="w-full py-3 rounded-xl bg-white/5 hover:bg-neonCyan hover:text-dark border border-white/10 font-bold text-[11px] tracking-[0.1em] uppercase transition-all duration-300">
+            Cotizar esta línea
           </button>
         </div>
-      </div>
+      </article>
 
       <!-- CARD 3 -->
-      <div class="glass-card rounded-3xl p-6 space-y-5 flex flex-col justify-between group">
+      <article data-cat="especial" data-reveal style="--d:160ms" class="glass-card rounded-3xl p-6 space-y-5 flex flex-col justify-between group">
         <div class="space-y-4">
           <div class="flex justify-between items-start">
-            <span class="bg-neonPurple/20 text-neonPurple border border-neonPurple/30 text-[10px] font-black px-3 py-1 rounded-full uppercase">Especialidades</span>
-            <i class="fa-solid fa-wand-magic-sparkles text-2xl text-neonPurple group-hover:rotate-12 transition-transform"></i>
+            <span class="bg-neonPurple/15 text-neonPurple border border-neonPurple/30 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider">Especialidades</span>
+            <i class="fa-solid fa-wand-magic-sparkles text-2xl text-neonPurple group-hover:rotate-12 transition-transform duration-300"></i>
           </div>
-          <h3 class="font-display text-2xl font-black text-white group-hover:text-neonPurple transition-colors">EFECTOS TRICAPA & MATE</h3>
+          <h3 class="font-display text-xl sm:text-2xl font-black text-white leading-tight group-hover:text-neonPurple transition-colors">Efectos tricapa & mate</h3>
           <p class="text-xs text-gray-400 leading-relaxed">
             Colores profundos de alta gama estilo marcas europeas y acabados satinados / mate personalizados.
           </p>
+          <ul class="space-y-1.5 pt-1">
+            <li class="flex items-center gap-2 text-[11px] text-gray-400"><i class="fa-solid fa-check text-neonPurple text-[10px]"></i> Efectos camaleón y perlados</li>
+            <li class="flex items-center gap-2 text-[11px] text-gray-400"><i class="fa-solid fa-check text-neonPurple text-[10px]"></i> Mate / satinado a pedido</li>
+          </ul>
         </div>
         <div class="space-y-3 pt-4 border-t border-white/10">
-          <div class="flex justify-between text-xs font-mono">
-            <span class="text-gray-400">Personalizado:</span>
-            <span class="text-white font-bold">Muestra Física Aceptada</span>
+          <div class="flex justify-between text-[11px] font-mono">
+            <span class="text-gray-400">Personalizado</span>
+            <span class="text-white font-bold">Muestra física</span>
           </div>
-          <button onclick="solicitarCotizacion('Pintura Efectos Tricapa y Mate')" class="w-full py-3 rounded-xl bg-white/5 hover:bg-neonPurple hover:text-white border border-white/10 font-bold text-xs tracking-wider transition-all duration-300">
-            COTIZAR ESTA LÍNEA
+          <button onclick="solicitarCotizacion('Pintura Efectos Tricapa y Mate')"
+                  class="w-full py-3 rounded-xl bg-white/5 hover:bg-neonPurple hover:text-white border border-white/10 font-bold text-[11px] tracking-[0.1em] uppercase transition-all duration-300">
+            Cotizar esta línea
           </button>
         </div>
-      </div>
+      </article>
+
+      <!-- CARD 4 -->
+      <article data-cat="complemento" data-reveal class="glass-card rounded-3xl p-6 space-y-5 flex flex-col justify-between group">
+        <div class="space-y-4">
+          <div class="flex justify-between items-start">
+            <span class="bg-neonGreen/15 text-neonGreen border border-neonGreen/30 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider">Protección</span>
+            <i class="fa-solid fa-shield-halved text-2xl text-neonGreen group-hover:rotate-12 transition-transform duration-300"></i>
+          </div>
+          <h3 class="font-display text-xl sm:text-2xl font-black text-white leading-tight group-hover:text-neonGreen transition-colors">Barnices & clear coat</h3>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            Transparentes de altos sólidos para sellar y proteger el color con profundidad y brillo de espejo.
+          </p>
+          <ul class="space-y-1.5 pt-1">
+            <li class="flex items-center gap-2 text-[11px] text-gray-400"><i class="fa-solid fa-check text-neonGreen text-[10px]"></i> Versión HS y estándar</li>
+            <li class="flex items-center gap-2 text-[11px] text-gray-400"><i class="fa-solid fa-check text-neonGreen text-[10px]"></i> Con y sin catalizador incluido</li>
+          </ul>
+        </div>
+        <div class="space-y-3 pt-4 border-t border-white/10">
+          <div class="flex justify-between text-[11px] font-mono">
+            <span class="text-gray-400">Acabado</span>
+            <span class="text-neonGreen font-bold">Alto brillo / mate</span>
+          </div>
+          <button onclick="solicitarCotizacion('Barnices y Clear Coat')"
+                  class="w-full py-3 rounded-xl bg-white/5 hover:bg-neonGreen hover:text-dark border border-white/10 font-bold text-[11px] tracking-[0.1em] uppercase transition-all duration-300">
+            Cotizar esta línea
+          </button>
+        </div>
+      </article>
+
+      <!-- CARD 5 -->
+      <article data-cat="monocapa" data-reveal style="--d:80ms" class="glass-card rounded-3xl p-6 space-y-5 flex flex-col justify-between group">
+        <div class="space-y-4">
+          <div class="flex justify-between items-start">
+            <span class="bg-neonYellow/15 text-neonYellow border border-neonYellow/30 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider">Industrial</span>
+            <i class="fa-solid fa-industry text-2xl text-neonYellow group-hover:rotate-12 transition-transform duration-300"></i>
+          </div>
+          <h3 class="font-display text-xl sm:text-2xl font-black text-white leading-tight group-hover:text-neonYellow transition-colors">Esmaltes sintéticos</h3>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            Ideales para chasis, estructuras metálicas, maquinaria agrícola y trabajos de alta exigencia.
+          </p>
+          <ul class="space-y-1.5 pt-1">
+            <li class="flex items-center gap-2 text-[11px] text-gray-400"><i class="fa-solid fa-check text-neonYellow text-[10px]"></i> Alta resistencia al exterior</li>
+            <li class="flex items-center gap-2 text-[11px] text-gray-400"><i class="fa-solid fa-check text-neonYellow text-[10px]"></i> Amplia gama de colores</li>
+          </ul>
+        </div>
+        <div class="space-y-3 pt-4 border-t border-white/10">
+          <div class="flex justify-between text-[11px] font-mono">
+            <span class="text-gray-400">Uso</span>
+            <span class="text-white font-bold">Metal · Madera</span>
+          </div>
+          <button onclick="solicitarCotizacion('Esmaltes Sintéticos Industriales')"
+                  class="w-full py-3 rounded-xl bg-white/5 hover:bg-neonYellow hover:text-dark border border-white/10 font-bold text-[11px] tracking-[0.1em] uppercase transition-all duration-300">
+            Cotizar esta línea
+          </button>
+        </div>
+      </article>
+
+      <!-- CARD 6 -->
+      <article data-cat="complemento" data-reveal style="--d:160ms" class="glass-card rounded-3xl p-6 space-y-5 flex flex-col justify-between group">
+        <div class="space-y-4">
+          <div class="flex justify-between items-start">
+            <span class="bg-neonCyan/15 text-neonCyan border border-neonCyan/30 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider">Igualación</span>
+            <i class="fa-solid fa-flask text-2xl text-neonCyan group-hover:rotate-12 transition-transform duration-300"></i>
+          </div>
+          <h3 class="font-display text-xl sm:text-2xl font-black text-white leading-tight group-hover:text-neonCyan transition-colors">Servicio de mezcla exacta</h3>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            Toma de color con espectrofotómetro y ajuste fino manual para resultados indistinguibles del original.
+          </p>
+          <ul class="space-y-1.5 pt-1">
+            <li class="flex items-center gap-2 text-[11px] text-gray-400"><i class="fa-solid fa-check text-neonCyan text-[10px]"></i> Lectura digital del color</li>
+            <li class="flex items-center gap-2 text-[11px] text-gray-400"><i class="fa-solid fa-check text-neonCyan text-[10px]"></i> Prueba de tono antes de aplicar</li>
+          </ul>
+        </div>
+        <div class="space-y-3 pt-4 border-t border-white/10">
+          <div class="flex justify-between text-[11px] font-mono">
+            <span class="text-gray-400">Tiempo</span>
+            <span class="text-neonCyan font-bold">Mismo día</span>
+          </div>
+          <button onclick="solicitarCotizacion('Servicio de Igualación de Color')"
+                  class="w-full py-3 rounded-xl bg-white/5 hover:bg-neonCyan hover:text-dark border border-white/10 font-bold text-[11px] tracking-[0.1em] uppercase transition-all duration-300">
+            Cotizar esta línea
+          </button>
+        </div>
+      </article>
 
     </div>
   </section>
 
-  <!-- SECCIÓN 2: INSUMOS PROFESIONALES -->
-  <section id="insumos" class="space-y-10 scroll-mt-28">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-6">
+  <!-- ============ 2. INSUMOS ============ -->
+  <section id="insumos" class="scroll-mt-32 space-y-9">
+
+    <div data-reveal class="flex flex-col md:flex-row md:items-end justify-between gap-5 border-b border-white/10 pb-6">
       <div>
-        <span class="text-neonCyan text-xs font-black tracking-widest uppercase block mb-1">// Sistema de Preparación</span>
-        <h2 class="font-display text-4xl sm:text-5xl font-black text-white">INSUMOS <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonCyan to-blue-500">TÉCNICOS</span></h2>
+        <span class="text-neonCyan text-[11px] font-black tracking-[0.22em] uppercase block mb-2">// Sistema de preparación</span>
+        <h2 class="font-display text-3xl sm:text-5xl font-black text-white leading-tight">
+          Insumos <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonCyan to-blue-500">técnicos</span>
+        </h2>
       </div>
-      <p class="text-xs sm:text-sm text-gray-400 max-w-md">
+      <p class="text-xs sm:text-sm text-gray-400 max-w-md leading-relaxed">
         Complementos fundamentales para asegurar adherencia, nivelación y un sellado perfecto.
       </p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      
-      <div class="glass-card rounded-2xl p-5 space-y-4">
-        <div class="w-10 h-10 rounded-xl bg-neonCyan/10 border border-neonCyan/30 flex items-center justify-center text-neonCyan font-bold">
+
+      <div data-reveal class="glass-card rounded-2xl p-6 space-y-4 flex flex-col">
+        <div class="w-11 h-11 rounded-xl bg-neonCyan/10 border border-neonCyan/30 flex items-center justify-center text-neonCyan">
           <i class="fa-solid fa-shield-halved"></i>
         </div>
-        <h3 class="font-display text-xl font-bold text-white">BARNIZ HS CLEAR</h3>
-        <p class="text-xs text-gray-400">Transparente de altos sólidos para protección extrema UV y brillo de espejo.</p>
-        <button onclick="solicitarCotizacion('Barniz HS Clear Transparente')" class="text-xs font-bold text-neonCyan hover:underline block pt-2">Pedir Precio →</button>
+        <h3 class="font-display text-lg font-black text-white leading-tight">Barniz HS Clear</h3>
+        <p class="text-xs text-gray-400 leading-relaxed flex-1">Transparente de altos sólidos para protección extrema UV y brillo de espejo.</p>
+        <button onclick="solicitarCotizacion('Barniz HS Clear Transparente')" class="text-[11px] font-black uppercase tracking-widest text-neonCyan hover:text-white transition-colors text-left pt-1">
+          Pedir precio <i class="fa-solid fa-arrow-right ml-1 text-[9px]"></i>
+        </button>
       </div>
 
-      <div class="glass-card rounded-2xl p-5 space-y-4">
-        <div class="w-10 h-10 rounded-xl bg-neonPink/10 border border-neonPink/30 flex items-center justify-center text-neonPink font-bold">
+      <div data-reveal style="--d:80ms" class="glass-card rounded-2xl p-6 space-y-4 flex flex-col">
+        <div class="w-11 h-11 rounded-xl bg-neonPink/10 border border-neonPink/30 flex items-center justify-center text-neonPink">
           <i class="fa-solid fa-layer-group"></i>
         </div>
-        <h3 class="font-display text-xl font-bold text-white">PRIMARIO EPÓXICO</h3>
-        <p class="text-xs text-gray-400">Aparejo y fondo anticorrosivo de alta adherencia sobre metal o fibra.</p>
-        <button onclick="solicitarCotizacion('Primario Epóxico / Primer')" class="text-xs font-bold text-neonPink hover:underline block pt-2">Pedir Precio →</button>
+        <h3 class="font-display text-lg font-black text-white leading-tight">Primario epóxico</h3>
+        <p class="text-xs text-gray-400 leading-relaxed flex-1">Aparejo y fondo anticorrosivo de alta adherencia sobre metal o fibra.</p>
+        <button onclick="solicitarCotizacion('Primario Epóxico / Primer')" class="text-[11px] font-black uppercase tracking-widest text-neonPink hover:text-white transition-colors text-left pt-1">
+          Pedir precio <i class="fa-solid fa-arrow-right ml-1 text-[9px]"></i>
+        </button>
       </div>
 
-      <div class="glass-card rounded-2xl p-5 space-y-4">
-        <div class="w-10 h-10 rounded-xl bg-neonYellow/10 border border-neonYellow/30 flex items-center justify-center text-neonYellow font-bold">
+      <div data-reveal style="--d:160ms" class="glass-card rounded-2xl p-6 space-y-4 flex flex-col">
+        <div class="w-11 h-11 rounded-xl bg-neonYellow/10 border border-neonYellow/30 flex items-center justify-center text-neonYellow">
           <i class="fa-solid fa-flask"></i>
         </div>
-        <h3 class="font-display text-xl font-bold text-white">THINNER ACRÍLICO</h3>
-        <p class="text-xs text-gray-400">Disolvente técnico de velocidad ajustada para nivelación limpia sin niebla.</p>
-        <button onclick="solicitarCotizacion('Thinner Acrílico de Alta Calidad')" class="text-xs font-bold text-neonYellow hover:underline block pt-2">Pedir Precio →</button>
+        <h3 class="font-display text-lg font-black text-white leading-tight">Thinner acrílico</h3>
+        <p class="text-xs text-gray-400 leading-relaxed flex-1">Disolvente técnico de velocidad ajustada para nivelación limpia sin niebla.</p>
+        <button onclick="solicitarCotizacion('Thinner Acrílico de Alta Calidad')" class="text-[11px] font-black uppercase tracking-widest text-neonYellow hover:text-white transition-colors text-left pt-1">
+          Pedir precio <i class="fa-solid fa-arrow-right ml-1 text-[9px]"></i>
+        </button>
       </div>
 
-      <div class="glass-card rounded-2xl p-5 space-y-4">
-        <div class="w-10 h-10 rounded-xl bg-neonGreen/10 border border-neonGreen/30 flex items-center justify-center text-neonGreen font-bold">
+      <div data-reveal style="--d:240ms" class="glass-card rounded-2xl p-6 space-y-4 flex flex-col">
+        <div class="w-11 h-11 rounded-xl bg-neonGreen/10 border border-neonGreen/30 flex items-center justify-center text-neonGreen">
           <i class="fa-solid fa-fill-drip"></i>
         </div>
-        <h3 class="font-display text-xl font-bold text-white">MASILLA ULTRA ULTRA-LIGHT</h3>
-        <p class="text-xs text-gray-400">Rellenador poliéster suave de fácil lijado para corrección de imperfecciones.</p>
-        <button onclick="solicitarCotizacion('Masilla Ultra-Light Poliéster')" class="text-xs font-bold text-neonGreen hover:underline block pt-2">Pedir Precio →</button>
+        <h3 class="font-display text-lg font-black text-white leading-tight">Masilla ultra-light</h3>
+        <p class="text-xs text-gray-400 leading-relaxed flex-1">Rellenador poliéster suave de fácil lijado para corrección de imperfecciones.</p>
+        <button onclick="solicitarCotizacion('Masilla Ultra-Light Poliéster')" class="text-[11px] font-black uppercase tracking-widest text-neonGreen hover:text-white transition-colors text-left pt-1">
+          Pedir precio <i class="fa-solid fa-arrow-right ml-1 text-[9px]"></i>
+        </button>
       </div>
 
     </div>
   </section>
 
-  <!-- SECCIÓN 3: ACCESORIOS DE PINTURA -->
-  <section id="accesorios" class="space-y-10 scroll-mt-28">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-6">
+  <!-- ============ 3. ACCESORIOS ============ -->
+  <section id="accesorios" class="scroll-mt-32 space-y-9">
+
+    <div data-reveal class="flex flex-col md:flex-row md:items-end justify-between gap-5 border-b border-white/10 pb-6">
       <div>
-        <span class="text-neonYellow text-xs font-black tracking-widest uppercase block mb-1">// Herramientas de Taller</span>
-        <h2 class="font-display text-4xl sm:text-5xl font-black text-white">ACCESORIOS <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonYellow to-amber-500">PRO</span></h2>
+        <span class="text-neonYellow text-[11px] font-black tracking-[0.22em] uppercase block mb-2">// Herramientas de taller</span>
+        <h2 class="font-display text-3xl sm:text-5xl font-black text-white leading-tight">
+          Accesorios <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonYellow to-amber-500">pro</span>
+        </h2>
       </div>
-      <p class="text-xs sm:text-sm text-gray-400 max-w-md">
-        Lijas, mascarillas, pistolas de pintar y consumibles garantizados.
+      <p class="text-xs sm:text-sm text-gray-400 max-w-md leading-relaxed">
+        Lijas, mascarillas, pistolas de pintar y consumibles garantizados para el trabajo diario.
       </p>
     </div>
 
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-      
-      <div class="glass-card rounded-2xl p-4 text-center space-y-3">
-        <i class="fa-solid fa-gun text-3xl text-neonPink"></i>
-        <h4 class="font-bold text-xs text-white">Pistolas HVLP</h4>
-        <span class="text-[10px] text-gray-400 block">Pico 1.3 - 1.4 mm</span>
+
+      <div data-reveal class="glass-card rounded-2xl p-5 text-center space-y-3 flex flex-col items-center">
+        <i class="fa-solid fa-spray-can text-3xl text-neonPink"></i>
+        <h4 class="font-bold text-[11px] text-white leading-tight">Pistolas HVLP</h4>
+        <span class="text-[10px] text-gray-500 block">Pico 1.3 – 1.4 mm</span>
       </div>
 
-      <div class="glass-card rounded-2xl p-4 text-center space-y-3">
-        <i class="fa-solid fa-mask-ventilator text-3xl text-neonCyan"></i>
-        <h4 class="font-bold text-xs text-white">Respiradores 3M</h4>
-        <span class="text-[10px] text-gray-400 block">Filtros orgánicos</span>
+      <div data-reveal style="--d:60ms" class="glass-card rounded-2xl p-5 text-center space-y-3 flex flex-col items-center">
+        <i class="fa-solid fa-head-side-mask text-3xl text-neonCyan"></i>
+        <h4 class="font-bold text-[11px] text-white leading-tight">Respiradores</h4>
+        <span class="text-[10px] text-gray-500 block">Filtros orgánicos</span>
       </div>
 
-      <div class="glass-card rounded-2xl p-4 text-center space-y-3">
+      <div data-reveal style="--d:120ms" class="glass-card rounded-2xl p-5 text-center space-y-3 flex flex-col items-center">
         <i class="fa-solid fa-note-sticky text-3xl text-neonYellow"></i>
-        <h4 class="font-bold text-xs text-white">Cinta Masking</h4>
-        <span class="text-[10px] text-gray-400 block">Resistente a calor</span>
+        <h4 class="font-bold text-[11px] text-white leading-tight">Cinta masking</h4>
+        <span class="text-[10px] text-gray-500 block">Resistente al calor</span>
       </div>
 
-      <div class="glass-card rounded-2xl p-4 text-center space-y-3">
-        <i class="fa-solid fa-rugs text-3xl text-neonGreen"></i>
-        <h4 class="font-bold text-xs text-white">Lijas de Agua</h4>
-        <span class="text-[10px] text-gray-400 block">Grano P80 a P3000</span>
+      <div data-reveal style="--d:180ms" class="glass-card rounded-2xl p-5 text-center space-y-3 flex flex-col items-center">
+        <i class="fa-solid fa-scroll text-3xl text-neonGreen"></i>
+        <h4 class="font-bold text-[11px] text-white leading-tight">Lijas de agua</h4>
+        <span class="text-[10px] text-gray-500 block">Grano P80 – P3000</span>
       </div>
 
-      <div class="glass-card rounded-2xl p-4 text-center space-y-3">
+      <div data-reveal style="--d:240ms" class="glass-card rounded-2xl p-5 text-center space-y-3 flex flex-col items-center">
         <i class="fa-solid fa-filter text-3xl text-neonPurple"></i>
-        <h4 class="font-bold text-xs text-white">Coladores / Vasos</h4>
-        <span class="text-[10px] text-gray-400 block">Filtrado micronizado</span>
+        <h4 class="font-bold text-[11px] text-white leading-tight">Coladores / vasos</h4>
+        <span class="text-[10px] text-gray-500 block">Filtrado micronizado</span>
       </div>
 
-      <div class="glass-card rounded-2xl p-4 text-center space-y-3">
+      <div data-reveal style="--d:300ms" class="glass-card rounded-2xl p-5 text-center space-y-3 flex flex-col items-center">
         <i class="fa-solid fa-compact-disc text-3xl text-red-500"></i>
-        <h4 class="font-bold text-xs text-white">Boina de Pulido</h4>
-        <span class="text-[10px] text-gray-400 block">Lana & Espuma 3M</span>
+        <h4 class="font-bold text-[11px] text-white leading-tight">Boina de pulido</h4>
+        <span class="text-[10px] text-gray-500 block">Lana & espuma</span>
       </div>
 
     </div>
+
+    <div data-reveal class="text-center pt-2">
+      <button onclick="solicitarCotizacion('Listado completo de accesorios e insumos')" class="btn btn-ghost">
+        <i class="fa-solid fa-list-check text-neonYellow"></i> Ver lista completa de accesorios
+      </button>
+    </div>
   </section>
 
-  <!-- SECCIÓN 4: SERVICIOS VIP -->
-  <section id="servicios" class="space-y-10 scroll-mt-28">
-    <div class="text-center space-y-3 max-w-2xl mx-auto">
-      <span class="text-neonGreen text-xs font-black tracking-widest uppercase block">// Mano de Obra Calificada</span>
-      <h2 class="font-display text-4xl sm:text-5xl font-black text-white">SERVICIOS DE <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonGreen via-neonCyan to-neonPurple">APLICACIÓN Y TALLER</span></h2>
-      <p class="text-xs sm:text-sm text-gray-400">
+  <!-- ============ 4. SERVICIOS ============ -->
+  <section id="servicios" class="scroll-mt-32 space-y-12">
+
+    <div data-reveal class="text-center space-y-3 max-w-2xl mx-auto">
+      <span class="text-neonGreen text-[11px] font-black tracking-[0.22em] uppercase block">// Mano de obra calificada</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-black text-white leading-tight">
+        Servicios de <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonGreen via-neonCyan to-neonPurple">aplicación y taller</span>
+      </h2>
+      <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">
         ¿No solo buscas el material sino la aplicación perfecta? Brindamos servicios técnicos especializados.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      
-      <div class="gradient-border-card p-8 text-center space-y-5">
-        <div class="w-16 h-16 rounded-2xl bg-neonPink/20 text-neonPink flex items-center justify-center text-3xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+
+      <div data-reveal class="gradient-border-card p-8 text-center space-y-5 flex flex-col">
+        <div class="w-16 h-16 rounded-2xl bg-neonPink/15 text-neonPink flex items-center justify-center text-2xl mx-auto border border-neonPink/25">
           <i class="fa-solid fa-car-side"></i>
         </div>
-        <h3 class="font-display text-2xl font-black text-white">PINTURA COMPLETA</h3>
-        <p class="text-xs text-gray-400 leading-relaxed">
+        <h3 class="font-display text-xl sm:text-2xl font-black text-white leading-tight">Pintura completa</h3>
+        <p class="text-xs text-gray-400 leading-relaxed flex-1">
           Desarme parcial o total, preparación de hojalatería, aplicación de primario y acabado bicapa poliuretano.
         </p>
-        <button onclick="solicitarCotizacion('Servicio: Pintura Completa de Vehículo')" class="w-full py-3 rounded-xl bg-neonPink text-white font-bold text-xs tracking-wider uppercase hover:brightness-125 transition">
-          Cotizar Servicio
+        <button onclick="solicitarCotizacion('Servicio: Pintura Completa de Vehículo')"
+                class="w-full py-3.5 rounded-xl bg-neonPink text-white font-black text-[11px] tracking-[0.12em] uppercase hover:brightness-110 transition">
+          Cotizar servicio
         </button>
       </div>
 
-      <div class="gradient-border-card p-8 text-center space-y-5">
-        <div class="w-16 h-16 rounded-2xl bg-neonCyan/20 text-neonCyan flex items-center justify-center text-3xl mx-auto">
-          <i class="fa-solid fa-sparkles"></i>
+      <div data-reveal style="--d:100ms" class="gradient-border-card p-8 text-center space-y-5 flex flex-col">
+        <div class="w-16 h-16 rounded-2xl bg-neonCyan/15 text-neonCyan flex items-center justify-center text-2xl mx-auto border border-neonCyan/25">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
         </div>
-        <h3 class="font-display text-2xl font-black text-white">PULIDO Y CORRECCIÓN</h3>
-        <p class="text-xs text-gray-400 leading-relaxed">
+        <h3 class="font-display text-xl sm:text-2xl font-black text-white leading-tight">Pulido y corrección</h3>
+        <p class="text-xs text-gray-400 leading-relaxed flex-1">
           Eliminación de microrrayones, gota de agua, piel de naranja y aplicación de sellador de alto brillo.
         </p>
-        <button onclick="solicitarCotizacion('Servicio: Pulido y Corrección de Pintura')" class="w-full py-3 rounded-xl bg-neonCyan text-dark font-bold text-xs tracking-wider uppercase hover:brightness-125 transition">
-          Cotizar Servicio
+        <button onclick="solicitarCotizacion('Servicio: Pulido y Corrección de Pintura')"
+                class="w-full py-3.5 rounded-xl bg-neonCyan text-dark font-black text-[11px] tracking-[0.12em] uppercase hover:brightness-110 transition">
+          Cotizar servicio
         </button>
       </div>
 
-      <div class="gradient-border-card p-8 text-center space-y-5">
-        <div class="w-16 h-16 rounded-2xl bg-neonYellow/20 text-neonYellow flex items-center justify-center text-3xl mx-auto">
+      <div data-reveal style="--d:200ms" class="gradient-border-card p-8 text-center space-y-5 flex flex-col">
+        <div class="w-16 h-16 rounded-2xl bg-neonYellow/15 text-neonYellow flex items-center justify-center text-2xl mx-auto border border-neonYellow/25">
           <i class="fa-solid fa-brush"></i>
         </div>
-        <h3 class="font-display text-2xl font-black text-white">CUSTOM & DETALLES</h3>
-        <p class="text-xs text-gray-400 leading-relaxed">
+        <h3 class="font-display text-xl sm:text-2xl font-black text-white leading-tight">Custom & detalles</h3>
+        <p class="text-xs text-gray-400 leading-relaxed flex-1">
           Pintado de aros, calipers, franjas deportivas, piezas de fibra de carbono o retoques puntuales.
         </p>
-        <button onclick="solicitarCotizacion('Servicio: Trabajos Custom y Detalles')" class="w-full py-3 rounded-xl bg-neonYellow text-dark font-bold text-xs tracking-wider uppercase hover:brightness-125 transition">
-          Cotizar Servicio
+        <button onclick="solicitarCotizacion('Servicio: Trabajos Custom y Detalles')"
+                class="w-full py-3.5 rounded-xl bg-neonYellow text-dark font-black text-[11px] tracking-[0.12em] uppercase hover:brightness-110 transition">
+          Cotizar servicio
         </button>
       </div>
 
     </div>
   </section>
 
-  <!-- BANNER CONTACTO & UBICACIÓN -->
-  <section class="glass-card rounded-3xl p-8 sm:p-12 relative overflow-hidden">
-    <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-neonPink/20 rounded-full blur-3xl pointer-events-none"></div>
-    
-    <div class="grid lg:grid-cols-2 gap-8 items-center relative z-10">
-      <div class="space-y-4">
-        <span class="text-neonYellow text-xs font-black tracking-widest uppercase">// Ubicación & Atención</span>
-        <h2 class="font-display text-3xl sm:text-5xl font-black text-white">VISÍTANOS EN <span class="text-neonPink">BIBLIÁN</span></h2>
-        <p class="text-xs sm:text-sm text-gray-300">
-          Atención directa para talleres, pintores independientes y dueños de vehículos particulares.
+  <!-- ============ 5. PROCESO ============ -->
+  <section class="space-y-12">
+    <div data-reveal class="text-center space-y-3 max-w-2xl mx-auto">
+      <span class="text-neonPurple text-[11px] font-black tracking-[0.22em] uppercase block">// Cómo trabajamos</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-black text-white leading-tight">
+        Tu color en <span class="text-gradient">4 pasos</span>
+      </h2>
+      <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">
+        Un proceso simple, rápido y sin sorpresas desde el primer mensaje hasta la entrega.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <div data-reveal class="glass-card rounded-2xl p-6 space-y-4 relative overflow-hidden">
+        <span class="font-display text-5xl font-black text-white/5 absolute top-4 right-5 select-none">01</span>
+        <div class="w-11 h-11 rounded-xl bg-neonPink/15 border border-neonPink/30 flex items-center justify-center text-neonPink">
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
+        <h3 class="font-display text-lg font-black text-white">Escríbenos</h3>
+        <p class="text-xs text-gray-400 leading-relaxed">Cuéntanos qué necesitas por WhatsApp con fotos o el código de color.</p>
+      </div>
+
+      <div data-reveal style="--d:90ms" class="glass-card rounded-2xl p-6 space-y-4 relative overflow-hidden">
+        <span class="font-display text-5xl font-black text-white/5 absolute top-4 right-5 select-none">02</span>
+        <div class="w-11 h-11 rounded-xl bg-neonCyan/15 border border-neonCyan/30 flex items-center justify-center text-neonCyan">
+          <i class="fa-solid fa-flask"></i>
+        </div>
+        <h3 class="font-display text-lg font-black text-white">Igualamos el color</h3>
+        <p class="text-xs text-gray-400 leading-relaxed">Lectura digital y ajuste fino para lograr el tono exacto de tu vehículo.</p>
+      </div>
+
+      <div data-reveal style="--d:180ms" class="glass-card rounded-2xl p-6 space-y-4 relative overflow-hidden">
+        <span class="font-display text-5xl font-black text-white/5 absolute top-4 right-5 select-none">03</span>
+        <div class="w-11 h-11 rounded-xl bg-neonYellow/15 border border-neonYellow/30 flex items-center justify-center text-neonYellow">
+          <i class="fa-solid fa-box-open"></i>
+        </div>
+        <h3 class="font-display text-lg font-black text-white">Preparamos tu pedido</h3>
+        <p class="text-xs text-gray-400 leading-relaxed">Mezclamos, envasamos y verificamos todo antes de que lo retires.</p>
+      </div>
+
+      <div data-reveal style="--d:270ms" class="glass-card rounded-2xl p-6 space-y-4 relative overflow-hidden">
+        <span class="font-display text-5xl font-black text-white/5 absolute top-4 right-5 select-none">04</span>
+        <div class="w-11 h-11 rounded-xl bg-neonGreen/15 border border-neonGreen/30 flex items-center justify-center text-neonGreen">
+          <i class="fa-solid fa-hand-holding-heart"></i>
+        </div>
+        <h3 class="font-display text-lg font-black text-white">Recibes y aplicas</h3>
+        <p class="text-xs text-gray-400 leading-relaxed">Te damos la asesoría técnica para que el acabado quede impecable.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ 6. TESTIMONIOS ============ -->
+  <section class="space-y-12">
+    <div data-reveal class="text-center space-y-3 max-w-2xl mx-auto">
+      <span class="text-neonCyan text-[11px] font-black tracking-[0.22em] uppercase block">// Lo que dicen</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-black text-white leading-tight">
+        Clientes <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonCyan to-neonPink">satisfechos</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <div data-reveal class="glass-card rounded-2xl p-7 space-y-5 flex flex-col">
+        <div class="flex items-center gap-1 text-neonYellow text-sm">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="text-sm text-gray-300 leading-relaxed italic flex-1">
+          “Me igualaron el color de un azul perlado que en otros lados nunca dieron con el tono. Quedó perfecto.”
         </p>
-        <div class="space-y-2 pt-2 text-xs font-mono">
-          <p class="text-gray-300 flex items-center gap-3"><i class="fa-solid fa-location-dot text-neonPink text-base"></i> Biblián, Provincia del Cañar, Ecuador</p>
-          <p class="text-gray-300 flex items-center gap-3"><i class="fa-solid fa-phone text-neonCyan text-base"></i> Teléfono / WhatsApp: 098 411 3081</p>
+        <div class="flex items-center gap-3 pt-3 border-t border-white/10">
+          <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-neonPink to-neonPurple flex items-center justify-center text-[11px] font-black text-white">JM</div>
+          <div>
+            <p class="text-xs font-bold text-white">Jorge M.</p>
+            <p class="text-[10px] text-gray-500">Taller de hojalatería</p>
+          </div>
         </div>
       </div>
 
-      <div class="flex flex-col sm:flex-row gap-4">
-        <a href="https://wa.me/593984113081" target="_blank" class="flex-1 py-4 px-6 rounded-2xl bg-neonGreen text-dark font-black text-xs text-center uppercase tracking-wider hover:brightness-110 transition flex items-center justify-center gap-2 shadow-lg shadow-neonGreen/20">
-          <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp Directo
+      <div data-reveal style="--d:100ms" class="glass-card rounded-2xl p-7 space-y-5 flex flex-col">
+        <div class="flex items-center gap-1 text-neonYellow text-sm">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="text-sm text-gray-300 leading-relaxed italic flex-1">
+          “Atención rápida y muy buena asesoría. Me explicaron qué barniz usar según mi tipo de trabajo.”
+        </p>
+        <div class="flex items-center gap-3 pt-3 border-t border-white/10">
+          <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-neonCyan to-blue-600 flex items-center justify-center text-[11px] font-black text-dark">AL</div>
+          <div>
+            <p class="text-xs font-bold text-white">Andrea L.</p>
+            <p class="text-[10px] text-gray-500">Cliente particular</p>
+          </div>
+        </div>
+      </div>
+
+      <div data-reveal style="--d:200ms" class="glass-card rounded-2xl p-7 space-y-5 flex flex-col">
+        <div class="flex items-center gap-1 text-neonYellow text-sm">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="text-sm text-gray-300 leading-relaxed italic flex-1">
+          “Tienen todo lo que necesito en un solo lugar: pintura, thinner, lijas y boinas. Ahorro tiempo y viajes.”
+        </p>
+        <div class="flex items-center gap-3 pt-3 border-t border-white/10">
+          <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-neonYellow to-neonGreen flex items-center justify-center text-[11px] font-black text-dark">RC</div>
+          <div>
+            <p class="text-xs font-bold text-white">Ricardo C.</p>
+            <p class="text-[10px] text-gray-500">Pintor automotriz</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ 7. FAQ ============ -->
+  <section id="faq" class="scroll-mt-32 space-y-10 max-w-3xl mx-auto">
+    <div data-reveal class="text-center space-y-3">
+      <span class="text-neonPurple text-[11px] font-black tracking-[0.22em] uppercase block">// Dudas frecuentes</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-black text-white leading-tight">
+        Preguntas <span class="text-gradient">frecuentes</span>
+      </h2>
+    </div>
+
+    <div class="space-y-3">
+
+      <details data-reveal class="glass-card rounded-2xl px-6 py-5 group">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer">
+          <span class="text-sm sm:text-base font-bold text-white">¿Cómo sé qué código de color tiene mi vehículo?</span>
+          <i class="fa-solid fa-plus faq-icon text-neonPink shrink-0"></i>
+        </summary>
+        <p class="mt-4 text-xs sm:text-sm text-gray-400 leading-relaxed">
+          Generalmente está en una etiqueta dentro del marco de la puerta del conductor, en el compartimiento del motor
+          o en el manual del propietario. Si no lo encuentras, puedes traernos una pieza pequeña del vehículo o una
+          tapa de combustible y lo leemos con el espectrofotómetro.
+        </p>
+      </details>
+
+      <details data-reveal style="--d:80ms" class="glass-card rounded-2xl px-6 py-5 group">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer">
+          <span class="text-sm sm:text-base font-bold text-white">¿Cuánta pintura necesito para pintar mi vehículo?</span>
+          <i class="fa-solid fa-plus faq-icon text-neonCyan shrink-0"></i>
+        </summary>
+        <p class="mt-4 text-xs sm:text-sm text-gray-400 leading-relaxed">
+          Depende del tamaño del vehículo y de si el trabajo es total o parcial. Para un auto compacto completo suele
+          requerirse alrededor de 1 galón de base más el barniz y los catalizadores. Escríbenos con el modelo y te damos
+          una recomendación exacta.
+        </p>
+      </details>
+
+      <details data-reveal style="--d:160ms" class="glass-card rounded-2xl px-6 py-5 group">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer">
+          <span class="text-sm sm:text-base font-bold text-white">¿Venden cantidades pequeñas para retoques?</span>
+          <i class="fa-solid fa-plus faq-icon text-neonYellow shrink-0"></i>
+        </summary>
+        <p class="mt-4 text-xs sm:text-sm text-gray-400 leading-relaxed">
+          Sí. Preparamos desde 1/4 de galón e incluso cantidades menores para retoques puntuales, siempre con el
+          color igualado a tu vehículo.
+        </p>
+      </details>
+
+      <details data-reveal style="--d:240ms" class="glass-card rounded-2xl px-6 py-5 group">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer">
+          <span class="text-sm sm:text-base font-bold text-white">¿Hacen entregas a domicilio?</span>
+          <i class="fa-solid fa-plus faq-icon text-neonGreen shrink-0"></i>
+        </summary>
+        <p class="mt-4 text-xs sm:text-sm text-gray-400 leading-relaxed">
+          Realizamos entregas en Biblián y sectores cercanos de la provincia del Cañar. Coordinamos el envío por
+          WhatsApp según la cantidad y el destino.
+        </p>
+      </details>
+
+      <details data-reveal style="--d:320ms" class="glass-card rounded-2xl px-6 py-5 group">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer">
+          <span class="text-sm sm:text-base font-bold text-white">¿Ofrecen servicio de aplicación o solo venta?</span>
+          <i class="fa-solid fa-plus faq-icon text-neonPurple shrink-0"></i>
+        </summary>
+        <p class="mt-4 text-xs sm:text-sm text-gray-400 leading-relaxed">
+          Ambos. Vendemos material al por menor y al por mayor para talleres, y también realizamos trabajos de
+          pintura completa, pulido y detalles personalizados.
+        </p>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- ============ 8. CONTACTO / UBICACIÓN ============ -->
+  <section class="glass-card rounded-3xl p-8 sm:p-12 relative overflow-hidden">
+    <div class="absolute -right-24 -bottom-24 w-80 h-80 bg-neonPink/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -left-24 -top-24 w-72 h-72 bg-neonCyan/15 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="grid lg:grid-cols-2 gap-10 items-center relative z-10">
+
+      <div data-reveal class="space-y-5">
+        <span class="text-neonYellow text-[11px] font-black tracking-[0.22em] uppercase block">// Ubicación & atención</span>
+        <h2 class="font-display text-3xl sm:text-5xl font-black text-white leading-tight">
+          Visítanos en <span class="text-neonPink text-glow-pink">Biblián</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-gray-300 leading-relaxed max-w-md">
+          Atención directa para talleres, pintores independientes y dueños de vehículos particulares.
+        </p>
+
+        <div class="space-y-3 pt-2">
+          <p class="text-xs sm:text-sm text-gray-300 flex items-center gap-3">
+            <i class="fa-solid fa-location-dot text-neonPink text-base w-4"></i> Biblián, Provincia del Cañar, Ecuador
+          </p>
+          <p class="text-xs sm:text-sm text-gray-300 flex items-center gap-3">
+            <i class="fa-solid fa-phone text-neonCyan text-base w-4"></i> Teléfono / WhatsApp: <strong class="text-white">098 411 3081</strong>
+          </p>
+          <p class="text-xs sm:text-sm text-gray-300 flex items-center gap-3">
+            <i class="fa-solid fa-clock text-neonYellow text-base w-4"></i> Lunes a sábado · 08:00 – 18:00
+          </p>
+        </div>
+      </div>
+
+      <div data-reveal style="--d:120ms" class="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4">
+        <a href="https://wa.me/593984113081" target="_blank" rel="noopener" class="btn btn-whatsapp flex-1 !py-4">
+          <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp directo
         </a>
-        <a href="https://maps.google.com/?q=Biblián,Cañar,Ecuador" target="_blank" class="flex-1 py-4 px-6 rounded-2xl bg-white/10 text-white font-black text-xs text-center uppercase tracking-wider hover:bg-white/20 transition flex items-center justify-center gap-2 border border-white/20">
-          <i class="fa-solid fa-map-location-dot text-lg text-neonCyan"></i> Ver Mapa Google
+        <a href="https://maps.google.com/?q=Biblián,Cañar,Ecuador" target="_blank" rel="noopener" class="btn btn-ghost flex-1 !py-4">
+          <i class="fa-solid fa-map-location-dot text-lg text-neonCyan"></i> Ver en Google Maps
         </a>
       </div>
+
     </div>
   </section>
 
 </main>
 
-<!-- FOOTER -->
-<footer class="border-t border-white/10 bg-dark py-10 relative z-10">
-  <div class="max-w-7xl mx-auto px-4 text-center space-y-4">
-    <div class="font-display font-black text-2xl text-white">
-      TECNI<span class="text-neonPink">COLOR</span> ENCALADA
+<!-- ===================== FOOTER ===================== -->
+<footer class="border-t border-white/10 bg-dark/80 relative z-10 pt-14 pb-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-white/10">
+
+      <div class="space-y-4">
+        <div class="font-display font-black text-2xl text-white">
+          TECNI<span class="text-neonPink">COLOR</span> <span class="text-gray-500 text-lg">ENCALADA</span>
+        </div>
+        <p class="text-xs text-gray-400 leading-relaxed max-w-xs">
+          Pinturas automotrices, insumos y accesorios profesionales. Mezcla computarizada 100% exacta en Biblián, Cañar.
+        </p>
+        <div class="flex items-center gap-3 pt-1">
+          <a href="https://wa.me/593984113081" target="_blank" rel="noopener" aria-label="WhatsApp"
+             class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-neonGreen hover:bg-neonGreen hover:text-dark transition">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+          <a href="#" aria-label="Facebook"
+             class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:bg-neonCyan hover:text-dark transition">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="#" aria-label="Instagram"
+             class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:bg-neonPink hover:text-white transition">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="space-y-3">
+        <h4 class="text-[11px] font-black tracking-[0.2em] text-white uppercase">Catálogo</h4>
+        <ul class="space-y-2 text-xs text-gray-400">
+          <li><a href="#pinturas" class="hover:text-neonPink transition-colors">Pinturas bicapa</a></li>
+          <li><a href="#pinturas" class="hover:text-neonPink transition-colors">Monocapa 2K</a></li>
+          <li><a href="#pinturas" class="hover:text-neonPink transition-colors">Efectos tricapa & mate</a></li>
+          <li><a href="#insumos" class="hover:text-neonPink transition-colors">Insumos técnicos</a></li>
+          <li><a href="#accesorios" class="hover:text-neonPink transition-colors">Accesorios de taller</a></li>
+        </ul>
+      </div>
+
+      <div class="space-y-3">
+        <h4 class="text-[11px] font-black tracking-[0.2em] text-white uppercase">Servicios</h4>
+        <ul class="space-y-2 text-xs text-gray-400">
+          <li><a href="#servicios" class="hover:text-neonCyan transition-colors">Pintura completa</a></li>
+          <li><a href="#servicios" class="hover:text-neonCyan transition-colors">Pulido y corrección</a></li>
+          <li><a href="#servicios" class="hover:text-neonCyan transition-colors">Custom & detalles</a></li>
+          <li><a href="#pinturas" class="hover:text-neonCyan transition-colors">Igualación de color</a></li>
+          <li><a href="#faq" class="hover:text-neonCyan transition-colors">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+
+      <div class="space-y-3">
+        <h4 class="text-[11px] font-black tracking-[0.2em] text-white uppercase">Contacto</h4>
+        <ul class="space-y-2.5 text-xs text-gray-400">
+          <li class="flex items-start gap-2.5">
+            <i class="fa-solid fa-location-dot text-neonPink mt-0.5"></i>
+            <span>Biblián, Provincia del Cañar, Ecuador</span>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <i class="fa-solid fa-phone text-neonCyan"></i>
+            <a href="tel:+593984113081" class="hover:text-white transition-colors">098 411 3081</a>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <i class="fa-solid fa-clock text-neonYellow"></i>
+            <span>Lun – Sáb · 08:00 – 18:00</span>
+          </li>
+        </ul>
+        <a href="https://wa.me/593984113081" target="_blank" rel="noopener"
+           class="btn btn-primary w-full mt-2 !py-3 !text-[10px]">
+          <i class="fa-brands fa-whatsapp"></i> Cotizar ahora
+        </a>
+      </div>
+
     </div>
-    <p class="text-xs text-gray-500">
-      &copy; 2026 TecniColor Encalada. Todos los derechos reservados. Biblián · Cañar · Ecuador
-    </p>
+
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+      <p class="text-[11px] text-gray-500">
+        &copy; <span id="year"></span> TecniColor Encalada. Todos los derechos reservados.
+      </p>
+      <p class="text-[11px] text-gray-500">
+        Biblián · Cañar · Ecuador — <span class="text-gray-400">Hecho con precisión y pasión por el color.</span>
+      </p>
+    </div>
   </div>
 </footer>
 
-<!-- WHATSAPP FLOATING BUTTON -->
-<a href="https://wa.me/593984113081" target="_blank" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-neonGreen text-dark flex items-center justify-center text-2xl shadow-xl shadow-neonGreen/40 hover:scale-110 transition-transform duration-300">
+<!-- ===================== BOTONES FLOTANTES ===================== -->
+<!-- WhatsApp (desktop) -->
+<a href="https://wa.me/593984113081" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"
+   class="hidden lg:flex fixed bottom-7 right-7 z-50 w-14 h-14 rounded-full bg-neonGreen text-dark items-center justify-center text-2xl shadow-xl shadow-neonGreen/40 hover:scale-110 hover:shadow-neonGreen/70 transition-all duration-300">
   <i class="fa-brands fa-whatsapp"></i>
+  <span class="absolute inset-0 rounded-full bg-neonGreen animate-ping opacity-20"></span>
 </a>
 
-<!-- JAVASCRIPT CONTROLLER -->
+<!-- Volver arriba -->
+<button id="toTop" aria-label="Volver arriba"
+        class="fixed bottom-7 right-7 lg:bottom-24 z-50 w-11 h-11 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-white items-center justify-center hidden hover:bg-neonCyan hover:text-dark transition-all duration-300">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<!-- Barra móvil fija -->
+<div class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-dark/90 backdrop-blur-xl border-t border-white/10 px-3 pt-3"
+     style="padding-bottom: calc(0.75rem + var(--safe-bottom));">
+  <div class="flex items-center gap-3 max-w-lg mx-auto">
+    <a href="tel:+593984113081"
+       class="flex-1 py-3 rounded-xl bg-white/5 border border-white/15 text-white font-black text-[11px] uppercase tracking-widest flex items-center justify-center gap-2 active:scale-95 transition">
+      <i class="fa-solid fa-phone text-neonCyan"></i> Llamar
+    </a>
+    <a href="https://wa.me/593984113081" target="_blank" rel="noopener"
+       class="flex-[1.6] py-3 rounded-xl bg-neonGreen text-dark font-black text-[11px] uppercase tracking-widest flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-neonGreen/25">
+      <i class="fa-brands fa-whatsapp text-base"></i> Cotizar por WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- ===================== JAVASCRIPT ===================== -->
 <script>
-  // Función centralizada para cotizaciones automáticas por WhatsApp
-  function solicitarCotizacion(item) {
-    const mensaje = encodeURIComponent(`Hola TecniColor Encalada! 👋 Estoy interesado en solicitar una cotización de: ${item}. ¿Me podrían dar más información?`);
-    window.open(`https://wa.me/593984113081?text=${mensaje}`, '_blank');
+(function () {
+  'use strict';
+
+  /* ---------- Utilidad WhatsApp ---------- */
+  window.solicitarCotizacion = function (item) {
+    const mensaje = encodeURIComponent(
+      `Hola TecniColor Encalada! 👋 Estoy interesado en una cotización de: ${item}. ¿Me podrían dar más información?`
+    );
+    window.open(`https://wa.me/593984113081?text=${mensaje}`, '_blank', 'noopener');
+  };
+
+  /* ---------- Año dinámico ---------- */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- Menú móvil ---------- */
+  const menuBtn    = document.getElementById('menuBtn');
+  const menuIcon   = document.getElementById('menuIcon');
+  const mobileMenu = document.getElementById('mobileMenu');
+  let menuOpen = false;
+
+  function toggleMenu(force) {
+    menuOpen = typeof force === 'boolean' ? force : !menuOpen;
+    mobileMenu.style.gridTemplateRows = menuOpen ? '1fr' : '0fr';
+    menuBtn.setAttribute('aria-expanded', String(menuOpen));
+    menuIcon.className = menuOpen ? 'fa-solid fa-xmark text-lg' : 'fa-solid fa-bars text-lg';
   }
 
-  // Comprobar estado de horario de atención
-  document.addEventListener('DOMContentLoaded', () => {
-    const horaActual = new Date().getHours();
-    const liveBadge = document.getElementById('liveBadge');
-    
-    // Asumiendo horario de 8 AM a 6 PM (18:00)
-    if (horaActual < 8 || horaActual >= 18) {
-      if (liveBadge) {
-        liveBadge.innerHTML = `
-          <span class="w-2 h-2 rounded-full bg-red-500"></span>
-          <span class="text-gray-400">Cerrado ahora (Abre 8:00 AM)</span>
-        `;
-      }
+  menuBtn.addEventListener('click', () => toggleMenu());
+  document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => toggleMenu(false)));
+
+  /* ---------- Header compacto al hacer scroll ---------- */
+  const header = document.getElementById('siteHeader');
+  const toTop  = document.getElementById('toTop');
+
+  function onScroll() {
+    const y = window.scrollY;
+    header.classList.toggle('shadow-2xl', y > 20);
+    header.classList.toggle('shadow-neonPurple/10', y > 20);
+    if (y > 500) {
+      toTop.classList.remove('hidden');
+      toTop.classList.add('flex');
+    } else {
+      toTop.classList.add('hidden');
+      toTop.classList.remove('flex');
     }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* ---------- Reveal on scroll ---------- */
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('is-visible'));
+  }
+
+  /* ---------- Filtros de catálogo ---------- */
+  const filterBtns = document.querySelectorAll('[data-filter]');
+  const cards      = document.querySelectorAll('[data-cat]');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+
+      cards.forEach(card => {
+        const match = filter === 'all' || card.dataset.cat === filter;
+        card.classList.toggle('hidden', !match);
+        if (match) {
+          card.classList.remove('is-visible');
+          requestAnimationFrame(() => card.classList.add('is-visible'));
+        }
+      });
+    });
   });
+
+  /* ---------- Swatches del showcase ---------- */
+  const swatches   = document.querySelectorAll('.swatch');
+  const showcaseBox   = document.getElementById('showcaseBox');
+  const showcaseGlow  = document.getElementById('showcaseGlow');
+  const showcaseTitle = document.getElementById('showcaseTitle');
+  const showcaseDesc  = document.getElementById('showcaseDesc');
+  const showcaseIcon  = document.getElementById('showcaseIcon');
+
+  swatches.forEach(sw => {
+    sw.addEventListener('click', () => {
+      swatches.forEach(s => s.classList.remove('active'));
+      sw.classList.add('active');
+
+      showcaseBox.style.background   = sw.dataset.bg;
+      showcaseGlow.style.background  = sw.dataset.glow;
+      showcaseTitle.textContent      = sw.dataset.title;
+      showcaseDesc.textContent       = sw.dataset.desc;
+      showcaseIcon.className         = `fa-solid ${sw.dataset.icon} text-6xl text-white/90 drop-shadow-[0_12px_28px_rgba(255,0,127,.65)]`;
+    });
+  });
+
+  /* ---------- Scrollspy ---------- */
+  const navLinks = document.querySelectorAll('[data-navlink]');
+  const sections = document.querySelectorAll('section[id]');
+
+  if ('IntersectionObserver' in window && sections.length) {
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.toggle('is-active', link.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+    sections.forEach(s => spy.observe(s));
+  }
+
+  /* ---------- Horario de atención ---------- */
+  document.addEventListener('DOMContentLoaded', () => {
+    const now   = new Date();
+    const day   = now.getDay();      // 0 = domingo
+    const hour  = now.getHours();
+    const badge = document.getElementById('liveBadge');
+    if (!badge) return;
+
+    const abierto = day >= 1 && day <= 6 && hour >= 8 && hour < 18;
+
+    badge.innerHTML = abierto
+      ? `<span class="w-2 h-2 rounded-full bg-neonGreen animate-pulse"></span>
+         <span class="text-gray-300">Atención abierta</span>`
+      : `<span class="w-2 h-2 rounded-full bg-red-500"></span>
+         <span class="text-gray-400">Cerrado · Abre 08:00</span>`;
+  });
+
+  /* ---------- Cerrar menú al cambiar de tamaño ---------- */
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024 && menuOpen) toggleMenu(false);
+  });
+
+})();
 </script>
 
 </body>
