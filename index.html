@@ -323,7 +323,7 @@
     .mobile-nav-item.nav-wa i { font-size: 22px; }
     .mobile-nav-item.nav-wa span { display: none; }
 
-    /* ═══ LOGO TECNICOLOR 3D ═══ */
+    /* ═══ LOGO 3D ═══ */
     .logo-badge {
       display: flex; align-items: center; gap: 8px;
       padding: 4px 12px 4px 4px; border-radius: 999px;
@@ -333,7 +333,6 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     }
 
-    /* ═══ LOGO 3D — CUBO GIRATORIO ═══ */
     .logo-cube-wrap {
       position: relative;
       width: 40px; height: 40px;
@@ -404,7 +403,7 @@
       display: block;
       margin: 0 auto;
       overflow: visible;
-      filter: drop-shadow(0 18px 30px rgba(0,0,0,0.6));
+      filter: drop-shadow(0 18px 30px rgba(0,0,0,0.55));
     }
 
     .reveal-rect {
@@ -441,7 +440,6 @@
       96%,100% { opacity: 0; }
     }
 
-    /* Brillo pulsante detrás del letrero */
     .hero-panel-glow {
       position: absolute;
       inset: 0;
@@ -611,75 +609,68 @@
               
               <div class="hero-panel-glow"></div>
 
-              <!-- SVG con la mano + brocha + letrero pintado -->
+              <!-- SVG: mano + brocha pintando el letrero -->
               <svg class="paint-svg relative z-10" viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mano pintando Tecnicolor Encalada">
                 <defs>
-                  <!-- Máscara de revelado: fondo negro, rect blanco crece -->
+                  <!-- Máscara de revelado (rect blanco crece de 0 a 350) -->
                   <mask id="revealMask">
                     <rect x="0" y="0" width="520" height="300" fill="black"/>
                     <rect class="reveal-rect" x="140" y="0" width="0" height="300" fill="white"/>
                   </mask>
 
-                  <!-- Degradado de cerdas de la brocha -->
+                  <!-- Cerdas de la brocha -->
                   <linearGradient id="bristleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%"   stop-color="#ff006e"/>
-                    <stop offset="35%"  stop-color="#ffe600"/>
-                    <stop offset="70%"  stop-color="#19e65a"/>
+                    <stop offset="33%"  stop-color="#ffe600"/>
+                    <stop offset="66%"  stop-color="#19e65a"/>
                     <stop offset="100%" stop-color="#00e5ff"/>
                   </linearGradient>
 
-                  <!-- Brillo sutil de la brocha -->
+                  <!-- Mango de madera oscuro -->
                   <linearGradient id="handleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
                     <stop offset="0%"   stop-color="#475569"/>
                     <stop offset="50%"  stop-color="#334155"/>
-                    <stop offset="100%" stop-color="#1e293b"/>
+                    <stop offset="100%" stop-color="#0f172a"/>
                   </linearGradient>
 
+                  <!-- Virola metálica -->
                   <linearGradient id="ferruleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%"   stop-color="#e2e8f0"/>
-                    <stop offset="45%"  stop-color="#94a3b8"/>
+                    <stop offset="0%"   stop-color="#f1f5f9"/>
+                    <stop offset="50%"  stop-color="#94a3b8"/>
                     <stop offset="100%" stop-color="#475569"/>
                   </linearGradient>
 
                   <filter id="signShadow" x="-10%" y="-10%" width="120%" height="120%">
-                    <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.55"/>
+                    <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
                   </filter>
 
                   <filter id="handShadow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feDropShadow dx="2" dy="5" stdDeviation="4" flood-color="#000000" flood-opacity="0.6"/>
+                    <feDropShadow dx="3" dy="6" stdDeviation="5" flood-color="#000000" flood-opacity="0.65"/>
                   </filter>
                 </defs>
 
-                <!-- ══════ CONTENIDO PINTADO (revelado por la máscara) ══════ -->
+                <!-- ══════ LETRERO PINTADO (revelado por la máscara) ══════ -->
                 <g mask="url(#revealMask)" class="painted-content" filter="url(#signShadow)">
 
-                  <!-- Franjas de color (trazo de pintura) -->
-                  <rect x="140" y="90"  width="350" height="30" fill="#00e5ff"/>
-                  <rect x="140" y="120" width="350" height="30" fill="#ffe600"/>
-                  <rect x="140" y="150" width="350" height="30" fill="#19e65a"/>
-                  <rect x="140" y="180" width="350" height="30" fill="#ff006e"/>
+                  <!-- 4 franjas de color -->
+                  <rect x="140" y="80"  width="350" height="36" fill="#00e5ff"/>
+                  <rect x="140" y="116" width="350" height="36" fill="#ffe600"/>
+                  <rect x="140" y="152" width="350" height="36" fill="#19e65a"/>
+                  <rect x="140" y="188" width="350" height="36" fill="#ff006e"/>
 
-                  <!-- Texto principal: TECNICOLOR -->
-                  <text x="315" y="157"
-                        text-anchor="middle"
-                        font-family="Syne, sans-serif"
-                        font-weight="900"
-                        font-size="42"
+                  <!-- TECNICOLOR: texto blanco con contorno negro -->
+                  <text x="315" y="160" text-anchor="middle"
+                        font-family="Syne, sans-serif" font-weight="900" font-size="42"
                         letter-spacing="1"
-                        fill="#0a0a0a"
-                        paint-order="stroke"
-                        stroke="#0a0a0a"
-                        stroke-width="0.5"
-                        stroke-linejoin="round">TECNICOLOR</text>
+                        fill="#ffffff" stroke="#0a0a0a" stroke-width="5"
+                        stroke-linejoin="round" paint-order="stroke fill">TECNICOLOR</text>
 
-                  <!-- Subtítulo: ENCALADA -->
-                  <text x="315" y="200"
-                        text-anchor="middle"
-                        font-family="Outfit, sans-serif"
-                        font-weight="800"
-                        font-size="15"
-                        letter-spacing="7"
-                        fill="#0a0a0a">ENCALADA</text>
+                  <!-- ENCALADA -->
+                  <text x="315" y="210" text-anchor="middle"
+                        font-family="Outfit, sans-serif" font-weight="800" font-size="14"
+                        letter-spacing="8"
+                        fill="#ffffff" stroke="#0a0a0a" stroke-width="3"
+                        stroke-linejoin="round" paint-order="stroke fill">ENCALADA</text>
                 </g>
 
                 <!-- ══════ MANO + BROCHA (grupo que se desplaza) ══════ -->
@@ -687,54 +678,54 @@
 
                   <!-- ─── BROCHA (debajo de la mano) ─── -->
                   <!-- Mango -->
-                  <rect x="14" y="142" width="86" height="16" rx="3" fill="url(#handleGrad)"/>
-                  <rect x="14" y="142" width="86" height="4" rx="2" fill="#94a3b8" opacity="0.45"/>
+                  <rect x="20" y="140" width="76" height="16" rx="3" fill="url(#handleGrad)"/>
+                  <rect x="20" y="140" width="76" height="4"  rx="2" fill="#94a3b8" opacity="0.4"/>
                   <!-- Virola metálica -->
-                  <rect x="98" y="139" width="16" height="22" rx="1.5" fill="url(#ferruleGrad)"/>
-                  <rect x="98" y="139" width="16" height="4" fill="#f1f5f9" opacity="0.85"/>
-                  <rect x="98" y="157" width="16" height="4" fill="#1e293b" opacity="0.7"/>
-                  <!-- Cerdas (punta de la brocha) -->
-                  <path d="M 114 138 L 140 141 Q 146 150, 140 159 L 114 162 Z" fill="url(#bristleGrad)"/>
-                  <!-- Mini brillo en la punta -->
-                  <ellipse cx="140" cy="150" rx="4" ry="8" fill="#ffffff" opacity="0.35"/>
+                  <rect x="92" y="137" width="16" height="22" rx="2" fill="url(#ferruleGrad)"/>
+                  <rect x="92" y="137" width="16" height="4"  fill="#f1f5f9" opacity="0.9"/>
+                  <rect x="92" y="155" width="16" height="4"  fill="#1e293b" opacity="0.6"/>
+                  <!-- Cerdas (punta multicolor) -->
+                  <path d="M 108 135 L 140 139 Q 148 148 140 158 L 108 162 Z" fill="url(#bristleGrad)"/>
+                  <ellipse cx="140" cy="148" rx="4" ry="9" fill="#ffffff" opacity="0.35"/>
 
-                  <!-- ─── MANO (puño agarrando el mango) ─── -->
-                  <!-- Dorso de la mano / muñeca -->
-                  <path d="M 30 122
-                           Q 22 122, 22 132
-                           L 22 168
-                           Q 22 178, 30 178
-                           L 78 178
-                           Q 86 178, 86 168
-                           L 86 132
-                           Q 86 122, 78 122 Z"
+                  <!-- ─── PUÑO (encima del mango) ─── -->
+                  <!-- Palma -->
+                  <path d="M 15 122 
+                           Q 8 122 8 132
+                           L 8 174
+                           Q 8 184 18 184
+                           L 62 184
+                           Q 70 184 70 174
+                           L 70 132
+                           Q 70 122 62 122 Z" 
                         fill="#0f172a"/>
-                  <!-- Sombra interior del dorso -->
-                  <path d="M 30 122 Q 22 122, 22 132 L 22 168 Q 22 178, 30 178 L 78 178 Q 86 178, 86 168 L 86 132 Q 86 122, 78 122 Z"
-                        fill="none" stroke="#1e293b" stroke-width="1.5" opacity="0.6"/>
 
-                  <!-- Cuatro nudillos (dedos doblados agarrando) -->
-                  <circle cx="88" cy="132" r="12.5" fill="#0f172a"/>
-                  <circle cx="88" cy="148" r="12.5" fill="#0f172a"/>
-                  <circle cx="88" cy="164" r="12.5" fill="#0f172a"/>
-                  <circle cx="86" cy="178" r="10.5" fill="#0f172a"/>
+                  <!-- 4 dedos doblados (barras) -->
+                  <rect x="62" y="126" width="22" height="13" rx="6.5" fill="#0f172a"/>
+                  <rect x="62" y="140" width="22" height="13" rx="6.5" fill="#0f172a"/>
+                  <rect x="62" y="154" width="22" height="13" rx="6.5" fill="#0f172a"/>
+                  <rect x="60" y="168" width="20" height="12" rx="6"   fill="#0f172a"/>
 
-                  <!-- Líneas de separación entre dedos -->
-                  <line x1="78" y1="140" x2="99" y2="140" stroke="#1e293b" stroke-width="1.4" stroke-linecap="round"/>
-                  <line x1="78" y1="156" x2="99" y2="156" stroke="#1e293b" stroke-width="1.4" stroke-linecap="round"/>
-                  <line x1="78" y1="172" x2="97" y2="172" stroke="#1e293b" stroke-width="1.4" stroke-linecap="round"/>
+                  <!-- Líneas separadoras de dedos -->
+                  <line x1="62" y1="138" x2="82" y2="138" stroke="#1e293b" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="62" y1="152" x2="82" y2="152" stroke="#1e293b" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="60" y1="166" x2="78" y2="166" stroke="#1e293b" stroke-width="1.5" stroke-linecap="round"/>
 
                   <!-- Pulgar curvado por encima -->
-                  <path d="M 46 122
-                           Q 60 106, 80 108
-                           Q 92 110, 90 122
-                           L 80 126 Z"
+                  <path d="M 22 120 
+                           Q 35 106 55 108 
+                           Q 70 111 68 124 
+                           Q 66 134 54 132 
+                           L 22 128 Z" 
                         fill="#1e293b"/>
-                  <!-- Uña del pulgar (detalle) -->
-                  <ellipse cx="84" cy="114" rx="4" ry="2.5" fill="#334155" opacity="0.7"/>
 
-                  <!-- Reflejo sutil en la mano -->
-                  <ellipse cx="36" cy="128" rx="6" ry="3" fill="#ffffff" opacity="0.06"/>
+                  <!-- Brillo sutil en nudillos -->
+                  <ellipse cx="74" cy="133" rx="3" ry="2" fill="#334155" opacity="0.55"/>
+                  <ellipse cx="74" cy="147" rx="3" ry="2" fill="#334155" opacity="0.55"/>
+                  <ellipse cx="74" cy="161" rx="3" ry="2" fill="#334155" opacity="0.55"/>
+
+                  <!-- Brillo en la palma -->
+                  <ellipse cx="22" cy="132" rx="6" ry="3" fill="#334155" opacity="0.4"/>
                 </g>
               </svg>
 
