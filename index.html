@@ -338,6 +338,93 @@
       0% { transform: scale(1); opacity: 0.8; }
       75%, 100% { transform: scale(2.4); opacity: 0; }
     }
+
+    /* ═══════════════════════════════════════════════
+       NUEVO — BADGE DE CRÉDITOS "NEXO-TECHS"
+       ═══════════════════════════════════════════════ */
+    .nexo-badge {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.55rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      text-decoration: none;
+      overflow: hidden;
+      isolation: isolate;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nexo-badge::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background: linear-gradient(120deg, #00e5ff, #ff006e, #ffe600, #19e65a);
+      background-size: 300% 300%;
+      z-index: -2;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      animation: gradient-shift 4s ease infinite;
+    }
+
+    .nexo-badge::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: #0a0a0a;
+      z-index: -1;
+    }
+
+    .nexo-badge:hover {
+      transform: translateY(-2px) scale(1.03);
+      color: #ffffff;
+      box-shadow: 0 12px 30px -10px rgba(0, 229, 255, 0.5);
+    }
+
+    .nexo-badge:hover::before {
+      opacity: 1;
+    }
+
+    .nexo-badge .nexo-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00e5ff, #ff006e);
+      color: #fff;
+      font-size: 10px;
+      transition: transform 0.4s ease;
+    }
+
+    .nexo-badge:hover .nexo-icon {
+      transform: rotate(360deg) scale(1.1);
+    }
+
+    .nexo-badge .nexo-text {
+      background: linear-gradient(90deg, #00e5ff, #ff006e, #ffe600);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradient-shift 4s ease infinite;
+      font-weight: 900;
+    }
+
+    @keyframes gradient-shift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
   </style>
 </head>
 
@@ -726,20 +813,44 @@
 
     <!-- PIE DE PÁGINA -->
     <footer class="mt-auto border-t border-white/10 bg-black/80 py-8 px-4 sm:px-6 lg:px-8 text-center sm:text-left text-xs text-gray-400">
-      <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-        
-        <div class="flex items-center gap-3">
-          <svg class="w-6 h-6 text-cyan" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16 26C16 14 48 14 48 26" stroke="#888888" stroke-width="3"/>
-            <rect x="14" y="24" width="36" height="34" rx="4" fill="#18181b" stroke="#00e5ff" stroke-width="2"/>
-            <path d="M14 24C14 26 50 26 50 24C50 32 46 32 42 32C38 32 38 46 32 46C28 46 26 36 22 36C18 36 14 30 14 24Z" fill="#00e5ff"/>
-          </svg>
-          <span>&copy; 2026 <strong>Tecni Color Encalada</strong>. Todos los derechos reservados.</span>
+      <div class="max-w-7xl mx-auto flex flex-col items-center gap-6">
+
+        <!-- Fila superior: Logo + copyright + ubicación -->
+        <div class="w-full flex flex-col sm:flex-row items-center justify-between gap-4">
+          
+          <div class="flex items-center gap-3">
+            <svg class="w-6 h-6 text-cyan" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 26C16 14 48 14 48 26" stroke="#888888" stroke-width="3"/>
+              <rect x="14" y="24" width="36" height="34" rx="4" fill="#18181b" stroke="#00e5ff" stroke-width="2"/>
+              <path d="M14 24C14 26 50 26 50 24C50 32 46 32 42 32C38 32 38 46 32 46C28 46 26 36 22 36C18 36 14 30 14 24Z" fill="#00e5ff"/>
+            </svg>
+            <span>&copy; 2026 <strong>Tecni Color Encalada</strong>. Todos los derechos reservados.</span>
+          </div>
+
+          <p class="text-gray-400">
+            Biblián, Cañar — Ecuador
+          </p>
+
         </div>
 
-        <p class="text-gray-400">
-          Biblián, Cañar — Ecuador
-        </p>
+        <!-- Separador -->
+        <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+
+        <!-- Fila inferior: Créditos de diseño -->
+        <div class="w-full flex flex-col sm:flex-row items-center justify-center gap-3 text-[11px] text-gray-500">
+          <span class="tracking-wider uppercase font-semibold">Sitio diseñado y desarrollado por</span>
+          <a href="https://oswaldotech.github.io/Nexos-Tech-CCTV/" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="nexo-badge"
+             aria-label="Visitar el sitio web de Nexo-Techs">
+            <span class="nexo-icon">
+              <i class="fa-solid fa-bolt"></i>
+            </span>
+            <span class="nexo-text">Designed by Nexo-Techs</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-gray-400"></i>
+          </a>
+        </div>
 
       </div>
     </footer>
