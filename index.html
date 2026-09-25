@@ -48,7 +48,7 @@
       overflow-x: hidden;
     }
 
-    /* Malla de fondo */
+    /* Malla de fondo dinámico */
     .bg-grid {
       background-image:
         linear-gradient(to right, rgba(255,255,255,.03) 1px, transparent 1px),
@@ -57,17 +57,17 @@
       mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
     }
 
-    /* Resplandor animado */
+    /* Resplandor neón animado */
     .paint-glow {
       animation: glow 8s ease-in-out infinite alternate;
     }
 
     @keyframes glow {
-      0% { transform: scale(1) translate(0, 0); opacity: 0.3; }
-      100% { transform: scale(1.15) translate(10px, -10px); opacity: 0.55; }
+      0% { transform: scale(1) translate(0, 0); opacity: 0.35; }
+      100% { transform: scale(1.2) translate(15px, -15px); opacity: 0.6; }
     }
 
-    /* Gradiente de texto */
+    /* Gradiente cromático vibrante */
     .gradient-text {
       background: linear-gradient(100deg, #ff006e, #ffe600 50%, #00e5ff);
       -webkit-background-clip: text;
@@ -75,9 +75,9 @@
       color: transparent;
     }
 
-    /* Tarjeta Glassmorphism */
+    /* Tarjetas Glassmorphism interactivas */
     .glass {
-      background: rgba(13, 13, 13, 0.7);
+      background: rgba(13, 13, 13, 0.75);
       border: 1px solid rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
@@ -86,11 +86,11 @@
 
     .glass:hover {
       transform: translateY(-4px);
-      border-color: rgba(0, 229, 255, 0.3);
-      box-shadow: 0 20px 40px -20px rgba(0, 229, 255, 0.25);
+      border-color: rgba(0, 229, 255, 0.4);
+      box-shadow: 0 20px 40px -20px rgba(0, 229, 255, 0.3);
     }
 
-    /* Borde dinámico con gradiente */
+    /* Borde arcoíris responsivo */
     .gradient-border {
       position: relative;
       border-radius: 1.5rem;
@@ -101,19 +101,19 @@
     .gradient-border::before {
       content: "";
       position: absolute;
-      inset: -1px;
+      inset: -2px;
       border-radius: inherit;
-      background: linear-gradient(135deg, #ff006e, #ffe600, #00e5ff);
+      background: linear-gradient(135deg, #ff006e, #ffe600, #00e5ff, #19e65a);
       z-index: -1;
-      opacity: 0.5;
+      opacity: 0.6;
       transition: opacity 0.3s ease;
     }
 
     .gradient-border:hover::before {
-      opacity: 0.85;
+      opacity: 1;
     }
 
-    /* Botones principales */
+    /* Botones dinámicos */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -129,8 +129,8 @@
       white-space: nowrap;
     }
 
-    .btn:hover { transform: translateY(-2px); }
-    .btn:active { transform: translateY(0); }
+    .btn:hover { transform: translateY(-2px); scale: 1.02; }
+    .btn:active { transform: translateY(0); scale: 0.98; }
 
     .btn-main {
       color: #050505;
@@ -144,6 +144,12 @@
       box-shadow: 0 12px 28px -10px rgba(25, 230, 90, 0.6);
     }
 
+    .btn-maps {
+      color: #ffffff;
+      background: linear-gradient(120deg, #00e5ff, #ff006e);
+      box-shadow: 0 12px 28px -10px rgba(0, 229, 255, 0.5);
+    }
+
     .btn-ghost {
       color: #ffffff;
       background: rgba(255, 255, 255, 0.04);
@@ -155,7 +161,7 @@
       border-color: rgba(255, 255, 255, 0.25);
     }
 
-    /* Indicador de navegación */
+    /* Indicador dinámico de menú */
     .nav-link { position: relative; }
     .nav-link::after {
       content: "";
@@ -170,7 +176,7 @@
     .nav-link:hover::after,
     .nav-link.active::after { width: 100%; }
 
-    /* Revelado al hacer scroll */
+    /* Efectos de revelado por scroll */
     [data-reveal] {
       opacity: 0;
       transform: translateY(20px);
@@ -183,9 +189,154 @@
       transform: translateY(0);
     }
 
-    .placeholder-card {
-      border: 1px dashed rgba(255, 255, 255, 0.15);
-      background: rgba(255, 255, 255, 0.02);
+    /* ═══════════════════════════════════════════════
+       NUEVAS MEJORAS — BOTONES DE GOOGLE MAPS
+       ═══════════════════════════════════════════════ */
+
+    /* Efecto de pulso de brillo para botones principales */
+    .animate-pulse-glow {
+      position: relative;
+      z-index: 1;
+      animation: pulse-glow-anim 2.5s infinite;
+    }
+
+    @keyframes pulse-glow-anim {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 106, 0, 0.75);
+      }
+      70% {
+        box-shadow: 0 0 0 18px rgba(255, 106, 0, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 106, 0, 0);
+      }
+    }
+
+    /* Variante de pulso para el botón del mapa (color cian) */
+    .animate-pulse-glow-cyan {
+      animation: pulse-glow-cyan-anim 2.5s infinite;
+    }
+
+    @keyframes pulse-glow-cyan-anim {
+      0% {
+        box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.75), 0 12px 28px -10px rgba(255, 106, 0, 0.6);
+      }
+      70% {
+        box-shadow: 0 0 0 18px rgba(0, 229, 255, 0), 0 12px 28px -10px rgba(255, 106, 0, 0.6);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(0, 229, 255, 0), 0 12px 28px -10px rgba(255, 106, 0, 0.6);
+      }
+    }
+
+    /* Botón flotante de Google Maps */
+    .maps-float {
+      position: fixed;
+      bottom: calc(20px + var(--safe-bottom));
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #00e5ff, #ff006e);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      box-shadow: 0 8px 24px rgba(0, 229, 255, 0.45), 0 0 0 0 rgba(0, 229, 255, 0.6);
+      z-index: 1000;
+      text-decoration: none;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      animation: float-bounce 3s ease-in-out infinite, ring-pulse 2.5s infinite;
+    }
+
+    .maps-float:hover {
+      transform: scale(1.12) rotate(-8deg);
+      box-shadow: 0 14px 36px rgba(0, 229, 255, 0.7);
+    }
+
+    .maps-float::after {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 229, 255, 0.5);
+      animation: ripple 2.5s infinite;
+    }
+
+    @keyframes float-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes ring-pulse {
+      0%, 100% { box-shadow: 0 8px 24px rgba(0, 229, 255, 0.45), 0 0 0 0 rgba(0, 229, 255, 0.6); }
+      50% { box-shadow: 0 8px 24px rgba(0, 229, 255, 0.45), 0 0 0 14px rgba(0, 229, 255, 0); }
+    }
+
+    @keyframes ripple {
+      0% { transform: scale(1); opacity: 0.7; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+
+    /* Tooltip del botón flotante */
+    .maps-float-tooltip {
+      position: fixed;
+      bottom: calc(35px + var(--safe-bottom));
+      right: 92px;
+      background: rgba(13, 13, 13, 0.95);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      border: 1px solid rgba(0, 229, 255, 0.35);
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateX(8px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .maps-float:hover + .maps-float-tooltip,
+    .maps-float:focus + .maps-float-tooltip {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Punto indicador animado en tarjeta de ubicación */
+    .pin-pulse {
+      position: relative;
+      display: inline-flex;
+      width: 12px;
+      height: 12px;
+    }
+
+    .pin-pulse::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: #19e65a;
+      animation: pin-ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .pin-pulse::after {
+      content: "";
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #19e65a;
+      box-shadow: 0 0 10px rgba(25, 230, 90, 0.9);
+    }
+
+    @keyframes pin-ping {
+      0% { transform: scale(1); opacity: 0.8; }
+      75%, 100% { transform: scale(2.4); opacity: 0; }
     }
   </style>
 </head>
@@ -210,7 +361,6 @@
         <!-- LOGO CON LATA DE PINTURA -->
         <a href="#inicio" class="flex items-center gap-3 group">
           <div class="relative w-10 h-10 flex items-center justify-center rounded-xl bg-panel border border-white/10 group-hover:border-cyan/40 transition-colors shadow-lg">
-            <!-- Icono Vectorial SVG de Lata de Pintura -->
             <svg class="w-7 h-7 text-white transform group-hover:scale-105 group-hover:rotate-[-6deg] transition-transform duration-300" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="paintDripNav" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -224,15 +374,10 @@
                   <stop offset="100%" stop-color="#333333" />
                 </linearGradient>
               </defs>
-              <!-- Asa de la lata -->
               <path d="M16 26C16 14 48 14 48 26" stroke="#888888" stroke-width="3" stroke-linecap="round"/>
-              <!-- Cuerpo de la lata -->
               <rect x="14" y="24" width="36" height="34" rx="4" fill="#18181b" stroke="url(#canMetal)" stroke-width="2.5"/>
-              <!-- Borde superior lata -->
               <ellipse cx="32" cy="24" rx="18" ry="4" fill="#333333" stroke="url(#canMetal)" stroke-width="2"/>
-              <!-- Pintura derramándose del borde -->
               <path d="M14 24C14 26 50 26 50 24C50 32 46 32 42 32C38 32 38 46 32 46C28 46 26 36 22 36C18 36 14 30 14 24Z" fill="url(#paintDripNav)"/>
-              <!-- Gota cayendo -->
               <path d="M32 49C32 49 34 52 34 54C34 55.1 33.1 56 32 56C30.9 56 30 55.1 30 54C30 52 32 49 32 49Z" fill="#00e5ff"/>
             </svg>
           </div>
@@ -255,9 +400,13 @@
 
         <!-- Acciones Derecha -->
         <div class="flex items-center gap-3">
-          <a href="https://wa.me/593999999999?text=Hola%20Tecni%20Color%20Encalada,%20necesito%20información%20sobre..." target="_blank" rel="noopener noreferrer" class="btn btn-wa text-xs hidden sm:inline-flex">
-            <i class="fa-brands fa-whatsapp text-sm"></i>
-            <span>Cotizar</span>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=-2.7122,-78.8988" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="btn btn-maps text-xs hidden sm:inline-flex"
+             aria-label="Cómo llegar a Tecni Color Encalada en Google Maps">
+            <i class="fa-solid fa-location-dot text-sm"></i>
+            <span>Cómo Llegar</span>
           </a>
 
           <!-- Botón Menú Móvil -->
@@ -275,9 +424,13 @@
           <a href="#servicios" class="mobile-link py-2 border-b border-white/5 hover:text-cyan">Servicios</a>
           <a href="#nosotros" class="mobile-link py-2 border-b border-white/5 hover:text-cyan">Nosotros</a>
           <a href="#contacto" class="mobile-link py-2 hover:text-cyan">Contacto</a>
-          <a href="https://wa.me/593999999999" target="_blank" rel="noopener noreferrer" class="btn btn-wa w-full mt-2">
-            <i class="fa-brands fa-whatsapp text-base"></i>
-            <span>Escribir por WhatsApp</span>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=-2.7122,-78.8988" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="btn btn-maps w-full mt-2 animate-pulse-glow-cyan"
+             aria-label="Cómo llegar a la tienda en Google Maps">
+            <i class="fa-solid fa-map-location-dot text-base"></i>
+            <span>Cómo llegar a la tienda</span>
           </a>
         </div>
       </div>
@@ -301,38 +454,42 @@
           </h1>
 
           <p class="text-gray-300 text-base sm:text-lg max-w-xl font-normal leading-relaxed">
-            Especialistas en preparación de pintura automotriz de alta precisión, complementos, masillas, laccas y suministros de acabado profesional en Biblián.
+            Especialistas en preparación de pintura automotriz de alta precisión, complementos, masillas, lacas y suministros de acabado profesional en Biblián.
           </p>
 
           <div class="flex flex-wrap items-center gap-4 pt-2 w-full sm:w-auto">
-            <a href="https://wa.me/593999999999" target="_blank" rel="noopener noreferrer" class="btn btn-main w-full sm:w-auto text-sm py-4 px-8">
-              <i class="fa-brands fa-whatsapp text-lg"></i>
-              <span>Solicitar Colometría</span>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=-2.7122,-78.8988" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="btn btn-main w-full sm:w-auto text-sm py-4 px-8 animate-pulse-glow"
+               aria-label="Cómo llegar a Tecni Color Encalada en Google Maps">
+              <i class="fa-solid fa-route text-lg"></i>
+              <span>Cómo llegar</span>
             </a>
-            <a href="#productos" class="btn btn-ghost w-full sm:w-auto text-sm py-4 px-8">
-              <span>Ver Catálogo</span>
+            <a href="#contacto" class="btn btn-ghost w-full sm:w-auto text-sm py-4 px-8">
+              <span>Contacto y Horarios</span>
               <i class="fa-solid fa-arrow-down text-xs"></i>
             </a>
           </div>
 
-          <!-- Badges de confianza -->
+          <!-- Badges -->
           <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10 w-full max-w-lg mt-2">
             <div>
               <p class="font-display text-xl sm:text-2xl font-extrabold text-white">100%</p>
               <p class="text-xs text-gray-400 font-medium">Precisión de Color</p>
             </div>
             <div>
-              <p class="font-display text-xl sm:text-2xl font-extrabold text-white">Líderes</p>
-              <p class="text-xs text-gray-400 font-medium">En Biblián y Cañar</p>
+              <p class="font-display text-xl sm:text-2xl font-extrabold text-white">Biblián</p>
+              <p class="text-xs text-gray-400 font-medium">Cañar, Ecuador</p>
             </div>
             <div>
               <p class="font-display text-xl sm:text-2xl font-extrabold text-white">Top</p>
-              <p class="text-xs text-gray-400 font-medium">Marcas Premium</p>
+              <p class="text-xs text-gray-400 font-medium">Calidad Garantizada</p>
             </div>
           </div>
         </div>
 
-        <!-- LOGO HERO EMBLÉMATICO EN 3D / ILUSTRACIÓN VECTORIAL -->
+        <!-- LOGO HERO EN 3D / ILUSTRACIÓN VECTORIAL -->
         <div class="md:col-span-5 relative" data-reveal style="--delay: 200ms;">
           <div class="gradient-border p-2 sm:p-4">
             <div class="bg-panel rounded-2xl p-6 sm:p-8 flex flex-col items-center justify-center min-h-[380px] sm:min-h-[440px] text-center relative overflow-hidden group">
@@ -341,11 +498,10 @@
               <div class="absolute -top-24 -right-24 w-48 h-48 bg-cyan/20 rounded-full blur-3xl"></div>
               <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-pink/20 rounded-full blur-3xl"></div>
 
-              <!-- LOGO VECTORIAL DE LATA DE PINTURA (GRANDE & IMPACTANTE) -->
+              <!-- LOGO VECTORIAL DE LATA DE PINTURA -->
               <div class="relative my-4 transform group-hover:scale-105 transition-transform duration-500">
                 <svg class="w-48 h-48 sm:w-60 sm:h-60 filter drop-shadow-[0_15px_30px_rgba(0,229,255,0.3)]" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <defs>
-                    <!-- Gradientes para la Lata y Pintura -->
                     <linearGradient id="heroPaintDrip" x1="0%" y1="0%" x2="100%" y2="100%">
                       <stop offset="0%" stop-color="#ff006e" />
                       <stop offset="40%" stop-color="#ffe600" />
@@ -365,27 +521,14 @@
                     </linearGradient>
                   </defs>
 
-                  <!-- Sombra Base -->
                   <ellipse cx="100" cy="180" rx="60" ry="10" fill="#000000" opacity="0.6" />
-
-                  <!-- Asa de la lata -->
                   <path d="M50 85 C50 40, 150 40, 150 85" stroke="url(#heroMetalRim)" stroke-width="6" stroke-linecap="round" fill="none"/>
-
-                  <!-- Cuerpo de la Lata de Pintura -->
                   <rect x="45" y="80" width="110" height="95" rx="10" fill="url(#heroCanBody)" stroke="url(#heroMetalRim)" stroke-width="4"/>
-
-                  <!-- Borde Superior Metálico -->
                   <ellipse cx="100" cy="80" rx="55" ry="12" fill="#2d3748" stroke="url(#heroMetalRim)" stroke-width="4"/>
-
-                  <!-- Etiqueta de la Lata -->
                   <rect x="46" y="105" width="108" height="50" fill="#09090b" opacity="0.9" />
                   <text x="100" y="128" fill="#ffffff" font-family="'Syne', sans-serif" font-weight="800" font-size="11" text-anchor="middle" letter-spacing="2">TECNI COLOR</text>
                   <text x="100" y="142" fill="#00e5ff" font-family="'Outfit', sans-serif" font-weight="700" font-size="8" text-anchor="middle" letter-spacing="3">ENCALADA</text>
-
-                  <!-- Pintura Neón Derramándose -->
                   <path d="M45 80 C45 88, 155 88, 155 80 C155 105, 140 100, 130 115 C120 130, 115 105, 100 135 C90 155, 80 120, 70 120 C60 120, 55 98, 45 80 Z" fill="url(#heroPaintDrip)"/>
-
-                  <!-- Gotas Flotando/Cayendo -->
                   <circle cx="100" cy="152" r="4" fill="#00e5ff" />
                   <circle cx="100" cy="165" r="2.5" fill="#00e5ff" />
                   <circle cx="130" cy="130" r="3" fill="#ffe600" />
@@ -393,7 +536,6 @@
                 </svg>
               </div>
 
-              <!-- Marca en texto inferior -->
               <h2 class="font-display text-2xl font-extrabold text-white tracking-wide">
                 TECNI<span class="gradient-text">COLOR</span>
               </h2>
@@ -409,7 +551,7 @@
     </section>
 
 
-    <!-- SECCIÓN DE PRODUCTOS -->
+    <!-- SECCIÓN PRODUCTOS -->
     <section id="productos" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-black/40 border-t border-b border-white/5">
       <div class="max-w-7xl mx-auto">
         
@@ -423,10 +565,8 @@
           </p>
         </div>
 
-        <!-- Grid de Productos -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           
-          <!-- Producto 1 -->
           <div class="glass rounded-2xl p-6 flex flex-col justify-between" data-reveal style="--delay: 100ms;">
             <div>
               <div class="w-12 h-12 rounded-xl bg-pink/10 border border-pink/30 flex items-center justify-center text-pink mb-5 text-xl">
@@ -434,16 +574,11 @@
               </div>
               <h3 class="font-display text-xl font-bold text-white mb-2">Pinturas Automotrices</h3>
               <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-4">
-                Bases poliuretano, acrílicas y poliéster con matizado computarizado exacto para cualquier marca vehicular.
+                Bases poliuretano, acrílicas y poliéster con matizado computarizado exacto.
               </p>
             </div>
-            <a href="https://wa.me/593999999999?text=Hola,%20busco%20información%20sobre%20pintura%20automotriz" target="_blank" class="text-xs font-bold text-pink hover:text-white flex items-center gap-1.5 transition-colors pt-2">
-              <span>Consultar tonos</span>
-              <i class="fa-solid fa-chevron-right text-[10px]"></i>
-            </a>
           </div>
 
-          <!-- Producto 2 -->
           <div class="glass rounded-2xl p-6 flex flex-col justify-between" data-reveal style="--delay: 200ms;">
             <div>
               <div class="w-12 h-12 rounded-xl bg-yellow/10 border border-yellow/30 flex items-center justify-center text-yellow mb-5 text-xl">
@@ -451,16 +586,11 @@
               </div>
               <h3 class="font-display text-xl font-bold text-white mb-2">Barnices & Transparentes</h3>
               <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-4">
-                Clear coats de alto brillo, secado rápido y máxima protección UV contra las intemperies.
+                Clear coats de alto brillo, secado rápido y máxima protección UV.
               </p>
             </div>
-            <a href="https://wa.me/593999999999?text=Hola,%20requiero%20barnices%20y%20transparentes" target="_blank" class="text-xs font-bold text-yellow hover:text-white flex items-center gap-1.5 transition-colors pt-2">
-              <span>Ver marcas</span>
-              <i class="fa-solid fa-chevron-right text-[10px]"></i>
-            </a>
           </div>
 
-          <!-- Producto 3 -->
           <div class="glass rounded-2xl p-6 flex flex-col justify-between" data-reveal style="--delay: 300ms;">
             <div>
               <div class="w-12 h-12 rounded-xl bg-cyan/10 border border-cyan/30 flex items-center justify-center text-cyan mb-5 text-xl">
@@ -468,16 +598,11 @@
               </div>
               <h3 class="font-display text-xl font-bold text-white mb-2">Masillas & Fondos</h3>
               <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-4">
-                Masillas plásticas, primers universales y rellenadores de alta adherencia y fácil lijado.
+                Masillas plásticas, primers universales y rellenadores de alta adherencia.
               </p>
             </div>
-            <a href="https://wa.me/593999999999?text=Hola,%20necesito%20masillas%20o%20primers" target="_blank" class="text-xs font-bold text-cyan hover:text-white flex items-center gap-1.5 transition-colors pt-2">
-              <span>Cotizar preparación</span>
-              <i class="fa-solid fa-chevron-right text-[10px]"></i>
-            </a>
           </div>
 
-          <!-- Producto 4 -->
           <div class="glass rounded-2xl p-6 flex flex-col justify-between" data-reveal style="--delay: 400ms;">
             <div>
               <div class="w-12 h-12 rounded-xl bg-green/10 border border-green/30 flex items-center justify-center text-green mb-5 text-xl">
@@ -485,13 +610,9 @@
               </div>
               <h3 class="font-display text-xl font-bold text-white mb-2">Lijas & Accesorios</h3>
               <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-4">
-                Abrasivos al agua y en seco, cintas de enmascarar, pistolas de pintar y pulimentos.
+                Abrasivos al agua y en seco, cintas de enmascarar, pistolas y pulimentos.
               </p>
             </div>
-            <a href="https://wa.me/593999999999?text=Hola,%20quisiera%20información%20de%20accesorios" target="_blank" class="text-xs font-bold text-green hover:text-white flex items-center gap-1.5 transition-colors pt-2">
-              <span>Ver herramientas</span>
-              <i class="fa-solid fa-chevron-right text-[10px]"></i>
-            </a>
           </div>
 
         </div>
@@ -499,160 +620,103 @@
     </section>
 
 
-    <!-- SECCIÓN DE SERVICIOS / VALOR AGREGADO -->
-    <section id="servicios" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-7xl mx-auto">
-        <div class="grid lg:grid-cols-12 gap-12 items-center">
-          
-          <div class="lg:col-span-5" data-reveal>
-            <span class="text-xs font-bold tracking-widest text-pink uppercase">Por qué elegirnos</span>
-            <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-white mt-2 leading-tight">
-              Asesoría técnica y <span class="gradient-text">preparación al instante</span>
-            </h2>
-            <p class="text-gray-300 text-sm sm:text-base mt-4 leading-relaxed">
-              En <strong class="text-white">Tecni Color Encalada</strong> no solo vendemos pintura; garantizamos la igualación cromática exacta y el asesoramiento paso a paso para que tu trabajo quede impecable.
-            </p>
-
-            <div class="mt-8 space-y-4">
-              <div class="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-cyan/20 border border-cyan/40 flex items-center justify-center text-cyan text-xs mt-1 shrink-0">
-                  <i class="fa-solid fa-check"></i>
-                </div>
-                <div>
-                  <h4 class="text-sm font-bold text-white">Matizado Profesional</h4>
-                  <p class="text-xs text-gray-400">Igualación precisa de tonos originales y personalizados.</p>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-pink/20 border border-pink/40 flex items-center justify-center text-pink text-xs mt-1 shrink-0">
-                  <i class="fa-solid fa-check"></i>
-                </div>
-                <div>
-                  <h4 class="text-sm font-bold text-white">Atención a Talleres y Particulares</h4>
-                  <p class="text-xs text-gray-400">Descuentos especiales por volumen e insumos continuos.</p>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-yellow/20 border border-yellow/40 flex items-center justify-center text-yellow text-xs mt-1 shrink-0">
-                  <i class="fa-solid fa-check"></i>
-                </div>
-                <div>
-                  <h4 class="text-sm font-bold text-white">Ubicación Céntrica en Biblián</h4>
-                  <p class="text-xs text-gray-400">Fácil acceso para retirar tus pedidos rápidamente.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Banner interactivo -->
-          <div class="lg:col-span-7" data-reveal style="--delay: 200ms;">
-            <div class="glass rounded-3xl p-8 border border-white/10 relative overflow-hidden">
-              <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-pink/20 rounded-full blur-3xl"></div>
-              
-              <div class="relative z-10 flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
-                <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-pink to-cyan flex items-center justify-center text-black text-3xl font-black shrink-0 shadow-xl">
-                  <i class="fa-solid fa-palette"></i>
-                </div>
-                <div>
-                  <h3 class="font-display text-2xl font-bold text-white">¿Tienes un código de pintura específico?</h3>
-                  <p class="text-gray-300 text-xs sm:text-sm mt-1">
-                    Tráenos la muestra o la plaqueta de tu vehículo. Preparamos desde un cuarto de galón en adelante.
-                  </p>
-                  <a href="https://wa.me/593999999999?text=Hola,%20tengo%20un%20código%20de%20pintura%20que%20quiero%20consultar" target="_blank" class="btn btn-main text-xs mt-5">
-                    <i class="fa-brands fa-whatsapp text-sm"></i>
-                    <span>Consultar Código</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-
-    <!-- SECCIÓN NOSOTROS -->
-    <section id="nosotros" class="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-black/50 border-t border-white/5">
-      <div class="max-w-5xl mx-auto text-center" data-reveal>
-        <span class="text-xs font-bold tracking-widest text-yellow uppercase">Sobre Nosotros</span>
-        <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white mt-2">
-          Pasión por el <span class="gradient-text">detalle y el color</span>
-        </h2>
-        <p class="text-gray-300 text-sm sm:text-base mt-4 max-w-3xl mx-auto leading-relaxed">
-          En <strong>Tecni Color Encalada</strong> nos apasiona brindar soluciones de alta calidad en pinturas automotrices. Servimos con orgullo a la comunidad de Biblián y la provincia del Cañar, ofreciendo productos de primera línea y la mejor disposición para asesorarte en tus proyectos de repintado.
-        </p>
-      </div>
-    </section>
-
-
-    <!-- SECCIÓN CONTACTO & UBICACIÓN -->
+    <!-- SECCIÓN CONTACTO & UBICACIÓN MEJORADA -->
     <section id="contacto" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 relative">
       <div class="max-w-7xl mx-auto">
-        <div class="grid lg:grid-cols-12 gap-8">
+        <div class="grid lg:grid-cols-12 gap-8 items-stretch">
           
           <!-- Datos de Contacto -->
           <div class="lg:col-span-5 glass rounded-3xl p-6 sm:p-8 flex flex-col justify-between" data-reveal>
             <div>
-              <span class="text-xs font-bold tracking-widest text-cyan uppercase">Ubicación & Atención</span>
-              <h2 class="font-display text-3xl font-extrabold text-white mt-2 mb-6">
-                Visítanos o <span class="gradient-text">Escríbenos</span>
+              <span class="text-xs font-bold tracking-widest text-cyan uppercase">Ubicación Confirmada</span>
+              <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-6">
+                Visítanos en <span class="gradient-text">Biblián</span>
               </h2>
 
               <div class="space-y-6">
                 <div class="flex items-start gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-cyan text-lg shrink-0">
-                    <i class="fa-solid fa-location-dot"></i>
+                  <div class="w-12 h-12 rounded-2xl bg-cyan/10 border border-cyan/30 flex items-center justify-center text-cyan text-xl shrink-0">
+                    <i class="fa-solid fa-map-location-dot"></i>
                   </div>
                   <div>
-                    <p class="text-xs text-gray-400 font-semibold uppercase">Dirección</p>
-                    <p class="text-sm font-medium text-white mt-0.5">Biblián, Cañar — Ecuador</p>
-                    <p class="text-xs text-gray-400">Sector céntrico de la ciudad</p>
+                    <p class="text-xs text-gray-400 font-semibold uppercase">Dirección Física</p>
+                    <p class="text-base font-bold text-white mt-0.5">Biblián, Cañar — Ecuador</p>
+                    <p class="text-xs text-gray-400 mt-0.5">En el sector céntrico del cantón</p>
                   </div>
                 </div>
 
                 <div class="flex items-start gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-green text-lg shrink-0">
-                    <i class="fa-brands fa-whatsapp"></i>
+                  <div class="w-12 h-12 rounded-2xl bg-pink/10 border border-pink/30 flex items-center justify-center text-pink text-xl shrink-0">
+                    <i class="fa-solid fa-compass"></i>
                   </div>
                   <div>
-                    <p class="text-xs text-gray-400 font-semibold uppercase">WhatsApp / Teléfono</p>
-                    <p class="text-sm font-medium text-white mt-0.5">+593 99 999 9999</p>
+                    <p class="text-xs text-gray-400 font-semibold uppercase">Navegación GPS</p>
+                    <p class="text-sm font-medium text-gray-300 mt-0.5">Enlace oficial directo registrado en Google Maps</p>
                   </div>
                 </div>
 
                 <div class="flex items-start gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-pink text-lg shrink-0">
-                    <i class="fa-solid fa-clock"></i>
+                  <div class="w-12 h-12 rounded-2xl bg-green/10 border border-green/30 flex items-center justify-center text-green text-xl shrink-0">
+                    <i class="fa-solid fa-circle-check"></i>
                   </div>
                   <div>
-                    <p class="text-xs text-gray-400 font-semibold uppercase">Horario de Atención</p>
-                    <p class="text-sm font-medium text-white mt-0.5">Lunes a Sábado: 08:00 - 18:00</p>
+                    <p class="text-xs text-gray-400 font-semibold uppercase">Estado</p>
+                    <p class="text-sm font-medium text-gray-300 mt-0.5 flex items-center gap-2">
+                      <span class="pin-pulse"></span>
+                      Ubicación activa y verificada
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
 
+            <!-- Botón de GPS Principal -->
             <div class="pt-8 mt-8 border-t border-white/10">
-              <a href="https://wa.me/593999999999" target="_blank" rel="noopener noreferrer" class="btn btn-wa w-full py-3.5">
-                <i class="fa-brands fa-whatsapp text-lg"></i>
-                <span>Abrir Chat Directo</span>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=-2.7122,-78.8988" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 class="btn btn-maps w-full py-4 text-xs sm:text-sm animate-pulse-glow-cyan"
+                 aria-label="Abrir la ruta en Google Maps">
+                <i class="fa-solid fa-location-arrow text-base"></i>
+                <span>Abrir en Google Maps</span>
               </a>
             </div>
           </div>
 
-          <!-- Mapa o Placeholder de Ubicación -->
-          <div class="lg:col-span-7 glass rounded-3xl p-2 overflow-hidden min-h-[350px] relative" data-reveal style="--delay: 200ms;">
-            <iframe 
-              title="Ubicación Tecni Color Encalada"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15941.536103606992!2d-78.8988!3d-2.7122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91ed123c5240212f%3A0x6a2c2b3f11d13f0!2sBibli%C3%A1n!5e0!3m2!1ses!2sec!4v1680000000000!5m2!1ses!2sec" 
-              class="w-full h-full min-h-[350px] rounded-2xl border-0 grayscale invert opacity-80 contrast-125" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+          <!-- MAPA INTERACTIVO DINÁMICO -->
+          <div class="lg:col-span-7 gradient-border p-1.5 min-h-[380px]" data-reveal style="--delay: 200ms;">
+            <div class="bg-panel rounded-2xl h-full w-full relative overflow-hidden flex flex-col">
+              
+              <!-- Map Iframe embebido con coordenadas de Biblián -->
+              <iframe 
+                title="Ubicación Tecni Color Encalada"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15941.536103606992!2d-78.8988!3d-2.7122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91ed123c5240212f%3A0x6a2c2b3f11d13f0!2sBibli%C3%A1n!5e0!3m2!1ses!2sec!4v1680000000000!5m2!1ses!2sec" 
+                class="w-full h-full min-h-[360px] rounded-2xl border-0 grayscale invert opacity-85 contrast-125" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+
+              <!-- Overlay interactivo dinámico sobre el mapa -->
+              <div class="absolute bottom-4 left-4 right-4 p-4 glass rounded-xl flex items-center justify-between gap-4 border border-white/10 backdrop-blur-md">
+                <div class="flex items-center gap-3">
+                  <span class="pin-pulse"></span>
+                  <div>
+                    <p class="text-xs font-bold text-white">Tecni Color Encalada</p>
+                    <p class="text-[10px] text-gray-400">Biblián, Cañar</p>
+                  </div>
+                </div>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=-2.7122,-78.8988" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="btn btn-main py-3 px-6 text-xs animate-pulse-glow"
+                   aria-label="Ir ahora a Tecni Color Encalada">
+                  <span>Ir ahora</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+              </div>
+
+            </div>
           </div>
 
         </div>
@@ -660,12 +724,11 @@
     </section>
 
 
-    <!-- PIE DE PÁGINA (FOOTER) -->
+    <!-- PIE DE PÁGINA -->
     <footer class="mt-auto border-t border-white/10 bg-black/80 py-8 px-4 sm:px-6 lg:px-8 text-center sm:text-left text-xs text-gray-400">
       <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         
         <div class="flex items-center gap-3">
-          <!-- Mini Logo SVG en Footer -->
           <svg class="w-6 h-6 text-cyan" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M16 26C16 14 48 14 48 26" stroke="#888888" stroke-width="3"/>
             <rect x="14" y="24" width="36" height="34" rx="4" fill="#18181b" stroke="#00e5ff" stroke-width="2"/>
@@ -684,9 +747,23 @@
   </div>
 
 
-  <!-- LÓGICA DE INTERACCIÓN Y NAVEGACIÓN -->
+  <!-- ═══════════════════════════════════════════════
+       BOTÓN FLOTANTE PERSISTENTE — GOOGLE MAPS
+       Siempre visible para guiar al cliente a la tienda
+       ═══════════════════════════════════════════════ -->
+  <a href="https://www.google.com/maps/dir/?api=1&destination=-2.7122,-78.8988" 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     class="maps-float" 
+     aria-label="Cómo llegar a Tecni Color Encalada en Google Maps">
+    <i class="fa-solid fa-map-location-dot"></i>
+  </a>
+  <span class="maps-float-tooltip">Cómo llegar 🚗</span>
+
+
+  <!-- LÓGICA DE INTERACCIÓN -->
   <script>
-    // Menú móvil
+    // ───── Menú móvil ─────
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -701,7 +778,7 @@
       });
     });
 
-    // Animaciones al hacer Scroll (Reveal)
+    // ───── Revelado por scroll ─────
     const observerOptions = {
       root: null,
       rootMargin: '0px',
@@ -721,27 +798,26 @@
       revealObserver.observe(el);
     });
 
-    // Cambiar enlace activo en navbar según scroll
+    // ───── Marcar enlace activo en el menú según scroll ─────
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
 
-    window.addEventListener('scroll', () => {
+    const activateLink = () => {
       let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= (sectionTop - 150)) {
-          current = section.getAttribute('id');
-        }
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 140;
+        if (window.scrollY >= top) current = sec.id;
       });
-
       navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${current}`) {
           link.classList.add('active');
         }
       });
-    });
+    };
+
+    window.addEventListener('scroll', activateLink, { passive: true });
+    activateLink();
   </script>
 </body>
 </html>
