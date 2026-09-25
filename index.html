@@ -3,1083 +3,4153 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0a0a0f">
-<title>TecniColor Encalada | Pinturas y Accesorios Automotrices - Biblián</title>
+<meta name="theme-color" content="#08080d">
+
+<title>TecniColor Encalada | Pinturas Automotrices - Biblián</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap"
+      rel="stylesheet">
 
 <style>
-  :root {
-    --tc-bg: #0a0a0f;
-    --tc-panel: #12121c;
-    --tc-pink: #ec4899;
-    --tc-purple: #a855f7;
-    --tc-cyan: #06b6d4;
-    --tc-yellow: #facc15;
-    --tc-green: #22c55e;
-    --safe-bottom: env(safe-area-inset-bottom, 0px);
-  }
-  * { -webkit-tap-highlight-color: transparent; }
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-  body {
-    background-color: var(--tc-bg);
-    color: #f3f4f6;
-    font-family: 'Inter', system-ui, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-  .font-display { font-family: 'Bebas Neue', 'Inter', sans-serif; letter-spacing: .02em; }
 
-  ::-webkit-scrollbar { width: 8px; height: 8px; }
-  ::-webkit-scrollbar-track { background: #12121c; }
-  ::-webkit-scrollbar-thumb { background: #374151; border-radius: 999px; }
+:root {
+  --tc-bg: #08080d;
+  --tc-panel: #12121c;
+  --tc-pink: #ec4899;
+  --tc-purple: #a855f7;
+  --tc-cyan: #06b6d4;
+  --tc-yellow: #facc15;
+  --tc-green: #22c55e;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
 
-  /* ===== MARQUEE ===== */
-  .marquee {
-    overflow: hidden;
-    background: linear-gradient(90deg, #ec4899, #a855f7, #06b6d4, #facc15, #22c55e, #ec4899);
-    background-size: 400% 100%;
-    animation: grad 10s ease infinite;
-  }
-  @keyframes grad {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
-  .marquee-track {
-    display: flex; gap: 2.5rem; width: max-content;
-    padding: 8px 0;
-    animation: scroll 40s linear infinite;
-    color: #fff; font-size: 11px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: .05em;
-  }
-  .marquee-track:hover { animation-play-state: paused; }
-  @keyframes scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
+* {
+  -webkit-tap-highlight-color: transparent;
+}
 
-  /* ===== STATUS BAR ===== */
-  #statusBar {
-    background: #0a0a0f;
-    border-top: 1px solid rgba(255,255,255,.05);
-    padding: 8px;
-    text-align: center;
-    font-size: 11px;
-    font-weight: 600;
-  }
-  #statusBar .dot {
-    display: inline-block;
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: #6b7280;
-    margin-right: 6px;
-    vertical-align: middle;
-    transition: all .3s;
-  }
-  #statusBar .dot.open {
-    background: #22c55e;
-    animation: pulse-dot 1.8s infinite;
-  }
-  #statusBar .dot.closed { background: #ef4444; }
-  @keyframes pulse-dot {
-    0% { box-shadow: 0 0 0 0 rgba(34,197,94,.7); }
-    70% { box-shadow: 0 0 0 9px rgba(34,197,94,0); }
-    100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
-  }
-  .txt-open { color: #22c55e; }
-  .txt-closed { color: #ef4444; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
 
-  /* ===== SCROLL PROGRESS ===== */
-  #scrollProgress {
-    position: fixed; top: 0; left: 0; height: 3px; width: 0%;
-    background: linear-gradient(90deg, #ec4899, #a855f7, #06b6d4, #facc15, #22c55e);
-    z-index: 100; transition: width .08s linear;
-    box-shadow: 0 0 12px rgba(168,85,247,.7);
-  }
+body {
+  background: var(--tc-bg);
+  color: #f3f4f6;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
 
-  /* ===== HERO ===== */
-  .hero-bg {
-    background:
-      radial-gradient(ellipse at top, rgba(168,85,247,.35), transparent 55%),
-      radial-gradient(ellipse at bottom right, rgba(6,182,212,.28), transparent 50%),
-      radial-gradient(ellipse at bottom left, rgba(236,72,153,.25), transparent 50%),
-      linear-gradient(to bottom, rgba(10,10,15,.75), rgba(10,10,15,.98)),
-      url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1800&auto=format&fit=crop&q=80') center/cover no-repeat;
-  }
-  .gradient-text {
-    background: linear-gradient(90deg, #ec4899, #a855f7, #06b6d4, #facc15, #22c55e, #ec4899);
-    background-size: 300% 100%;
-    -webkit-background-clip: text; background-clip: text;
-    color: transparent; animation: grad 6s ease infinite;
-  }
-  .rainbow-text {
-    background: linear-gradient(90deg, #ef4444, #f97316, #facc15, #22c55e, #06b6d4, #3b82f6, #a855f7, #ec4899, #ef4444);
-    background-size: 300% 100%;
-    -webkit-background-clip: text; background-clip: text;
-    color: transparent; animation: grad 8s linear infinite;
-  }
-  .fire-text {
-    background: linear-gradient(180deg, #fff 20%, #facc15 60%, #ec4899 100%);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
-  @keyframes float-y {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-16px) rotate(8deg); }
-  }
-  .float-slow  { animation: float-y 5.5s ease-in-out infinite; }
-  .float-med   { animation: float-y 4.5s ease-in-out infinite; animation-delay: .8s; }
-  .float-fast  { animation: float-y 3.8s ease-in-out infinite; animation-delay: 1.4s; }
-  @keyframes blob {
-    0%, 100% { transform: translate(0,0) scale(1); }
-    33% { transform: translate(30px,-20px) scale(1.1); }
-    66% { transform: translate(-20px,20px) scale(.95); }
-  }
-  .blob { animation: blob 12s ease-in-out infinite; }
+.font-display {
+  font-family: 'Bebas Neue', 'Inter', sans-serif;
+  letter-spacing: .02em;
+}
 
-  /* ===== CARDS ===== */
-  @keyframes card-in {
-    from { opacity: 0; transform: translateY(22px) scale(.97); }
-    to   { opacity: 1; transform: none; }
-  }
-  .product-card {
-    animation: card-in .55s cubic-bezier(.22,1,.36,1) both;
-    transition: transform .35s, border-color .35s, box-shadow .35s;
-    position: relative; overflow: hidden;
-  }
-  @media (min-width: 768px) {
-    .product-card:hover {
-      border-color: rgba(168,85,247,.65);
-      transform: translateY(-8px);
-      box-shadow: 0 30px 60px -22px rgba(168,85,247,.55);
-    }
-    .product-card:hover .product-img { transform: scale(1.1) rotate(1.5deg); }
-  }
-  .product-card .product-img { transition: transform .8s cubic-bezier(.22,1,.36,1); }
+::-webkit-scrollbar {
+  width: 8px;
+}
 
-  .img-frame { position: relative; overflow: hidden; background: linear-gradient(135deg, #1f2937, #0f0f18); }
-  .img-frame::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(180deg, transparent 45%, rgba(10,10,15,.92) 100%);
+::-webkit-scrollbar-track {
+  background: #12121c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 999px;
+}
+
+/* =========================================
+   MARQUEE
+========================================= */
+
+.marquee {
+  overflow: hidden;
+  background:
+    linear-gradient(
+      90deg,
+      #ec4899,
+      #a855f7,
+      #06b6d4,
+      #facc15,
+      #22c55e,
+      #ec4899
+    );
+
+  background-size: 400% 100%;
+  animation: grad 10s ease infinite;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 2.5rem;
+  width: max-content;
+  padding: 8px 0;
+  animation: scroll 40s linear infinite;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
   }
 
-  .badge-hot {
-    background: linear-gradient(135deg, #ec4899, #f97316);
-    box-shadow: 0 4px 14px rgba(236,72,153,.55);
-    animation: pulse-badge 2s ease-in-out infinite;
+  to {
+    transform: translateX(-50%);
   }
-  .badge-new {
-    background: linear-gradient(135deg, #22c55e, #16a34a);
-    box-shadow: 0 4px 14px rgba(34,197,94,.5);
-  }
-  @keyframes pulse-badge {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.07); }
+}
+
+@keyframes grad {
+  0%, 100% {
+    background-position: 0% 50%;
   }
 
-  .size-btn {
-    padding: 10px 4px; border-radius: 14px;
-    border: 1px solid rgba(255,255,255,.1);
-    background: rgba(0,0,0,.35); color: #9ca3af;
-    font-size: 9px; font-weight: 800;
-    text-transform: uppercase; letter-spacing: .05em;
-    transition: all .25s ease; text-align: center;
-    line-height: 1.2; cursor: pointer;
-    min-height: 66px; display: flex;
-    flex-direction: column; justify-content: center; gap: 2px;
+  50% {
+    background-position: 100% 50%;
   }
-  .size-btn .sb-label { font-size: 10px; }
-  .size-btn .sb-sub { font-size: 9px; color: #9ca3af; text-transform: lowercase; font-weight: 600; }
-  .size-btn .sb-price {
-    color: #fff; font-size: 17px; display: block;
-    font-family: 'Bebas Neue', sans-serif;
-  }
-  .size-btn.active {
-    background: linear-gradient(135deg, #a855f7, #06b6d4);
-    border-color: transparent; color: #fff;
-    box-shadow: 0 6px 16px -6px rgba(168,85,247,.7);
-    transform: translateY(-2px);
-  }
-  .size-btn.active .sb-sub { color: rgba(255,255,255,.9); }
+}
 
-  .colabanner {
-    position: relative; overflow: hidden;
-    background: linear-gradient(135deg, rgba(250,204,21,.15), rgba(236,72,153,.15));
-    border: 1.5px solid rgba(250,204,21,.4);
-  }
-  .colabanner::before {
-    content: ''; position: absolute;
-    top: -50%; right: -20%; width: 60%; height: 200%;
-    background: radial-gradient(circle, rgba(250,204,21,.25), transparent 60%);
-    animation: blob 8s ease-in-out infinite;
+/* =========================================
+   STATUS
+========================================= */
+
+#statusBar {
+  background: #08080d;
+  border-top: 1px solid rgba(255,255,255,.05);
+  padding: 8px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+#statusBar .dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6b7280;
+  margin-right: 6px;
+  vertical-align: middle;
+  transition: all .3s;
+}
+
+#statusBar .dot.open {
+  background: #22c55e;
+  animation: pulse-dot 1.8s infinite;
+}
+
+#statusBar .dot.closed {
+  background: #ef4444;
+}
+
+.txt-open {
+  color: #22c55e;
+}
+
+.txt-closed {
+  color: #ef4444;
+}
+
+@keyframes pulse-dot {
+
+  0% {
+    box-shadow: 0 0 0 0 rgba(34,197,94,.7);
   }
 
-  .btn-glow { position: relative; overflow: hidden; }
-  .btn-glow::before {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%);
-    transform: translateX(-100%); transition: transform .7s ease;
+  70% {
+    box-shadow: 0 0 0 9px rgba(34,197,94,0);
   }
-  .btn-glow:hover::before { transform: translateX(100%); }
 
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
-  .reveal.in { opacity: 1; transform: none; }
-
-  /* ===== CART ===== */
-  .cart-fab { transition: transform .3s; }
-  @keyframes fab-pulse {
-    0% { box-shadow: 0 0 0 0 rgba(168,85,247,.65); }
-    70% { box-shadow: 0 0 0 18px rgba(168,85,247,0); }
-    100% { box-shadow: 0 0 0 0 rgba(168,85,247,0); }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34,197,94,0);
   }
-  .cart-fab.pulse { animation: fab-pulse 1.6s infinite; }
-  .cart-fab .cart-count { transition: transform .25s; }
-  .cart-fab.bump .cart-count { transform: scale(1.35); }
+
+}
+
+/* =========================================
+   SCROLL
+========================================= */
+
+#scrollProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background:
+    linear-gradient(
+      90deg,
+      #ec4899,
+      #a855f7,
+      #06b6d4,
+      #facc15,
+      #22c55e
+    );
+
+  z-index: 100;
+  transition: width .08s linear;
+  box-shadow: 0 0 12px rgba(168,85,247,.7);
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero-bg {
+  background:
+    radial-gradient(
+      ellipse at top,
+      rgba(168,85,247,.35),
+      transparent 55%
+    ),
+
+    radial-gradient(
+      ellipse at bottom right,
+      rgba(6,182,212,.28),
+      transparent 50%
+    ),
+
+    radial-gradient(
+      ellipse at bottom left,
+      rgba(236,72,153,.25),
+      transparent 50%
+    ),
+
+    linear-gradient(
+      to bottom,
+      rgba(8,8,13,.70),
+      rgba(8,8,13,.98)
+    ),
+
+    url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1800&auto=format&fit=crop&q=80')
+    center/cover no-repeat;
+}
+
+.gradient-text {
+  background:
+    linear-gradient(
+      90deg,
+      #ec4899,
+      #a855f7,
+      #06b6d4,
+      #facc15,
+      #22c55e,
+      #ec4899
+    );
+
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: grad 6s ease infinite;
+}
+
+.rainbow-text {
+  background:
+    linear-gradient(
+      90deg,
+      #ef4444,
+      #f97316,
+      #facc15,
+      #22c55e,
+      #06b6d4,
+      #3b82f6,
+      #a855f7,
+      #ec4899,
+      #ef4444
+    );
+
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: grad 8s linear infinite;
+}
+
+.fire-text {
+  background:
+    linear-gradient(
+      180deg,
+      #fff 20%,
+      #facc15 60%,
+      #ec4899 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* =========================================
+   FLOAT
+========================================= */
+
+@keyframes float-y {
+
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-16px) rotate(8deg);
+  }
+
+}
+
+.float-slow {
+  animation: float-y 5.5s ease-in-out infinite;
+}
+
+.float-med {
+  animation: float-y 4.5s ease-in-out infinite;
+  animation-delay: .8s;
+}
+
+.float-fast {
+  animation: float-y 3.8s ease-in-out infinite;
+  animation-delay: 1.4s;
+}
+
+@keyframes blob {
+
+  0%, 100% {
+    transform: translate(0,0) scale(1);
+  }
+
+  33% {
+    transform: translate(30px,-20px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px,20px) scale(.95);
+  }
+
+}
+
+.blob {
+  animation: blob 12s ease-in-out infinite;
+}
+
+/* =========================================
+   REVEAL
+========================================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+
+  transition:
+    opacity .7s cubic-bezier(.22,1,.36,1),
+    transform .7s cubic-bezier(.22,1,.36,1);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* =========================================
+   NUEVAS TARJETAS DE PINTURA
+========================================= */
+
+.paint-card {
+
+  position: relative;
+
+  min-height: 510px;
+
+  overflow: hidden;
+
+  border-radius: 32px;
+
+  background:
+    radial-gradient(
+      circle at 20% 15%,
+      rgba(236,72,153,.25),
+      transparent 35%
+    ),
+
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(6,182,212,.20),
+      transparent 40%
+    ),
+
+    #101018;
+
+  border: 1px solid rgba(255,255,255,.10);
+
+  transition:
+    transform .45s cubic-bezier(.22,1,.36,1),
+    border-color .45s,
+    box-shadow .45s;
+
+  animation:
+    paint-card-in .65s cubic-bezier(.22,1,.36,1) both;
+}
+
+.paint-card:hover {
+
+  transform:
+    translateY(-10px)
+    scale(1.015);
+
+  border-color:
+    rgba(168,85,247,.65);
+
+  box-shadow:
+    0 30px 70px -25px rgba(168,85,247,.55),
+    0 0 40px rgba(236,72,153,.12);
+}
+
+@keyframes paint-card-in {
+
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+
+}
+
+.paint-card::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 280px;
+  height: 280px;
+
+  top: -100px;
+  right: -90px;
+
+  border-radius: 50%;
+
+  background:
+    var(--paint-color, #a855f7);
+
+  filter: blur(45px);
+
+  opacity: .32;
+
+  animation:
+    paint-glow 5s ease-in-out infinite alternate;
+}
+
+@keyframes paint-glow {
+
+  from {
+    transform: scale(.9) rotate(0deg);
+  }
+
+  to {
+    transform: scale(1.15) rotate(15deg);
+  }
+
+}
+
+/* =========================================
+   ARTE DE PINTURA
+========================================= */
+
+.paint-art {
+
+  height: 280px;
+
+  position: relative;
+
+  display: grid;
+
+  place-items: center;
+
+  overflow: hidden;
+}
+
+.paint-can {
+
+  width: 145px;
+  height: 175px;
+
+  border-radius:
+    22px
+    22px
+    28px
+    28px;
+
+  position: relative;
+
+  transform: rotate(-5deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.20),
+      transparent 18%,
+      transparent 75%,
+      rgba(0,0,0,.25)
+    ),
+
+    var(--paint-color, #a855f7);
+
+  box-shadow:
+    0 30px 45px rgba(0,0,0,.45),
+    inset 0 2px 0 rgba(255,255,255,.3);
+
+  transition:
+    transform .6s cubic-bezier(.22,1,.36,1);
+
+  z-index: 3;
+}
+
+.paint-card:hover .paint-can {
+
+  transform:
+    rotate(4deg)
+    scale(1.08)
+    translateY(-8px);
+}
+
+.paint-can::before {
+
+  content: "";
+
+  position: absolute;
+
+  top: -13px;
+  left: 10px;
+  right: 10px;
+
+  height: 20px;
+
+  border-radius: 50%;
+
+  background: #d1d5db;
+
+  box-shadow:
+    inset 0 -5px 8px rgba(0,0,0,.25);
+}
+
+.paint-can::after {
+
+  content: "TECNI\A COLOR";
+
+  white-space: pre;
+
+  position: absolute;
+
+  left: 14px;
+  right: 14px;
+
+  top: 58px;
+
+  padding: 9px 4px;
+
+  text-align: center;
+
+  color: white;
+
+  font-family:
+    'Bebas Neue',
+    sans-serif;
+
+  font-size: 23px;
+
+  line-height: .85;
+
+  letter-spacing: 2px;
+
+  background:
+    rgba(0,0,0,.25);
+
+  border:
+    1px solid rgba(255,255,255,.25);
+
+  border-radius: 10px;
+}
+
+.paint-splash {
+
+  position: absolute;
+
+  width: 90px;
+  height: 90px;
+
+  border-radius: 50%;
+
+  background:
+    var(--paint-color, #a855f7);
+
+  filter: blur(1px);
+
+  opacity: .8;
+
+  z-index: 1;
+}
+
+.paint-splash.one {
+
+  top: 35px;
+  left: 35px;
+}
+
+.paint-splash.two {
+
+  bottom: 25px;
+  right: 35px;
+
+  width: 55px;
+  height: 55px;
+}
+
+.paint-splash::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  background:
+    var(--paint-color, #a855f7);
+
+  top: -12px;
+  right: 8px;
+}
+
+.paint-label {
+
+  position: absolute;
+
+  top: 18px;
+  left: 18px;
+
+  z-index: 5;
+
+  padding: 7px 12px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(0,0,0,.55);
+
+  border:
+    1px solid rgba(255,255,255,.15);
+
+  backdrop-filter:
+    blur(10px);
+
+  color: white;
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  text-transform: uppercase;
+
+  letter-spacing: .1em;
+}
+
+.paint-finish {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 6px 10px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(255,255,255,.06);
+
+  border:
+    1px solid rgba(255,255,255,.08);
+
+  color: #d1d5db;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+}
+
+.paint-cta {
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #a855f7,
+      #06b6d4
+    );
+
+  background-size: 200% 200%;
+
+  animation:
+    paint-gradient 5s ease infinite;
+
+  transition:
+    transform .25s,
+    box-shadow .25s;
+}
+
+.paint-cta:hover {
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 12px 30px
+    rgba(168,85,247,.4);
+}
+
+@keyframes paint-gradient {
+
+  0%,100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+}
+
+/* =========================================
+   PRODUCT CARDS
+========================================= */
+
+.product-card {
+
+  position: relative;
+
+  overflow: hidden;
+
+  transition:
+    transform .35s,
+    border-color .35s,
+    box-shadow .35s;
+}
+
+.product-card:hover {
+
+  border-color:
+    rgba(168,85,247,.65);
+
+  transform:
+    translateY(-8px);
+
+  box-shadow:
+    0 30px 60px -22px
+    rgba(168,85,247,.45);
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.btn-glow {
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+.btn-glow::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent 30%,
+      rgba(255,255,255,.35) 50%,
+      transparent 70%
+    );
+
+  transform:
+    translateX(-100%);
+
+  transition:
+    transform .7s ease;
+}
+
+.btn-glow:hover::before {
+
+  transform:
+    translateX(100%);
+}
+
+/* =========================================
+   BENEFITS
+========================================= */
+
+.colabanner {
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(250,204,21,.15),
+      rgba(236,72,153,.15)
+    );
+
+  border:
+    1.5px solid
+    rgba(250,204,21,.4);
+}
+
+.colabanner::before {
+
+  content: "";
+
+  position: absolute;
+
+  top: -50%;
+  right: -20%;
+
+  width: 60%;
+  height: 200%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(250,204,21,.25),
+      transparent 60%
+    );
+
+  animation:
+    blob 8s ease-in-out infinite;
+}
+
+/* =========================================
+   CART
+========================================= */
+
+.cart-fab {
+
+  transition:
+    transform .3s;
+}
+
+@keyframes fab-pulse {
+
+  0% {
+    box-shadow:
+      0 0 0 0
+      rgba(168,85,247,.65);
+  }
+
+  70% {
+    box-shadow:
+      0 0 0 18px
+      rgba(168,85,247,0);
+  }
+
+  100% {
+    box-shadow:
+      0 0 0 0
+      rgba(168,85,247,0);
+  }
+
+}
+
+.cart-fab.pulse {
+
+  animation:
+    fab-pulse 1.6s infinite;
+}
+
+.cart-fab .cart-count {
+
+  transition:
+    transform .25s;
+}
+
+.cart-fab.bump .cart-count {
+
+  transform:
+    scale(1.35);
+}
+
+.mobile-cart-bar {
+
+  position: fixed;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: 48;
+
+  background:
+    rgba(10,10,15,.96);
+
+  backdrop-filter:
+    blur(16px);
+
+  border-top:
+    1px solid rgba(255,255,255,.1);
+
+  padding:
+    10px
+    14px
+    calc(10px + var(--safe-bottom));
+
+  transform:
+    translateY(120%);
+
+  transition:
+    transform .35s
+    cubic-bezier(.22,1,.36,1);
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap: 10px;
+}
+
+.mobile-cart-bar.show {
+
+  transform:
+    translateY(0);
+}
+
+@media (min-width: 768px) {
 
   .mobile-cart-bar {
-    position: fixed; left: 0; right: 0; bottom: 0; z-index: 48;
-    background: rgba(10,10,15,.96);
-    backdrop-filter: blur(16px);
-    border-top: 1px solid rgba(255,255,255,.1);
-    padding: 10px 14px calc(10px + var(--safe-bottom));
-    transform: translateY(120%);
-    transition: transform .35s cubic-bezier(.22,1,.36,1);
-    display: flex; align-items: center; gap: 10px;
+    display: none !important;
   }
-  .mobile-cart-bar.show { transform: translateY(0); }
-  @media (min-width: 768px) { .mobile-cart-bar { display: none !important; } }
 
-  .cart-backdrop {
-    position: fixed; inset: 0; z-index: 55;
-    background: rgba(0,0,0,.7);
-    backdrop-filter: blur(4px);
-    opacity: 0; pointer-events: none;
-    transition: opacity .3s ease;
-  }
-  .cart-backdrop.open { opacity: 1; pointer-events: auto; }
+}
+
+.cart-backdrop {
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 55;
+
+  background:
+    rgba(0,0,0,.7);
+
+  backdrop-filter:
+    blur(4px);
+
+  opacity: 0;
+
+  pointer-events:
+    none;
+
+  transition:
+    opacity .3s ease;
+}
+
+.cart-backdrop.open {
+
+  opacity: 1;
+
+  pointer-events:
+    auto;
+}
+
+.cart-drawer {
+
+  position: fixed;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: 60;
+
+  background:
+    #12121c;
+
+  border-radius:
+    26px 26px 0 0;
+
+  border-top:
+    1px solid rgba(255,255,255,.1);
+
+  max-height:
+    88vh;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  transform:
+    translateY(100%);
+
+  transition:
+    transform .38s
+    cubic-bezier(.22,1,.36,1);
+
+  padding-bottom:
+    var(--safe-bottom);
+
+  box-shadow:
+    0 -20px 60px
+    rgba(0,0,0,.6);
+}
+
+.cart-drawer.open {
+
+  transform:
+    translateY(0);
+}
+
+@media (min-width: 640px) {
 
   .cart-drawer {
-    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
-    background: #12121c;
-    border-radius: 26px 26px 0 0;
-    border-top: 1px solid rgba(255,255,255,.1);
-    max-height: 88vh;
-    display: flex; flex-direction: column;
-    transform: translateY(100%);
-    transition: transform .38s cubic-bezier(.22,1,.36,1);
-    padding-bottom: var(--safe-bottom);
-    box-shadow: 0 -20px 60px rgba(0,0,0,.6);
+
+    left: auto;
+    right: 24px;
+    bottom: 24px;
+
+    width: 420px;
+
+    border-radius:
+      26px;
+
+    max-height:
+      80vh;
   }
-  .cart-drawer.open { transform: translateY(0); }
-  @media (min-width: 640px) {
-    .cart-drawer { left: auto; right: 24px; bottom: 24px; width: 420px; border-radius: 26px; max-height: 80vh; }
-  }
+
+}
+
+.cart-handle {
+
+  width: 40px;
+  height: 4px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(255,255,255,.25);
+
+  margin:
+    10px auto 4px;
+}
+
+@media (min-width: 640px) {
+
   .cart-handle {
-    width: 40px; height: 4px; border-radius: 999px;
-    background: rgba(255,255,255,.25);
-    margin: 10px auto 4px;
+    display: none;
   }
-  @media (min-width: 640px) { .cart-handle { display: none; } }
 
-  .cart-body { overflow-y: auto; padding: 8px 20px 12px; flex: 1; }
-  .cart-item { display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
-  .cart-item:last-child { border-bottom: none; }
-  .cart-item-img { width: 52px; height: 52px; border-radius: 12px; background-size: cover; background-position: center; flex-shrink: 0; border: 1px solid rgba(255,255,255,.08); }
-  .qty-btn {
-    width: 32px; height: 32px; border-radius: 9px;
-    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
-    color: #fff; display: grid; place-items: center;
-    font-size: 12px; cursor: pointer; transition: all .2s;
+}
+
+.cart-body {
+
+  overflow-y:
+    auto;
+
+  padding:
+    8px 20px 12px;
+
+  flex: 1;
+}
+
+.cart-item {
+
+  display:
+    flex;
+
+  gap: 12px;
+
+  align-items:
+    center;
+
+  padding:
+    12px 0;
+
+  border-bottom:
+    1px solid rgba(255,255,255,.06);
+}
+
+.cart-item:last-child {
+
+  border-bottom:
+    none;
+}
+
+.cart-item-img {
+
+  width: 52px;
+  height: 52px;
+
+  border-radius: 12px;
+
+  background-size:
+    cover;
+
+  background-position:
+    center;
+
+  flex-shrink: 0;
+
+  border:
+    1px solid rgba(255,255,255,.08);
+}
+
+.qty-btn {
+
+  width: 32px;
+  height: 32px;
+
+  border-radius: 9px;
+
+  background:
+    rgba(255,255,255,.06);
+
+  border:
+    1px solid rgba(255,255,255,.1);
+
+  color: #fff;
+
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  font-size: 12px;
+
+  cursor: pointer;
+
+  transition:
+    all .2s;
+}
+
+.qty-btn:active {
+
+  background:
+    #a855f7;
+
+  border-color:
+    #a855f7;
+
+  transform:
+    scale(.9);
+}
+
+/* =========================================
+   TOAST
+========================================= */
+
+@keyframes pop-in {
+
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(.98);
   }
-  .qty-btn:active { background: #a855f7; border-color: #a855f7; transform: scale(.9); }
 
-  @keyframes pop-in { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
-  .pop-in { animation: pop-in .25s ease-out both; }
-
-  @keyframes toast-bar { from { width: 100%; } to { width: 0%; } }
-  .toast-bar { position: absolute; bottom: 0; left: 0; height: 2px; background: linear-gradient(90deg, #22c55e, #a855f7); animation: toast-bar 3.2s linear forwards; }
-  .toast-error .toast-bar { background: linear-gradient(90deg, #ef4444, #dc2626); }
-
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+  to {
+    opacity: 1;
+    transform: none;
   }
+
+}
+
+.pop-in {
+
+  animation:
+    pop-in .25s ease-out both;
+}
+
+@keyframes toast-bar {
+
+  from {
+    width: 100%;
+  }
+
+  to {
+    width: 0%;
+  }
+
+}
+
+.toast-bar {
+
+  position: absolute;
+
+  bottom: 0;
+  left: 0;
+
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #22c55e,
+      #a855f7
+    );
+
+  animation:
+    toast-bar 3.2s linear forwards;
+}
+
+.toast-error .toast-bar {
+
+  background:
+    linear-gradient(
+      90deg,
+      #ef4444,
+      #dc2626
+    );
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 640px) {
+
+  .paint-card {
+    min-height: 490px;
+  }
+
+  .paint-art {
+    height: 255px;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+
+    animation-duration: .001ms !important;
+
+    transition-duration: .001ms !important;
+  }
+
+}
+
 </style>
 </head>
-<body class="min-h-screen flex flex-col selection:bg-[#a855f7] selection:text-white">
+
+<body
+  class="min-h-screen flex flex-col selection:bg-[#a855f7] selection:text-white"
+>
 
 <div id="scrollProgress"></div>
 
-<!-- ===== MARQUEE ===== -->
+<!-- =========================================
+     MARQUEE
+========================================= -->
+
 <div class="marquee">
+
   <div class="marquee-track">
-    <span>🎨 Pinturas automotrices de calidad</span>
+
+    <span>🎨 Pinturas automotrices</span>
     <span>🚗 Acabados profesionales</span>
     <span>🛠️ Accesorios para pintura</span>
-    <span>🎯 Asesoría personalizada</span>
+    <span>✨ Dale color a tus ideas</span>
     <span>📞 Pedidos: 098 411 3081</span>
     <span>📍 Biblián · Cañar · Ecuador</span>
-    <span>🎨 Pinturas automotrices de calidad</span>
+
+    <span>🎨 Pinturas automotrices</span>
     <span>🚗 Acabados profesionales</span>
     <span>🛠️ Accesorios para pintura</span>
-    <span>🎯 Asesoría personalizada</span>
+    <span>✨ Dale color a tus ideas</span>
     <span>📞 Pedidos: 098 411 3081</span>
     <span>📍 Biblián · Cañar · Ecuador</span>
+
   </div>
+
 </div>
 
-<!-- ===== HEADER ===== -->
-<header class="sticky top-0 z-40 bg-[#0a0a0f]/92 backdrop-blur-lg border-b border-white/10">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-3">
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header
+  class="sticky top-0 z-40 bg-[#08080d]/92 backdrop-blur-lg border-b border-white/10"
+>
+
+  <div
+    class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-3"
+  >
+
     <a href="#" class="flex items-center gap-2.5 shrink-0">
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#ec4899] via-[#a855f7] to-[#06b6d4] grid place-items-center text-white shadow-lg shadow-[#a855f7]/40">
+
+      <div
+        class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#ec4899] via-[#a855f7] to-[#06b6d4] grid place-items-center text-white shadow-lg shadow-[#a855f7]/40"
+      >
         <i class="fa-solid fa-spray-can-sparkles text-lg"></i>
       </div>
+
       <div class="leading-tight">
-        <span class="font-display text-lg sm:text-2xl tracking-wide block">
-          <span class="rainbow-text">TECNICOLOR</span> ENCALADA
+
+        <span
+          class="font-display text-lg sm:text-2xl tracking-wide block"
+        >
+          <span class="rainbow-text">TECNICOLOR</span>
+          ENCALADA
         </span>
-        <span class="text-[9px] sm:text-[10px] text-gray-400 font-medium tracking-widest uppercase">Biblián, Ecuador</span>
+
+        <span
+          class="text-[9px] sm:text-[10px] text-gray-400 font-medium tracking-widest uppercase"
+        >
+          Biblián, Ecuador
+        </span>
+
       </div>
+
     </a>
 
     <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-      <a href="#pinturas" class="text-gray-300 hover:text-[#a855f7] transition">Pinturas</a>
-      <a href="#insumos" class="text-gray-300 hover:text-[#a855f7] transition">Insumos</a>
-      <a href="#accesorios" class="text-gray-300 hover:text-[#a855f7] transition">Accesorios</a>
-      <a href="#servicios" class="text-gray-300 hover:text-[#a855f7] transition">Servicios</a>
+
+      <a
+        href="#pinturas"
+        class="text-gray-300 hover:text-[#a855f7] transition"
+      >
+        Pinturas
+      </a>
+
+      <a
+        href="#insumos"
+        class="text-gray-300 hover:text-[#a855f7] transition"
+      >
+        Insumos
+      </a>
+
+      <a
+        href="#accesorios"
+        class="text-gray-300 hover:text-[#a855f7] transition"
+      >
+        Accesorios
+      </a>
+
+      <a
+        href="#servicios"
+        class="text-gray-300 hover:text-[#a855f7] transition"
+      >
+        Servicios
+      </a>
+
     </nav>
 
     <div class="flex items-center gap-2">
-      <a href="https://wa.me/593984113081?text=Hola%20TecniColor%20Encalada,%20quiero%20informaci%C3%B3n" target="_blank" rel="noopener"
-         class="hidden sm:flex btn-glow bg-[#22c55e] hover:bg-[#16a34a] text-white px-4 py-2.5 rounded-xl text-xs font-bold transition items-center gap-2 shadow-lg shadow-[#22c55e]/25">
-        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+
+      <a
+        href="https://wa.me/593984113081?text=Hola%20TecniColor%20Encalada,%20quiero%20informaci%C3%B3n"
+        target="_blank"
+        rel="noopener"
+        class="hidden sm:flex btn-glow bg-[#22c55e] hover:bg-[#16a34a] text-white px-4 py-2.5 rounded-xl text-xs font-bold transition items-center gap-2 shadow-lg shadow-[#22c55e]/25"
+      >
+        <i class="fa-brands fa-whatsapp"></i>
+        WhatsApp
       </a>
+
     </div>
+
   </div>
 
-  <!-- BARRA DE ESTADO -->
+  <!-- STATUS -->
+
   <div id="statusBar">
+
     <span class="dot" id="statusDot"></span>
-    <span id="statusText">Cargando horario…</span>
+
+    <span id="statusText">
+      Cargando horario…
+    </span>
+
   </div>
+
 </header>
 
-<!-- ===== HERO ===== -->
-<section class="hero-bg py-14 sm:py-20 lg:py-28 border-b border-white/10 text-center px-4 relative overflow-hidden">
-  <div class="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-[#ec4899]/30 blur-3xl blob"></div>
-  <div class="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-[#06b6d4]/25 blur-3xl blob" style="animation-delay:2s"></div>
-  <div class="absolute top-1/3 left-1/2 w-72 h-72 rounded-full bg-[#a855f7]/20 blur-3xl blob" style="animation-delay:4s"></div>
+<!-- =========================================
+     HERO
+========================================= -->
 
-  <span class="hidden md:block absolute top-16 left-[8%] text-5xl float-slow opacity-90">🎨</span>
-  <span class="hidden md:block absolute bottom-24 left-[14%] text-4xl float-med opacity-85">🚗</span>
-  <span class="hidden md:block absolute top-24 right-[10%] text-5xl float-fast opacity-90">✨</span>
-  <span class="hidden md:block absolute bottom-20 right-[16%] text-4xl float-slow opacity-85">🛠️</span>
+<section
+  class="hero-bg py-14 sm:py-20 lg:py-28 border-b border-white/10 text-center px-4 relative overflow-hidden"
+>
 
-  <div class="max-w-3xl mx-auto space-y-5 relative z-10">
-    <span class="bg-[#a855f7]/10 border border-[#a855f7]/40 text-[#c4b5fd] text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 rounded-full uppercase tracking-wider inline-block reveal">
+  <div
+    class="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-[#ec4899]/30 blur-3xl blob"
+  ></div>
+
+  <div
+    class="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-[#06b6d4]/25 blur-3xl blob"
+    style="animation-delay:2s"
+  ></div>
+
+  <div
+    class="absolute top-1/3 left-1/2 w-72 h-72 rounded-full bg-[#a855f7]/20 blur-3xl blob"
+    style="animation-delay:4s"
+  ></div>
+
+  <span
+    class="hidden md:block absolute top-16 left-[8%] text-5xl float-slow opacity-90"
+  >
+    🎨
+  </span>
+
+  <span
+    class="hidden md:block absolute bottom-24 left-[14%] text-4xl float-med opacity-85"
+  >
+    🚗
+  </span>
+
+  <span
+    class="hidden md:block absolute top-24 right-[10%] text-5xl float-fast opacity-90"
+  >
+    ✨
+  </span>
+
+  <span
+    class="hidden md:block absolute bottom-20 right-[16%] text-4xl float-slow opacity-85"
+  >
+    🛠️
+  </span>
+
+  <div
+    class="max-w-3xl mx-auto space-y-5 relative z-10"
+  >
+
+    <span
+      class="bg-[#a855f7]/10 border border-[#a855f7]/40 text-[#c4b5fd] text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 rounded-full uppercase tracking-wider inline-block reveal"
+    >
       Biblián · Cañar · Ecuador
     </span>
-    <h1 class="font-display text-5xl sm:text-7xl lg:text-8xl tracking-tight leading-[0.9] reveal" style="transition-delay:.1s">
-      <span class="rainbow-text">TECNICOLOR</span><br>
-      <span class="fire-text">ENCALADA</span>
+
+    <h1
+      class="font-display text-5xl sm:text-7xl lg:text-8xl tracking-tight leading-[0.9] reveal"
+      style="transition-delay:.1s"
+    >
+
+      <span class="rainbow-text">
+        TECNICOLOR
+      </span>
+
+      <br>
+
+      <span class="fire-text">
+        ENCALADA
+      </span>
+
     </h1>
-    <p class="font-display text-3xl sm:text-5xl tracking-wider reveal" style="transition-delay:.2s">
-      DAMOS <span class="gradient-text">COLOR</span>
+
+    <p
+      class="font-display text-3xl sm:text-5xl tracking-wider reveal"
+      style="transition-delay:.2s"
+    >
+      DAMOS
+      <span class="gradient-text">
+        COLOR
+      </span>
     </p>
-    <p class="italic text-2xl sm:text-3xl text-[#facc15] font-semibold reveal" style="transition-delay:.25s; font-family: Georgia, serif;">
+
+    <p
+      class="italic text-2xl sm:text-3xl text-[#facc15] font-semibold reveal"
+      style="transition-delay:.25s; font-family:Georgia,serif;"
+    >
       A tus ideas
     </p>
-    <p class="text-gray-300 text-sm sm:text-base max-w-xl mx-auto reveal" style="transition-delay:.3s">
+
+    <p
+      class="text-gray-300 text-sm sm:text-base max-w-xl mx-auto reveal"
+      style="transition-delay:.3s"
+    >
       🎨 Pinturas automotrices · 🛠️ Accesorios profesionales · 🚗 Acabados de calidad
     </p>
-    <div class="pt-2 flex flex-col sm:flex-row justify-center gap-3 reveal" style="transition-delay:.35s">
-      <a href="#pinturas" class="btn-glow bg-gradient-to-r from-[#ec4899] to-[#a855f7] text-white font-bold px-8 py-4 rounded-2xl text-sm shadow-xl shadow-[#a855f7]/40 inline-flex items-center justify-center gap-2">
-        <i class="fa-solid fa-palette"></i> Ver catálogo
+
+    <div
+      class="pt-2 flex flex-col sm:flex-row justify-center gap-3 reveal"
+      style="transition-delay:.35s"
+    >
+
+      <a
+        href="#pinturas"
+        class="btn-glow bg-gradient-to-r from-[#ec4899] to-[#a855f7] text-white font-bold px-8 py-4 rounded-2xl text-sm shadow-xl shadow-[#a855f7]/40 inline-flex items-center justify-center gap-2"
+      >
+        <i class="fa-solid fa-palette"></i>
+        Ver pinturas
       </a>
-      <a href="#contacto" class="bg-white/5 hover:bg-white/10 border border-white/15 text-white font-bold px-8 py-4 rounded-2xl text-sm inline-flex items-center justify-center gap-2">
-        <i class="fa-solid fa-phone"></i> Contáctanos
+
+      <a
+        href="#contacto"
+        class="bg-white/5 hover:bg-white/10 border border-white/15 text-white font-bold px-8 py-4 rounded-2xl text-sm inline-flex items-center justify-center gap-2"
+      >
+        <i class="fa-solid fa-phone"></i>
+        Contáctanos
       </a>
+
     </div>
+
   </div>
+
 </section>
 
-<!-- ===== MAIN ===== -->
-<main class="flex-1 max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-16 space-y-14 sm:space-y-20 w-full">
+<!-- =========================================
+     MAIN
+========================================= -->
 
-  <!-- PINTURAS -->
-  <section id="pinturas" class="space-y-6 scroll-mt-24">
-    <div class="text-center space-y-2 reveal">
-      <span class="text-[#ec4899] text-xs font-bold uppercase tracking-widest">— Automotrices —</span>
-      <h2 class="font-display text-4xl sm:text-5xl">NUESTRAS <span class="gradient-text">PINTURAS</span></h2>
-      <p class="text-xs sm:text-sm text-gray-400 max-w-lg mx-auto px-4">Elige presentación y agrega a tu cotización 🎨</p>
-    </div>
-    <div id="pinturasGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
-  </section>
+<main
+  class="flex-1 max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-16 space-y-14 sm:space-y-20 w-full"
+>
 
-  <!-- INSUMOS -->
-  <section id="insumos" class="space-y-6 scroll-mt-24">
-    <div class="text-center space-y-2 reveal">
-      <span class="text-[#06b6d4] text-xs font-bold uppercase tracking-widest">— Complementos —</span>
-      <h2 class="font-display text-4xl sm:text-5xl">INSUMOS <span class="gradient-text">PROFESIONALES</span></h2>
-      <p class="text-xs sm:text-sm text-gray-400 max-w-lg mx-auto px-4">Thinners, primarios, selladores y más.</p>
-    </div>
-    <div id="insumosGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
-  </section>
+<!-- =========================================
+     PINTURAS
+========================================= -->
 
-  <!-- ACCESORIOS -->
-  <section id="accesorios" class="space-y-6 scroll-mt-24">
-    <div class="text-center space-y-2 reveal">
-      <span class="text-[#facc15] text-xs font-bold uppercase tracking-widest">— Herramientas —</span>
-      <h2 class="font-display text-4xl sm:text-5xl">ACCESORIOS <span class="gradient-text">PROFESIONALES</span></h2>
-      <p class="text-xs sm:text-sm text-gray-400 max-w-lg mx-auto px-4">Todo lo que necesitas para un acabado perfecto.</p>
-    </div>
-    <div id="accesoriosGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-3"></div>
-  </section>
+<section
+  id="pinturas"
+  class="space-y-6 scroll-mt-24"
+>
 
-  <!-- SERVICIOS -->
-  <section id="servicios" class="space-y-6 scroll-mt-24">
-    <div class="text-center space-y-2 reveal">
-      <span class="text-[#22c55e] text-xs font-bold uppercase tracking-widest">— Mano de obra —</span>
-      <h2 class="font-display text-4xl sm:text-5xl">SERVICIOS <span class="gradient-text">DE PINTURA</span></h2>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div class="bg-[#12121c] border border-white/10 rounded-3xl p-6 reveal">
-        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#ec4899] to-[#a855f7] grid place-items-center text-2xl float-slow">🚗</div>
-        <h3 class="font-display text-2xl mt-4">PINTURA COMPLETA</h3>
-        <p class="text-xs text-gray-400 mt-2">Pintura total del vehículo con acabado profesional.</p>
-        <p class="font-display text-2xl text-[#facc15] mt-3">Desde $350</p>
+  <div
+    class="text-center space-y-2 reveal"
+  >
+
+    <span
+      class="text-[#ec4899] text-xs font-bold uppercase tracking-widest"
+    >
+      — Paint Studio —
+    </span>
+
+    <h2
+      class="font-display text-4xl sm:text-5xl"
+    >
+      NUESTRAS
+      <span class="gradient-text">
+        PINTURAS
+      </span>
+    </h2>
+
+    <p
+      class="text-xs sm:text-sm text-gray-400 max-w-lg mx-auto px-4"
+    >
+      Explora nuestra línea de pinturas automotrices y solicita una cotización personalizada.
+    </p>
+
+  </div>
+
+  <div
+    id="pinturasGrid"
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+  ></div>
+
+</section>
+
+<!-- =========================================
+     INSUMOS
+========================================= -->
+
+<section
+  id="insumos"
+  class="space-y-6 scroll-mt-24"
+>
+
+  <div
+    class="text-center space-y-2 reveal"
+  >
+
+    <span
+      class="text-[#06b6d4] text-xs font-bold uppercase tracking-widest"
+    >
+      — Complementos —
+    </span>
+
+    <h2
+      class="font-display text-4xl sm:text-5xl"
+    >
+      INSUMOS
+      <span class="gradient-text">
+        PROFESIONALES
+      </span>
+    </h2>
+
+    <p
+      class="text-xs sm:text-sm text-gray-400 max-w-lg mx-auto px-4"
+    >
+      Thinners, primarios, barnices y complementos para tus proyectos.
+    </p>
+
+  </div>
+
+  <div
+    id="insumosGrid"
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+  ></div>
+
+</section>
+
+<!-- =========================================
+     ACCESORIOS
+========================================= -->
+
+<section
+  id="accesorios"
+  class="space-y-6 scroll-mt-24"
+>
+
+  <div
+    class="text-center space-y-2 reveal"
+  >
+
+    <span
+      class="text-[#facc15] text-xs font-bold uppercase tracking-widest"
+    >
+      — Herramientas —
+    </span>
+
+    <h2
+      class="font-display text-4xl sm:text-5xl"
+    >
+      ACCESORIOS
+      <span class="gradient-text">
+        PROFESIONALES
+      </span>
+    </h2>
+
+    <p
+      class="text-xs sm:text-sm text-gray-400 max-w-lg mx-auto px-4"
+    >
+      Todo lo que necesitas para preparar y pintar.
+    </p>
+
+  </div>
+
+  <div
+    id="accesoriosGrid"
+    class="grid grid-cols-2 sm:grid-cols-4 gap-3"
+  ></div>
+
+</section>
+
+<!-- =========================================
+     SERVICIOS
+========================================= -->
+
+<section
+  id="servicios"
+  class="space-y-6 scroll-mt-24"
+>
+
+  <div
+    class="text-center space-y-2 reveal"
+  >
+
+    <span
+      class="text-[#22c55e] text-xs font-bold uppercase tracking-widest"
+    >
+      — Mano de obra —
+    </span>
+
+    <h2
+      class="font-display text-4xl sm:text-5xl"
+    >
+      SERVICIOS
+      <span class="gradient-text">
+        DE PINTURA
+      </span>
+    </h2>
+
+  </div>
+
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+  >
+
+    <div
+      class="bg-[#12121c] border border-white/10 rounded-3xl p-6 reveal"
+    >
+
+      <div
+        class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#ec4899] to-[#a855f7] grid place-items-center text-2xl float-slow"
+      >
+        🚗
       </div>
-      <div class="bg-[#12121c] border border-white/10 rounded-3xl p-6 reveal" style="transition-delay:.1s">
-        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#06b6d4] to-[#3b82f6] grid place-items-center text-2xl float-med">🎯</div>
-        <h3 class="font-display text-2xl mt-4">RETOQUE Y PULIDO</h3>
-        <p class="text-xs text-gray-400 mt-2">Corrección de detalles, pulido y abrillantado.</p>
-        <p class="font-display text-2xl text-[#facc15] mt-3">Desde $60</p>
-      </div>
-      <div class="bg-[#12121c] border border-white/10 rounded-3xl p-6 reveal" style="transition-delay:.2s">
-        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#facc15] to-[#f97316] grid place-items-center text-2xl float-fast">✨</div>
-        <h3 class="font-display text-2xl mt-4">PERSONALIZADOS</h3>
-        <p class="text-xs text-gray-400 mt-2">Diseños especiales, franjas y acabados a medida.</p>
-        <p class="font-display text-2xl text-[#facc15] mt-3">Cotizar</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- BENEFICIOS -->
-  <section class="reveal">
-    <div class="colabanner rounded-3xl p-6 sm:p-8 relative z-10">
-      <div class="text-center mb-6 relative z-10">
-        <span class="text-[10px] uppercase tracking-widest font-black text-[#facc15] block mb-1">— Nuestro compromiso —</span>
-        <h3 class="font-display text-3xl sm:text-4xl">
-          CALIDAD QUE SE VE, <span class="gradient-text">SERVICIO QUE SE SIENTE</span>
-        </h3>
-      </div>
-      <div class="grid sm:grid-cols-3 gap-4 relative z-10">
-        <div class="bg-black/30 rounded-2xl p-5 text-center border border-white/5">
-          <i class="fa-solid fa-circle-check text-3xl text-[#22c55e] mb-2"></i>
-          <p class="font-bold text-sm">PRODUCTOS DE CALIDAD</p>
-          <p class="text-xs text-gray-400 mt-1">Marcas reconocidas y garantizadas</p>
-        </div>
-        <div class="bg-black/30 rounded-2xl p-5 text-center border border-white/5">
-          <i class="fa-solid fa-shield-halved text-3xl text-[#ec4899] mb-2"></i>
-          <p class="font-bold text-sm">GARANTÍA ASEGURADA</p>
-          <p class="text-xs text-gray-400 mt-1">Respaldamos cada trabajo</p>
-        </div>
-        <div class="bg-black/30 rounded-2xl p-5 text-center border border-white/5">
-          <i class="fa-solid fa-handshake text-3xl text-[#06b6d4] mb-2"></i>
-          <p class="font-bold text-sm">COMPROMISO Y CONFIANZA</p>
-          <p class="text-xs text-gray-400 mt-1">Relaciones duraderas con clientes</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <h3 class="font-display text-2xl mt-4">
+        PINTURA COMPLETA
+      </h3>
 
-  <!-- CONTACTO / INFO -->
-  <section id="contacto" class="scroll-mt-24">
-    <div class="text-center space-y-2 mb-6 reveal">
-      <span class="text-[#22c55e] text-xs font-bold uppercase tracking-widest">— Estamos para ayudarte —</span>
-      <h2 class="font-display text-4xl sm:text-5xl">INFORMACIÓN DE <span class="gradient-text">CONTACTO</span></h2>
+      <p class="text-xs text-gray-400 mt-2">
+        Pintura total del vehículo con acabado profesional.
+      </p>
+
+      <button
+        onclick="solicitarServicio('Pintura completa')"
+        class="mt-4 text-xs font-bold text-[#22c55e] hover:text-white transition"
+      >
+        SOLICITAR COTIZACIÓN →
+      </button>
+
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div class="bg-[#12121c] border border-white/10 rounded-3xl p-6 space-y-4 reveal">
-        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#22c55e] to-[#16a34a] grid place-items-center text-2xl float-slow">📱</div>
-        <h3 class="font-display text-2xl">WHATSAPP</h3>
-        <div class="bg-gradient-to-r from-[#22c55e]/10 to-transparent p-4 rounded-2xl border border-[#22c55e]/30">
-          <p class="font-bold text-[#22c55e] mb-1">📞 099 829 0859</p>
-          <p class="text-xs text-gray-300">Atención personalizada y cotizaciones al instante.</p>
-        </div>
-        <a href="https://wa.me/593984113081" target="_blank" rel="noopener"
-           class="btn-glow w-full bg-gradient-to-r from-[#22c55e] to-[#16a34a] text-white font-black py-3.5 rounded-2xl text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#22c55e]/30">
-          <i class="fa-brands fa-whatsapp text-lg"></i> Escríbenos ahora
-        </a>
+    <div
+      class="bg-[#12121c] border border-white/10 rounded-3xl p-6 reveal"
+      style="transition-delay:.1s"
+    >
+
+      <div
+        class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#06b6d4] to-[#3b82f6] grid place-items-center text-2xl float-med"
+      >
+        🎯
       </div>
 
-      <div class="bg-[#12121c] border border-white/10 rounded-3xl p-6 space-y-4 reveal" style="transition-delay:.1s">
-        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#facc15] to-[#f97316] grid place-items-center text-2xl float-med">📍</div>
-        <h3 class="font-display text-2xl">UBICACIÓN</h3>
-        <div class="bg-black/30 p-4 rounded-2xl border border-white/5">
-          <p class="font-bold text-white mb-1">📌 Biblián · Cañar · Ecuador</p>
-          <p class="text-xs text-gray-400">Visítanos y conoce nuestro catálogo completo.</p>
-        </div>
-        <div class="bg-black/30 p-4 rounded-2xl border border-white/5">
-          <p class="font-bold text-white mb-1">⏰ Horario de atención</p>
-          <p class="text-xs text-gray-400">Lun a Sáb de <span class="text-[#22c55e] font-bold">8:00 a 19:00</span></p>
-        </div>
-      </div>
+      <h3 class="font-display text-2xl mt-4">
+        RETOQUE Y PULIDO
+      </h3>
+
+      <p class="text-xs text-gray-400 mt-2">
+        Corrección de detalles, pulido y abrillantado.
+      </p>
+
+      <button
+        onclick="solicitarServicio('Retoque y pulido')"
+        class="mt-4 text-xs font-bold text-[#22c55e] hover:text-white transition"
+      >
+        SOLICITAR COTIZACIÓN →
+      </button>
+
     </div>
 
-    <!-- Redes -->
-    <div class="grid sm:grid-cols-2 gap-4 mt-4">
-      <a href="https://www.facebook.com/search/top?q=Tecni%20Color%20Encalada" target="_blank" rel="noopener"
-         class="bg-[#12121c] border border-white/10 rounded-3xl p-6 flex items-center gap-4 hover:border-[#3b82f6]/50 transition reveal">
-        <div class="w-14 h-14 rounded-2xl bg-[#3b82f6] grid place-items-center text-white text-2xl shrink-0">
-          <i class="fa-brands fa-facebook-f"></i>
-        </div>
-        <div>
-          <p class="text-[10px] font-bold tracking-widest text-[#3b82f6] uppercase">Facebook</p>
-          <p class="font-display text-xl mt-1">Tecni Color Encalada</p>
-        </div>
+    <div
+      class="bg-[#12121c] border border-white/10 rounded-3xl p-6 reveal"
+      style="transition-delay:.2s"
+    >
+
+      <div
+        class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#facc15] to-[#f97316] grid place-items-center text-2xl float-fast"
+      >
+        ✨
+      </div>
+
+      <h3 class="font-display text-2xl mt-4">
+        PERSONALIZADOS
+      </h3>
+
+      <p class="text-xs text-gray-400 mt-2">
+        Diseños especiales, franjas y acabados a medida.
+      </p>
+
+      <button
+        onclick="solicitarServicio('Trabajo personalizado')"
+        class="mt-4 text-xs font-bold text-[#22c55e] hover:text-white transition"
+      >
+        SOLICITAR COTIZACIÓN →
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================================
+     BENEFICIOS
+========================================= -->
+
+<section class="reveal">
+
+  <div
+    class="colabanner rounded-3xl p-6 sm:p-8 relative z-10"
+  >
+
+    <div
+      class="text-center mb-6 relative z-10"
+    >
+
+      <span
+        class="text-[10px] uppercase tracking-widest font-black text-[#facc15] block mb-1"
+      >
+        — Nuestro compromiso —
+      </span>
+
+      <h3
+        class="font-display text-3xl sm:text-4xl"
+      >
+        CALIDAD QUE SE VE,
+        <span class="gradient-text">
+          SERVICIO QUE SE SIENTE
+        </span>
+      </h3>
+
+    </div>
+
+    <div
+      class="grid sm:grid-cols-3 gap-4 relative z-10"
+    >
+
+      <div
+        class="bg-black/30 rounded-2xl p-5 text-center border border-white/5"
+      >
+
+        <i
+          class="fa-solid fa-circle-check text-3xl text-[#22c55e] mb-2"
+        ></i>
+
+        <p class="font-bold text-sm">
+          PRODUCTOS DE CALIDAD
+        </p>
+
+        <p class="text-xs text-gray-400 mt-1">
+          Marcas reconocidas y garantizadas
+        </p>
+
+      </div>
+
+      <div
+        class="bg-black/30 rounded-2xl p-5 text-center border border-white/5"
+      >
+
+        <i
+          class="fa-solid fa-shield-halved text-3xl text-[#ec4899] mb-2"
+        ></i>
+
+        <p class="font-bold text-sm">
+          GARANTÍA ASEGURADA
+        </p>
+
+        <p class="text-xs text-gray-400 mt-1">
+          Respaldamos cada trabajo
+        </p>
+
+      </div>
+
+      <div
+        class="bg-black/30 rounded-2xl p-5 text-center border border-white/5"
+      >
+
+        <i
+          class="fa-solid fa-handshake text-3xl text-[#06b6d4] mb-2"
+        ></i>
+
+        <p class="font-bold text-sm">
+          COMPROMISO Y CONFIANZA
+        </p>
+
+        <p class="text-xs text-gray-400 mt-1">
+          Relaciones duraderas con clientes
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================================
+     CONTACTO
+========================================= -->
+
+<section
+  id="contacto"
+  class="scroll-mt-24"
+>
+
+  <div
+    class="text-center space-y-2 mb-6 reveal"
+  >
+
+    <span
+      class="text-[#22c55e] text-xs font-bold uppercase tracking-widest"
+    >
+      — Estamos para ayudarte —
+    </span>
+
+    <h2
+      class="font-display text-4xl sm:text-5xl"
+    >
+      INFORMACIÓN DE
+      <span class="gradient-text">
+        CONTACTO
+      </span>
+    </h2>
+
+  </div>
+
+  <div
+    class="grid grid-cols-1 md:grid-cols-2 gap-4"
+  >
+
+    <!-- WHATSAPP -->
+
+    <div
+      class="bg-[#12121c] border border-white/10 rounded-3xl p-6 space-y-4 reveal"
+    >
+
+      <div
+        class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#22c55e] to-[#16a34a] grid place-items-center text-2xl float-slow"
+      >
+        📱
+      </div>
+
+      <h3 class="font-display text-2xl">
+        WHATSAPP
+      </h3>
+
+      <div
+        class="bg-gradient-to-r from-[#22c55e]/10 to-transparent p-4 rounded-2xl border border-[#22c55e]/30"
+      >
+
+        <p class="font-bold text-[#22c55e] mb-1">
+          📞 098 411 3081
+        </p>
+
+        <p class="text-xs text-gray-300">
+          Atención personalizada y cotizaciones.
+        </p>
+
+      </div>
+
+      <a
+        href="https://wa.me/593984113081"
+        target="_blank"
+        rel="noopener"
+        class="btn-glow w-full bg-gradient-to-r from-[#22c55e] to-[#16a34a] text-white font-black py-3.5 rounded-2xl text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#22c55e]/30"
+      >
+
+        <i class="fa-brands fa-whatsapp text-lg"></i>
+
+        Escríbenos ahora
+
       </a>
 
-      <a href="https://www.instagram.com/tecnicolor_encalada" target="_blank" rel="noopener"
-         class="bg-[#12121c] border border-white/10 rounded-3xl p-6 flex items-center gap-4 hover:border-[#ec4899]/50 transition reveal" style="transition-delay:.1s">
-        <div class="w-14 h-14 rounded-2xl grid place-items-center text-white text-2xl shrink-0" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);">
-          <i class="fa-brands fa-instagram"></i>
-        </div>
-        <div>
-          <p class="text-[10px] font-bold tracking-widest text-[#ec4899] uppercase">Instagram</p>
-          <p class="font-display text-xl mt-1">@tecnicolor_encalada</p>
-        </div>
-      </a>
     </div>
-  </section>
 
-  <!-- PUBLICIDAD -->
-  <section class="reveal">
-    <div class="relative rounded-3xl overflow-hidden p-8 sm:p-12" style="background: linear-gradient(120deg, rgba(168,85,247,.18), rgba(6,182,212,.15), rgba(236,72,153,.18)); border: 1px solid rgba(255,255,255,.12);">
-      <div class="grid md:grid-cols-[auto,1fr] gap-6 items-center">
-        <div class="grid place-items-center w-20 h-20 rounded-3xl bg-gradient-to-tr from-[#22c55e] to-[#16a34a] shadow-2xl shadow-[#22c55e]/40">
-          <i class="fa-solid fa-chart-line text-4xl text-white"></i>
-        </div>
-        <div>
-          <p class="font-display text-2xl sm:text-3xl lg:text-4xl leading-tight tracking-wide">
-            UNA BUENA PUBLICIDAD CONVIERTE UN NEGOCIO PEQUEÑO
-            <span class="rainbow-text">EN UNO GRANDE</span>
-          </p>
-        </div>
+    <!-- UBICACIÓN -->
+
+    <div
+      class="bg-[#12121c] border border-white/10 rounded-3xl p-6 space-y-4 reveal"
+      style="transition-delay:.1s"
+    >
+
+      <div
+        class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#facc15] to-[#f97316] grid place-items-center text-2xl float-med"
+      >
+        📍
       </div>
+
+      <h3 class="font-display text-2xl">
+        UBICACIÓN
+      </h3>
+
+      <div
+        class="bg-black/30 p-4 rounded-2xl border border-white/5"
+      >
+
+        <p class="font-bold text-white mb-1">
+          📌 Biblián · Cañar · Ecuador
+        </p>
+
+        <p class="text-xs text-gray-400">
+          Visítanos y conoce nuestro catálogo.
+        </p>
+
+      </div>
+
+      <div
+        class="bg-black/30 p-4 rounded-2xl border border-white/5"
+      >
+
+        <p class="font-bold text-white mb-1">
+          ⏰ Horario de atención
+        </p>
+
+        <p class="text-xs text-gray-400">
+          Lun a Sáb de
+          <span class="text-[#22c55e] font-bold">
+            8:00 a 19:00
+          </span>
+        </p>
+
+      </div>
+
     </div>
-  </section>
+
+  </div>
+
+  <!-- REDES -->
+
+  <div
+    class="grid sm:grid-cols-2 gap-4 mt-4"
+  >
+
+    <a
+      href="https://www.facebook.com/search/top?q=Tecni%20Color%20Encalada"
+      target="_blank"
+      rel="noopener"
+      class="bg-[#12121c] border border-white/10 rounded-3xl p-6 flex items-center gap-4 hover:border-[#3b82f6]/50 transition reveal"
+    >
+
+      <div
+        class="w-14 h-14 rounded-2xl bg-[#3b82f6] grid place-items-center text-white text-2xl shrink-0"
+      >
+
+        <i class="fa-brands fa-facebook-f"></i>
+
+      </div>
+
+      <div>
+
+        <p
+          class="text-[10px] font-bold tracking-widest text-[#3b82f6] uppercase"
+        >
+          Facebook
+        </p>
+
+        <p class="font-display text-xl mt-1">
+          Tecni Color Encalada
+        </p>
+
+      </div>
+
+    </a>
+
+    <a
+      href="https://www.instagram.com/tecnicolor_encalada"
+      target="_blank"
+      rel="noopener"
+      class="bg-[#12121c] border border-white/10 rounded-3xl p-6 flex items-center gap-4 hover:border-[#ec4899]/50 transition reveal"
+      style="transition-delay:.1s"
+    >
+
+      <div
+        class="w-14 h-14 rounded-2xl grid place-items-center text-white text-2xl shrink-0"
+        style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);"
+      >
+
+        <i class="fa-brands fa-instagram"></i>
+
+      </div>
+
+      <div>
+
+        <p
+          class="text-[10px] font-bold tracking-widest text-[#ec4899] uppercase"
+        >
+          Instagram
+        </p>
+
+        <p class="font-display text-xl mt-1">
+          @tecnicolor_encalada
+        </p>
+
+      </div>
+
+    </a>
+
+  </div>
+
+</section>
+
+<!-- =========================================
+     PUBLICIDAD
+========================================= -->
+
+<section class="reveal">
+
+  <div
+    class="relative rounded-3xl overflow-hidden p-8 sm:p-12"
+    style="
+      background:
+      linear-gradient(
+        120deg,
+        rgba(168,85,247,.18),
+        rgba(6,182,212,.15),
+        rgba(236,72,153,.18)
+      );
+      border:1px solid rgba(255,255,255,.12);
+    "
+  >
+
+    <div
+      class="grid md:grid-cols-[auto,1fr] gap-6 items-center"
+    >
+
+      <div
+        class="grid place-items-center w-20 h-20 rounded-3xl bg-gradient-to-tr from-[#22c55e] to-[#16a34a] shadow-2xl shadow-[#22c55e]/40"
+      >
+
+        <i
+          class="fa-solid fa-chart-line text-4xl text-white"
+        ></i>
+
+      </div>
+
+      <div>
+
+        <p
+          class="font-display text-2xl sm:text-3xl lg:text-4xl leading-tight tracking-wide"
+        >
+
+          UNA BUENA PUBLICIDAD CONVIERTE UN NEGOCIO PEQUEÑO
+
+          <span class="rainbow-text">
+            EN UNO GRANDE
+          </span>
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
 </main>
 
-<!-- ===== FOOTER ===== -->
-<footer class="border-t border-white/10 bg-[#0a0a0f] py-8 mt-8">
-  <div class="max-w-6xl mx-auto px-4 text-center space-y-3">
-    <div class="flex items-center justify-center gap-3">
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#ec4899] via-[#a855f7] to-[#06b6d4] grid place-items-center text-white">
-        <i class="fa-solid fa-spray-can-sparkles text-lg"></i>
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer
+  class="border-t border-white/10 bg-[#08080d] py-8 mt-8"
+>
+
+  <div
+    class="max-w-6xl mx-auto px-4 text-center space-y-3"
+  >
+
+    <div
+      class="flex items-center justify-center gap-3"
+    >
+
+      <div
+        class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#ec4899] via-[#a855f7] to-[#06b6d4] grid place-items-center text-white"
+      >
+
+        <i
+          class="fa-solid fa-spray-can-sparkles text-lg"
+        ></i>
+
       </div>
-      <span class="font-display text-2xl tracking-wide">
-        <span class="rainbow-text">TECNICOLOR</span> ENCALADA
+
+      <span
+        class="font-display text-2xl tracking-wide"
+      >
+
+        <span class="rainbow-text">
+          TECNICOLOR
+        </span>
+
+        ENCALADA
+
       </span>
+
     </div>
-    <p class="text-xs text-gray-500">© <span id="year"></span> TecniColor Encalada · Biblián, Ecuador · ¡Damos color a tus ideas!</p>
+
+    <p class="text-xs text-gray-500">
+
+      ©
+      <span id="year"></span>
+      TecniColor Encalada · Biblián, Ecuador ·
+      ¡Damos color a tus ideas!
+
+    </p>
+
   </div>
+
 </footer>
 
-<!-- ===== FAB CARRITO (DESKTOP) ===== -->
-<button type="button" id="cartFab"
-  class="cart-fab hidden md:grid fixed bottom-6 right-6 z-40 bg-gradient-to-br from-[#ec4899] to-[#a855f7] text-white rounded-full w-16 h-16 shadow-2xl shadow-[#a855f7]/50 place-items-center text-2xl opacity-0 pointer-events-none">
+<!-- =========================================
+     BOTÓN COTIZACIÓN DESKTOP
+========================================= -->
+
+<button
+  type="button"
+  id="cartFab"
+  class="cart-fab hidden md:grid fixed bottom-6 right-6 z-40 bg-gradient-to-br from-[#ec4899] to-[#a855f7] text-white rounded-full w-16 h-16 shadow-2xl shadow-[#a855f7]/50 place-items-center text-2xl opacity-0 pointer-events-none"
+>
+
   <i class="fa-solid fa-clipboard-list"></i>
-  <span class="cart-count absolute -top-1 -right-1 bg-[#22c55e] text-white text-xs font-bold rounded-full w-6 h-6 grid place-items-center border-2 border-[#0a0a0f]">0</span>
+
+  <span
+    class="cart-count absolute -top-1 -right-1 bg-[#22c55e] text-white text-xs font-bold rounded-full w-6 h-6 grid place-items-center border-2 border-[#08080d]"
+  >
+    0
+  </span>
+
 </button>
 
-<!-- ===== BARRA MÓVIL ===== -->
-<div class="mobile-cart-bar" id="mobileCartBar">
-  <div class="flex-1 flex items-center gap-3">
+<!-- =========================================
+     BARRA MÓVIL
+========================================= -->
+
+<div
+  class="mobile-cart-bar"
+  id="mobileCartBar"
+>
+
+  <div
+    class="flex-1 flex items-center gap-3"
+  >
+
     <div class="relative">
-      <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#ec4899] to-[#a855f7] grid place-items-center text-white text-lg">
+
+      <div
+        class="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#ec4899] to-[#a855f7] grid place-items-center text-white text-lg"
+      >
+
         <i class="fa-solid fa-clipboard-list"></i>
+
       </div>
-      <span class="cart-count absolute -top-1 -right-1 bg-[#22c55e] text-white text-[10px] font-black rounded-full w-5 h-5 grid place-items-center border-2 border-[#0a0a0f]">0</span>
+
+      <span
+        class="cart-count absolute -top-1 -right-1 bg-[#22c55e] text-white text-[10px] font-black rounded-full w-5 h-5 grid place-items-center border-2 border-[#08080d]"
+      >
+        0
+      </span>
+
     </div>
+
     <div>
-      <p class="text-[10px] uppercase tracking-wider text-gray-400 font-bold">Tu cotización</p>
-      <p class="font-display text-2xl text-[#facc15]" id="mobileCartTotal">$0.00</p>
+
+      <p
+        class="text-[10px] uppercase tracking-wider text-gray-400 font-bold"
+      >
+        Tu cotización
+      </p>
+
+      <p
+        class="font-display text-xl text-[#facc15]"
+        id="mobileCartText"
+      >
+        0 productos
+      </p>
+
     </div>
+
   </div>
-  <button type="button" data-action="open-cart"
-    class="btn-glow bg-gradient-to-r from-[#22c55e] to-[#16a34a] text-white font-black px-5 py-3 rounded-2xl text-xs flex items-center gap-2 shadow-lg shadow-[#22c55e]/40">
-    <i class="fa-solid fa-clipboard-list"></i> Ver
+
+  <button
+    type="button"
+    data-action="open-cart"
+    class="btn-glow bg-gradient-to-r from-[#22c55e] to-[#16a34a] text-white font-black px-5 py-3 rounded-2xl text-xs flex items-center gap-2 shadow-lg shadow-[#22c55e]/40"
+  >
+
+    <i class="fa-solid fa-clipboard-list"></i>
+
+    Ver
+
   </button>
+
 </div>
 
-<!-- ===== CART DRAWER ===== -->
-<div class="cart-backdrop" id="cartBackdrop"></div>
-<aside class="cart-drawer" id="cartDrawer">
+<!-- =========================================
+     CART DRAWER
+========================================= -->
+
+<div
+  class="cart-backdrop"
+  id="cartBackdrop"
+></div>
+
+<aside
+  class="cart-drawer"
+  id="cartDrawer"
+>
+
   <div class="cart-handle"></div>
-  <div class="px-5 pb-3 pt-2 flex items-center justify-between">
+
+  <div
+    class="px-5 pb-3 pt-2 flex items-center justify-between"
+  >
+
     <div>
-      <h3 class="font-display text-2xl">TU COTIZACIÓN</h3>
-      <p class="text-[11px] text-gray-500" id="cartSubtitle">Aún no agregas nada</p>
+
+      <h3 class="font-display text-2xl">
+        TU COTIZACIÓN
+      </h3>
+
+      <p
+        class="text-[11px] text-gray-500"
+        id="cartSubtitle"
+      >
+        Aún no agregas productos
+      </p>
+
     </div>
-    <button type="button" id="closeCart" class="w-10 h-10 rounded-xl bg-white/5 grid place-items-center text-gray-400">
+
+    <button
+      type="button"
+      id="closeCart"
+      class="w-10 h-10 rounded-xl bg-white/5 grid place-items-center text-gray-400"
+    >
+
       <i class="fa-solid fa-xmark text-lg"></i>
+
     </button>
+
   </div>
-  <div class="cart-body" id="cartBody"></div>
-  <div class="border-t border-white/8 px-5 py-4" style="padding-bottom: calc(16px + var(--safe-bottom)); background:#12121c;">
-    <div class="flex items-center justify-between mb-3">
-      <span class="text-xs uppercase tracking-wider text-gray-400 font-bold">Total estimado</span>
-      <span class="font-display text-3xl text-[#facc15]" id="cartTotal">$0.00</span>
+
+  <div
+    class="cart-body"
+    id="cartBody"
+  ></div>
+
+  <div
+    class="border-t border-white/8 px-5 py-4"
+    style="
+      padding-bottom:
+      calc(16px + var(--safe-bottom));
+      background:#12121c;
+    "
+  >
+
+    <div
+      class="flex items-center gap-3 mb-3"
+    >
+
+      <div
+        class="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#ec4899] to-[#a855f7] grid place-items-center"
+      >
+
+        <i class="fa-solid fa-file-signature"></i>
+
+      </div>
+
+      <div>
+
+        <p
+          class="text-xs uppercase tracking-wider text-gray-400 font-bold"
+        >
+          Solicitud de cotización
+        </p>
+
+        <p
+          class="text-sm text-white font-semibold"
+        >
+          Te confirmaremos disponibilidad y precio.
+        </p>
+
+      </div>
+
     </div>
-    <p class="text-[10px] text-gray-500 mb-3" id="cartHint">Los precios pueden variar según disponibilidad. Te confirmaremos por WhatsApp.</p>
-    <button type="button" id="checkoutBtn"
-      class="btn-glow w-full bg-gradient-to-r from-[#22c55e] to-[#16a34a] text-white font-black py-4 rounded-2xl text-sm flex items-center justify-center gap-2 shadow-xl shadow-[#22c55e]/30">
-      <i class="fa-brands fa-whatsapp text-lg"></i> Enviar cotización por WhatsApp
+
+    <p
+      class="text-[10px] text-gray-500 mb-3"
+    >
+      Envía tu lista directamente por WhatsApp y recibe atención personalizada.
+    </p>
+
+    <button
+      type="button"
+      id="checkoutBtn"
+      class="btn-glow w-full bg-gradient-to-r from-[#22c55e] to-[#16a34a] text-white font-black py-4 rounded-2xl text-sm flex items-center justify-center gap-2 shadow-xl shadow-[#22c55e]/30"
+    >
+
+      <i class="fa-brands fa-whatsapp text-lg"></i>
+
+      Solicitar cotización por WhatsApp
+
     </button>
+
   </div>
+
 </aside>
 
-<div id="toastContainer" class="fixed bottom-24 md:bottom-24 right-4 md:right-6 z-[80] space-y-2 pointer-events-none"></div>
+<!-- =========================================
+     TOAST
+========================================= -->
+
+<div
+  id="toastContainer"
+  class="fixed bottom-24 md:bottom-24 right-4 md:right-6 z-[80] space-y-2 pointer-events-none"
+></div>
 
 <script>
-// ==================== CONFIG ====================
+
+/* =========================================
+   CONFIGURACIÓN
+========================================= */
+
 const CONFIG = {
+
   whatsapp: "593984113081",
+
   horaApertura: 8,
-  horaCierre: 19,
-  envioGratisDesde: 50.00,
-  compraMinima: 20.00
+
+  horaCierre: 19
+
 };
+
+
+/* =========================================
+   IMÁGENES
+========================================= */
 
 const IMG = {
-  pintura: "https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?w=800&q=80",
-  spray:   "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&q=80",
-  car:     "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80",
-  tools:   "https://images.unsplash.com/photo-1581244277943-fe4a9c777189?w=800&q=80",
-  def:     "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
+
+  pintura:
+    "https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?w=800&q=80",
+
+  spray:
+    "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&q=80",
+
+  car:
+    "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80",
+
+  tools:
+    "https://images.unsplash.com/photo-1581244277943-fe4a9c777189?w=800&q=80",
+
+  def:
+    "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
+
 };
 
-// ==================== CATÁLOGO POR DEFECTO ====================
+
+/* =========================================
+   CATÁLOGO
+========================================= */
+
 const DEF_CATALOGO = {
+
   pinturas: [
-    { id: 1, nombre: "Pintura Automotriz Base", desc: "Pintura base para retoques y acabados", presentaciones: [
-      { id: "1l", label: "1 Litro", precio: 25, sub: "base" },
-      { id: "4l", label: "1 Galón", precio: 85, sub: "4 litros" },
-      { id: "20l", label: "Balde", precio: 380, sub: "20 litros" }
-    ], badge: "hot" },
-    { id: 2, nombre: "Pintura Metalizada", desc: "Acabado metalizado premium" , presentaciones: [
-      { id: "1l", label: "1 Litro", precio: 35, sub: "metalizada" },
-      { id: "4l", label: "1 Galón", precio: 120, sub: "4 litros" },
-      { id: "20l", label: "Balde", precio: 550, sub: "20 litros" }
-    ]},
-    { id: 3, nombre: "Pintura Perlada", desc: "Efecto perla con brillo superior", presentaciones: [
-      { id: "1l", label: "1 Litro", precio: 45, sub: "perlada" },
-      { id: "4l", label: "1 Galón", precio: 160, sub: "4 litros" }
-    ], badge: "new" }
+
+    {
+      id: 1,
+
+      nombre:
+        "Pintura Automotriz Base",
+
+      desc:
+        "Pintura base para retoques, restauraciones y acabados profesionales.",
+
+      presentaciones: [
+
+        {
+          id: "1l",
+          label: "1 Litro"
+        },
+
+        {
+          id: "4l",
+          label: "1 Galón"
+        },
+
+        {
+          id: "20l",
+          label: "Balde"
+        }
+
+      ],
+
+      badge:
+        "hot"
+
+    },
+
+    {
+
+      id: 2,
+
+      nombre:
+        "Pintura Metalizada",
+
+      desc:
+        "Acabado metalizado premium para darle profundidad y personalidad al vehículo.",
+
+      presentaciones: [
+
+        {
+          id: "1l",
+          label: "1 Litro"
+        },
+
+        {
+          id: "4l",
+          label: "1 Galón"
+        },
+
+        {
+          id: "20l",
+          label: "Balde"
+        }
+
+      ],
+
+      badge:
+        "premium"
+
+    },
+
+    {
+
+      id: 3,
+
+      nombre:
+        "Pintura Perlada",
+
+      desc:
+        "Efecto perla con brillo superior para acabados únicos y llamativos.",
+
+      presentaciones: [
+
+        {
+          id: "1l",
+          label: "1 Litro"
+        },
+
+        {
+          id: "4l",
+          label: "1 Galón"
+        }
+
+      ],
+
+      badge:
+        "new"
+
+    }
+
   ],
+
   insumos: [
-    { id: 10, nombre: "Thinner Profesional", desc: "Thinner de alta pureza para dilución", presentaciones: [
-      { id: "1l", label: "1 Litro", precio: 8, sub: "estándar" },
-      { id: "4l", label: "1 Galón", precio: 28, sub: "4 litros" }
-    ]},
-    { id: 11, nombre: "Primario Anticorrosivo", desc: "Protección base para metal", presentaciones: [
-      { id: "1l", label: "1 Litro", precio: 18, sub: "primario" },
-      { id: "4l", label: "1 Galón", precio: 62, sub: "4 litros" }
-    ]},
-    { id: 12, nombre: "Barniz Clear Coat", desc: "Acabado transparente brillante", presentaciones: [
-      { id: "1l", label: "1 Litro", precio: 22, sub: "barniz" },
-      { id: "4l", label: "1 Galón", precio: 78, sub: "4 litros" }
-    ]}
+
+    {
+
+      id: 10,
+
+      nombre:
+        "Thinner Profesional",
+
+      desc:
+        "Thinner de alta pureza para dilución.",
+
+      presentaciones: [
+
+        {
+          id: "1l",
+          label: "1 Litro"
+        },
+
+        {
+          id: "4l",
+          label: "1 Galón"
+        }
+
+      ]
+
+    },
+
+    {
+
+      id: 11,
+
+      nombre:
+        "Primario Anticorrosivo",
+
+      desc:
+        "Protección base para superficies metálicas.",
+
+      presentaciones: [
+
+        {
+          id: "1l",
+          label: "1 Litro"
+        },
+
+        {
+          id: "4l",
+          label: "1 Galón"
+        }
+
+      ]
+
+    },
+
+    {
+
+      id: 12,
+
+      nombre:
+        "Barniz Clear Coat",
+
+      desc:
+        "Acabado transparente brillante para protección y brillo.",
+
+      presentaciones: [
+
+        {
+          id: "1l",
+          label: "1 Litro"
+        },
+
+        {
+          id: "4l",
+          label: "1 Galón"
+        }
+
+      ]
+
+    }
+
   ],
+
   accesorios: [
-    { id: 20, nombre: "Pistola de Pintura", precio: 45, icon: "fa-spray-can" },
-    { id: 21, nombre: "Lijas Varias", precio: 3.5, icon: "fa-square" },
-    { id: 22, nombre: "Cinta de Enmascarar", precio: 2.5, icon: "fa-tape" },
-    { id: 23, nombre: "Mascarilla 3M", precio: 12, icon: "fa-mask-face" },
-    { id: 24, nombre: "Guantes Nitrilo", precio: 5, icon: "fa-mitten" },
-    { id: 25, nombre: "Espátulas", precio: 8, icon: "fa-trowel" },
-    { id: 26, nombre: "Pulidora", precio: 120, icon: "fa-circle-notch" },
-    { id: 27, nombre: "Kit Limpieza", precio: 15, icon: "fa-broom" }
+
+    {
+      id: 20,
+      nombre: "Pistola de Pintura",
+      icon: "fa-spray-can"
+    },
+
+    {
+      id: 21,
+      nombre: "Lijas Varias",
+      icon: "fa-square"
+    },
+
+    {
+      id: 22,
+      nombre: "Cinta de Enmascarar",
+      icon: "fa-tape"
+    },
+
+    {
+      id: 23,
+      nombre: "Mascarilla 3M",
+      icon: "fa-mask-face"
+    },
+
+    {
+      id: 24,
+      nombre: "Guantes Nitrilo",
+      icon: "fa-mitten"
+    },
+
+    {
+      id: 25,
+      nombre: "Espátulas",
+      icon: "fa-trowel"
+    },
+
+    {
+      id: 26,
+      nombre: "Pulidora",
+      icon: "fa-circle-notch"
+    },
+
+    {
+      id: 27,
+      nombre: "Kit Limpieza",
+      icon: "fa-broom"
+    }
+
   ]
+
 };
 
-// ==================== CARGAR CATÁLOGO ====================
+
+/* =========================================
+   CARGAR CATÁLOGO
+========================================= */
+
 function cargarCatalogo() {
+
   try {
-    const saved = localStorage.getItem("tc_catalogo");
+
+    const saved =
+      localStorage.getItem("tc_catalogo");
+
     if (saved) {
-      const c = JSON.parse(saved);
-      if (c && Array.isArray(c.pinturas) && Array.isArray(c.insumos) && Array.isArray(c.accesorios)) return c;
+
+      const c =
+        JSON.parse(saved);
+
+      if (
+        c &&
+        Array.isArray(c.pinturas) &&
+        Array.isArray(c.insumos) &&
+        Array.isArray(c.accesorios)
+      ) {
+
+        /*
+          Compatibilidad con catálogos antiguos:
+          eliminamos los precios de las presentaciones.
+        */
+
+        c.pinturas.forEach(p => {
+
+          if (Array.isArray(p.presentaciones)) {
+
+            p.presentaciones =
+              p.presentaciones.map(t => ({
+
+                id: t.id,
+
+                label:
+                  t.label ||
+                  t.nombre ||
+                  t.id
+
+              }));
+
+          }
+
+        });
+
+        c.insumos.forEach(p => {
+
+          if (Array.isArray(p.presentaciones)) {
+
+            p.presentaciones =
+              p.presentaciones.map(t => ({
+
+                id: t.id,
+
+                label:
+                  t.label ||
+                  t.nombre ||
+                  t.id
+
+              }));
+
+          }
+
+        });
+
+        return c;
+      }
+
     }
-  } catch(e) { console.warn("Catálogo inválido, usando default"); }
-  localStorage.setItem("tc_catalogo", JSON.stringify(DEF_CATALOGO));
-  return JSON.parse(JSON.stringify(DEF_CATALOGO));
+
+  } catch (e) {
+
+    console.warn(
+      "Catálogo inválido. Usando catálogo predeterminado."
+    );
+
+  }
+
+  localStorage.setItem(
+    "tc_catalogo",
+    JSON.stringify(DEF_CATALOGO)
+  );
+
+  return JSON.parse(
+    JSON.stringify(DEF_CATALOGO)
+  );
+
 }
-let CATALOGO = cargarCatalogo();
 
-// ==================== UTILS ====================
-const $ = s => document.querySelector(s);
-const $$ = s => [...document.querySelectorAll(s)];
-const money = v => "$" + Number(v).toFixed(2);
-const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
-// ==================== BARRA DE ESTADO ====================
+let CATALOGO =
+  cargarCatalogo();
+
+
+/* =========================================
+   UTILS
+========================================= */
+
+const $ =
+  s => document.querySelector(s);
+
+const $$ =
+  s => [...document.querySelectorAll(s)];
+
+const esc =
+  s =>
+    String(s ?? "")
+      .replace(
+        /[&<>"']/g,
+        c =>
+          ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+          }[c])
+      );
+
+
+/* =========================================
+   ESTADO
+========================================= */
+
 function actualizarEstado() {
-  const ahora = new Date();
-  const h = ahora.getHours() + ahora.getMinutes() / 60;
-  const dia = ahora.getDay(); // 0=dom, 6=sáb
-  const abierto = h >= CONFIG.horaApertura && h <= CONFIG.horaCierre && dia !== 0;
 
-  const dot = document.getElementById("statusDot");
-  const txt = document.getElementById("statusText");
+  const ahora =
+    new Date();
+
+  const h =
+    ahora.getHours() +
+    ahora.getMinutes() / 60;
+
+  const dia =
+    ahora.getDay();
+
+  const abierto =
+    h >= CONFIG.horaApertura &&
+    h < CONFIG.horaCierre &&
+    dia !== 0;
+
+  const dot =
+    document.getElementById(
+      "statusDot"
+    );
+
+  const txt =
+    document.getElementById(
+      "statusText"
+    );
 
   if (abierto) {
-    dot.className = "dot open";
-    txt.innerHTML = '<span class="txt-open">ABIERTO AHORA</span> · Cerramos a las 19:00';
+
+    dot.className =
+      "dot open";
+
+    txt.innerHTML =
+      '<span class="txt-open">ABIERTO AHORA</span> · Cerramos a las 19:00';
+
   } else {
-    dot.className = "dot closed";
-    txt.innerHTML = '<span class="txt-closed">CERRADO</span> · Abrimos a las 8:00';
+
+    dot.className =
+      "dot closed";
+
+    txt.innerHTML =
+      '<span class="txt-closed">CERRADO</span> · Abrimos a las 8:00';
+
   }
+
 }
+
 actualizarEstado();
-setInterval(actualizarEstado, 60000);
 
-// ==================== TOAST ====================
-function toast(msg, type = "success") {
-  const cont = $("#toastContainer");
-  const el = document.createElement("div");
-  const isError = type === "error";
-  el.className = `pop-in relative overflow-hidden pointer-events-auto rounded-2xl px-4 py-3 shadow-2xl backdrop-blur-md border text-xs font-semibold flex items-center gap-2.5 max-w-[90vw] ${
-    isError ? "bg-[#ef4444]/15 border-[#ef4444]/40 text-[#fca5a5] toast-error"
-            : "bg-[#22c55e]/15 border-[#22c55e]/40 text-[#86efac]"
-  }`;
-  el.innerHTML = `<i class="fa-solid ${isError ? "fa-circle-exclamation" : "fa-circle-check"}"></i><span>${esc(msg)}</span><span class="toast-bar"></span>`;
+setInterval(
+  actualizarEstado,
+  60000
+);
+
+
+/* =========================================
+   TOAST
+========================================= */
+
+function toast(
+  msg,
+  type = "success"
+) {
+
+  const cont =
+    $("#toastContainer");
+
+  const el =
+    document.createElement("div");
+
+  const isError =
+    type === "error";
+
+  el.className =
+    `pop-in relative overflow-hidden pointer-events-auto rounded-2xl px-4 py-3 shadow-2xl backdrop-blur-md border text-xs font-semibold flex items-center gap-2.5 max-w-[90vw] ${
+      isError
+        ? "bg-[#ef4444]/15 border-[#ef4444]/40 text-[#fca5a5] toast-error"
+        : "bg-[#22c55e]/15 border-[#22c55e]/40 text-[#86efac]"
+    }`;
+
+  el.innerHTML = `
+    <i class="fa-solid ${
+      isError
+        ? "fa-circle-exclamation"
+        : "fa-circle-check"
+    }"></i>
+
+    <span>
+      ${esc(msg)}
+    </span>
+
+    <span class="toast-bar"></span>
+  `;
+
   cont.appendChild(el);
+
   setTimeout(() => {
-    el.style.transition = "opacity .35s, transform .35s";
-    el.style.opacity = "0";
-    el.style.transform = "translateX(30px)";
-    setTimeout(() => el.remove(), 350);
+
+    el.style.transition =
+      "opacity .35s, transform .35s";
+
+    el.style.opacity =
+      "0";
+
+    el.style.transform =
+      "translateX(30px)";
+
+    setTimeout(
+      () => el.remove(),
+      350
+    );
+
   }, 3200);
+
 }
 
-// ==================== CARRITO ====================
+
+/* =========================================
+   CARRITO / COTIZACIÓN
+========================================= */
+
 let cart = [];
-const cartFab = $("#cartFab");
-const cartDrawer = $("#cartDrawer");
-const cartBk = $("#cartBackdrop");
-const mobileCartBar = $("#mobileCartBar");
+
+const cartFab =
+  $("#cartFab");
+
+const cartDrawer =
+  $("#cartDrawer");
+
+const cartBk =
+  $("#cartBackdrop");
+
+const mobileCartBar =
+  $("#mobileCartBar");
+
 
 function renderCart() {
-  const count = cart.reduce((s,i) => s + i.cantidad, 0);
-  const total = cart.reduce((s,i) => s + i.precio * i.cantidad, 0);
 
-  $$(".cart-count", cartFab).forEach(el => el.textContent = count);
-  cartFab.classList.toggle("opacity-0", count === 0);
-  cartFab.classList.toggle("pointer-events-none", count === 0);
-  if (count > 0) cartFab.classList.add("pulse");
-  else cartFab.classList.remove("pulse");
+  const count =
+    cart.reduce(
+      (s, i) =>
+        s + i.cantidad,
+      0
+    );
 
-  $$(".cart-count", mobileCartBar).forEach(el => el.textContent = count);
-  $("#mobileCartTotal").textContent = money(total);
-  mobileCartBar.classList.toggle("show", count > 0);
 
-  $("#cartSubtitle").textContent = count === 0
-    ? "Aún no agregas nada"
-    : `${count} ${count === 1 ? "producto" : "productos"}`;
-  $("#cartTotal").textContent = money(total);
+  /* DESKTOP */
 
-  const body = $("#cartBody");
+  $$(".cart-count", cartFab)
+    .forEach(el => {
+
+      el.textContent =
+        count;
+
+    });
+
+
+  cartFab.classList.toggle(
+    "opacity-0",
+    count === 0
+  );
+
+  cartFab.classList.toggle(
+    "pointer-events-none",
+    count === 0
+  );
+
+
+  if (count > 0) {
+
+    cartFab.classList.add(
+      "pulse"
+    );
+
+  } else {
+
+    cartFab.classList.remove(
+      "pulse"
+    );
+
+  }
+
+
+  /* MOBILE */
+
+  $$(".cart-count", mobileCartBar)
+    .forEach(el => {
+
+      el.textContent =
+        count;
+
+    });
+
+
+  $("#mobileCartText")
+    .textContent =
+      `${count} ${
+        count === 1
+          ? "producto"
+          : "productos"
+      }`;
+
+
+  mobileCartBar.classList.toggle(
+    "show",
+    count > 0
+  );
+
+
+  $("#cartSubtitle")
+    .textContent =
+      count === 0
+        ? "Aún no agregas productos"
+        : `${count} ${
+            count === 1
+              ? "producto seleccionado"
+              : "productos seleccionados"
+          }`;
+
+
+  const body =
+    $("#cartBody");
+
+
   if (count === 0) {
+
     body.innerHTML = `
+
       <div class="text-center py-10 space-y-3">
-        <div class="text-5xl">🎨</div>
-        <p class="text-sm text-gray-400">Tu cotización está vacía</p>
-      </div>`;
+
+        <div class="text-5xl">
+          🎨
+        </div>
+
+        <p class="text-sm text-gray-400">
+          Selecciona pinturas o accesorios para solicitar una cotización.
+        </p>
+
+      </div>
+
+    `;
+
     return;
   }
-  body.innerHTML = cart.map((it, i) => `
-    <div class="cart-item">
-      <div class="cart-item-img" style="background-image:url('${it.imagen}')"></div>
-      <div class="flex-1 min-w-0">
-        <p class="text-sm font-bold truncate">${esc(it.nombre)}</p>
-        <p class="text-[11px] text-gray-500">${money(it.precio)} c/u</p>
-      </div>
-      <div class="flex items-center gap-1.5">
-        <button class="qty-btn" data-qty="-" data-idx="${i}"><i class="fa-solid fa-minus"></i></button>
-        <span class="text-sm font-bold min-w-[20px] text-center">${it.cantidad}</span>
-        <button class="qty-btn" data-qty="+" data-idx="${i}"><i class="fa-solid fa-plus"></i></button>
-      </div>
-    </div>
-  `).join("");
 
-  $$("[data-qty]", body).forEach(b => b.addEventListener("click", () => {
-    const idx = Number(b.dataset.idx);
-    if (b.dataset.qty === "+") cart[idx].cantidad++;
-    else { cart[idx].cantidad--; if (cart[idx].cantidad <= 0) cart.splice(idx, 1); }
-    renderCart();
-  }));
+
+  body.innerHTML =
+    cart.map(
+      (it, i) => `
+
+      <div class="cart-item">
+
+        <div
+          class="cart-item-img"
+          style="background-image:url('${it.imagen}')"
+        ></div>
+
+        <div class="flex-1 min-w-0">
+
+          <p class="text-sm font-bold truncate">
+            ${esc(it.nombre)}
+          </p>
+
+          <p class="text-[10px] text-gray-500 uppercase tracking-wider">
+            Producto para cotización
+          </p>
+
+        </div>
+
+        <div class="flex items-center gap-1.5">
+
+          <button
+            class="qty-btn"
+            data-qty="-"
+            data-idx="${i}"
+          >
+            <i class="fa-solid fa-minus"></i>
+          </button>
+
+          <span
+            class="text-sm font-bold min-w-[20px] text-center"
+          >
+            ${it.cantidad}
+          </span>
+
+          <button
+            class="qty-btn"
+            data-qty="+"
+            data-idx="${i}"
+          >
+            <i class="fa-solid fa-plus"></i>
+          </button>
+
+        </div>
+
+      </div>
+
+    `
+    ).join("");
+
+
+  $$("[data-qty]", body)
+    .forEach(b => {
+
+      b.addEventListener(
+        "click",
+        () => {
+
+          const idx =
+            Number(
+              b.dataset.idx
+            );
+
+          if (
+            b.dataset.qty === "+"
+          ) {
+
+            cart[idx].cantidad++;
+
+          } else {
+
+            cart[idx].cantidad--;
+
+            if (
+              cart[idx].cantidad <= 0
+            ) {
+
+              cart.splice(
+                idx,
+                1
+              );
+
+            }
+
+          }
+
+          renderCart();
+
+        }
+      );
+
+    });
+
 }
+
+
+/* =========================================
+   AGREGAR A COTIZACIÓN
+========================================= */
 
 function addToCart(item) {
-  const found = cart.find(i => i.key === item.key);
-  if (found) found.cantidad++;
-  else cart.push({ ...item, cantidad: 1 });
+
+  const found =
+    cart.find(
+      i =>
+        i.key === item.key
+    );
+
+
+  if (found) {
+
+    found.cantidad++;
+
+  } else {
+
+    cart.push({
+
+      ...item,
+
+      cantidad: 1
+
+    });
+
+  }
+
+
   renderCart();
-  cartFab.classList.add("bump");
-  setTimeout(() => cartFab.classList.remove("bump"), 300);
-  toast(`${item.nombre} agregado 🎨`);
+
+
+  cartFab.classList.add(
+    "bump"
+  );
+
+
+  setTimeout(
+    () =>
+      cartFab.classList.remove(
+        "bump"
+      ),
+    300
+  );
+
+
+  toast(
+    `${item.nombre} agregado a tu cotización 🎨`
+  );
+
 }
 
-// ==================== DRAWER ====================
-function openDrawer() { cartDrawer.classList.add("open"); cartBk.classList.add("open"); document.body.style.overflow = "hidden"; }
-function closeDrawer() { cartDrawer.classList.remove("open"); cartBk.classList.remove("open"); document.body.style.overflow = ""; }
 
-cartFab.addEventListener("click", openDrawer);
-document.querySelector("[data-action='open-cart']").addEventListener("click", openDrawer);
-$("#closeCart").addEventListener("click", closeDrawer);
-cartBk.addEventListener("click", closeDrawer);
-document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
+/* =========================================
+   DRAWER
+========================================= */
 
-// ==================== RENDER PINTURAS ====================
+function openDrawer() {
+
+  cartDrawer.classList.add(
+    "open"
+  );
+
+  cartBk.classList.add(
+    "open"
+  );
+
+  document.body.style.overflow =
+    "hidden";
+
+}
+
+
+function closeDrawer() {
+
+  cartDrawer.classList.remove(
+    "open"
+  );
+
+  cartBk.classList.remove(
+    "open"
+  );
+
+  document.body.style.overflow =
+    "";
+
+}
+
+
+cartFab.addEventListener(
+  "click",
+  openDrawer
+);
+
+
+document
+  .querySelector(
+    "[data-action='open-cart']"
+  )
+  .addEventListener(
+    "click",
+    openDrawer
+  );
+
+
+$("#closeCart")
+  .addEventListener(
+    "click",
+    closeDrawer
+  );
+
+
+cartBk.addEventListener(
+  "click",
+  closeDrawer
+);
+
+
+document.addEventListener(
+  "keydown",
+  e => {
+
+    if (
+      e.key === "Escape"
+    ) {
+
+      closeDrawer();
+
+    }
+
+  }
+);
+
+
+/* =========================================
+   PINTURAS
+========================================= */
+
 function renderPinturas() {
-  const grid = $("#pinturasGrid");
-  if (!CATALOGO.pinturas.length) {
-    grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-500">Sin productos</div>`;
+
+  const grid =
+    $("#pinturasGrid");
+
+
+  if (
+    !CATALOGO.pinturas.length
+  ) {
+
+    grid.innerHTML = `
+
+      <div
+        class="col-span-full text-center py-12 text-gray-500"
+      >
+        Sin productos disponibles
+      </div>
+
+    `;
+
     return;
   }
-  grid.innerHTML = CATALOGO.pinturas.map((p, idx) => {
-    const img = IMG.pintura;
-    const badge = p.badge === "hot"
-      ? `<span class="badge-hot absolute top-3 left-3 z-10 text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-full"><i class="fa-solid fa-fire"></i> Popular</span>`
-      : p.badge === "new"
-      ? `<span class="badge-new absolute top-3 left-3 z-10 text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-full"><i class="fa-solid fa-star"></i> Nuevo</span>`
-      : "";
 
-    const sizes = p.presentaciones.map((t, i) => `
-      <button type="button" class="size-btn ${i === 0 ? "active" : ""}" data-size="${t.id}">
-        <span class="sb-label">${esc(t.label)}</span>
-        <span class="sb-sub">${esc(t.sub || "")}</span>
-        <span class="sb-price">${money(t.precio)}</span>
-      </button>
-    `).join("");
 
-    return `
-      <article class="product-card bg-[#12121c] border border-white/10 rounded-3xl overflow-hidden flex flex-col" style="animation-delay:${idx*50}ms" data-id="${p.id}">
-        <div class="img-frame h-44 sm:h-52 relative">
-          ${badge}
-          <img src="${img}" alt="${esc(p.nombre)}" loading="lazy" class="product-img w-full h-full object-cover" onerror="this.src='${IMG.def}'">
-          <div class="absolute top-3 right-3 z-10 text-3xl">🎨</div>
-        </div>
-        <div class="p-4 sm:p-5 flex-1 flex flex-col gap-3 relative z-10">
-          <div class="flex items-start justify-between gap-3">
-            <h3 class="font-bold text-base leading-tight">${esc(p.nombre)}</h3>
-            <span class="text-[#facc15] font-display text-2xl shrink-0 price-display">${money(p.presentaciones[0].precio)}</span>
-          </div>
-          <p class="text-xs text-gray-400 line-clamp-2">${esc(p.desc || "")}</p>
-          <div class="mt-1">
-            <p class="text-[10px] uppercase tracking-wider text-gray-500 font-bold mb-2">Elige presentación</p>
-            <div class="grid grid-cols-3 gap-2">${sizes}</div>
-          </div>
-          <button type="button" class="add-btn mt-auto bg-gradient-to-r from-[#ec4899] to-[#a855f7] text-white font-bold py-3.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-[#a855f7]/30">
-            <i class="fa-solid fa-cart-plus"></i> Agregar a cotización
-          </button>
-        </div>
-      </article>
-    `;
-  }).join("");
+  const colores = [
 
-  // Listeners de tamaño
-  $$(".product-card", grid).forEach(card => {
-    const btns = $$(".size-btn", card);
-    const priceDisplay = $(".price-display", card);
-    btns.forEach(btn => {
-      btn.addEventListener("click", () => {
-        btns.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        const t = CATALOGO.pinturas.find(x => x.id === Number(card.dataset.id)).presentaciones.find(x => x.id === btn.dataset.size);
-        priceDisplay.textContent = money(t.precio);
-      });
+    "#ec4899",
+    "#a855f7",
+    "#06b6d4",
+    "#f97316",
+    "#22c55e",
+    "#3b82f6"
+
+  ];
+
+
+  const iconos = [
+
+    "fa-spray-can-sparkles",
+    "fa-palette",
+    "fa-star",
+    "fa-fire",
+    "fa-droplet",
+    "fa-wand-magic-sparkles"
+
+  ];
+
+
+  grid.className =
+    "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6";
+
+
+  grid.innerHTML =
+    CATALOGO.pinturas
+      .map(
+        (p, idx) => {
+
+          const color =
+            colores[
+              idx %
+              colores.length
+            ];
+
+
+          const icon =
+            iconos[
+              idx %
+              iconos.length
+            ];
+
+
+          const presentaciones =
+            (
+              p.presentaciones ||
+              []
+            )
+              .map(
+                t => `
+
+                  <span class="paint-finish">
+
+                    <i class="fa-solid fa-box"></i>
+
+                    ${esc(
+                      t.label ||
+                      t.nombre ||
+                      t.id
+                    )}
+
+                  </span>
+
+                `
+              )
+              .join("");
+
+
+          let badge;
+
+
+          if (
+            p.badge === "hot"
+          ) {
+
+            badge = `
+
+              <span class="paint-label">
+
+                <i
+                  class="fa-solid fa-fire text-orange-400"
+                ></i>
+
+                Más buscada
+
+              </span>
+
+            `;
+
+          } else if (
+            p.badge === "new"
+          ) {
+
+            badge = `
+
+              <span class="paint-label">
+
+                <i
+                  class="fa-solid fa-sparkles text-yellow-300"
+                ></i>
+
+                Nueva
+
+              </span>
+
+            `;
+
+          } else {
+
+            badge = `
+
+              <span class="paint-label">
+
+                <i
+                  class="fa-solid ${icon}"
+                ></i>
+
+                Línea automotriz
+
+              </span>
+
+            `;
+
+          }
+
+
+          return `
+
+            <article
+              class="paint-card"
+              style="
+                --paint-color:${color};
+                animation-delay:${idx * 80}ms;
+              "
+            >
+
+              <div class="paint-art">
+
+                ${badge}
+
+                <div class="paint-splash one"></div>
+
+                <div class="paint-splash two"></div>
+
+                <div class="paint-can"></div>
+
+                <div
+                  class="absolute bottom-3 left-4 right-4 z-10"
+                >
+
+                  <div
+                    class="flex justify-center gap-2 flex-wrap"
+                  >
+
+                    ${presentaciones}
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <div
+                class="px-5 pb-5 relative z-10"
+              >
+
+                <div
+                  class="flex items-center gap-2 mb-2"
+                >
+
+                  <span
+                    class="w-2.5 h-2.5 rounded-full"
+                    style="
+                      background:${color};
+                      box-shadow:0 0 14px ${color};
+                    "
+                  ></span>
+
+                  <span
+                    class="text-[9px] uppercase tracking-[.18em] text-gray-500 font-black"
+                  >
+                    TecniColor Paint System
+                  </span>
+
+                </div>
+
+
+                <h3
+                  class="font-display text-3xl leading-none"
+                >
+                  ${esc(p.nombre)}
+                </h3>
+
+
+                <p
+                  class="text-xs text-gray-400 mt-2 leading-relaxed"
+                >
+                  ${esc(
+                    p.desc ||
+                    "Pintura automotriz para acabados profesionales."
+                  )}
+                </p>
+
+
+                <div
+                  class="mt-4 flex items-center gap-2 text-xs text-gray-300"
+                >
+
+                  <i
+                    class="fa-solid fa-circle-check text-green-400"
+                  ></i>
+
+                  Acabado profesional
+
+                </div>
+
+
+                <button
+                  type="button"
+                  class="paint-cta w-full mt-5 py-3.5 rounded-2xl text-white font-black text-xs flex items-center justify-center gap-2"
+                  data-paint-id="${p.id}"
+                >
+
+                  <i class="fa-solid fa-comments"></i>
+
+                  Solicitar cotización
+
+                </button>
+
+              </div>
+
+            </article>
+
+          `;
+
+        }
+      )
+      .join("");
+
+
+  $$("[data-paint-id]", grid)
+    .forEach(btn => {
+
+      btn.addEventListener(
+        "click",
+        () => {
+
+          const id =
+            Number(
+              btn.dataset.paintId
+            );
+
+
+          const p =
+            CATALOGO.pinturas.find(
+              x =>
+                Number(x.id) === id
+            );
+
+
+          if (!p) return;
+
+
+          const presentaciones =
+            (
+              p.presentaciones ||
+              []
+            )
+              .map(
+                x =>
+                  x.label ||
+                  x.nombre ||
+                  x.id
+              )
+              .join(", ");
+
+
+          const mensaje =
+            "¡Hola TecniColor Encalada! 🎨%0A%0A" +
+
+            "Estoy interesado en:%0A" +
+
+            "*" +
+            encodeURIComponent(
+              p.nombre
+            ) +
+            "*%0A%0A" +
+
+            "Presentaciones: " +
+
+            encodeURIComponent(
+              presentaciones
+            ) +
+
+            "%0A%0A" +
+
+            "¿Me pueden ayudar con una cotización?";
+
+
+          window.open(
+            `https://wa.me/${CONFIG.whatsapp}?text=${mensaje}`,
+            "_blank"
+          );
+
+        }
+      );
+
     });
-  });
 
-  // Listeners de agregar
-  $$(".add-btn", grid).forEach(btn => {
-    btn.addEventListener("click", () => {
-      const card = btn.closest(".product-card");
-      const id = Number(card.dataset.id);
-      const p = CATALOGO.pinturas.find(m => m.id === id);
-      const activeSize = $(".size-btn.active", card);
-      const t = p.presentaciones.find(x => x.id === activeSize.dataset.size);
-      const imgEl = $(".product-img", card);
-
-      addToCart({
-        key: `pintura-${p.id}-${t.id}`,
-        id: p.id,
-        nombre: `${p.nombre} (${t.label})`,
-        precio: t.precio,
-        imagen: imgEl ? imgEl.src : IMG.pintura
-      });
-    });
-  });
 }
 
-// ==================== RENDER INSUMOS ====================
+
+/* =========================================
+   INSUMOS
+========================================= */
+
 function renderInsumos() {
-  const grid = $("#insumosGrid");
-  grid.innerHTML = CATALOGO.insumos.map((p, idx) => {
-    const img = IMG.spray;
-    const sizes = p.presentaciones.map((t, i) => `
-      <button type="button" class="size-btn ${i === 0 ? "active" : ""}" data-size="${t.id}">
-        <span class="sb-label">${esc(t.label)}</span>
-        <span class="sb-sub">${esc(t.sub || "")}</span>
-        <span class="sb-price">${money(t.precio)}</span>
-      </button>
-    `).join("");
 
-    return `
-      <article class="product-card bg-[#12121c] border border-white/10 rounded-3xl overflow-hidden flex flex-col" style="animation-delay:${idx*50}ms" data-id="${p.id}">
-        <div class="img-frame h-44 sm:h-52 relative">
-          <img src="${img}" alt="${esc(p.nombre)}" loading="lazy" class="product-img w-full h-full object-cover" onerror="this.src='${IMG.def}'">
-          <div class="absolute top-3 right-3 z-10 text-3xl">🧴</div>
-        </div>
-        <div class="p-4 sm:p-5 flex-1 flex flex-col gap-3 relative z-10">
-          <div class="flex items-start justify-between gap-3">
-            <h3 class="font-bold text-base leading-tight">${esc(p.nombre)}</h3>
-            <span class="text-[#facc15] font-display text-2xl shrink-0 price-display">${money(p.presentaciones[0].precio)}</span>
-          </div>
-          <p class="text-xs text-gray-400 line-clamp-2">${esc(p.desc || "")}</p>
-          <div class="mt-1">
-            <p class="text-[10px] uppercase tracking-wider text-gray-500 font-bold mb-2">Elige presentación</p>
-            <div class="grid grid-cols-${Math.min(p.presentaciones.length, 3)} gap-2">${sizes}</div>
-          </div>
-          <button type="button" class="add-btn mt-auto bg-gradient-to-r from-[#06b6d4] to-[#3b82f6] text-white font-bold py-3.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-[#06b6d4]/30">
-            <i class="fa-solid fa-cart-plus"></i> Agregar a cotización
-          </button>
-        </div>
-      </article>
-    `;
-  }).join("");
+  const grid =
+    $("#insumosGrid");
 
-  $$(".product-card", grid).forEach(card => {
-    const btns = $$(".size-btn", card);
-    const priceDisplay = $(".price-display", card);
-    btns.forEach(btn => {
-      btn.addEventListener("click", () => {
-        btns.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        const t = CATALOGO.insumos.find(x => x.id === Number(card.dataset.id)).presentaciones.find(x => x.id === btn.dataset.size);
-        priceDisplay.textContent = money(t.precio);
-      });
+
+  grid.innerHTML =
+    CATALOGO.insumos
+      .map(
+        (p, idx) => {
+
+          const sizes =
+            (
+              p.presentaciones ||
+              []
+            )
+              .map(
+                t => `
+
+                  <span
+                    class="paint-finish"
+                  >
+
+                    <i class="fa-solid fa-box"></i>
+
+                    ${esc(
+                      t.label ||
+                      t.nombre ||
+                      t.id
+                    )}
+
+                  </span>
+
+                `
+              )
+              .join("");
+
+
+          return `
+
+            <article
+              class="product-card bg-[#12121c] border border-white/10 rounded-3xl overflow-hidden flex flex-col"
+              style="
+                animation-delay:${idx * 50}ms;
+              "
+              data-id="${p.id}"
+            >
+
+              <div
+                class="h-44 sm:h-52 relative overflow-hidden"
+              >
+
+                <img
+                  src="${IMG.spray}"
+                  alt="${esc(p.nombre)}"
+                  loading="lazy"
+                  class="w-full h-full object-cover hover:scale-110 transition duration-700"
+                  onerror="this.src='${IMG.def}'"
+                >
+
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-[#12121c] via-transparent to-transparent"
+                ></div>
+
+                <div
+                  class="absolute top-3 right-3 text-3xl"
+                >
+                  🧴
+                </div>
+
+              </div>
+
+
+              <div
+                class="p-4 sm:p-5 flex-1 flex flex-col gap-3"
+              >
+
+                <h3
+                  class="font-bold text-base leading-tight"
+                >
+                  ${esc(p.nombre)}
+                </h3>
+
+
+                <p
+                  class="text-xs text-gray-400 line-clamp-2"
+                >
+                  ${esc(p.desc || "")}
+                </p>
+
+
+                <div
+                  class="flex flex-wrap gap-2 mt-1"
+                >
+
+                  ${sizes}
+
+                </div>
+
+
+                <button
+                  type="button"
+                  class="mt-auto bg-gradient-to-r from-[#06b6d4] to-[#3b82f6] text-white font-bold py-3.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-[#06b6d4]/30"
+                  data-add-insumo="${p.id}"
+                >
+
+                  <i class="fa-solid fa-plus"></i>
+
+                  Agregar a cotización
+
+                </button>
+
+              </div>
+
+            </article>
+
+          `;
+
+        }
+      )
+      .join("");
+
+
+  $$("[data-add-insumo]", grid)
+    .forEach(btn => {
+
+      btn.addEventListener(
+        "click",
+        () => {
+
+          const id =
+            Number(
+              btn.dataset.addInsumo
+            );
+
+
+          const p =
+            CATALOGO.insumos.find(
+              x =>
+                Number(x.id) === id
+            );
+
+
+          if (!p) return;
+
+
+          addToCart({
+
+            key:
+              `insumo-${p.id}`,
+
+            id:
+              p.id,
+
+            nombre:
+              p.nombre,
+
+            imagen:
+              IMG.spray
+
+          });
+
+        }
+      );
+
     });
-  });
 
-  $$(".add-btn", grid).forEach(btn => {
-    btn.addEventListener("click", () => {
-      const card = btn.closest(".product-card");
-      const id = Number(card.dataset.id);
-      const p = CATALOGO.insumos.find(m => m.id === id);
-      const activeSize = $(".size-btn.active", card);
-      const t = p.presentaciones.find(x => x.id === activeSize.dataset.size);
-      const imgEl = $(".product-img", card);
-
-      addToCart({
-        key: `insumo-${p.id}-${t.id}`,
-        id: p.id,
-        nombre: `${p.nombre} (${t.label})`,
-        precio: t.precio,
-        imagen: imgEl ? imgEl.src : IMG.spray
-      });
-    });
-  });
 }
 
-// ==================== RENDER ACCESORIOS ====================
+
+/* =========================================
+   ACCESORIOS
+========================================= */
+
 function renderAccesorios() {
-  const grid = $("#accesoriosGrid");
-  grid.innerHTML = CATALOGO.accesorios.map((p, idx) => `
-    <article class="product-card bg-[#12121c] border border-white/10 rounded-2xl overflow-hidden flex flex-col p-4" style="animation-delay:${idx*50}ms" data-id="${p.id}">
-      <div class="grid place-items-center w-14 h-14 rounded-2xl bg-gradient-to-br from-[#facc15] to-[#f97316] text-white text-2xl mx-auto mb-3">
-        <i class="fa-solid ${p.icon || 'fa-tools'}"></i>
-      </div>
-      <h3 class="font-bold text-xs text-center leading-tight">${esc(p.nombre)}</h3>
-      <div class="flex items-center justify-between mt-3 pt-3 border-t border-white/8">
-        <span class="font-display text-xl text-[#facc15]">${money(p.precio)}</span>
-        <button type="button" class="add-acc w-9 h-9 rounded-xl bg-gradient-to-br from-[#facc15] to-[#f97316] text-white grid place-items-center shadow-lg shadow-[#facc15]/40" data-id="${p.id}">
-          <i class="fa-solid fa-plus text-xs"></i>
-        </button>
-      </div>
-    </article>
-  `).join("");
 
-  $$(".add-acc", grid).forEach(btn => {
-    btn.addEventListener("click", () => {
-      const id = Number(btn.dataset.id);
-      const p = CATALOGO.accesorios.find(m => m.id === id);
-      addToCart({
-        key: `accesorio-${p.id}`,
-        id: p.id,
-        nombre: p.nombre,
-        precio: p.precio,
-        imagen: IMG.tools
-      });
+  const grid =
+    $("#accesoriosGrid");
+
+
+  grid.innerHTML =
+    CATALOGO.accesorios
+      .map(
+        (p, idx) => `
+
+          <article
+            class="product-card bg-[#12121c] border border-white/10 rounded-2xl overflow-hidden flex flex-col p-4"
+            style="
+              animation-delay:${idx * 50}ms;
+            "
+          >
+
+            <div
+              class="grid place-items-center w-14 h-14 rounded-2xl bg-gradient-to-br from-[#facc15] to-[#f97316] text-white text-2xl mx-auto mb-3"
+            >
+
+              <i
+                class="fa-solid ${
+                  p.icon ||
+                  "fa-tools"
+                }"
+              ></i>
+
+            </div>
+
+
+            <h3
+              class="font-bold text-xs text-center leading-tight"
+            >
+              ${esc(p.nombre)}
+            </h3>
+
+
+            <div
+              class="flex items-center justify-between mt-3 pt-3 border-t border-white/8 gap-2"
+            >
+
+              <span
+                class="text-[9px] uppercase tracking-widest text-gray-500 font-bold"
+              >
+                Consultar precio
+              </span>
+
+              <button
+                type="button"
+                class="add-acc w-9 h-9 rounded-xl bg-gradient-to-br from-[#facc15] to-[#f97316] text-white grid place-items-center shadow-lg shadow-[#facc15]/40 shrink-0"
+                data-id="${p.id}"
+              >
+
+                <i class="fa-solid fa-plus text-xs"></i>
+
+              </button>
+
+            </div>
+
+          </article>
+
+        `
+      )
+      .join("");
+
+
+  $$(".add-acc", grid)
+    .forEach(btn => {
+
+      btn.addEventListener(
+        "click",
+        () => {
+
+          const id =
+            Number(
+              btn.dataset.id
+            );
+
+
+          const p =
+            CATALOGO.accesorios.find(
+              x =>
+                Number(x.id) === id
+            );
+
+
+          if (!p) return;
+
+
+          addToCart({
+
+            key:
+              `accesorio-${p.id}`,
+
+            id:
+              p.id,
+
+            nombre:
+              p.nombre,
+
+            imagen:
+              IMG.tools
+
+          });
+
+        }
+      );
+
     });
-  });
+
 }
 
-// ==================== CHECKOUT ====================
-$("#checkoutBtn").addEventListener("click", () => {
-  if (!cart.length) { toast("Tu cotización está vacía", "error"); return; }
-  const total = cart.reduce((s,i) => s + i.precio * i.cantidad, 0);
-  if (total < CONFIG.compraMinima) {
-    toast(`El mínimo para cotización es ${money(CONFIG.compraMinima)}`, "error");
-    return;
+
+/* =========================================
+   SERVICIOS
+========================================= */
+
+function solicitarServicio(
+  servicio
+) {
+
+  const mensaje =
+    "¡Hola TecniColor Encalada! 🎨%0A%0A" +
+
+    "Estoy interesado en el servicio:%0A" +
+
+    "*" +
+    encodeURIComponent(
+      servicio
+    ) +
+    "*%0A%0A" +
+
+    "Quisiera solicitar una cotización.";
+
+
+  window.open(
+    `https://wa.me/${CONFIG.whatsapp}?text=${mensaje}`,
+    "_blank"
+  );
+
+}
+
+
+/* =========================================
+   CHECKOUT WHATSAPP
+========================================= */
+
+$("#checkoutBtn")
+  .addEventListener(
+    "click",
+    () => {
+
+      if (!cart.length) {
+
+        toast(
+          "Selecciona al menos un producto",
+          "error"
+        );
+
+        return;
+      }
+
+
+      let msg =
+        "¡Hola TecniColor Encalada! 🎨%0A%0A" +
+
+        "Quiero solicitar una cotización para:%0A%0A";
+
+
+      cart.forEach(i => {
+
+        msg +=
+          "• " +
+          i.cantidad +
+          "x " +
+          encodeURIComponent(
+            i.nombre
+          ) +
+          "%0A";
+
+      });
+
+
+      msg +=
+        "%0A¿Me pueden indicar disponibilidad y precio?%0A%0A" +
+
+        "¡Gracias!";
+
+
+      window.open(
+        `https://wa.me/${CONFIG.whatsapp}?text=${msg}`,
+        "_blank"
+      );
+
+    }
+  );
+
+
+/* =========================================
+   SINCRONIZACIÓN ADMIN
+========================================= */
+
+window.addEventListener(
+  "storage",
+  e => {
+
+    if (
+      e.key === "tc_catalogo"
+    ) {
+
+      CATALOGO =
+        cargarCatalogo();
+
+
+      renderPinturas();
+
+      renderInsumos();
+
+      renderAccesorios();
+
+
+      toast(
+        "Catálogo actualizado ✨"
+      );
+
+    }
+
   }
-  let msg = "¡Hola TecniColor Encalada! 🎨 Quiero cotizar:%0A%0A";
-  cart.forEach(i => { msg += `• ${i.cantidad}x ${i.nombre} — ${money(i.precio * i.cantidad)}%0A`; });
-  msg += `%0A*Total: ${money(total)}*%0A%0A¡Gracias!`;
-  window.open(`https://wa.me/${CONFIG.whatsapp}?text=${msg}`, "_blank");
-});
+);
 
-// ==================== SYNC CON ADMIN ====================
-window.addEventListener("storage", e => {
-  if (e.key === "tc_catalogo") {
-    CATALOGO = cargarCatalogo();
-    renderPinturas();
-    renderInsumos();
-    renderAccesorios();
-    toast("Catálogo actualizado ✨");
+
+/* =========================================
+   SCROLL PROGRESS
+========================================= */
+
+window.addEventListener(
+  "scroll",
+  () => {
+
+    const h =
+      document.documentElement;
+
+    const sc =
+      h.scrollHeight -
+      h.clientHeight;
+
+    const pct =
+      sc > 0
+        ? (h.scrollTop / sc) * 100
+        : 0;
+
+
+    $("#scrollProgress")
+      .style.width =
+        pct + "%";
+
+  },
+  {
+    passive: true
   }
-});
+);
 
-// ==================== SCROLL PROGRESS ====================
-window.addEventListener("scroll", () => {
-  const h = document.documentElement;
-  const sc = h.scrollHeight - h.clientHeight;
-  const pct = sc > 0 ? (h.scrollTop / sc) * 100 : 0;
-  $("#scrollProgress").style.width = pct + "%";
-}, { passive: true });
 
-// ==================== REVEAL ====================
-const io = new IntersectionObserver(entries => {
-  entries.forEach(en => {
-    if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
-  });
-}, { threshold: 0.12 });
-$$(".reveal").forEach(el => io.observe(el));
+/* =========================================
+   REVEAL
+========================================= */
 
-// ==================== INIT ====================
-document.getElementById("year").textContent = new Date().getFullYear();
+const io =
+  new IntersectionObserver(
+    entries => {
+
+      entries.forEach(
+        en => {
+
+          if (
+            en.isIntersecting
+          ) {
+
+            en.target.classList.add(
+              "in"
+            );
+
+            io.unobserve(
+              en.target
+            );
+
+          }
+
+        }
+      );
+
+    },
+    {
+      threshold: .12
+    }
+  );
+
+
+$$(".reveal")
+  .forEach(
+    el =>
+      io.observe(el)
+  );
+
+
+/* =========================================
+   AÑO
+========================================= */
+
+document
+  .getElementById("year")
+  .textContent =
+    new Date()
+      .getFullYear();
+
+
+/* =========================================
+   INIT
+========================================= */
+
 renderPinturas();
+
 renderInsumos();
+
 renderAccesorios();
+
 renderCart();
+
 </script>
+
 </body>
 </html>
