@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0a0a0f">
-<title>Admin · Brothers Pizza</title>
+<title>TecniColor Encalada | Pinturas y Accesorios Automotrices - Biblián</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -13,423 +13,1073 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
 
 <style>
-  :root { --bp-accent:#ff4757; --bp-success:#2ed573; --bp-gold:#ffa502; }
+  :root {
+    --tc-bg: #0a0a0f;
+    --tc-panel: #12121c;
+    --tc-pink: #ec4899;
+    --tc-purple: #a855f7;
+    --tc-cyan: #06b6d4;
+    --tc-yellow: #facc15;
+    --tc-green: #22c55e;
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
   * { -webkit-tap-highlight-color: transparent; }
-  body { background:#0a0a0f; color:#f3f4f6; font-family:'Inter',system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
-  .font-display { font-family:'Bebas Neue',sans-serif; letter-spacing:.02em; }
-
-  ::-webkit-scrollbar { width:8px; }
-  ::-webkit-scrollbar-track { background:#12121c; }
-  ::-webkit-scrollbar-thumb { background:#374151; border-radius:999px; }
-
-  .card { background:#12121c; border:1px solid rgba(255,255,255,.08); border-radius:1.5rem; }
-  .input, .select, .textarea {
-    width:100%; background:rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.1);
-    border-radius:.85rem; padding:.7rem .9rem; font-size:.85rem; color:#fff;
-    transition:border-color .25s, box-shadow .25s;
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background-color: var(--tc-bg);
+    color: #f3f4f6;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
-  .input:focus, .select:focus, .textarea:focus {
-    outline:none; border-color:var(--bp-accent);
-    box-shadow:0 0 0 3px rgba(255,71,87,.15);
-  }
-  .label { font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.06em; color:#9ca3af; margin-bottom:.4rem; display:block; }
+  .font-display { font-family: 'Bebas Neue', 'Inter', sans-serif; letter-spacing: .02em; }
 
-  .btn-primary {
-    background:linear-gradient(135deg,#ff4757,#ff6b35); color:#fff;
-    font-weight:800; padding:.75rem 1.25rem; border-radius:.85rem;
-    box-shadow:0 8px 20px -8px rgba(255,71,87,.6);
-    transition:transform .2s, box-shadow .2s; cursor:pointer; border:none;
-  }
-  .btn-primary:hover { transform:translateY(-2px); }
-  .btn-primary:active { transform:scale(.97); }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: #12121c; }
+  ::-webkit-scrollbar-thumb { background: #374151; border-radius: 999px; }
 
-  .btn-ghost {
-    background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1);
-    color:#fff; font-weight:700; padding:.65rem 1.1rem; border-radius:.85rem;
-    cursor:pointer; transition:background .2s;
+  /* ===== MARQUEE ===== */
+  .marquee {
+    overflow: hidden;
+    background: linear-gradient(90deg, #ec4899, #a855f7, #06b6d4, #facc15, #22c55e, #ec4899);
+    background-size: 400% 100%;
+    animation: grad 10s ease infinite;
   }
-  .btn-ghost:hover { background:rgba(255,255,255,.1); }
-
-  .btn-danger {
-    background:rgba(255,71,87,.15); border:1px solid rgba(255,71,87,.4);
-    color:#ff8a94; font-weight:700; padding:.5rem .85rem; border-radius:.7rem;
-    cursor:pointer; transition:background .2s; font-size:.75rem;
+  @keyframes grad {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
   }
-  .btn-danger:hover { background:rgba(255,71,87,.28); }
-
-  .toast {
-    position:fixed; bottom:20px; right:20px; z-index:100;
-    background:#12121c; border:1px solid rgba(46,213,115,.4);
-    padding:.85rem 1.1rem; border-radius:1rem; font-size:.8rem;
-    font-weight:700; box-shadow:0 20px 40px -10px rgba(0,0,0,.7);
-    transform:translateX(120%); transition:transform .4s cubic-bezier(.22,1,.36,1);
-    display:flex; align-items:center; gap:.6rem; max-width:90vw;
+  .marquee-track {
+    display: flex; gap: 2.5rem; width: max-content;
+    padding: 8px 0;
+    animation: scroll 40s linear infinite;
+    color: #fff; font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .05em;
   }
-  .toast.show { transform:translateX(0); }
-  .toast.error { border-color:rgba(255,71,87,.5); color:#ff8a94; }
+  .marquee-track:hover { animation-play-state: paused; }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
 
-  .login-bg {
+  /* ===== STATUS BAR ===== */
+  #statusBar {
+    background: #0a0a0f;
+    border-top: 1px solid rgba(255,255,255,.05);
+    padding: 8px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  #statusBar .dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #6b7280;
+    margin-right: 6px;
+    vertical-align: middle;
+    transition: all .3s;
+  }
+  #statusBar .dot.open {
+    background: #22c55e;
+    animation: pulse-dot 1.8s infinite;
+  }
+  #statusBar .dot.closed { background: #ef4444; }
+  @keyframes pulse-dot {
+    0% { box-shadow: 0 0 0 0 rgba(34,197,94,.7); }
+    70% { box-shadow: 0 0 0 9px rgba(34,197,94,0); }
+    100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+  }
+  .txt-open { color: #22c55e; }
+  .txt-closed { color: #ef4444; }
+
+  /* ===== SCROLL PROGRESS ===== */
+  #scrollProgress {
+    position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+    background: linear-gradient(90deg, #ec4899, #a855f7, #06b6d4, #facc15, #22c55e);
+    z-index: 100; transition: width .08s linear;
+    box-shadow: 0 0 12px rgba(168,85,247,.7);
+  }
+
+  /* ===== HERO ===== */
+  .hero-bg {
     background:
-      radial-gradient(ellipse at top, rgba(255,71,87,.28), transparent 55%),
-      radial-gradient(ellipse at bottom right, rgba(255,165,2,.2), transparent 50%),
-      #0a0a0f;
+      radial-gradient(ellipse at top, rgba(168,85,247,.35), transparent 55%),
+      radial-gradient(ellipse at bottom right, rgba(6,182,212,.28), transparent 50%),
+      radial-gradient(ellipse at bottom left, rgba(236,72,153,.25), transparent 50%),
+      linear-gradient(to bottom, rgba(10,10,15,.75), rgba(10,10,15,.98)),
+      url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1800&auto=format&fit=crop&q=80') center/cover no-repeat;
+  }
+  .gradient-text {
+    background: linear-gradient(90deg, #ec4899, #a855f7, #06b6d4, #facc15, #22c55e, #ec4899);
+    background-size: 300% 100%;
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; animation: grad 6s ease infinite;
+  }
+  .rainbow-text {
+    background: linear-gradient(90deg, #ef4444, #f97316, #facc15, #22c55e, #06b6d4, #3b82f6, #a855f7, #ec4899, #ef4444);
+    background-size: 300% 100%;
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; animation: grad 8s linear infinite;
+  }
+  .fire-text {
+    background: linear-gradient(180deg, #fff 20%, #facc15 60%, #ec4899 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  @keyframes float-y {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-16px) rotate(8deg); }
+  }
+  .float-slow  { animation: float-y 5.5s ease-in-out infinite; }
+  .float-med   { animation: float-y 4.5s ease-in-out infinite; animation-delay: .8s; }
+  .float-fast  { animation: float-y 3.8s ease-in-out infinite; animation-delay: 1.4s; }
+  @keyframes blob {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    33% { transform: translate(30px,-20px) scale(1.1); }
+    66% { transform: translate(-20px,20px) scale(.95); }
+  }
+  .blob { animation: blob 12s ease-in-out infinite; }
+
+  /* ===== CARDS ===== */
+  @keyframes card-in {
+    from { opacity: 0; transform: translateY(22px) scale(.97); }
+    to   { opacity: 1; transform: none; }
+  }
+  .product-card {
+    animation: card-in .55s cubic-bezier(.22,1,.36,1) both;
+    transition: transform .35s, border-color .35s, box-shadow .35s;
+    position: relative; overflow: hidden;
+  }
+  @media (min-width: 768px) {
+    .product-card:hover {
+      border-color: rgba(168,85,247,.65);
+      transform: translateY(-8px);
+      box-shadow: 0 30px 60px -22px rgba(168,85,247,.55);
+    }
+    .product-card:hover .product-img { transform: scale(1.1) rotate(1.5deg); }
+  }
+  .product-card .product-img { transition: transform .8s cubic-bezier(.22,1,.36,1); }
+
+  .img-frame { position: relative; overflow: hidden; background: linear-gradient(135deg, #1f2937, #0f0f18); }
+  .img-frame::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 45%, rgba(10,10,15,.92) 100%);
   }
 
-  @keyframes float-y { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-  .float { animation:float-y 3.5s ease-in-out infinite; }
+  .badge-hot {
+    background: linear-gradient(135deg, #ec4899, #f97316);
+    box-shadow: 0 4px 14px rgba(236,72,153,.55);
+    animation: pulse-badge 2s ease-in-out infinite;
+  }
+  .badge-new {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    box-shadow: 0 4px 14px rgba(34,197,94,.5);
+  }
+  @keyframes pulse-badge {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.07); }
+  }
+
+  .size-btn {
+    padding: 10px 4px; border-radius: 14px;
+    border: 1px solid rgba(255,255,255,.1);
+    background: rgba(0,0,0,.35); color: #9ca3af;
+    font-size: 9px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: .05em;
+    transition: all .25s ease; text-align: center;
+    line-height: 1.2; cursor: pointer;
+    min-height: 66px; display: flex;
+    flex-direction: column; justify-content: center; gap: 2px;
+  }
+  .size-btn .sb-label { font-size: 10px; }
+  .size-btn .sb-sub { font-size: 9px; color: #9ca3af; text-transform: lowercase; font-weight: 600; }
+  .size-btn .sb-price {
+    color: #fff; font-size: 17px; display: block;
+    font-family: 'Bebas Neue', sans-serif;
+  }
+  .size-btn.active {
+    background: linear-gradient(135deg, #a855f7, #06b6d4);
+    border-color: transparent; color: #fff;
+    box-shadow: 0 6px 16px -6px rgba(168,85,247,.7);
+    transform: translateY(-2px);
+  }
+  .size-btn.active .sb-sub { color: rgba(255,255,255,.9); }
+
+  .colabanner {
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, rgba(250,204,21,.15), rgba(236,72,153,.15));
+    border: 1.5px solid rgba(250,204,21,.4);
+  }
+  .colabanner::before {
+    content: ''; position: absolute;
+    top: -50%; right: -20%; width: 60%; height: 200%;
+    background: radial-gradient(circle, rgba(250,204,21,.25), transparent 60%);
+    animation: blob 8s ease-in-out infinite;
+  }
+
+  .btn-glow { position: relative; overflow: hidden; }
+  .btn-glow::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%);
+    transform: translateX(-100%); transition: transform .7s ease;
+  }
+  .btn-glow:hover::before { transform: translateX(100%); }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ===== CART ===== */
+  .cart-fab { transition: transform .3s; }
+  @keyframes fab-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(168,85,247,.65); }
+    70% { box-shadow: 0 0 0 18px rgba(168,85,247,0); }
+    100% { box-shadow: 0 0 0 0 rgba(168,85,247,0); }
+  }
+  .cart-fab.pulse { animation: fab-pulse 1.6s infinite; }
+  .cart-fab .cart-count { transition: transform .25s; }
+  .cart-fab.bump .cart-count { transform: scale(1.35); }
+
+  .mobile-cart-bar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 48;
+    background: rgba(10,10,15,.96);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(255,255,255,.1);
+    padding: 10px 14px calc(10px + var(--safe-bottom));
+    transform: translateY(120%);
+    transition: transform .35s cubic-bezier(.22,1,.36,1);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .mobile-cart-bar.show { transform: translateY(0); }
+  @media (min-width: 768px) { .mobile-cart-bar { display: none !important; } }
+
+  .cart-backdrop {
+    position: fixed; inset: 0; z-index: 55;
+    background: rgba(0,0,0,.7);
+    backdrop-filter: blur(4px);
+    opacity: 0; pointer-events: none;
+    transition: opacity .3s ease;
+  }
+  .cart-backdrop.open { opacity: 1; pointer-events: auto; }
+
+  .cart-drawer {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    background: #12121c;
+    border-radius: 26px 26px 0 0;
+    border-top: 1px solid rgba(255,255,255,.1);
+    max-height: 88vh;
+    display: flex; flex-direction: column;
+    transform: translateY(100%);
+    transition: transform .38s cubic-bezier(.22,1,.36,1);
+    padding-bottom: var(--safe-bottom);
+    box-shadow: 0 -20px 60px rgba(0,0,0,.6);
+  }
+  .cart-drawer.open { transform: translateY(0); }
+  @media (min-width: 640px) {
+    .cart-drawer { left: auto; right: 24px; bottom: 24px; width: 420px; border-radius: 26px; max-height: 80vh; }
+  }
+  .cart-handle {
+    width: 40px; height: 4px; border-radius: 999px;
+    background: rgba(255,255,255,.25);
+    margin: 10px auto 4px;
+  }
+  @media (min-width: 640px) { .cart-handle { display: none; } }
+
+  .cart-body { overflow-y: auto; padding: 8px 20px 12px; flex: 1; }
+  .cart-item { display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+  .cart-item:last-child { border-bottom: none; }
+  .cart-item-img { width: 52px; height: 52px; border-radius: 12px; background-size: cover; background-position: center; flex-shrink: 0; border: 1px solid rgba(255,255,255,.08); }
+  .qty-btn {
+    width: 32px; height: 32px; border-radius: 9px;
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+    color: #fff; display: grid; place-items: center;
+    font-size: 12px; cursor: pointer; transition: all .2s;
+  }
+  .qty-btn:active { background: #a855f7; border-color: #a855f7; transform: scale(.9); }
+
+  @keyframes pop-in { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
+  .pop-in { animation: pop-in .25s ease-out both; }
+
+  @keyframes toast-bar { from { width: 100%; } to { width: 0%; } }
+  .toast-bar { position: absolute; bottom: 0; left: 0; height: 2px; background: linear-gradient(90deg, #22c55e, #a855f7); animation: toast-bar 3.2s linear forwards; }
+  .toast-error .toast-bar { background: linear-gradient(90deg, #ef4444, #dc2626); }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+  }
 </style>
 </head>
-<body class="min-h-screen">
+<body class="min-h-screen flex flex-col selection:bg-[#a855f7] selection:text-white">
 
-<!-- ================= LOGIN ================= -->
-<div id="loginView" class="login-bg min-h-screen grid place-items-center p-5">
-  <div class="card p-8 w-full max-w-sm text-center">
-    <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-[#ff4757] to-[#ff6b35] grid place-items-center text-white text-2xl mb-4 float">
-      <i class="fa-solid fa-pizza-slice"></i>
-    </div>
-    <h1 class="font-display text-3xl mb-1">PANEL ADMIN</h1>
-    <p class="text-xs text-gray-500 mb-6">Brothers Pizza · Biblián</p>
+<div id="scrollProgress"></div>
 
-    <div class="text-left space-y-3">
-      <div>
-        <label class="label">Usuario</label>
-        <input id="loginUser" type="text" class="input" autocomplete="username" placeholder="admin">
-      </div>
-      <div>
-        <label class="label">Contraseña</label>
-        <input id="loginPass" type="password" class="input" autocomplete="current-password" placeholder="••••••">
-      </div>
-      <button id="loginBtn" class="btn-primary w-full mt-2">
-        <i class="fa-solid fa-right-to-bracket mr-1"></i> Ingresar
-      </button>
-      <p class="text-[10px] text-gray-600 text-center pt-2">
-        Demo: <span class="text-[#ffa502] font-bold">admin</span> / <span class="text-[#ffa502] font-bold">brothers2024</span>
-      </p>
-    </div>
+<!-- ===== MARQUEE ===== -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>🎨 Pinturas automotrices de calidad</span>
+    <span>🚗 Acabados profesionales</span>
+    <span>🛠️ Accesorios para pintura</span>
+    <span>🎯 Asesoría personalizada</span>
+    <span>📞 Pedidos: 098 411 3081</span>
+    <span>📍 Biblián · Cañar · Ecuador</span>
+    <span>🎨 Pinturas automotrices de calidad</span>
+    <span>🚗 Acabados profesionales</span>
+    <span>🛠️ Accesorios para pintura</span>
+    <span>🎯 Asesoría personalizada</span>
+    <span>📞 Pedidos: 098 411 3081</span>
+    <span>📍 Biblián · Cañar · Ecuador</span>
   </div>
 </div>
 
-<!-- ================= DASHBOARD ================= -->
-<div id="adminView" class="hidden min-h-screen">
+<!-- ===== HEADER ===== -->
+<header class="sticky top-0 z-40 bg-[#0a0a0f]/92 backdrop-blur-lg border-b border-white/10">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-3">
+    <a href="#" class="flex items-center gap-2.5 shrink-0">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#ec4899] via-[#a855f7] to-[#06b6d4] grid place-items-center text-white shadow-lg shadow-[#a855f7]/40">
+        <i class="fa-solid fa-spray-can-sparkles text-lg"></i>
+      </div>
+      <div class="leading-tight">
+        <span class="font-display text-lg sm:text-2xl tracking-wide block">
+          <span class="rainbow-text">TECNICOLOR</span> ENCALADA
+        </span>
+        <span class="text-[9px] sm:text-[10px] text-gray-400 font-medium tracking-widest uppercase">Biblián, Ecuador</span>
+      </div>
+    </a>
 
-  <!-- Header -->
-  <header class="sticky top-0 z-30 bg-[#0a0a0f]/95 backdrop-blur-lg border-b border-white/10">
-    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between gap-3">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#ff4757] to-[#ff6b35] grid place-items-center text-white">
-          <i class="fa-solid fa-pizza-slice"></i>
+    <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+      <a href="#pinturas" class="text-gray-300 hover:text-[#a855f7] transition">Pinturas</a>
+      <a href="#insumos" class="text-gray-300 hover:text-[#a855f7] transition">Insumos</a>
+      <a href="#accesorios" class="text-gray-300 hover:text-[#a855f7] transition">Accesorios</a>
+      <a href="#servicios" class="text-gray-300 hover:text-[#a855f7] transition">Servicios</a>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href="https://wa.me/593984113081?text=Hola%20TecniColor%20Encalada,%20quiero%20informaci%C3%B3n" target="_blank" rel="noopener"
+         class="hidden sm:flex btn-glow bg-[#22c55e] hover:bg-[#16a34a] text-white px-4 py-2.5 rounded-xl text-xs font-bold transition items-center gap-2 shadow-lg shadow-[#22c55e]/25">
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- BARRA DE ESTADO -->
+  <div id="statusBar">
+    <span class="dot" id="statusDot"></span>
+    <span id="statusText">Cargando horario…</span>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero-bg py-14 sm:py-20 lg:py-28 border-b border-white/10 text-center px-4 relative overflow-hidden">
+  <div class="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-[#ec4899]/30 blur-3xl blob"></div>
+  <div class="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-[#06b6d4]/25 blur-3xl blob" style="animation-delay:2s"></div>
+  <div class="absolute top-1/3 left-1/2 w-72 h-72 rounded-full bg-[#a855f7]/20 blur-3xl blob" style="animation-delay:4s"></div>
+
+  <span class="hidden md:block absolute top-16 left-[8%] text-5xl float-slow opacity-90">🎨</span>
+  <span class="hidden md:block absolute bottom-24 left-[14%] text-4xl float-med opacity-85">🚗</span>
+  <span class="hidden md:block absolute top-24 right-[10%] text-5xl float-fast opacity-90">✨</span>
+  <span class="hidden md:block absolute bottom-20 right-[16%] text-4xl float-slow opacity-85">🛠️</span>
+
+  <div class="max-w-3xl mx-auto space-y-5 relative z-10">
+    <span class="bg-[#a855f7]/10 border border-[#a855f7]/40 text-[#c4b5fd] text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 rounded-full uppercase tracking-wider inline-block reveal">
+      Biblián · Cañar · Ecuador
+    </span>
+    <h1 class="font-display text-5xl sm:text-7xl lg:text-8xl tracking-tight leading-[0.9] reveal" style="transition-delay:.1s">
+      <span class="rainbow-text">TECNICOLOR</span><br>
+      <span class="fire-text">ENCALADA</span>
+    </h1>
+    <p class="font-display text-3xl sm:text-5xl tracking-wider reveal" style="transition-delay:.2s">
+      DAMOS <span class="gradient-text">COLOR</span>
+    </p>
+    <p class="italic text-2xl sm:text-3xl text-[#facc15] font-semibold reveal" style="transition-delay:.25s; font-family: Georgia, serif;">
+      A tus ideas
+    </p>
+    <p class="text-gray-300 text-sm sm:text-base max-w-xl mx-auto reveal" style="transition-delay:.3s">
+      🎨 Pinturas automotrices · 🛠️ Accesorios profesionales · 🚗 Acabados de calidad
+    </p>
+    <div class="pt-2 flex flex-col sm:flex-row justify-center gap-3 reveal" style="transition-delay:.35s">
+      <a href="#pinturas" class="btn-glow bg-gradient-to-r from-[#ec4899] to-[#a855f7] text-white font-bold px-8 py-4 rounded-2xl text-sm shadow-xl shadow-[#a855f7]/40 inline-flex items-center justify-center gap-2">
+        <i class="fa-solid fa-palette"></i> Ver catálogo
+      </a>
+      <a href="#contacto" class="bg-white/5 hover:bg-white/10 border border-white/15 text-white font-bold px-8 py-4 rounded-2xl text-sm inline-flex items-center justify-center gap-2">
+        <i class="fa-solid fa-phone"></i> Contáctanos
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MAIN ===== -->
+<main class="flex-1 max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-16 space-y-14 sm:space-y-20 w-full">
+
+  <!-- PINTURAS -->
+  <section id="pinturas" class="space-y-6 scroll-mt-24">
+    <div class="text-center space-y-2 reveal">
+      <span class="text-[#ec4899] text-xs font-bold uppercase tracking-widest">— Automotrices —</span>
+      <h2 class="font-display text-4xl sm:text-5xl">NUESTRAS <span class="gradient-text">PINTURAS</span></h2>
+      <p class="text-xs sm:text-sm text-gray-400 max-w-lg mx-auto px-4">Elige presentación y agrega a tu cotización 🎨</p>
+    </div>
+    <div id="pinturasGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+  </section>
+
+  <!-- INSUMOS -->
+  <section id="insumos" class="space-y-6 scroll-mt-24">
+    <div class="text-center space-y-2 reveal">
+      <span class="text-[#06b6d4] text-xs font-bold uppercase tracking-widest">— Complementos —</span>
+      <h2 class="font-display text-4xl sm:text-5xl">INSUMOS <span class="gradient-text">PROFESIONALES</span></h2>
+      <p class="text-xs sm:text-sm text-gray-400 max-w-lg mx-auto px-4">Thinners, primarios, selladores y más.</p>
+    </div>
+    <div id="insumosGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+  </section>
+
+  <!-- ACCESORIOS -->
+  <section id="accesorios" class="space-y-6 scroll-mt-24">
+    <div class="text-center space-y-2 reveal">
+      <span class="text-[#facc15] text-xs font-bold uppercase tracking-widest">— Herramientas —</span>
+      <h2 class="font-display text-4xl sm:text-5xl">ACCESORIOS <span class="gradient-text">PROFESIONALES</span></h2>
+      <p class="text-xs sm:text-sm text-gray-400 max-w-lg mx-auto px-4">Todo lo que necesitas para un acabado perfecto.</p>
+    </div>
+    <div id="accesoriosGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-3"></div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="space-y-6 scroll-mt-24">
+    <div class="text-center space-y-2 reveal">
+      <span class="text-[#22c55e] text-xs font-bold uppercase tracking-widest">— Mano de obra —</span>
+      <h2 class="font-display text-4xl sm:text-5xl">SERVICIOS <span class="gradient-text">DE PINTURA</span></h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-[#12121c] border border-white/10 rounded-3xl p-6 reveal">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#ec4899] to-[#a855f7] grid place-items-center text-2xl float-slow">🚗</div>
+        <h3 class="font-display text-2xl mt-4">PINTURA COMPLETA</h3>
+        <p class="text-xs text-gray-400 mt-2">Pintura total del vehículo con acabado profesional.</p>
+        <p class="font-display text-2xl text-[#facc15] mt-3">Desde $350</p>
+      </div>
+      <div class="bg-[#12121c] border border-white/10 rounded-3xl p-6 reveal" style="transition-delay:.1s">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#06b6d4] to-[#3b82f6] grid place-items-center text-2xl float-med">🎯</div>
+        <h3 class="font-display text-2xl mt-4">RETOQUE Y PULIDO</h3>
+        <p class="text-xs text-gray-400 mt-2">Corrección de detalles, pulido y abrillantado.</p>
+        <p class="font-display text-2xl text-[#facc15] mt-3">Desde $60</p>
+      </div>
+      <div class="bg-[#12121c] border border-white/10 rounded-3xl p-6 reveal" style="transition-delay:.2s">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#facc15] to-[#f97316] grid place-items-center text-2xl float-fast">✨</div>
+        <h3 class="font-display text-2xl mt-4">PERSONALIZADOS</h3>
+        <p class="text-xs text-gray-400 mt-2">Diseños especiales, franjas y acabados a medida.</p>
+        <p class="font-display text-2xl text-[#facc15] mt-3">Cotizar</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section class="reveal">
+    <div class="colabanner rounded-3xl p-6 sm:p-8 relative z-10">
+      <div class="text-center mb-6 relative z-10">
+        <span class="text-[10px] uppercase tracking-widest font-black text-[#facc15] block mb-1">— Nuestro compromiso —</span>
+        <h3 class="font-display text-3xl sm:text-4xl">
+          CALIDAD QUE SE VE, <span class="gradient-text">SERVICIO QUE SE SIENTE</span>
+        </h3>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-4 relative z-10">
+        <div class="bg-black/30 rounded-2xl p-5 text-center border border-white/5">
+          <i class="fa-solid fa-circle-check text-3xl text-[#22c55e] mb-2"></i>
+          <p class="font-bold text-sm">PRODUCTOS DE CALIDAD</p>
+          <p class="text-xs text-gray-400 mt-1">Marcas reconocidas y garantizadas</p>
         </div>
-        <div>
-          <h1 class="font-display text-xl leading-none">ADMIN · BROTHERS PIZZA</h1>
-          <p class="text-[10px] text-gray-500 mt-1">Edita el menú · Se sincroniza en vivo</p>
+        <div class="bg-black/30 rounded-2xl p-5 text-center border border-white/5">
+          <i class="fa-solid fa-shield-halved text-3xl text-[#ec4899] mb-2"></i>
+          <p class="font-bold text-sm">GARANTÍA ASEGURADA</p>
+          <p class="text-xs text-gray-400 mt-1">Respaldamos cada trabajo</p>
+        </div>
+        <div class="bg-black/30 rounded-2xl p-5 text-center border border-white/5">
+          <i class="fa-solid fa-handshake text-3xl text-[#06b6d4] mb-2"></i>
+          <p class="font-bold text-sm">COMPROMISO Y CONFIANZA</p>
+          <p class="text-xs text-gray-400 mt-1">Relaciones duraderas con clientes</p>
         </div>
       </div>
-      <div class="flex items-center gap-2">
-        <a href="index.html" class="btn-ghost text-xs hidden sm:inline-flex items-center gap-2">
-          <i class="fa-solid fa-eye"></i> Ver tienda
+    </div>
+  </section>
+
+  <!-- CONTACTO / INFO -->
+  <section id="contacto" class="scroll-mt-24">
+    <div class="text-center space-y-2 mb-6 reveal">
+      <span class="text-[#22c55e] text-xs font-bold uppercase tracking-widest">— Estamos para ayudarte —</span>
+      <h2 class="font-display text-4xl sm:text-5xl">INFORMACIÓN DE <span class="gradient-text">CONTACTO</span></h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="bg-[#12121c] border border-white/10 rounded-3xl p-6 space-y-4 reveal">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#22c55e] to-[#16a34a] grid place-items-center text-2xl float-slow">📱</div>
+        <h3 class="font-display text-2xl">WHATSAPP</h3>
+        <div class="bg-gradient-to-r from-[#22c55e]/10 to-transparent p-4 rounded-2xl border border-[#22c55e]/30">
+          <p class="font-bold text-[#22c55e] mb-1">📞 099 829 0859</p>
+          <p class="text-xs text-gray-300">Atención personalizada y cotizaciones al instante.</p>
+        </div>
+        <a href="https://wa.me/593984113081" target="_blank" rel="noopener"
+           class="btn-glow w-full bg-gradient-to-r from-[#22c55e] to-[#16a34a] text-white font-black py-3.5 rounded-2xl text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#22c55e]/30">
+          <i class="fa-brands fa-whatsapp text-lg"></i> Escríbenos ahora
         </a>
-        <button id="logoutBtn" class="btn-ghost text-xs">
-          <i class="fa-solid fa-right-from-bracket"></i>
-        </button>
+      </div>
+
+      <div class="bg-[#12121c] border border-white/10 rounded-3xl p-6 space-y-4 reveal" style="transition-delay:.1s">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#facc15] to-[#f97316] grid place-items-center text-2xl float-med">📍</div>
+        <h3 class="font-display text-2xl">UBICACIÓN</h3>
+        <div class="bg-black/30 p-4 rounded-2xl border border-white/5">
+          <p class="font-bold text-white mb-1">📌 Biblián · Cañar · Ecuador</p>
+          <p class="text-xs text-gray-400">Visítanos y conoce nuestro catálogo completo.</p>
+        </div>
+        <div class="bg-black/30 p-4 rounded-2xl border border-white/5">
+          <p class="font-bold text-white mb-1">⏰ Horario de atención</p>
+          <p class="text-xs text-gray-400">Lun a Sáb de <span class="text-[#22c55e] font-bold">8:00 a 19:00</span></p>
+        </div>
       </div>
     </div>
-  </header>
 
-  <main class="max-w-5xl mx-auto px-4 py-6 space-y-6">
-
-    <!-- Tamaños -->
-    <section class="card p-5">
-      <div class="flex items-center justify-between mb-4">
-        <div>
-          <h2 class="font-display text-2xl">TAMAÑOS</h2>
-          <p class="text-[11px] text-gray-500">Configuración de tamaños, porciones y precio</p>
-        </div>
-        <button id="addSizeBtn" class="btn-primary text-xs">
-          <i class="fa-solid fa-plus mr-1"></i> Añadir
-        </button>
-      </div>
-      <div id="sizesList" class="space-y-3"></div>
-    </section>
-
-    <!-- Pizzas -->
-    <section class="card p-5">
-      <div class="flex items-center justify-between mb-4">
-        <div>
-          <h2 class="font-display text-2xl">PIZZAS</h2>
-          <p class="text-[11px] text-gray-500">Nombre, descripción y etiqueta</p>
-        </div>
-        <button id="addPizzaBtn" class="btn-primary text-xs">
-          <i class="fa-solid fa-plus mr-1"></i> Añadir
-        </button>
-      </div>
-      <div id="pizzasList" class="space-y-3"></div>
-    </section>
-
-    <!-- Extras -->
-    <section class="card p-5">
-      <h2 class="font-display text-2xl mb-4">EXTRAS</h2>
-      <div class="grid sm:grid-cols-2 gap-4">
-        <div>
-          <label class="label">Precio porción individual</label>
-          <input id="porcionPrecio" type="number" step="0.01" class="input">
+    <!-- Redes -->
+    <div class="grid sm:grid-cols-2 gap-4 mt-4">
+      <a href="https://www.facebook.com/search/top?q=Tecni%20Color%20Encalada" target="_blank" rel="noopener"
+         class="bg-[#12121c] border border-white/10 rounded-3xl p-6 flex items-center gap-4 hover:border-[#3b82f6]/50 transition reveal">
+        <div class="w-14 h-14 rounded-2xl bg-[#3b82f6] grid place-items-center text-white text-2xl shrink-0">
+          <i class="fa-brands fa-facebook-f"></i>
         </div>
         <div>
-          <label class="label">Precio cola 1L</label>
-          <input id="colaPrecio" type="number" step="0.01" class="input">
+          <p class="text-[10px] font-bold tracking-widest text-[#3b82f6] uppercase">Facebook</p>
+          <p class="font-display text-xl mt-1">Tecni Color Encalada</p>
         </div>
-      </div>
-    </section>
+      </a>
 
-    <!-- Acciones -->
-    <div class="flex flex-col sm:flex-row gap-3 pb-8">
-      <button id="saveBtn" class="btn-primary flex-1 py-4 text-base">
-        <i class="fa-solid fa-floppy-disk mr-2"></i> Guardar cambios
-      </button>
-      <button id="resetBtn" class="btn-ghost flex-1 py-4 text-base text-red-400">
-        <i class="fa-solid fa-rotate-left mr-2"></i> Restaurar por defecto
-      </button>
+      <a href="https://www.instagram.com/tecnicolor_encalada" target="_blank" rel="noopener"
+         class="bg-[#12121c] border border-white/10 rounded-3xl p-6 flex items-center gap-4 hover:border-[#ec4899]/50 transition reveal" style="transition-delay:.1s">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center text-white text-2xl shrink-0" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);">
+          <i class="fa-brands fa-instagram"></i>
+        </div>
+        <div>
+          <p class="text-[10px] font-bold tracking-widest text-[#ec4899] uppercase">Instagram</p>
+          <p class="font-display text-xl mt-1">@tecnicolor_encalada</p>
+        </div>
+      </a>
     </div>
-  </main>
+  </section>
+
+  <!-- PUBLICIDAD -->
+  <section class="reveal">
+    <div class="relative rounded-3xl overflow-hidden p-8 sm:p-12" style="background: linear-gradient(120deg, rgba(168,85,247,.18), rgba(6,182,212,.15), rgba(236,72,153,.18)); border: 1px solid rgba(255,255,255,.12);">
+      <div class="grid md:grid-cols-[auto,1fr] gap-6 items-center">
+        <div class="grid place-items-center w-20 h-20 rounded-3xl bg-gradient-to-tr from-[#22c55e] to-[#16a34a] shadow-2xl shadow-[#22c55e]/40">
+          <i class="fa-solid fa-chart-line text-4xl text-white"></i>
+        </div>
+        <div>
+          <p class="font-display text-2xl sm:text-3xl lg:text-4xl leading-tight tracking-wide">
+            UNA BUENA PUBLICIDAD CONVIERTE UN NEGOCIO PEQUEÑO
+            <span class="rainbow-text">EN UNO GRANDE</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="border-t border-white/10 bg-[#0a0a0f] py-8 mt-8">
+  <div class="max-w-6xl mx-auto px-4 text-center space-y-3">
+    <div class="flex items-center justify-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#ec4899] via-[#a855f7] to-[#06b6d4] grid place-items-center text-white">
+        <i class="fa-solid fa-spray-can-sparkles text-lg"></i>
+      </div>
+      <span class="font-display text-2xl tracking-wide">
+        <span class="rainbow-text">TECNICOLOR</span> ENCALADA
+      </span>
+    </div>
+    <p class="text-xs text-gray-500">© <span id="year"></span> TecniColor Encalada · Biblián, Ecuador · ¡Damos color a tus ideas!</p>
+  </div>
+</footer>
+
+<!-- ===== FAB CARRITO (DESKTOP) ===== -->
+<button type="button" id="cartFab"
+  class="cart-fab hidden md:grid fixed bottom-6 right-6 z-40 bg-gradient-to-br from-[#ec4899] to-[#a855f7] text-white rounded-full w-16 h-16 shadow-2xl shadow-[#a855f7]/50 place-items-center text-2xl opacity-0 pointer-events-none">
+  <i class="fa-solid fa-clipboard-list"></i>
+  <span class="cart-count absolute -top-1 -right-1 bg-[#22c55e] text-white text-xs font-bold rounded-full w-6 h-6 grid place-items-center border-2 border-[#0a0a0f]">0</span>
+</button>
+
+<!-- ===== BARRA MÓVIL ===== -->
+<div class="mobile-cart-bar" id="mobileCartBar">
+  <div class="flex-1 flex items-center gap-3">
+    <div class="relative">
+      <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#ec4899] to-[#a855f7] grid place-items-center text-white text-lg">
+        <i class="fa-solid fa-clipboard-list"></i>
+      </div>
+      <span class="cart-count absolute -top-1 -right-1 bg-[#22c55e] text-white text-[10px] font-black rounded-full w-5 h-5 grid place-items-center border-2 border-[#0a0a0f]">0</span>
+    </div>
+    <div>
+      <p class="text-[10px] uppercase tracking-wider text-gray-400 font-bold">Tu cotización</p>
+      <p class="font-display text-2xl text-[#facc15]" id="mobileCartTotal">$0.00</p>
+    </div>
+  </div>
+  <button type="button" data-action="open-cart"
+    class="btn-glow bg-gradient-to-r from-[#22c55e] to-[#16a34a] text-white font-black px-5 py-3 rounded-2xl text-xs flex items-center gap-2 shadow-lg shadow-[#22c55e]/40">
+    <i class="fa-solid fa-clipboard-list"></i> Ver
+  </button>
 </div>
 
-<!-- ================= TOAST ================= -->
-<div id="toast" class="toast">
-  <i class="fa-solid fa-circle-check text-[#2ed573]"></i>
-  <span id="toastMsg">Listo</span>
-</div>
+<!-- ===== CART DRAWER ===== -->
+<div class="cart-backdrop" id="cartBackdrop"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-handle"></div>
+  <div class="px-5 pb-3 pt-2 flex items-center justify-between">
+    <div>
+      <h3 class="font-display text-2xl">TU COTIZACIÓN</h3>
+      <p class="text-[11px] text-gray-500" id="cartSubtitle">Aún no agregas nada</p>
+    </div>
+    <button type="button" id="closeCart" class="w-10 h-10 rounded-xl bg-white/5 grid place-items-center text-gray-400">
+      <i class="fa-solid fa-xmark text-lg"></i>
+    </button>
+  </div>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="border-t border-white/8 px-5 py-4" style="padding-bottom: calc(16px + var(--safe-bottom)); background:#12121c;">
+    <div class="flex items-center justify-between mb-3">
+      <span class="text-xs uppercase tracking-wider text-gray-400 font-bold">Total estimado</span>
+      <span class="font-display text-3xl text-[#facc15]" id="cartTotal">$0.00</span>
+    </div>
+    <p class="text-[10px] text-gray-500 mb-3" id="cartHint">Los precios pueden variar según disponibilidad. Te confirmaremos por WhatsApp.</p>
+    <button type="button" id="checkoutBtn"
+      class="btn-glow w-full bg-gradient-to-r from-[#22c55e] to-[#16a34a] text-white font-black py-4 rounded-2xl text-sm flex items-center justify-center gap-2 shadow-xl shadow-[#22c55e]/30">
+      <i class="fa-brands fa-whatsapp text-lg"></i> Enviar cotización por WhatsApp
+    </button>
+  </div>
+</aside>
+
+<div id="toastContainer" class="fixed bottom-24 md:bottom-24 right-4 md:right-6 z-[80] space-y-2 pointer-events-none"></div>
 
 <script>
 // ==================== CONFIG ====================
-const CREDENCIALES = { user: "admin", pass: "brothers2024" };
-const STORAGE_KEY = "bp_menu";
-const SESSION_KEY = "bp_admin_session";
-
-const DEF_MENU = {
-  tamanos: [
-    { id:"personal", label:"Personal", precio:5, porciones:4 },
-    { id:"mediana", label:"Mediana", precio:9, porciones:10 },
-    { id:"familiar", label:"Familiar", precio:13, porciones:12 }
-  ],
-  pizzas: [
-    { id:1, nombre:"Pizza Pepperoni", desc:"Pepperoni y mozzarella", badge:"hot" },
-    { id:2, nombre:"Pizza Margarita", desc:"Mozzarella, albahaca y tomate" },
-    { id:3, nombre:"Pizza Hawaiana", desc:"Jamón, piña y mozzarella" },
-    { id:4, nombre:"Pizza de Jamón", desc:"Jamón y mozzarella", badge:"new" }
-  ],
-  porcion: { id:200, nombre:"Porción de Pizza", precio:1.25 },
-  cola: { id:300, nombre:"Cola 1L", precio:0.75 }
+const CONFIG = {
+  whatsapp: "593984113081",
+  horaApertura: 8,
+  horaCierre: 19,
+  envioGratisDesde: 50.00,
+  compraMinima: 20.00
 };
 
-// ==================== HELPERS ====================
+const IMG = {
+  pintura: "https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?w=800&q=80",
+  spray:   "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&q=80",
+  car:     "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80",
+  tools:   "https://images.unsplash.com/photo-1581244277943-fe4a9c777189?w=800&q=80",
+  def:     "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
+};
+
+// ==================== CATÁLOGO POR DEFECTO ====================
+const DEF_CATALOGO = {
+  pinturas: [
+    { id: 1, nombre: "Pintura Automotriz Base", desc: "Pintura base para retoques y acabados", presentaciones: [
+      { id: "1l", label: "1 Litro", precio: 25, sub: "base" },
+      { id: "4l", label: "1 Galón", precio: 85, sub: "4 litros" },
+      { id: "20l", label: "Balde", precio: 380, sub: "20 litros" }
+    ], badge: "hot" },
+    { id: 2, nombre: "Pintura Metalizada", desc: "Acabado metalizado premium" , presentaciones: [
+      { id: "1l", label: "1 Litro", precio: 35, sub: "metalizada" },
+      { id: "4l", label: "1 Galón", precio: 120, sub: "4 litros" },
+      { id: "20l", label: "Balde", precio: 550, sub: "20 litros" }
+    ]},
+    { id: 3, nombre: "Pintura Perlada", desc: "Efecto perla con brillo superior", presentaciones: [
+      { id: "1l", label: "1 Litro", precio: 45, sub: "perlada" },
+      { id: "4l", label: "1 Galón", precio: 160, sub: "4 litros" }
+    ], badge: "new" }
+  ],
+  insumos: [
+    { id: 10, nombre: "Thinner Profesional", desc: "Thinner de alta pureza para dilución", presentaciones: [
+      { id: "1l", label: "1 Litro", precio: 8, sub: "estándar" },
+      { id: "4l", label: "1 Galón", precio: 28, sub: "4 litros" }
+    ]},
+    { id: 11, nombre: "Primario Anticorrosivo", desc: "Protección base para metal", presentaciones: [
+      { id: "1l", label: "1 Litro", precio: 18, sub: "primario" },
+      { id: "4l", label: "1 Galón", precio: 62, sub: "4 litros" }
+    ]},
+    { id: 12, nombre: "Barniz Clear Coat", desc: "Acabado transparente brillante", presentaciones: [
+      { id: "1l", label: "1 Litro", precio: 22, sub: "barniz" },
+      { id: "4l", label: "1 Galón", precio: 78, sub: "4 litros" }
+    ]}
+  ],
+  accesorios: [
+    { id: 20, nombre: "Pistola de Pintura", precio: 45, icon: "fa-spray-can" },
+    { id: 21, nombre: "Lijas Varias", precio: 3.5, icon: "fa-square" },
+    { id: 22, nombre: "Cinta de Enmascarar", precio: 2.5, icon: "fa-tape" },
+    { id: 23, nombre: "Mascarilla 3M", precio: 12, icon: "fa-mask-face" },
+    { id: 24, nombre: "Guantes Nitrilo", precio: 5, icon: "fa-mitten" },
+    { id: 25, nombre: "Espátulas", precio: 8, icon: "fa-trowel" },
+    { id: 26, nombre: "Pulidora", precio: 120, icon: "fa-circle-notch" },
+    { id: 27, nombre: "Kit Limpieza", precio: 15, icon: "fa-broom" }
+  ]
+};
+
+// ==================== CARGAR CATÁLOGO ====================
+function cargarCatalogo() {
+  try {
+    const saved = localStorage.getItem("tc_catalogo");
+    if (saved) {
+      const c = JSON.parse(saved);
+      if (c && Array.isArray(c.pinturas) && Array.isArray(c.insumos) && Array.isArray(c.accesorios)) return c;
+    }
+  } catch(e) { console.warn("Catálogo inválido, usando default"); }
+  localStorage.setItem("tc_catalogo", JSON.stringify(DEF_CATALOGO));
+  return JSON.parse(JSON.stringify(DEF_CATALOGO));
+}
+let CATALOGO = cargarCatalogo();
+
+// ==================== UTILS ====================
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
-const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const money = v => "$" + Number(v).toFixed(2);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
-function cargarMenu() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) {
-      const m = JSON.parse(raw);
-      if (m && Array.isArray(m.pizzas) && Array.isArray(m.tamanos) && m.porcion && m.cola) return m;
-    }
-  } catch(e) {}
-  return JSON.parse(JSON.stringify(DEF_MENU));
+// ==================== BARRA DE ESTADO ====================
+function actualizarEstado() {
+  const ahora = new Date();
+  const h = ahora.getHours() + ahora.getMinutes() / 60;
+  const dia = ahora.getDay(); // 0=dom, 6=sáb
+  const abierto = h >= CONFIG.horaApertura && h <= CONFIG.horaCierre && dia !== 0;
+
+  const dot = document.getElementById("statusDot");
+  const txt = document.getElementById("statusText");
+
+  if (abierto) {
+    dot.className = "dot open";
+    txt.innerHTML = '<span class="txt-open">ABIERTO AHORA</span> · Cerramos a las 19:00';
+  } else {
+    dot.className = "dot closed";
+    txt.innerHTML = '<span class="txt-closed">CERRADO</span> · Abrimos a las 8:00';
+  }
 }
-
-function guardarMenu(menu) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(menu));
-  // El evento 'storage' se dispara automáticamente en otras pestañas.
-}
-
-let MENU = cargarMenu();
+actualizarEstado();
+setInterval(actualizarEstado, 60000);
 
 // ==================== TOAST ====================
-let toastTimer;
-function toast(msg, isError = false) {
-  const el = $("#toast");
-  const icon = el.querySelector("i");
-  $("#toastMsg").textContent = msg;
-  icon.className = isError
-    ? "fa-solid fa-circle-exclamation text-[#ff4757]"
-    : "fa-solid fa-circle-check text-[#2ed573]";
-  el.classList.toggle("error", isError);
-  el.classList.add("show");
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => el.classList.remove("show"), 2400);
+function toast(msg, type = "success") {
+  const cont = $("#toastContainer");
+  const el = document.createElement("div");
+  const isError = type === "error";
+  el.className = `pop-in relative overflow-hidden pointer-events-auto rounded-2xl px-4 py-3 shadow-2xl backdrop-blur-md border text-xs font-semibold flex items-center gap-2.5 max-w-[90vw] ${
+    isError ? "bg-[#ef4444]/15 border-[#ef4444]/40 text-[#fca5a5] toast-error"
+            : "bg-[#22c55e]/15 border-[#22c55e]/40 text-[#86efac]"
+  }`;
+  el.innerHTML = `<i class="fa-solid ${isError ? "fa-circle-exclamation" : "fa-circle-check"}"></i><span>${esc(msg)}</span><span class="toast-bar"></span>`;
+  cont.appendChild(el);
+  setTimeout(() => {
+    el.style.transition = "opacity .35s, transform .35s";
+    el.style.opacity = "0";
+    el.style.transform = "translateX(30px)";
+    setTimeout(() => el.remove(), 350);
+  }, 3200);
 }
 
-// ==================== LOGIN ====================
-function initLogin() {
-  if (sessionStorage.getItem(SESSION_KEY) === "1") {
-    mostrarAdmin();
+// ==================== CARRITO ====================
+let cart = [];
+const cartFab = $("#cartFab");
+const cartDrawer = $("#cartDrawer");
+const cartBk = $("#cartBackdrop");
+const mobileCartBar = $("#mobileCartBar");
+
+function renderCart() {
+  const count = cart.reduce((s,i) => s + i.cantidad, 0);
+  const total = cart.reduce((s,i) => s + i.precio * i.cantidad, 0);
+
+  $$(".cart-count", cartFab).forEach(el => el.textContent = count);
+  cartFab.classList.toggle("opacity-0", count === 0);
+  cartFab.classList.toggle("pointer-events-none", count === 0);
+  if (count > 0) cartFab.classList.add("pulse");
+  else cartFab.classList.remove("pulse");
+
+  $$(".cart-count", mobileCartBar).forEach(el => el.textContent = count);
+  $("#mobileCartTotal").textContent = money(total);
+  mobileCartBar.classList.toggle("show", count > 0);
+
+  $("#cartSubtitle").textContent = count === 0
+    ? "Aún no agregas nada"
+    : `${count} ${count === 1 ? "producto" : "productos"}`;
+  $("#cartTotal").textContent = money(total);
+
+  const body = $("#cartBody");
+  if (count === 0) {
+    body.innerHTML = `
+      <div class="text-center py-10 space-y-3">
+        <div class="text-5xl">🎨</div>
+        <p class="text-sm text-gray-400">Tu cotización está vacía</p>
+      </div>`;
     return;
   }
-  $("#loginBtn").addEventListener("click", tryLogin);
-  $("#loginPass").addEventListener("keydown", e => { if (e.key === "Enter") tryLogin(); });
-  $("#loginUser").addEventListener("keydown", e => { if (e.key === "Enter") $("#loginPass").focus(); });
-}
-function tryLogin() {
-  const u = $("#loginUser").value.trim();
-  const p = $("#loginPass").value;
-  if (u === CREDENCIALES.user && p === CREDENCIALES.pass) {
-    sessionStorage.setItem(SESSION_KEY, "1");
-    mostrarAdmin();
-    toast("Bienvenido 👋");
-  } else {
-    toast("Credenciales incorrectas", true);
-    $("#loginPass").value = "";
-    $("#loginPass").focus();
-  }
-}
-function mostrarAdmin() {
-  $("#loginView").classList.add("hidden");
-  $("#adminView").classList.remove("hidden");
-  renderTodo();
-}
-function logout() {
-  sessionStorage.removeItem(SESSION_KEY);
-  location.reload();
-}
-
-// ==================== RENDER ====================
-function renderTodo() {
-  renderSizes();
-  renderPizzas();
-  $("#porcionPrecio").value = MENU.porcion.precio;
-  $("#colaPrecio").value = MENU.cola.precio;
-}
-
-function renderSizes() {
-  const cont = $("#sizesList");
-  if (!MENU.tamanos.length) {
-    cont.innerHTML = `<p class="text-center text-gray-500 py-4 text-sm">Sin tamaños</p>`;
-    return;
-  }
-  cont.innerHTML = MENU.tamanos.map((t, i) => `
-    <div class="bg-black/30 border border-white/8 rounded-2xl p-4 grid grid-cols-1 sm:grid-cols-[1fr,1fr,1fr,auto] gap-3 items-end" data-idx="${i}">
-      <div>
-        <label class="label">Nombre</label>
-        <input class="input" data-field="label" value="${esc(t.label)}">
+  body.innerHTML = cart.map((it, i) => `
+    <div class="cart-item">
+      <div class="cart-item-img" style="background-image:url('${it.imagen}')"></div>
+      <div class="flex-1 min-w-0">
+        <p class="text-sm font-bold truncate">${esc(it.nombre)}</p>
+        <p class="text-[11px] text-gray-500">${money(it.precio)} c/u</p>
       </div>
-      <div>
-        <label class="label">Precio ($)</label>
-        <input class="input" type="number" step="0.01" data-field="precio" value="${t.precio}">
+      <div class="flex items-center gap-1.5">
+        <button class="qty-btn" data-qty="-" data-idx="${i}"><i class="fa-solid fa-minus"></i></button>
+        <span class="text-sm font-bold min-w-[20px] text-center">${it.cantidad}</span>
+        <button class="qty-btn" data-qty="+" data-idx="${i}"><i class="fa-solid fa-plus"></i></button>
       </div>
-      <div>
-        <label class="label">Porciones</label>
-        <input class="input" type="number" data-field="porciones" value="${t.porciones}">
-      </div>
-      <button class="btn-danger h-fit" data-remove="size" data-idx="${i}">
-        <i class="fa-solid fa-trash"></i>
-      </button>
     </div>
   `).join("");
 
-  $$("[data-remove='size']", cont).forEach(b => b.addEventListener("click", () => {
-    MENU.tamanos.splice(Number(b.dataset.idx), 1);
-    renderSizes();
+  $$("[data-qty]", body).forEach(b => b.addEventListener("click", () => {
+    const idx = Number(b.dataset.idx);
+    if (b.dataset.qty === "+") cart[idx].cantidad++;
+    else { cart[idx].cantidad--; if (cart[idx].cantidad <= 0) cart.splice(idx, 1); }
+    renderCart();
   }));
 }
 
-function renderPizzas() {
-  const cont = $("#pizzasList");
-  if (!MENU.pizzas.length) {
-    cont.innerHTML = `<p class="text-center text-gray-500 py-4 text-sm">Sin pizzas</p>`;
+function addToCart(item) {
+  const found = cart.find(i => i.key === item.key);
+  if (found) found.cantidad++;
+  else cart.push({ ...item, cantidad: 1 });
+  renderCart();
+  cartFab.classList.add("bump");
+  setTimeout(() => cartFab.classList.remove("bump"), 300);
+  toast(`${item.nombre} agregado 🎨`);
+}
+
+// ==================== DRAWER ====================
+function openDrawer() { cartDrawer.classList.add("open"); cartBk.classList.add("open"); document.body.style.overflow = "hidden"; }
+function closeDrawer() { cartDrawer.classList.remove("open"); cartBk.classList.remove("open"); document.body.style.overflow = ""; }
+
+cartFab.addEventListener("click", openDrawer);
+document.querySelector("[data-action='open-cart']").addEventListener("click", openDrawer);
+$("#closeCart").addEventListener("click", closeDrawer);
+cartBk.addEventListener("click", closeDrawer);
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
+
+// ==================== RENDER PINTURAS ====================
+function renderPinturas() {
+  const grid = $("#pinturasGrid");
+  if (!CATALOGO.pinturas.length) {
+    grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-500">Sin productos</div>`;
     return;
   }
-  cont.innerHTML = MENU.pizzas.map((p, i) => `
-    <div class="bg-black/30 border border-white/8 rounded-2xl p-4 space-y-3" data-idx="${i}">
-      <div class="flex items-start gap-3">
-        <div class="flex-1 space-y-3">
-          <div>
-            <label class="label">Nombre</label>
-            <input class="input" data-field="nombre" value="${esc(p.nombre)}">
-          </div>
-          <div>
-            <label class="label">Descripción</label>
-            <input class="input" data-field="desc" value="${esc(p.desc || "")}">
-          </div>
-          <div>
-            <label class="label">Etiqueta</label>
-            <select class="select" data-field="badge">
-              <option value="" ${!p.badge ? "selected" : ""}>Sin etiqueta</option>
-              <option value="hot" ${p.badge === "hot" ? "selected" : ""}>🔥 Popular</option>
-              <option value="new" ${p.badge === "new" ? "selected" : ""}>⭐ Nuevo</option>
-            </select>
-          </div>
+  grid.innerHTML = CATALOGO.pinturas.map((p, idx) => {
+    const img = IMG.pintura;
+    const badge = p.badge === "hot"
+      ? `<span class="badge-hot absolute top-3 left-3 z-10 text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-full"><i class="fa-solid fa-fire"></i> Popular</span>`
+      : p.badge === "new"
+      ? `<span class="badge-new absolute top-3 left-3 z-10 text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-full"><i class="fa-solid fa-star"></i> Nuevo</span>`
+      : "";
+
+    const sizes = p.presentaciones.map((t, i) => `
+      <button type="button" class="size-btn ${i === 0 ? "active" : ""}" data-size="${t.id}">
+        <span class="sb-label">${esc(t.label)}</span>
+        <span class="sb-sub">${esc(t.sub || "")}</span>
+        <span class="sb-price">${money(t.precio)}</span>
+      </button>
+    `).join("");
+
+    return `
+      <article class="product-card bg-[#12121c] border border-white/10 rounded-3xl overflow-hidden flex flex-col" style="animation-delay:${idx*50}ms" data-id="${p.id}">
+        <div class="img-frame h-44 sm:h-52 relative">
+          ${badge}
+          <img src="${img}" alt="${esc(p.nombre)}" loading="lazy" class="product-img w-full h-full object-cover" onerror="this.src='${IMG.def}'">
+          <div class="absolute top-3 right-3 z-10 text-3xl">🎨</div>
         </div>
-        <button class="btn-danger h-fit shrink-0" data-remove="pizza" data-idx="${i}">
-          <i class="fa-solid fa-trash"></i>
+        <div class="p-4 sm:p-5 flex-1 flex flex-col gap-3 relative z-10">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="font-bold text-base leading-tight">${esc(p.nombre)}</h3>
+            <span class="text-[#facc15] font-display text-2xl shrink-0 price-display">${money(p.presentaciones[0].precio)}</span>
+          </div>
+          <p class="text-xs text-gray-400 line-clamp-2">${esc(p.desc || "")}</p>
+          <div class="mt-1">
+            <p class="text-[10px] uppercase tracking-wider text-gray-500 font-bold mb-2">Elige presentación</p>
+            <div class="grid grid-cols-3 gap-2">${sizes}</div>
+          </div>
+          <button type="button" class="add-btn mt-auto bg-gradient-to-r from-[#ec4899] to-[#a855f7] text-white font-bold py-3.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-[#a855f7]/30">
+            <i class="fa-solid fa-cart-plus"></i> Agregar a cotización
+          </button>
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  // Listeners de tamaño
+  $$(".product-card", grid).forEach(card => {
+    const btns = $$(".size-btn", card);
+    const priceDisplay = $(".price-display", card);
+    btns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        btns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        const t = CATALOGO.pinturas.find(x => x.id === Number(card.dataset.id)).presentaciones.find(x => x.id === btn.dataset.size);
+        priceDisplay.textContent = money(t.precio);
+      });
+    });
+  });
+
+  // Listeners de agregar
+  $$(".add-btn", grid).forEach(btn => {
+    btn.addEventListener("click", () => {
+      const card = btn.closest(".product-card");
+      const id = Number(card.dataset.id);
+      const p = CATALOGO.pinturas.find(m => m.id === id);
+      const activeSize = $(".size-btn.active", card);
+      const t = p.presentaciones.find(x => x.id === activeSize.dataset.size);
+      const imgEl = $(".product-img", card);
+
+      addToCart({
+        key: `pintura-${p.id}-${t.id}`,
+        id: p.id,
+        nombre: `${p.nombre} (${t.label})`,
+        precio: t.precio,
+        imagen: imgEl ? imgEl.src : IMG.pintura
+      });
+    });
+  });
+}
+
+// ==================== RENDER INSUMOS ====================
+function renderInsumos() {
+  const grid = $("#insumosGrid");
+  grid.innerHTML = CATALOGO.insumos.map((p, idx) => {
+    const img = IMG.spray;
+    const sizes = p.presentaciones.map((t, i) => `
+      <button type="button" class="size-btn ${i === 0 ? "active" : ""}" data-size="${t.id}">
+        <span class="sb-label">${esc(t.label)}</span>
+        <span class="sb-sub">${esc(t.sub || "")}</span>
+        <span class="sb-price">${money(t.precio)}</span>
+      </button>
+    `).join("");
+
+    return `
+      <article class="product-card bg-[#12121c] border border-white/10 rounded-3xl overflow-hidden flex flex-col" style="animation-delay:${idx*50}ms" data-id="${p.id}">
+        <div class="img-frame h-44 sm:h-52 relative">
+          <img src="${img}" alt="${esc(p.nombre)}" loading="lazy" class="product-img w-full h-full object-cover" onerror="this.src='${IMG.def}'">
+          <div class="absolute top-3 right-3 z-10 text-3xl">🧴</div>
+        </div>
+        <div class="p-4 sm:p-5 flex-1 flex flex-col gap-3 relative z-10">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="font-bold text-base leading-tight">${esc(p.nombre)}</h3>
+            <span class="text-[#facc15] font-display text-2xl shrink-0 price-display">${money(p.presentaciones[0].precio)}</span>
+          </div>
+          <p class="text-xs text-gray-400 line-clamp-2">${esc(p.desc || "")}</p>
+          <div class="mt-1">
+            <p class="text-[10px] uppercase tracking-wider text-gray-500 font-bold mb-2">Elige presentación</p>
+            <div class="grid grid-cols-${Math.min(p.presentaciones.length, 3)} gap-2">${sizes}</div>
+          </div>
+          <button type="button" class="add-btn mt-auto bg-gradient-to-r from-[#06b6d4] to-[#3b82f6] text-white font-bold py-3.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-[#06b6d4]/30">
+            <i class="fa-solid fa-cart-plus"></i> Agregar a cotización
+          </button>
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  $$(".product-card", grid).forEach(card => {
+    const btns = $$(".size-btn", card);
+    const priceDisplay = $(".price-display", card);
+    btns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        btns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        const t = CATALOGO.insumos.find(x => x.id === Number(card.dataset.id)).presentaciones.find(x => x.id === btn.dataset.size);
+        priceDisplay.textContent = money(t.precio);
+      });
+    });
+  });
+
+  $$(".add-btn", grid).forEach(btn => {
+    btn.addEventListener("click", () => {
+      const card = btn.closest(".product-card");
+      const id = Number(card.dataset.id);
+      const p = CATALOGO.insumos.find(m => m.id === id);
+      const activeSize = $(".size-btn.active", card);
+      const t = p.presentaciones.find(x => x.id === activeSize.dataset.size);
+      const imgEl = $(".product-img", card);
+
+      addToCart({
+        key: `insumo-${p.id}-${t.id}`,
+        id: p.id,
+        nombre: `${p.nombre} (${t.label})`,
+        precio: t.precio,
+        imagen: imgEl ? imgEl.src : IMG.spray
+      });
+    });
+  });
+}
+
+// ==================== RENDER ACCESORIOS ====================
+function renderAccesorios() {
+  const grid = $("#accesoriosGrid");
+  grid.innerHTML = CATALOGO.accesorios.map((p, idx) => `
+    <article class="product-card bg-[#12121c] border border-white/10 rounded-2xl overflow-hidden flex flex-col p-4" style="animation-delay:${idx*50}ms" data-id="${p.id}">
+      <div class="grid place-items-center w-14 h-14 rounded-2xl bg-gradient-to-br from-[#facc15] to-[#f97316] text-white text-2xl mx-auto mb-3">
+        <i class="fa-solid ${p.icon || 'fa-tools'}"></i>
+      </div>
+      <h3 class="font-bold text-xs text-center leading-tight">${esc(p.nombre)}</h3>
+      <div class="flex items-center justify-between mt-3 pt-3 border-t border-white/8">
+        <span class="font-display text-xl text-[#facc15]">${money(p.precio)}</span>
+        <button type="button" class="add-acc w-9 h-9 rounded-xl bg-gradient-to-br from-[#facc15] to-[#f97316] text-white grid place-items-center shadow-lg shadow-[#facc15]/40" data-id="${p.id}">
+          <i class="fa-solid fa-plus text-xs"></i>
         </button>
       </div>
-    </div>
+    </article>
   `).join("");
 
-  $$("[data-remove='pizza']", cont).forEach(b => b.addEventListener("click", () => {
-    MENU.pizzas.splice(Number(b.dataset.idx), 1);
-    renderPizzas();
-  }));
-}
-
-// ==================== RECOLECTAR DATOS ====================
-function recolectar() {
-  // Tamaños
-  $$("#sizesList > div").forEach(el => {
-    const i = Number(el.dataset.idx);
-    MENU.tamanos[i] = {
-      id: MENU.tamanos[i]?.id || ("t" + Date.now()),
-      label: el.querySelector("[data-field='label']").value.trim() || "Tamaño",
-      precio: parseFloat(el.querySelector("[data-field='precio']").value) || 0,
-      porciones: parseInt(el.querySelector("[data-field='porciones']").value, 10) || 1
-    };
+  $$(".add-acc", grid).forEach(btn => {
+    btn.addEventListener("click", () => {
+      const id = Number(btn.dataset.id);
+      const p = CATALOGO.accesorios.find(m => m.id === id);
+      addToCart({
+        key: `accesorio-${p.id}`,
+        id: p.id,
+        nombre: p.nombre,
+        precio: p.precio,
+        imagen: IMG.tools
+      });
+    });
   });
-  // Pizzas
-  $$("#pizzasList > div").forEach(el => {
-    const i = Number(el.dataset.idx);
-    MENU.pizzas[i] = {
-      id: MENU.pizzas[i]?.id || (Date.now() + i),
-      nombre: el.querySelector("[data-field='nombre']").value.trim() || "Pizza",
-      desc: el.querySelector("[data-field='desc']").value.trim(),
-      badge: el.querySelector("[data-field='badge']").value || undefined
-    };
+}
+
+// ==================== CHECKOUT ====================
+$("#checkoutBtn").addEventListener("click", () => {
+  if (!cart.length) { toast("Tu cotización está vacía", "error"); return; }
+  const total = cart.reduce((s,i) => s + i.precio * i.cantidad, 0);
+  if (total < CONFIG.compraMinima) {
+    toast(`El mínimo para cotización es ${money(CONFIG.compraMinima)}`, "error");
+    return;
+  }
+  let msg = "¡Hola TecniColor Encalada! 🎨 Quiero cotizar:%0A%0A";
+  cart.forEach(i => { msg += `• ${i.cantidad}x ${i.nombre} — ${money(i.precio * i.cantidad)}%0A`; });
+  msg += `%0A*Total: ${money(total)}*%0A%0A¡Gracias!`;
+  window.open(`https://wa.me/${CONFIG.whatsapp}?text=${msg}`, "_blank");
+});
+
+// ==================== SYNC CON ADMIN ====================
+window.addEventListener("storage", e => {
+  if (e.key === "tc_catalogo") {
+    CATALOGO = cargarCatalogo();
+    renderPinturas();
+    renderInsumos();
+    renderAccesorios();
+    toast("Catálogo actualizado ✨");
+  }
+});
+
+// ==================== SCROLL PROGRESS ====================
+window.addEventListener("scroll", () => {
+  const h = document.documentElement;
+  const sc = h.scrollHeight - h.clientHeight;
+  const pct = sc > 0 ? (h.scrollTop / sc) * 100 : 0;
+  $("#scrollProgress").style.width = pct + "%";
+}, { passive: true });
+
+// ==================== REVEAL ====================
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
   });
-  // Extras
-  MENU.porcion.precio = parseFloat($("#porcionPrecio").value) || 0;
-  MENU.cola.precio = parseFloat($("#colaPrecio").value) || 0;
-}
-
-// ==================== ACCIONES ====================
-function guardar() {
-  recolectar();
-  if (!MENU.tamanos.length) { toast("Debe haber al menos un tamaño", true); return; }
-  if (!MENU.pizzas.length) { toast("Debe haber al menos una pizza", true); return; }
-  guardarMenu(MENU);
-  toast("Cambios guardados ✅");
-}
-
-function reset() {
-  if (!confirm("¿Restaurar el menú por defecto? Se perderán los cambios actuales.")) return;
-  MENU = JSON.parse(JSON.stringify(DEF_MENU));
-  guardarMenu(MENU);
-  renderTodo();
-  toast("Menú restaurado");
-}
+}, { threshold: 0.12 });
+$$(".reveal").forEach(el => io.observe(el));
 
 // ==================== INIT ====================
-$("#addSizeBtn").addEventListener("click", () => {
-  MENU.tamanos.push({ id: "t" + Date.now(), label: "Nuevo", precio: 0, porciones: 1 });
-  renderSizes();
-});
-$("#addPizzaBtn").addEventListener("click", () => {
-  MENU.pizzas.push({ id: Date.now(), nombre: "Nueva Pizza", desc: "" });
-  renderPizzas();
-});
-$("#saveBtn").addEventListener("click", guardar);
-$("#resetBtn").addEventListener("click", reset);
-$("#logoutBtn").addEventListener("click", logout);
-
-initLogin();
+document.getElementById("year").textContent = new Date().getFullYear();
+renderPinturas();
+renderInsumos();
+renderAccesorios();
+renderCart();
 </script>
 </body>
 </html>
