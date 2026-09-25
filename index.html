@@ -8,13 +8,10 @@
 
 <title>TecniColor Encalada | Pinturas Automotrices de Alto Rendimiento · Biblián</title>
 
-<!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- FontAwesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
@@ -61,7 +58,6 @@
     overflow-x: hidden;
   }
 
-  /* ---------- FONDO ---------- */
   .bg-grid-pattern {
     background-size: 44px 44px;
     background-image:
@@ -79,7 +75,6 @@
   .glow-orb-2 { animation: laserGlow 12s ease-in-out infinite 2s; }
   .glow-orb-3 { animation: laserGlow 10s ease-in-out infinite 4s; }
 
-  /* ---------- TEXTO ---------- */
   .text-glow-cyan { text-shadow: 0 0 24px rgba(0,240,255,.55), 0 0 60px rgba(0,240,255,.25); }
   .text-glow-pink { text-shadow: 0 0 24px rgba(255,0,127,.55), 0 0 60px rgba(255,0,127,.25); }
   .text-gradient {
@@ -87,7 +82,6 @@
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
 
-  /* ---------- GLASS ---------- */
   .glass-card {
     background: rgba(18,18,30,.55);
     backdrop-filter: blur(18px);
@@ -101,7 +95,6 @@
     transform: translateY(-4px);
   }
 
-  /* ---------- BORDE IRIDISCENTE ---------- */
   .gradient-border-card {
     position: relative;
     border-radius: 1.5rem;
@@ -120,7 +113,6 @@
   }
   .gradient-border-card:hover::before { opacity: 1; filter: blur(5px); }
 
-  /* ---------- BOTONES ---------- */
   .btn {
     position: relative;
     display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
@@ -154,7 +146,6 @@
   }
   .btn-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 20px 46px -14px rgba(0,255,102,1); }
 
-  /* ---------- NAV ---------- */
   .nav-link { position: relative; padding-bottom: 4px; }
   .nav-link::after {
     content: ''; position: absolute; left: 0; bottom: -4px; height: 2px; width: 0;
@@ -164,12 +155,10 @@
   .nav-link:hover::after, .nav-link.is-active::after { width: 100%; }
   .nav-link.is-active { color: #fff; }
 
-  /* ---------- MARQUEE ---------- */
   @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   .marquee-track { animation: marquee 32s linear infinite; will-change: transform; }
   .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
 
-  /* ---------- REVEAL ---------- */
   [data-reveal] {
     opacity: 0;
     transform: translateY(28px);
@@ -178,7 +167,6 @@
   }
   [data-reveal].is-visible { opacity: 1; transform: none; }
 
-  /* ---------- FILTROS ---------- */
   .filter-btn {
     padding: .55rem 1.15rem;
     border-radius: 999px;
@@ -197,7 +185,6 @@
     box-shadow: 0 10px 26px -12px rgba(0,240,255,.9);
   }
 
-  /* ---------- SWATCH ---------- */
   .swatch {
     width: 30px; height: 30px; border-radius: 999px;
     border: 2px solid rgba(255,255,255,.15);
@@ -210,13 +197,11 @@
     transform: scale(1.14);
   }
 
-  /* ---------- FAQ ---------- */
   details summary::-webkit-details-marker { display: none; }
   details summary { list-style: none; }
   details[open] .faq-icon { transform: rotate(135deg); }
   .faq-icon { transition: transform .35s cubic-bezier(.16,1,.3,1); }
 
-  /* ---------- SCROLLBAR ---------- */
   ::-webkit-scrollbar { width: 8px; height: 8px; }
   ::-webkit-scrollbar-track { background: #030308; }
   ::-webkit-scrollbar-thumb {
@@ -225,7 +210,6 @@
     border: 2px solid #030308;
   }
 
-  /* ---------- UTIL ---------- */
   .noise-overlay {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
   }
@@ -240,7 +224,6 @@
     [data-reveal] { opacity: 1; transform: none; }
   }
 
-  /* Espacio para la barra móvil fija */
   @media (max-width: 1023px) {
     body { padding-bottom: calc(72px + var(--safe-bottom)); }
   }
@@ -249,17 +232,14 @@
 
 <body class="selection:bg-neonPink selection:text-white relative bg-dark font-sans antialiased">
 
-<!-- ===================== FONDO DECORATIVO ===================== -->
 <div class="fixed inset-0 bg-grid-pattern pointer-events-none z-0"></div>
 <div class="fixed -top-40 -left-40 w-96 h-96 bg-neonPink/20 rounded-full blur-[130px] pointer-events-none glow-orb-1 z-0"></div>
 <div class="fixed top-1/3 -right-40 w-[520px] h-[520px] bg-neonCyan/20 rounded-full blur-[160px] pointer-events-none glow-orb-2 z-0"></div>
 <div class="fixed -bottom-40 left-1/3 w-[460px] h-[460px] bg-neonPurple/20 rounded-full blur-[150px] pointer-events-none glow-orb-3 z-0"></div>
 
-<!-- ===================== MARQUEE SUPERIOR ===================== -->
 <div class="relative z-50 bg-gradient-to-r from-neonPink via-neonPurple to-neonCyan p-[1px]">
   <div class="bg-dark/90 backdrop-blur-md py-2.5 overflow-hidden marquee-wrap">
     <div class="marquee-track flex w-max">
-      <!-- Grupo A -->
       <div class="flex items-center gap-10 pr-10 text-[11px] font-black tracking-[0.18em] uppercase text-gray-300">
         <span class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-palette text-neonPink"></i> Mezcla computarizada 100% exacta</span>
         <span class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-bolt text-neonYellow"></i> Calidad automotriz premium</span>
@@ -268,7 +248,6 @@
         <span class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-spray-can text-neonPurple"></i> Acabados de alto brillo HS</span>
         <span class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-truck-fast text-neonCyan"></i> Entrega rápida en la zona</span>
       </div>
-      <!-- Grupo B (copia para loop) -->
       <div class="flex items-center gap-10 pr-10 text-[11px] font-black tracking-[0.18em] uppercase text-gray-300" aria-hidden="true">
         <span class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-palette text-neonPink"></i> Mezcla computarizada 100% exacta</span>
         <span class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-bolt text-neonYellow"></i> Calidad automotriz premium</span>
@@ -281,11 +260,9 @@
   </div>
 </div>
 
-<!-- ===================== HEADER ===================== -->
 <header id="siteHeader" class="sticky top-0 z-40 bg-dark/70 backdrop-blur-xl border-b border-white/10 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
 
-    <!-- LOGO -->
     <a href="#inicio" class="flex items-center gap-3 group shrink-0">
       <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-neonPink via-neonPurple to-neonCyan p-[2px] shadow-lg shadow-neonPurple/40 group-hover:scale-105 transition-transform duration-300">
         <div class="w-full h-full bg-dark rounded-[14px] flex items-center justify-center">
@@ -302,7 +279,6 @@
       </div>
     </a>
 
-    <!-- NAV DESKTOP -->
     <nav class="hidden lg:flex items-center gap-8 text-[13px] font-bold tracking-widest uppercase">
       <a href="#pinturas"   data-navlink class="nav-link text-gray-300 hover:text-white transition-colors">Pinturas</a>
       <a href="#insumos"    data-navlink class="nav-link text-gray-300 hover:text-white transition-colors">Insumos</a>
@@ -311,7 +287,6 @@
       <a href="#faq"        data-navlink class="nav-link text-gray-300 hover:text-white transition-colors">FAQ</a>
     </nav>
 
-    <!-- ACCIONES -->
     <div class="flex items-center gap-3">
       <div id="liveBadge" class="hidden xl:flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-[11px] font-semibold">
         <span class="w-2 h-2 rounded-full bg-neonGreen animate-pulse"></span>
@@ -325,7 +300,6 @@
         <span class="hidden sm:inline">Cotizar ahora</span>
       </a>
 
-      <!-- HAMBURGUESA -->
       <button id="menuBtn" aria-label="Abrir menú" aria-expanded="false"
               class="lg:hidden w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition">
         <i id="menuIcon" class="fa-solid fa-bars text-lg"></i>
@@ -333,7 +307,6 @@
     </div>
   </div>
 
-  <!-- MENÚ MÓVIL -->
   <div id="mobileMenu" class="lg:hidden grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-[cubic-bezier(.16,1,.3,1)] border-t border-white/0">
     <div class="overflow-hidden">
       <nav class="px-4 sm:px-6 py-5 space-y-1 bg-dark/95 backdrop-blur-xl border-t border-white/10">
@@ -352,11 +325,9 @@
   </div>
 </header>
 
-<!-- ===================== HERO ===================== -->
 <section id="inicio" class="relative z-10 pt-14 lg:pt-24 pb-16 px-4 max-w-7xl mx-auto">
   <div class="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
 
-    <!-- TEXTO -->
     <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
 
       <div data-reveal class="inline-flex items-center gap-2.5 bg-gradient-to-r from-neonPink/15 to-neonPurple/15 border border-neonPink/35 px-4 py-2 rounded-full text-[11px] font-black tracking-[0.18em] text-neonPink uppercase">
@@ -377,7 +348,6 @@
         y asesoría técnica directa en <strong class="text-white font-semibold">Biblián, Ecuador</strong>.
       </p>
 
-      <!-- CTAs -->
       <div data-reveal style="--d:240ms" class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3.5">
         <a href="#pinturas" class="btn btn-primary">
           <i class="fa-solid fa-palette"></i> Explorar catálogo
@@ -387,7 +357,6 @@
         </a>
       </div>
 
-      <!-- MÉTRICAS -->
       <div data-reveal style="--d:320ms" class="grid grid-cols-3 gap-4 pt-8 border-t border-white/10 max-w-lg mx-auto lg:mx-0">
         <div>
           <span class="font-display text-2xl sm:text-3xl font-black text-neonCyan block">100%</span>
@@ -405,7 +374,6 @@
 
     </div>
 
-    <!-- TARJETA SHOWCASE INTERACTIVA -->
     <div class="lg:col-span-5 relative" data-reveal style="--d:200ms">
 
       <div class="absolute -top-6 -right-4 hidden sm:flex items-center gap-2 glass-card rounded-2xl px-4 py-3 animate-floaty z-20">
@@ -415,13 +383,11 @@
 
       <div class="gradient-border-card p-6 sm:p-8 space-y-6">
 
-        <!-- Cabecera -->
         <div class="flex justify-between items-center">
           <span class="text-[10px] font-black tracking-[0.2em] text-gray-400 uppercase">Vista previa del acabado</span>
           <span class="bg-neonGreen/15 text-neonGreen text-[10px] font-black px-2.5 py-1 rounded-md border border-neonGreen/30 uppercase">En stock</span>
         </div>
 
-        <!-- Display -->
         <div id="showcaseBox" class="relative h-60 sm:h-64 rounded-2xl overflow-hidden border border-white/10 flex items-center justify-center transition-all duration-700"
              style="background: linear-gradient(135deg, rgba(255,0,127,.35), #030308 45%, rgba(112,0,255,.35));">
           <div id="showcaseGlow" class="absolute inset-0 opacity-70 transition-opacity duration-700"
@@ -434,7 +400,6 @@
           </div>
         </div>
 
-        <!-- Swatches -->
         <div class="space-y-2.5">
           <span class="text-[10px] font-black tracking-[0.2em] text-gray-500 uppercase block">Toca un acabado para verlo</span>
           <div id="swatchRow" class="flex items-center gap-3">
@@ -465,7 +430,6 @@
           </div>
         </div>
 
-        <!-- Info -->
         <div class="space-y-1 text-xs text-gray-300">
           <div class="flex justify-between py-2.5 border-b border-white/10">
             <span class="text-gray-400">Secado al tacto</span>
@@ -491,7 +455,6 @@
 
   </div>
 
-  <!-- BARRA DE CONFIANZA -->
   <div data-reveal style="--d:380ms" class="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4">
     <div class="glass-card rounded-2xl p-5 flex items-center gap-4">
       <i class="fa-solid fa-award text-2xl text-neonPink"></i>
@@ -524,10 +487,8 @@
   </div>
 </section>
 
-<!-- ===================== CONTENIDO PRINCIPAL ===================== -->
 <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 space-y-24 lg:space-y-32">
 
-  <!-- ============ 1. PINTURAS ============ -->
   <section id="pinturas" class="scroll-mt-32 space-y-9">
 
     <div data-reveal class="flex flex-col md:flex-row md:items-end justify-between gap-5 border-b border-white/10 pb-6">
@@ -543,7 +504,6 @@
       </p>
     </div>
 
-    <!-- Filtros -->
     <div data-reveal class="flex items-center gap-2.5 overflow-x-auto pb-1 -mx-1 px-1">
       <button class="filter-btn active" data-filter="all">Todos</button>
       <button class="filter-btn" data-filter="bicapa">Bicapa</button>
@@ -552,10 +512,8 @@
       <button class="filter-btn" data-filter="complemento">Complementos</button>
     </div>
 
-    <!-- Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
 
-      <!-- CARD 1 -->
       <article data-cat="bicapa" data-reveal class="glass-card rounded-3xl p-6 space-y-5 flex flex-col justify-between group">
         <div class="space-y-4">
           <div class="flex justify-between items-start">
@@ -583,7 +541,6 @@
         </div>
       </article>
 
-      <!-- CARD 2 -->
       <article data-cat="monocapa" data-reveal style="--d:80ms" class="glass-card rounded-3xl p-6 space-y-5 flex flex-col justify-between group">
         <div class="space-y-4">
           <div class="flex justify-between items-start">
@@ -611,7 +568,6 @@
         </div>
       </article>
 
-      <!-- CARD 3 -->
       <article data-cat="especial" data-reveal style="--d:160ms" class="glass-card rounded-3xl p-6 space-y-5 flex flex-col justify-between group">
         <div class="space-y-4">
           <div class="flex justify-between items-start">
@@ -639,7 +595,6 @@
         </div>
       </article>
 
-      <!-- CARD 4 -->
       <article data-cat="complemento" data-reveal class="glass-card rounded-3xl p-6 space-y-5 flex flex-col justify-between group">
         <div class="space-y-4">
           <div class="flex justify-between items-start">
@@ -667,7 +622,6 @@
         </div>
       </article>
 
-      <!-- CARD 5 -->
       <article data-cat="monocapa" data-reveal style="--d:80ms" class="glass-card rounded-3xl p-6 space-y-5 flex flex-col justify-between group">
         <div class="space-y-4">
           <div class="flex justify-between items-start">
@@ -695,7 +649,6 @@
         </div>
       </article>
 
-      <!-- CARD 6 -->
       <article data-cat="complemento" data-reveal style="--d:160ms" class="glass-card rounded-3xl p-6 space-y-5 flex flex-col justify-between group">
         <div class="space-y-4">
           <div class="flex justify-between items-start">
@@ -726,7 +679,6 @@
     </div>
   </section>
 
-  <!-- ============ 2. INSUMOS ============ -->
   <section id="insumos" class="scroll-mt-32 space-y-9">
 
     <div data-reveal class="flex flex-col md:flex-row md:items-end justify-between gap-5 border-b border-white/10 pb-6">
@@ -790,7 +742,6 @@
     </div>
   </section>
 
-  <!-- ============ 3. ACCESORIOS ============ -->
   <section id="accesorios" class="scroll-mt-32 space-y-9">
 
     <div data-reveal class="flex flex-col md:flex-row md:items-end justify-between gap-5 border-b border-white/10 pb-6">
@@ -852,7 +803,6 @@
     </div>
   </section>
 
-  <!-- ============ 4. SERVICIOS ============ -->
   <section id="servicios" class="scroll-mt-32 space-y-12">
 
     <div data-reveal class="text-center space-y-3 max-w-2xl mx-auto">
@@ -912,7 +862,6 @@
     </div>
   </section>
 
-  <!-- ============ 5. PROCESO ============ -->
   <section class="space-y-12">
     <div data-reveal class="text-center space-y-3 max-w-2xl mx-auto">
       <span class="text-neonPurple text-[11px] font-black tracking-[0.22em] uppercase block">// Cómo trabajamos</span>
@@ -965,7 +914,6 @@
     </div>
   </section>
 
-  <!-- ============ 6. TESTIMONIOS ============ -->
   <section class="space-y-12">
     <div data-reveal class="text-center space-y-3 max-w-2xl mx-auto">
       <span class="text-neonCyan text-[11px] font-black tracking-[0.22em] uppercase block">// Lo que dicen</span>
@@ -1027,7 +975,6 @@
     </div>
   </section>
 
-  <!-- ============ 7. FAQ ============ -->
   <section id="faq" class="scroll-mt-32 space-y-10 max-w-3xl mx-auto">
     <div data-reveal class="text-center space-y-3">
       <span class="text-neonPurple text-[11px] font-black tracking-[0.22em] uppercase block">// Dudas frecuentes</span>
@@ -1098,7 +1045,6 @@
     </div>
   </section>
 
-  <!-- ============ 8. CONTACTO / UBICACIÓN ============ -->
   <section class="glass-card rounded-3xl p-8 sm:p-12 relative overflow-hidden">
     <div class="absolute -right-24 -bottom-24 w-80 h-80 bg-neonPink/20 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute -left-24 -top-24 w-72 h-72 bg-neonCyan/15 rounded-full blur-3xl pointer-events-none"></div>
@@ -1141,7 +1087,6 @@
 
 </main>
 
-<!-- ===================== FOOTER ===================== -->
 <footer class="border-t border-white/10 bg-dark/80 relative z-10 pt-14 pb-10">
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
@@ -1227,21 +1172,17 @@
   </div>
 </footer>
 
-<!-- ===================== BOTONES FLOTANTES ===================== -->
-<!-- WhatsApp (desktop) -->
 <a href="https://wa.me/593984113081" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"
    class="hidden lg:flex fixed bottom-7 right-7 z-50 w-14 h-14 rounded-full bg-neonGreen text-dark items-center justify-center text-2xl shadow-xl shadow-neonGreen/40 hover:scale-110 hover:shadow-neonGreen/70 transition-all duration-300">
   <i class="fa-brands fa-whatsapp"></i>
   <span class="absolute inset-0 rounded-full bg-neonGreen animate-ping opacity-20"></span>
 </a>
 
-<!-- Volver arriba -->
 <button id="toTop" aria-label="Volver arriba"
         class="fixed bottom-7 right-7 lg:bottom-24 z-50 w-11 h-11 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-white items-center justify-center hidden hover:bg-neonCyan hover:text-dark transition-all duration-300">
   <i class="fa-solid fa-arrow-up"></i>
 </button>
 
-<!-- Barra móvil fija -->
 <div class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-dark/90 backdrop-blur-xl border-t border-white/10 px-3 pt-3"
      style="padding-bottom: calc(0.75rem + var(--safe-bottom));">
   <div class="flex items-center gap-3 max-w-lg mx-auto">
@@ -1256,12 +1197,10 @@
   </div>
 </div>
 
-<!-- ===================== JAVASCRIPT ===================== -->
 <script>
 (function () {
   'use strict';
 
-  /* ---------- Utilidad WhatsApp ---------- */
   window.solicitarCotizacion = function (item) {
     const mensaje = encodeURIComponent(
       `Hola TecniColor Encalada! 👋 Estoy interesado en una cotización de: ${item}. ¿Me podrían dar más información?`
@@ -1269,10 +1208,8 @@
     window.open(`https://wa.me/593984113081?text=${mensaje}`, '_blank', 'noopener');
   };
 
-  /* ---------- Año dinámico ---------- */
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  /* ---------- Menú móvil ---------- */
   const menuBtn    = document.getElementById('menuBtn');
   const menuIcon   = document.getElementById('menuIcon');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -1288,7 +1225,6 @@
   menuBtn.addEventListener('click', () => toggleMenu());
   document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => toggleMenu(false)));
 
-  /* ---------- Header compacto al hacer scroll ---------- */
   const header = document.getElementById('siteHeader');
   const toTop  = document.getElementById('toTop');
 
@@ -1309,7 +1245,6 @@
 
   toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-  /* ---------- Reveal on scroll ---------- */
   const revealEls = document.querySelectorAll('[data-reveal]');
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
@@ -1326,7 +1261,6 @@
     revealEls.forEach(el => el.classList.add('is-visible'));
   }
 
-  /* ---------- Filtros de catálogo ---------- */
   const filterBtns = document.querySelectorAll('[data-filter]');
   const cards      = document.querySelectorAll('[data-cat]');
 
@@ -1348,7 +1282,6 @@
     });
   });
 
-  /* ---------- Swatches del showcase ---------- */
   const swatches   = document.querySelectorAll('.swatch');
   const showcaseBox   = document.getElementById('showcaseBox');
   const showcaseGlow  = document.getElementById('showcaseGlow');
@@ -1369,7 +1302,6 @@
     });
   });
 
-  /* ---------- Scrollspy ---------- */
   const navLinks = document.querySelectorAll('[data-navlink]');
   const sections = document.querySelectorAll('section[id]');
 
@@ -1387,10 +1319,9 @@
     sections.forEach(s => spy.observe(s));
   }
 
-  /* ---------- Horario de atención ---------- */
   document.addEventListener('DOMContentLoaded', () => {
     const now   = new Date();
-    const day   = now.getDay();      // 0 = domingo
+    const day   = now.getDay();
     const hour  = now.getHours();
     const badge = document.getElementById('liveBadge');
     if (!badge) return;
@@ -1404,7 +1335,6 @@
          <span class="text-gray-400">Cerrado · Abre 08:00</span>`;
   });
 
-  /* ---------- Cerrar menú al cambiar de tamaño ---------- */
   window.addEventListener('resize', () => {
     if (window.innerWidth >= 1024 && menuOpen) toggleMenu(false);
   });
