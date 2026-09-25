@@ -14,7 +14,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
@@ -87,12 +87,32 @@
       animation: gradient-move 5s ease infinite;
     }
 
+    /* TEXTO 3D CON VOLUMEN */
+    .text-3d {
+      font-family: 'Syne', sans-serif;
+      font-weight: 900;
+      color: #ffffff;
+      text-shadow: 
+        0 1px 0 #cccccc,
+        0 2px 0 #c9c9c9,
+        0 3px 0 #bbb,
+        0 4px 0 #b9b9b9,
+        0 5px 0 #aaa,
+        0 6px 1px rgba(0,0,0,.1),
+        0 0 5px rgba(0,0,0,.1),
+        0 1px 3px rgba(0,0,0,.3),
+        0 3px 5px rgba(0,0,0,.2),
+        0 5px 10px rgba(0,0,0,.25),
+        0 10px 10px rgba(0,0,0,.2),
+        0 20px 20px rgba(0,0,0,.15);
+    }
+
     @keyframes gradient-move {
       0%, 100% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
     }
 
-    /* ═══ GLASS ═══ */
+    /* ═══ GLASS & CONTAINERS ═══ */
     .glass {
       background: rgba(13, 13, 13, 0.75);
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -201,7 +221,7 @@
     .animate-pulse-glow { animation: pulse-glow-anim 2.5s infinite; }
     @keyframes pulse-glow-anim {
       0% { box-shadow: 0 0 0 0 rgba(255, 106, 0, 0.75), 0 12px 28px -10px rgba(255, 106, 0, 0.6); }
-      70% { shadow: 0 0 0 14px rgba(255, 106, 0, 0), 0 12px 28px -10px rgba(255, 106, 0, 0.6); }
+      70% { box-shadow: 0 0 0 14px rgba(255, 106, 0, 0), 0 12px 28px -10px rgba(255, 106, 0, 0.6); }
       100% { box-shadow: 0 0 0 0 rgba(255, 106, 0, 0), 0 12px 28px -10px rgba(255, 106, 0, 0.6); }
     }
 
@@ -240,7 +260,7 @@
 
     @keyframes pulse-wa {
       0%, 100% { box-shadow: 0 8px 22px rgba(37, 211, 102, 0.55), 0 0 0 0 rgba(37, 211, 102, 0.6); }
-      50% { box-shadow: 0 8px 22px rgba(37, 211, 102, 0.55), 0 0 0 12px rgba(37, 211, 102, 0); }
+      50% { shadow: 0 8px 22px rgba(37, 211, 102, 0.55), 0 0 0 12px rgba(37, 211, 102, 0); }
     }
 
     .float-wa .badge-dot {
@@ -323,32 +343,36 @@
     .mobile-nav-item.nav-wa i { font-size: 22px; }
     .mobile-nav-item.nav-wa span { display: none; }
 
-    /* ═══ LOGO TECNICOLOR ═══ */
+    /* ═══ LOGO TECNICOLOR 3D ═══ */
     .logo-badge {
       display: flex; align-items: center; gap: 8px;
-      padding: 4px 10px 4px 4px; border-radius: 999px;
+      padding: 4px 12px 4px 4px; border-radius: 999px;
       background: rgba(20,20,20,0.9);
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.12);
       text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     }
 
     .logo-icon {
-      width: 38px; height: 38px; border-radius: 50%;
+      width: 40px; height: 40px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      background: #121212; border: 1px solid rgba(255,255,255,0.15);
+      background: radial-gradient(circle at 30% 30%, #2a2a2a, #050505);
+      border: 1px solid rgba(255,255,255,0.2);
       flex-shrink: 0;
+      box-shadow: inset 0 2px 4px rgba(255,255,255,0.2), 0 4px 8px rgba(0,0,0,0.8);
     }
 
     .logo-name {
       font-family: 'Syne', sans-serif; font-weight: 800; font-size: 14px;
     }
-    .logo-tecni { color: #ffffff; }
+    .logo-tecni { color: #ffffff; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
     .logo-color {
       background: linear-gradient(100deg, #ff006e, #ffe600, #00e5ff);
       -webkit-background-clip: text; background-clip: text; color: transparent;
+      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.6));
     }
 
-    /* ═══ ANIMACIONES PERSONAJE & PULVERIZADOR ═══ */
+    /* ═══ ANIMACIONES PERSONAJE & SPRAY ═══ */
     .spray-mist { animation: mist-pulse 2s ease-in-out infinite; transform-origin: center; }
     @keyframes mist-pulse {
       0%, 100% { opacity: 0.6; transform: scale(1); }
@@ -357,8 +381,8 @@
 
     .hero-character-wrapper { animation: hero-float 5s ease-in-out infinite; }
     @keyframes hero-float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(0.5deg); }
     }
 
     @media (min-width: 769px) {
@@ -393,20 +417,32 @@
     <header class="sticky top-0 z-50 w-full px-3 sm:px-6 lg:px-8 pt-3 pb-2">
       <nav class="max-w-7xl mx-auto px-3 py-1.5 rounded-full glass flex items-center justify-between gap-3">
 
-        <!-- LOGO SUPER NÍTIDO -->
+        <!-- LOGO 3D EN NAVEGACIÓN -->
         <a href="#inicio" class="logo-badge" aria-label="Tecni Color Encalada - Inicio">
           <div class="logo-icon">
-            <svg class="w-6 h-6" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="22" y="24" width="20" height="5" rx="2" fill="#4b5563"/>
-              <rect x="20" y="29" width="24" height="30" rx="4" fill="#1f2937" stroke="#374151" stroke-width="1.5"/>
-              <rect x="22" y="34" width="20" height="20" rx="2" fill="#00e5ff"/>
-              <rect x="28" y="16" width="8" height="5" rx="1.5" fill="#9ca3af"/>
-              <rect x="24" y="20" width="16" height="4" rx="1.5" fill="#374151"/>
-              <rect x="38" y="14" width="6" height="4" rx="1" fill="#ff006e"/>
-              <g class="spray-mist">
-                <circle cx="52" cy="16" r="2.5" fill="#00e5ff"/>
-                <circle cx="56" cy="11" r="2" fill="#ffe600"/>
-                <circle cx="58" cy="19" r="1.5" fill="#ff006e"/>
+            <svg class="w-7 h-7" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="nav3dGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00e5ff"/>
+                  <stop offset="50%" stop-color="#ffe600"/>
+                  <stop offset="100%" stop-color="#ff006e"/>
+                </linearGradient>
+                <filter id="shadow3dNav" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="2" dy="3" stdDeviation="2" flood-color="#000000" flood-opacity="0.8"/>
+                </filter>
+              </defs>
+              <g filter="url(#shadow3dNav)">
+                <!-- Lata en 3D pulida -->
+                <rect x="20" y="26" width="24" height="32" rx="4" fill="url(#nav3dGrad)"/>
+                <rect x="20" y="26" width="24" height="4" fill="#ffffff" opacity="0.4"/>
+                <rect x="22" y="20" width="20" height="6" rx="2" fill="#334155"/>
+                <rect x="28" y="14" width="8" height="6" rx="1.5" fill="#94a3b8"/>
+                <!-- Boquilla -->
+                <rect x="38" y="13" width="6" height="4" rx="1" fill="#ff006e"/>
+                <!-- Ráfaga spray 3D -->
+                <circle cx="52" cy="12" r="2.5" fill="#00e5ff"/>
+                <circle cx="56" cy="8" r="2" fill="#ffe600"/>
+                <circle cx="58" cy="16" r="1.5" fill="#ff006e"/>
               </g>
             </svg>
           </div>
@@ -503,21 +539,43 @@
           </div>
         </div>
 
-        <!-- HERO ILUSTRACIÓN ANIMADA NÍTIDA (PINTOR MASCUTA + LATA) -->
+        <!-- HERO ILUSTRACIÓN LOGO & PERSONAJE EN ESTILO 3D ULTRA NÍTIDO -->
         <div class="md:col-span-5 relative" data-reveal style="--delay: 150ms;">
           <div class="gradient-border p-1.5 sm:p-4">
             <div class="bg-panel rounded-2xl p-4 sm:p-6 flex flex-col items-center justify-center text-center relative overflow-hidden">
               
               <div class="hero-character-wrapper relative my-1">
-                <!-- SVG Vectorial en alta nitidez con Personaje Animado -->
-                <svg class="w-52 h-52 sm:w-72 sm:h-72 filter drop-shadow-[0_15px_30px_rgba(0,229,255,0.35)]" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                
+                <!-- SVG MASCUTA Y LOGO CON EFECTOS DE PROFUNDIDAD Y SOMBRAS 3D -->
+                <svg class="w-60 h-60 sm:w-80 sm:h-80 filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.8)]" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <defs>
-                    <linearGradient id="canBodyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <!-- Filtro Sombra Volumétrica 3D -->
+                    <filter id="shadow3D" x="-10%" y="-10%" width="130%" height="130%">
+                      <feDropShadow dx="0" dy="12" stdDeviation="8" flood-color="#000000" flood-opacity="0.65"/>
+                    </filter>
+                    
+                    <!-- Gradientes 3D Metallics -->
+                    <linearGradient id="cap3D" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#ff3385"/>
+                      <stop offset="50%" stop-color="#ff006e"/>
+                      <stop offset="100%" stop-color="#990042"/>
+                    </linearGradient>
+
+                    <linearGradient id="body3D" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#38bdf8"/>
+                      <stop offset="50%" stop-color="#0284c7"/>
+                      <stop offset="100%" stop-color="#0369a1"/>
+                    </linearGradient>
+
+                    <linearGradient id="can3D" x1="0%" y1="0%" x2="100%" y2="0%">
                       <stop offset="0%" stop-color="#1e293b"/>
-                      <stop offset="50%" stop-color="#475569"/>
+                      <stop offset="25%" stop-color="#475569"/>
+                      <stop offset="50%" stop-color="#f8fafc"/>
+                      <stop offset="75%" stop-color="#334155"/>
                       <stop offset="100%" stop-color="#0f172a"/>
                     </linearGradient>
-                    <linearGradient id="labelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+
+                    <linearGradient id="rainbow3D" x1="0%" y1="0%" x2="0%" y2="100%">
                       <stop offset="0%" stop-color="#ff006e"/>
                       <stop offset="33%" stop-color="#ffe600"/>
                       <stop offset="66%" stop-color="#00e5ff"/>
@@ -525,70 +583,82 @@
                     </linearGradient>
                   </defs>
 
-                  <!-- Sombra en el piso -->
-                  <ellipse cx="120" cy="225" rx="75" ry="8" fill="#000000" opacity="0.6"/>
+                  <!-- Sombra Base 3D -->
+                  <ellipse cx="140" cy="260" rx="90" ry="12" fill="#000000" opacity="0.75"/>
 
-                  <!-- Nube de pintura pulverizada (Spray Animado) -->
-                  <g class="spray-mist">
-                    <circle cx="195" cy="70" r="14" fill="#00e5ff" opacity="0.45"/>
-                    <circle cx="210" cy="55" r="10" fill="#ffe600" opacity="0.5"/>
-                    <circle cx="218" cy="80" r="8" fill="#ff006e" opacity="0.5"/>
-                    <circle cx="180" cy="45" r="7" fill="#19e65a" opacity="0.55"/>
+                  <!-- Spray Volumétrico 3D -->
+                  <g class="spray-mist" filter="url(#shadow3D)">
+                    <circle cx="230" cy="70" r="16" fill="#00e5ff" opacity="0.7"/>
+                    <circle cx="248" cy="50" r="12" fill="#ffe600" opacity="0.8"/>
+                    <circle cx="255" cy="85" r="9" fill="#ff006e" opacity="0.75"/>
+                    <circle cx="215" cy="40" r="8" fill="#19e65a" opacity="0.8"/>
                   </g>
 
-                  <!-- PERSONAJE ANIMADO (PINTOR AUTOMOTRIZ) -->
-                  <!-- Cuerpo / Overol -->
-                  <path d="M 50 145 C 50 120, 95 120, 95 145 L 95 210 L 50 210 Z" fill="#0284c7"/>
-                  <!-- Pechera / Detalle -->
-                  <path d="M 60 140 L 85 140 L 85 180 L 60 180 Z" fill="#0369a1"/>
-                  <!-- Mancha de pintura en ropa -->
-                  <circle cx="68" cy="165" r="4" fill="#ff006e"/>
-                  <circle cx="78" cy="152" r="3" fill="#ffe600"/>
+                  <!-- GRUPO PERSONAJE 3D -->
+                  <g filter="url(#shadow3D)">
+                    <!-- Cuerpo / Overol con Relieve -->
+                    <path d="M 60 160 C 60 130, 110 130, 110 160 L 110 240 L 60 240 Z" fill="url(#body3D)"/>
+                    <path d="M 72 150 L 98 150 L 98 200 L 72 200 Z" fill="#0369a1"/>
+                    
+                    <!-- Gotas de Pintura 3D -->
+                    <circle cx="80" cy="180" r="5" fill="#ff006e"/>
+                    <circle cx="92" cy="165" r="3.5" fill="#ffe600"/>
 
-                  <!-- Cabeza del Personaje -->
-                  <circle cx="72" cy="102" r="18" fill="#fbcfe8"/>
-                  <!-- Mascarilla de Pintor -->
-                  <rect x="60" y="102" width="24" height="12" rx="4" fill="#e2e8f0"/>
-                  <rect x="68" y="105" width="8" height="6" rx="1" fill="#94a3b8"/>
-                  <line x1="56" y1="106" x2="60" y2="106" stroke="#64748b" stroke-width="2"/>
-                  <line x1="84" y1="106" x2="88" y2="106" stroke="#64748b" stroke-width="2"/>
-                  <!-- Ojos animados del personaje -->
-                  <circle cx="66" cy="94" r="2.5" fill="#0f172a"/>
-                  <circle cx="78" cy="94" r="2.5" fill="#0f172a"/>
-                  <!-- Cejas alegres -->
-                  <path d="M 63 89 Q 66 86 69 89" stroke="#0f172a" stroke-width="1.5" fill="none"/>
-                  <path d="M 75 89 Q 78 86 81 89" stroke="#0f172a" stroke-width="1.5" fill="none"/>
-                  <!-- Gorra de Pintor -->
-                  <path d="M 50 92 C 50 78, 94 78, 94 92 Z" fill="#ff006e"/>
-                  <path d="M 80 90 L 102 92 L 94 95 Z" fill="#be185d"/>
+                    <!-- Cabeza 3D -->
+                    <circle cx="85" cy="115" r="22" fill="#fbcfe8"/>
+                    
+                    <!-- Mascarilla 3D con Brillo -->
+                    <rect x="70" y="115" width="30" height="15" rx="5" fill="#f1f5f9"/>
+                    <rect x="80" y="118" width="10" height="8" rx="2" fill="#64748b"/>
+                    <!-- Tiras mascarilla -->
+                    <line x1="64" y1="120" x2="70" y2="120" stroke="#475569" stroke-width="2.5"/>
+                    <line x1="100" y1="120" x2="106" y2="120" stroke="#475569" stroke-width="2.5"/>
 
-                  <!-- Brazo extendido sosteniendo la Pistola de Pintar -->
-                  <path d="M 88 135 Q 115 125 135 110" stroke="#0284c7" stroke-width="10" stroke-linecap="round" fill="none"/>
-                  <!-- Pistola de Pintura (Pistola Aerográfica) -->
-                  <rect x="132" y="102" width="16" height="8" rx="2" fill="#94a3b8"/>
-                  <rect x="136" y="90" width="8" height="12" rx="1" fill="#ffe600"/> <!-- Tanque superior -->
-                  <rect x="148" y="104" width="6" height="4" rx="1" fill="#334155"/> <!-- Boquilla -->
+                    <!-- Ojos Animados 3D -->
+                    <circle cx="77" cy="104" r="3" fill="#0f172a"/>
+                    <circle cx="93" cy="104" r="3" fill="#0f172a"/>
+                    <circle cx="78" cy="103" r="1" fill="#ffffff"/>
+                    <circle cx="94" cy="103" r="1" fill="#ffffff"/>
 
-                  <!-- LATA DE AEROSOL PRINCIPAL EN ALTA DEFINICIÓN -->
-                  <rect x="130" y="130" width="60" height="85" rx="8" fill="url(#canBodyGrad)"/>
-                  <rect x="133" y="142" width="54" height="60" rx="4" fill="url(#labelGrad)"/>
-                  
-                  <!-- Tapa y Válvula de la lata -->
-                  <rect x="148" y="112" width="24" height="18" rx="3" fill="#0f172a"/>
-                  <rect x="154" y="105" width="12" height="7" rx="1.5" fill="#cbd5e1"/>
-                  <rect x="166" y="101" width="8" height="5" rx="1" fill="#ff006e"/>
+                    <!-- Gorra 3D -->
+                    <path d="M 60 105 C 60 88, 110 88, 110 105 Z" fill="url(#cap3D)"/>
+                    <path d="M 95 102 L 122 105 L 112 110 Z" fill="#990042"/>
 
-                  <!-- Texto ultra nítido en etiqueta -->
-                  <text x="160" y="162" fill="#ffffff" font-family="'Syne', sans-serif" font-weight="800" font-size="9" text-anchor="middle" letter-spacing="1">TECNI</text>
-                  <text x="160" y="173" fill="#ffffff" font-family="'Syne', sans-serif" font-weight="800" font-size="9" text-anchor="middle" letter-spacing="1">COLOR</text>
-                  <text x="160" y="187" fill="#ffffff" font-family="'Outfit', sans-serif" font-weight="700" font-size="6" text-anchor="middle" letter-spacing="2" opacity="0.95">ENCALADA</text>
+                    <!-- Brazo Extendido y Pistola Aerográfica 3D -->
+                    <path d="M 102 150 Q 135 140 160 120" stroke="url(#body3D)" stroke-width="12" stroke-linecap="round" fill="none"/>
+                    
+                    <!-- Pistola de Pintar Volumétrica -->
+                    <rect x="155" y="110" width="20" height="10" rx="3" fill="#94a3b8"/>
+                    <rect x="160" y="95" width="10" height="15" rx="2" fill="#ffe600"/>
+                    <rect x="175" y="112" width="8" height="6" rx="1.5" fill="#0284c7"/>
+                  </g>
 
-                  <!-- Destellos de luz en la lata -->
-                  <path d="M 136 145 L 136 198" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+                  <!-- GRUPO LATA DE AEROSOL PRINCIPAL EN 3D -->
+                  <g filter="url(#shadow3D)">
+                    <!-- Cuerpo de la Lata con degradado cilíndrico metálico -->
+                    <rect x="150" y="140" width="75" height="110" rx="12" fill="url(#can3D)"/>
+                    <!-- Etiqueta con brillo y textura -->
+                    <rect x="153" y="155" width="69" height="78" rx="6" fill="url(#rainbow3D)"/>
+                    <rect x="153" y="155" width="69" height="78" rx="6" fill="#ffffff" opacity="0.1"/>
+                    
+                    <!-- Tapa y Pulsador 3D -->
+                    <rect x="172" y="118" width="31" height="23" rx="4" fill="#0f172a"/>
+                    <rect x="180" y="108" width="15" height="10" rx="2" fill="#e2e8f0"/>
+                    <rect x="193" y="103" width="10" height="6" rx="1.5" fill="#ff006e"/>
+
+                    <!-- Texto grabado en relieve 3D dentro de la etiqueta -->
+                    <text x="187.5" y="180" fill="#ffffff" font-family="'Syne', sans-serif" font-weight="900" font-size="12" text-anchor="middle" letter-spacing="1" filter="drop-shadow(0 2px 2px rgba(0,0,0,0.8))">TECNI</text>
+                    <text x="187.5" y="195" fill="#ffffff" font-family="'Syne', sans-serif" font-weight="900" font-size="12" text-anchor="middle" letter-spacing="1" filter="drop-shadow(0 2px 2px rgba(0,0,0,0.8))">COLOR</text>
+                    <text x="187.5" y="212" fill="#ffffff" font-family="'Outfit', sans-serif" font-weight="800" font-size="7.5" text-anchor="middle" letter-spacing="2.5" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.9))">ENCALADA</text>
+
+                    <!-- Reflejo curvo metálico 3D -->
+                    <path d="M 158 145 L 158 242" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+                  </g>
                 </svg>
               </div>
 
-              <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-white tracking-wide mt-1">
+              <!-- NOMBRE DE MARCA EN TEXTO 3D CON VOLUMEN -->
+              <h2 class="text-3d text-3xl sm:text-4xl tracking-wider mt-2">
                 TECNI<span class="gradient-text">COLOR</span>
               </h2>
             </div>
