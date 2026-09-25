@@ -183,492 +183,565 @@
       transform: translateY(0);
     }
 
-    /* Reemplazo de catálogo pendiente */
     .placeholder-card {
       border: 1px dashed rgba(255, 255, 255, 0.15);
-      background: rgba(255, 255, 255, 0.015);
-    }
-
-    @media (max-width: 1023px) {
-      body { padding-bottom: calc(64px + var(--safe-bottom)); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation: none !important;
-        transition-duration: 0.001ms !important;
-      }
-      [data-reveal] { opacity: 1; transform: none; }
+      background: rgba(255, 255, 255, 0.02);
     }
   </style>
 </head>
 
-<body class="bg-dark font-sans antialiased selection:bg-pink selection:text-white">
+<body class="selection:bg-pink selection:text-white">
 
-  <!-- Fondos decorativos -->
-  <div class="fixed inset-0 bg-grid pointer-events-none z-0"></div>
-  <div class="fixed -top-32 -left-32 w-96 h-96 rounded-full bg-pink/20 blur-[120px] paint-glow pointer-events-none z-0"></div>
-  <div class="fixed top-1/3 -right-32 w-[450px] h-[450px] rounded-full bg-cyan/15 blur-[140px] paint-glow pointer-events-none z-0"></div>
-  <div class="fixed -bottom-32 left-1/3 w-[400px] h-[400px] rounded-full bg-yellow/10 blur-[130px] paint-glow pointer-events-none z-0"></div>
-
-  <!-- AVISO SUPERIOR -->
-  <div class="relative z-50 bg-gradient-to-r from-pink via-yellow to-cyan p-[1px]">
-    <div class="bg-dark py-2 overflow-hidden">
-      <div class="flex items-center justify-center gap-6 px-4 text-[10px] sm:text-[11px] font-extrabold tracking-[0.15em] uppercase text-gray-300 text-center">
-        <span><i class="fa-solid fa-location-dot text-cyan mr-1.5"></i> Biblián · Cañar · Ecuador</span>
-        <span class="hidden sm:inline text-gray-600">•</span>
-        <span class="hidden sm:inline"><i class="fa-solid fa-palette text-pink mr-1.5"></i> Damos color a tus ideas</span>
-        <span class="text-gray-600">•</span>
-        <a href="https://wa.me/593998290859" target="_blank" rel="noopener" class="text-green hover:underline">
-          <i class="fa-brands fa-whatsapp mr-1"></i> +593 99 829 0859
-        </a>
-      </div>
-    </div>
+  <!-- Luces Neón de Fondo -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="paint-glow absolute -top-40 -left-40 w-96 h-96 rounded-full bg-pink/30 blur-[130px]"></div>
+    <div class="paint-glow absolute top-1/3 -right-40 w-[28rem] h-[28rem] rounded-full bg-cyan/20 blur-[150px]" style="animation-delay:-3s"></div>
+    <div class="paint-glow absolute -bottom-40 left-1/3 w-96 h-96 rounded-full bg-yellow/20 blur-[140px]" style="animation-delay:-5s"></div>
+    <div class="absolute inset-0 bg-grid"></div>
   </div>
 
-  <!-- HEADER -->
-  <header id="header" class="sticky top-0 z-40 bg-dark/80 backdrop-blur-xl border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
-      
-      <a href="#inicio" class="flex items-center gap-3 shrink-0">
-        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-pink via-yellow to-cyan p-[2px]">
-          <div class="w-full h-full rounded-[14px] bg-dark flex items-center justify-center">
-            <i class="fa-solid fa-spray-can text-lg text-yellow"></i>
+  <!-- Contenido Principal -->
+  <div class="relative z-10 flex flex-col min-h-screen">
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header class="sticky top-0 z-50 w-full px-4 sm:px-6 lg:px-8 pt-3 pb-3">
+      <nav class="max-w-7xl mx-auto px-4 py-3 rounded-full glass flex items-center justify-between">
+        
+        <!-- LOGO CON LATA DE PINTURA -->
+        <a href="#inicio" class="flex items-center gap-3 group">
+          <div class="relative w-10 h-10 flex items-center justify-center rounded-xl bg-panel border border-white/10 group-hover:border-cyan/40 transition-colors shadow-lg">
+            <!-- Icono Vectorial SVG de Lata de Pintura -->
+            <svg class="w-7 h-7 text-white transform group-hover:scale-105 group-hover:rotate-[-6deg] transition-transform duration-300" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="paintDripNav" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ff006e" />
+                  <stop offset="50%" stop-color="#ffe600" />
+                  <stop offset="100%" stop-color="#00e5ff" />
+                </linearGradient>
+                <linearGradient id="canMetal" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#555555" />
+                  <stop offset="50%" stop-color="#aaaaaa" />
+                  <stop offset="100%" stop-color="#333333" />
+                </linearGradient>
+              </defs>
+              <!-- Asa de la lata -->
+              <path d="M16 26C16 14 48 14 48 26" stroke="#888888" stroke-width="3" stroke-linecap="round"/>
+              <!-- Cuerpo de la lata -->
+              <rect x="14" y="24" width="36" height="34" rx="4" fill="#18181b" stroke="url(#canMetal)" stroke-width="2.5"/>
+              <!-- Borde superior lata -->
+              <ellipse cx="32" cy="24" rx="18" ry="4" fill="#333333" stroke="url(#canMetal)" stroke-width="2"/>
+              <!-- Pintura derramándose del borde -->
+              <path d="M14 24C14 26 50 26 50 24C50 32 46 32 42 32C38 32 38 46 32 46C28 46 26 36 22 36C18 36 14 30 14 24Z" fill="url(#paintDripNav)"/>
+              <!-- Gota cayendo -->
+              <path d="M32 49C32 49 34 52 34 54C34 55.1 33.1 56 32 56C30.9 56 30 55.1 30 54C30 52 32 49 32 49Z" fill="#00e5ff"/>
+            </svg>
           </div>
-        </div>
-        <div class="leading-none">
-          <span class="font-display font-black text-xl sm:text-2xl tracking-wider text-white">
-            TECNI<span class="gradient-text">COLOR</span>
-          </span>
-          <span class="block text-[9px] font-bold tracking-[0.2em] text-gray-400 uppercase mt-1">
-            ENCALADA · BIBLIÁN
-          </span>
-        </div>
-      </a>
-
-      <nav class="hidden lg:flex items-center gap-8 text-[11px] font-bold tracking-widest uppercase">
-        <a href="#inicio" class="nav-link active text-gray-300 hover:text-white transition">Inicio</a>
-        <a href="#nosotros" class="nav-link text-gray-300 hover:text-white transition">Nosotros</a>
-        <a href="#servicios" class="nav-link text-gray-300 hover:text-white transition">Servicios</a>
-        <a href="#productos" class="nav-link text-gray-300 hover:text-white transition">Catálogo</a>
-        <a href="#contacto" class="nav-link text-gray-300 hover:text-white transition">Contacto</a>
-      </nav>
-
-      <div class="flex items-center gap-2">
-        <a href="https://wa.me/593998290859?text=Hola%20Tecni%20Color%20Encalada%2C%20deseo%20informaci%C3%B3n." target="_blank" rel="noopener" class="btn btn-wa !px-4 sm:!px-5">
-          <i class="fa-brands fa-whatsapp text-sm"></i>
-          <span class="hidden sm:inline">Cotizar</span>
+          <div class="flex flex-col">
+            <span class="font-display text-base sm:text-lg font-extrabold tracking-wider leading-none text-white group-hover:text-cyan transition-colors">
+              TECNI<span class="gradient-text">COLOR</span>
+            </span>
+            <span class="text-[9px] uppercase tracking-widest text-gray-400 font-semibold mt-0.5">ENCALADA</span>
+          </div>
         </a>
 
-        <button id="menuBtn" aria-label="Abrir menú" class="lg:hidden w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white">
-          <i id="menuIcon" class="fa-solid fa-bars"></i>
-        </button>
-      </div>
-    </div>
+        <!-- Menú Escritorio -->
+        <div class="hidden md:flex items-center gap-8 font-semibold text-sm text-gray-300">
+          <a href="#inicio" class="nav-link active hover:text-white transition-colors">Inicio</a>
+          <a href="#productos" class="nav-link hover:text-white transition-colors">Productos</a>
+          <a href="#servicios" class="nav-link hover:text-white transition-colors">Servicios</a>
+          <a href="#nosotros" class="nav-link hover:text-white transition-colors">Nosotros</a>
+          <a href="#contacto" class="nav-link hover:text-white transition-colors">Contacto</a>
+        </div>
 
-    <!-- Menú Móvil -->
-    <div id="mobileMenu" class="hidden lg:hidden border-t border-white/10 bg-dark/95 backdrop-blur-2xl">
-      <nav class="px-4 py-4 space-y-1 text-sm font-bold uppercase tracking-wider">
-        <a href="#inicio" class="mobile-link block px-4 py-3 rounded-xl hover:bg-white/5 text-gray-300">Inicio</a>
-        <a href="#nosotros" class="mobile-link block px-4 py-3 rounded-xl hover:bg-white/5 text-gray-300">Nosotros</a>
-        <a href="#servicios" class="mobile-link block px-4 py-3 rounded-xl hover:bg-white/5 text-gray-300">Servicios</a>
-        <a href="#productos" class="mobile-link block px-4 py-3 rounded-xl hover:bg-white/5 text-gray-300">Catálogo</a>
-        <a href="#contacto" class="mobile-link block px-4 py-3 rounded-xl hover:bg-white/5 text-gray-300">Contacto</a>
+        <!-- Acciones Derecha -->
+        <div class="flex items-center gap-3">
+          <a href="https://wa.me/593999999999?text=Hola%20Tecni%20Color%20Encalada,%20necesito%20información%20sobre..." target="_blank" rel="noopener noreferrer" class="btn btn-wa text-xs hidden sm:inline-flex">
+            <i class="fa-brands fa-whatsapp text-sm"></i>
+            <span>Cotizar</span>
+          </a>
+
+          <!-- Botón Menú Móvil -->
+          <button id="menu-toggle" aria-label="Abrir menú" class="md:hidden w-10 h-10 rounded-full flex items-center justify-center bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors">
+            <i class="fa-solid fa-bars text-sm"></i>
+          </button>
+        </div>
       </nav>
-    </div>
-  </header>
 
-  <!-- HERO -->
-  <section id="inicio" class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-12 lg:pt-20 pb-16">
-    <div class="grid lg:grid-cols-12 gap-12 items-center">
-      
-      <div class="lg:col-span-7 text-center lg:text-left space-y-6">
-        <div data-reveal class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-yellow/30 bg-yellow/10 text-yellow text-[10px] font-extrabold tracking-[0.18em] uppercase">
-          <span class="w-1.5 h-1.5 rounded-full bg-yellow animate-pulse"></span>
-          Pinturas Automotrices & Accesorios
-        </div>
-
-        <h1 data-reveal style="--delay:80ms" class="font-display text-5xl sm:text-7xl lg:text-[5.2rem] leading-[0.92] font-black tracking-tight">
-          <span class="block text-white">TECNI</span>
-          <span class="block gradient-text">COLOR</span>
-          <span class="block text-white text-3xl sm:text-5xl lg:text-5xl mt-2">ENCALADA</span>
-        </h1>
-
-        <div data-reveal style="--delay:150ms" class="space-y-3">
-          <p class="font-display text-2xl sm:text-3xl font-black text-white">
-            <span class="text-yellow">DAMOS COLOR</span> A TUS IDEAS
-          </p>
-          <p class="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-            Calidad que se ve, servicio que se siente. Encuentra recubrimientos automotrices, herramientas profesionales y la asesoría técnica que tus proyectos necesitan.
-          </p>
-        </div>
-
-        <div data-reveal style="--delay:220ms" class="flex flex-col sm:flex-row justify-center lg:justify-start gap-3.5 pt-2">
-          <a href="https://wa.me/593998290859?text=Hola%20Tecni%20Color%20Encalada%2C%20quiero%20una%20cotizaci%C3%B3n." target="_blank" rel="noopener" class="btn btn-main">
-            <i class="fa-brands fa-whatsapp text-base"></i> Cotizar por WhatsApp
+      <!-- Menú Móvil Desplegable -->
+      <div id="mobile-menu" class="hidden md:hidden mt-2 max-w-7xl mx-auto rounded-3xl glass p-5 border border-white/10">
+        <div class="flex flex-col gap-4 font-semibold text-gray-200">
+          <a href="#inicio" class="mobile-link py-2 border-b border-white/5 hover:text-cyan">Inicio</a>
+          <a href="#productos" class="mobile-link py-2 border-b border-white/5 hover:text-cyan">Productos</a>
+          <a href="#servicios" class="mobile-link py-2 border-b border-white/5 hover:text-cyan">Servicios</a>
+          <a href="#nosotros" class="mobile-link py-2 border-b border-white/5 hover:text-cyan">Nosotros</a>
+          <a href="#contacto" class="mobile-link py-2 hover:text-cyan">Contacto</a>
+          <a href="https://wa.me/593999999999" target="_blank" rel="noopener noreferrer" class="btn btn-wa w-full mt-2">
+            <i class="fa-brands fa-whatsapp text-base"></i>
+            <span>Escribir por WhatsApp</span>
           </a>
-          <a href="#contacto" class="btn btn-ghost">
-            <i class="fa-solid fa-location-dot text-cyan"></i> Dónde estamos
-          </a>
-        </div>
-
-        <div data-reveal style="--delay:290ms" class="grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0 pt-6 border-t border-white/10 text-center">
-          <div>
-            <i class="fa-solid fa-award text-yellow text-xl"></i>
-            <p class="text-[11px] font-bold text-gray-300 mt-1">Calidad Alta</p>
-          </div>
-          <div class="border-x border-white/10 px-2">
-            <i class="fa-solid fa-shield-halved text-pink text-xl"></i>
-            <p class="text-[11px] font-bold text-gray-300 mt-1">Garantía</p>
-          </div>
-          <div>
-            <i class="fa-solid fa-handshake text-cyan text-xl"></i>
-            <p class="text-[11px] font-bold text-gray-300 mt-1">Confianza</p>
-          </div>
         </div>
       </div>
+    </header>
 
-      <!-- Tarjeta destacada Hero -->
-      <div class="lg:col-span-5" data-reveal style="--delay:180ms">
-        <div class="gradient-border p-[1px]">
-          <div class="rounded-[1.45rem] overflow-hidden bg-black/90 p-8 text-center relative">
-            <div class="absolute inset-0 bg-gradient-to-br from-pink/10 via-transparent to-cyan/10 pointer-events-none"></div>
 
-            <div class="relative z-10 space-y-6">
-              <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-yellow via-orange to-pink p-[2px] shadow-2xl">
-                <div class="w-full h-full rounded-full bg-dark flex items-center justify-center">
-                  <i class="fa-solid fa-spray-can-sparkles text-3xl text-yellow"></i>
+    <!-- SECCIÓN HERO -->
+    <section id="inicio" class="relative pt-8 pb-16 md:pt-16 md:pb-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center">
+        
+        <!-- Texto Hero -->
+        <div class="md:col-span-7 flex flex-col items-start gap-6 text-left" data-reveal>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass border border-pink/30 text-pink text-xs font-bold tracking-wider uppercase">
+            <span class="w-2 h-2 rounded-full bg-pink animate-ping"></span>
+            Pinturas Automotrices & Industriales
+          </div>
+
+          <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight">
+            Damos color a tus <br class="hidden sm:inline"/>
+            <span class="gradient-text">ideas y proyectos</span>
+          </h1>
+
+          <p class="text-gray-300 text-base sm:text-lg max-w-xl font-normal leading-relaxed">
+            Especialistas en preparación de pintura automotriz de alta precisión, complementos, masillas, laccas y suministros de acabado profesional en Biblián.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 pt-2 w-full sm:w-auto">
+            <a href="https://wa.me/593999999999" target="_blank" rel="noopener noreferrer" class="btn btn-main w-full sm:w-auto text-sm py-4 px-8">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              <span>Solicitar Colometría</span>
+            </a>
+            <a href="#productos" class="btn btn-ghost w-full sm:w-auto text-sm py-4 px-8">
+              <span>Ver Catálogo</span>
+              <i class="fa-solid fa-arrow-down text-xs"></i>
+            </a>
+          </div>
+
+          <!-- Badges de confianza -->
+          <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10 w-full max-w-lg mt-2">
+            <div>
+              <p class="font-display text-xl sm:text-2xl font-extrabold text-white">100%</p>
+              <p class="text-xs text-gray-400 font-medium">Precisión de Color</p>
+            </div>
+            <div>
+              <p class="font-display text-xl sm:text-2xl font-extrabold text-white">Líderes</p>
+              <p class="text-xs text-gray-400 font-medium">En Biblián y Cañar</p>
+            </div>
+            <div>
+              <p class="font-display text-xl sm:text-2xl font-extrabold text-white">Top</p>
+              <p class="text-xs text-gray-400 font-medium">Marcas Premium</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- LOGO HERO EMBLÉMATICO EN 3D / ILUSTRACIÓN VECTORIAL -->
+        <div class="md:col-span-5 relative" data-reveal style="--delay: 200ms;">
+          <div class="gradient-border p-2 sm:p-4">
+            <div class="bg-panel rounded-2xl p-6 sm:p-8 flex flex-col items-center justify-center min-h-[380px] sm:min-h-[440px] text-center relative overflow-hidden group">
+              
+              <!-- Reflejos Neón -->
+              <div class="absolute -top-24 -right-24 w-48 h-48 bg-cyan/20 rounded-full blur-3xl"></div>
+              <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-pink/20 rounded-full blur-3xl"></div>
+
+              <!-- LOGO VECTORIAL DE LATA DE PINTURA (GRANDE & IMPACTANTE) -->
+              <div class="relative my-4 transform group-hover:scale-105 transition-transform duration-500">
+                <svg class="w-48 h-48 sm:w-60 sm:h-60 filter drop-shadow-[0_15px_30px_rgba(0,229,255,0.3)]" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <!-- Gradientes para la Lata y Pintura -->
+                    <linearGradient id="heroPaintDrip" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#ff006e" />
+                      <stop offset="40%" stop-color="#ffe600" />
+                      <stop offset="80%" stop-color="#00e5ff" />
+                      <stop offset="100%" stop-color="#19e65a" />
+                    </linearGradient>
+                    <linearGradient id="heroCanBody" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#1f2937" />
+                      <stop offset="35%" stop-color="#374151" />
+                      <stop offset="65%" stop-color="#4b5563" />
+                      <stop offset="100%" stop-color="#111827" />
+                    </linearGradient>
+                    <linearGradient id="heroMetalRim" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#9ca3af" />
+                      <stop offset="50%" stop-color="#f3f4f6" />
+                      <stop offset="100%" stop-color="#4b5563" />
+                    </linearGradient>
+                  </defs>
+
+                  <!-- Sombra Base -->
+                  <ellipse cx="100" cy="180" rx="60" ry="10" fill="#000000" opacity="0.6" />
+
+                  <!-- Asa de la lata -->
+                  <path d="M50 85 C50 40, 150 40, 150 85" stroke="url(#heroMetalRim)" stroke-width="6" stroke-linecap="round" fill="none"/>
+
+                  <!-- Cuerpo de la Lata de Pintura -->
+                  <rect x="45" y="80" width="110" height="95" rx="10" fill="url(#heroCanBody)" stroke="url(#heroMetalRim)" stroke-width="4"/>
+
+                  <!-- Borde Superior Metálico -->
+                  <ellipse cx="100" cy="80" rx="55" ry="12" fill="#2d3748" stroke="url(#heroMetalRim)" stroke-width="4"/>
+
+                  <!-- Etiqueta de la Lata -->
+                  <rect x="46" y="105" width="108" height="50" fill="#09090b" opacity="0.9" />
+                  <text x="100" y="128" fill="#ffffff" font-family="'Syne', sans-serif" font-weight="800" font-size="11" text-anchor="middle" letter-spacing="2">TECNI COLOR</text>
+                  <text x="100" y="142" fill="#00e5ff" font-family="'Outfit', sans-serif" font-weight="700" font-size="8" text-anchor="middle" letter-spacing="3">ENCALADA</text>
+
+                  <!-- Pintura Neón Derramándose -->
+                  <path d="M45 80 C45 88, 155 88, 155 80 C155 105, 140 100, 130 115 C120 130, 115 105, 100 135 C90 155, 80 120, 70 120 C60 120, 55 98, 45 80 Z" fill="url(#heroPaintDrip)"/>
+
+                  <!-- Gotas Flotando/Cayendo -->
+                  <circle cx="100" cy="152" r="4" fill="#00e5ff" />
+                  <circle cx="100" cy="165" r="2.5" fill="#00e5ff" />
+                  <circle cx="130" cy="130" r="3" fill="#ffe600" />
+                  <circle cx="68" cy="135" r="3.5" fill="#ff006e" />
+                </svg>
+              </div>
+
+              <!-- Marca en texto inferior -->
+              <h2 class="font-display text-2xl font-extrabold text-white tracking-wide">
+                TECNI<span class="gradient-text">COLOR</span>
+              </h2>
+              <p class="text-xs uppercase tracking-widest text-gray-400 font-semibold mt-1">
+                Calidad y Garantía Automotriz
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SECCIÓN DE PRODUCTOS -->
+    <section id="productos" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-black/40 border-t border-b border-white/5">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16" data-reveal>
+          <span class="text-xs font-bold tracking-widest text-cyan uppercase">Nuestro Catálogo</span>
+          <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-white mt-2">
+            Todo para el <span class="gradient-text">acabado perfecto</span>
+          </h2>
+          <p class="text-gray-400 text-sm sm:text-base mt-3">
+            Suministros seleccionados para talleres automotrices, pintores profesionales y proyectos particulares.
+          </p>
+        </div>
+
+        <!-- Grid de Productos -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Producto 1 -->
+          <div class="glass rounded-2xl p-6 flex flex-col justify-between" data-reveal style="--delay: 100ms;">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-pink/10 border border-pink/30 flex items-center justify-center text-pink mb-5 text-xl">
+                <i class="fa-solid fa-spray-can"></i>
+              </div>
+              <h3 class="font-display text-xl font-bold text-white mb-2">Pinturas Automotrices</h3>
+              <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-4">
+                Bases poliuretano, acrílicas y poliéster con matizado computarizado exacto para cualquier marca vehicular.
+              </p>
+            </div>
+            <a href="https://wa.me/593999999999?text=Hola,%20busco%20información%20sobre%20pintura%20automotriz" target="_blank" class="text-xs font-bold text-pink hover:text-white flex items-center gap-1.5 transition-colors pt-2">
+              <span>Consultar tonos</span>
+              <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </a>
+          </div>
+
+          <!-- Producto 2 -->
+          <div class="glass rounded-2xl p-6 flex flex-col justify-between" data-reveal style="--delay: 200ms;">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-yellow/10 border border-yellow/30 flex items-center justify-center text-yellow mb-5 text-xl">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <h3 class="font-display text-xl font-bold text-white mb-2">Barnices & Transparentes</h3>
+              <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-4">
+                Clear coats de alto brillo, secado rápido y máxima protección UV contra las intemperies.
+              </p>
+            </div>
+            <a href="https://wa.me/593999999999?text=Hola,%20requiero%20barnices%20y%20transparentes" target="_blank" class="text-xs font-bold text-yellow hover:text-white flex items-center gap-1.5 transition-colors pt-2">
+              <span>Ver marcas</span>
+              <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </a>
+          </div>
+
+          <!-- Producto 3 -->
+          <div class="glass rounded-2xl p-6 flex flex-col justify-between" data-reveal style="--delay: 300ms;">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-cyan/10 border border-cyan/30 flex items-center justify-center text-cyan mb-5 text-xl">
+                <i class="fa-solid fa-fill-drip"></i>
+              </div>
+              <h3 class="font-display text-xl font-bold text-white mb-2">Masillas & Fondos</h3>
+              <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-4">
+                Masillas plásticas, primers universales y rellenadores de alta adherencia y fácil lijado.
+              </p>
+            </div>
+            <a href="https://wa.me/593999999999?text=Hola,%20necesito%20masillas%20o%20primers" target="_blank" class="text-xs font-bold text-cyan hover:text-white flex items-center gap-1.5 transition-colors pt-2">
+              <span>Cotizar preparación</span>
+              <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </a>
+          </div>
+
+          <!-- Producto 4 -->
+          <div class="glass rounded-2xl p-6 flex flex-col justify-between" data-reveal style="--delay: 400ms;">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-green/10 border border-green/30 flex items-center justify-center text-green mb-5 text-xl">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+              </div>
+              <h3 class="font-display text-xl font-bold text-white mb-2">Lijas & Accesorios</h3>
+              <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-4">
+                Abrasivos al agua y en seco, cintas de enmascarar, pistolas de pintar y pulimentos.
+              </p>
+            </div>
+            <a href="https://wa.me/593999999999?text=Hola,%20quisiera%20información%20de%20accesorios" target="_blank" class="text-xs font-bold text-green hover:text-white flex items-center gap-1.5 transition-colors pt-2">
+              <span>Ver herramientas</span>
+              <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECCIÓN DE SERVICIOS / VALOR AGREGADO -->
+    <section id="servicios" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-5" data-reveal>
+            <span class="text-xs font-bold tracking-widest text-pink uppercase">Por qué elegirnos</span>
+            <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-white mt-2 leading-tight">
+              Asesoría técnica y <span class="gradient-text">preparación al instante</span>
+            </h2>
+            <p class="text-gray-300 text-sm sm:text-base mt-4 leading-relaxed">
+              En <strong class="text-white">Tecni Color Encalada</strong> no solo vendemos pintura; garantizamos la igualación cromática exacta y el asesoramiento paso a paso para que tu trabajo quede impecable.
+            </p>
+
+            <div class="mt-8 space-y-4">
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-cyan/20 border border-cyan/40 flex items-center justify-center text-cyan text-xs mt-1 shrink-0">
+                  <i class="fa-solid fa-check"></i>
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-white">Matizado Profesional</h4>
+                  <p class="text-xs text-gray-400">Igualación precisa de tonos originales y personalizados.</p>
                 </div>
               </div>
 
-              <div>
-                <span class="text-[10px] font-extrabold tracking-[0.25em] uppercase text-gray-400">Biblián · Ecuador</span>
-                <h2 class="font-display text-3xl font-black mt-1 text-white">
-                  Expertos en <span class="gradient-text">Color</span>
-                </h2>
-                <p class="text-gray-400 text-sm mt-2 max-w-xs mx-auto">
-                  Soluciones integrales para talleres, acabados automotrices y proyectos particulares.
-                </p>
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-pink/20 border border-pink/40 flex items-center justify-center text-pink text-xs mt-1 shrink-0">
+                  <i class="fa-solid fa-check"></i>
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-white">Atención a Talleres y Particulares</h4>
+                  <p class="text-xs text-gray-400">Descuentos especiales por volumen e insumos continuos.</p>
+                </div>
               </div>
 
-              <div class="pt-2">
-                <a href="https://wa.me/593998290859" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full bg-green/10 border border-green/30 px-4 py-2 text-green text-xs font-bold hover:bg-green/20 transition">
-                  <i class="fa-brands fa-whatsapp"></i> +593 99 829 0859
-                </a>
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-yellow/20 border border-yellow/40 flex items-center justify-center text-yellow text-xs mt-1 shrink-0">
+                  <i class="fa-solid fa-check"></i>
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-white">Ubicación Céntrica en Biblián</h4>
+                  <p class="text-xs text-gray-400">Fácil acceso para retirar tus pedidos rápidamente.</p>
+                </div>
               </div>
             </div>
-
           </div>
-        </div>
-      </div>
 
-    </div>
-  </section>
-
-  <!-- NOSOTROS / PILARES -->
-  <section id="nosotros" class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      
-      <div data-reveal class="glass rounded-2xl p-6">
-        <i class="fa-solid fa-spray-can-sparkles text-2xl text-pink"></i>
-        <h3 class="font-display font-bold text-lg text-white mt-4">Pintura Automotriz</h3>
-        <p class="text-xs text-gray-400 mt-2 leading-relaxed">Sistemas de color de alta precisión y durabilidad para todo tipo de vehículos.</p>
-      </div>
-
-      <div data-reveal style="--delay:70ms" class="glass rounded-2xl p-6">
-        <i class="fa-solid fa-box-open text-2xl text-yellow"></i>
-        <h3 class="font-display font-bold text-lg text-white mt-4">Línea de Preparación</h3>
-        <p class="text-xs text-gray-400 mt-2 leading-relaxed">Fondo, masillas, lijas y solventes seleccionados para acabados impecables.</p>
-      </div>
-
-      <div data-reveal style="--delay:140ms" class="glass rounded-2xl p-6">
-        <i class="fa-solid fa-toolbox text-2xl text-cyan"></i>
-        <h3 class="font-display font-bold text-lg text-white mt-4">Accesorios y Herramientas</h3>
-        <p class="text-xs text-gray-400 mt-2 leading-relaxed">Equipamiento complementario para aplicación y detallado profesional.</p>
-      </div>
-
-      <div data-reveal style="--delay:210ms" class="glass rounded-2xl p-6">
-        <i class="fa-solid fa-user-gear text-2xl text-green"></i>
-        <h3 class="font-display font-bold text-lg text-white mt-4">Asesoría Técnica</h3>
-        <p class="text-xs text-gray-400 mt-2 leading-relaxed">Te guiamos en la elección exacta de materiales según las necesidades de tu trabajo.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- SERVICIOS -->
-  <section id="servicios" class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-16 scroll-mt-20">
-    <div data-reveal class="text-center max-w-2xl mx-auto">
-      <span class="text-cyan text-[10px] font-black tracking-[0.2em] uppercase">// Servicios</span>
-      <h2 class="font-display text-3xl sm:text-4xl font-black mt-1">
-        Atención que hace la <span class="gradient-text">Diferencia</span>
-      </h2>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-6 mt-10">
-      
-      <div data-reveal class="gradient-border p-[1px]">
-        <div class="rounded-[1.45rem] bg-dark p-7 h-full flex flex-col justify-between space-y-4">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-pink/10 border border-pink/20 flex items-center justify-center text-pink mb-4">
-              <i class="fa-solid fa-eye text-lg"></i>
+          <!-- Banner interactivo -->
+          <div class="lg:col-span-7" data-reveal style="--delay: 200ms;">
+            <div class="glass rounded-3xl p-8 border border-white/10 relative overflow-hidden">
+              <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-pink/20 rounded-full blur-3xl"></div>
+              
+              <div class="relative z-10 flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+                <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-pink to-cyan flex items-center justify-center text-black text-3xl font-black shrink-0 shadow-xl">
+                  <i class="fa-solid fa-palette"></i>
+                </div>
+                <div>
+                  <h3 class="font-display text-2xl font-bold text-white">¿Tienes un código de pintura específico?</h3>
+                  <p class="text-gray-300 text-xs sm:text-sm mt-1">
+                    Tráenos la muestra o la plaqueta de tu vehículo. Preparamos desde un cuarto de galón en adelante.
+                  </p>
+                  <a href="https://wa.me/593999999999?text=Hola,%20tengo%20un%20código%20de%20pintura%20que%20quiero%20consultar" target="_blank" class="btn btn-main text-xs mt-5">
+                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                    <span>Consultar Código</span>
+                  </a>
+                </div>
+              </div>
             </div>
-            <h3 class="font-display text-xl font-bold text-white">Igualación de Color</h3>
-            <p class="text-xs text-gray-400 mt-2 leading-relaxed">
-              Desarrollo y ajuste de tonos para lograr la coincidencia precisa con la pintura original de tu coche.
-            </p>
           </div>
+
         </div>
       </div>
+    </section>
 
-      <div data-reveal style="--delay:100ms" class="gradient-border p-[1px]">
-        <div class="rounded-[1.45rem] bg-dark p-7 h-full flex flex-col justify-between space-y-4">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-yellow/10 border border-yellow/20 flex items-center justify-center text-yellow mb-4">
-              <i class="fa-solid fa-comments text-lg"></i>
-            </div>
-            <h3 class="font-display text-xl font-bold text-white">Atención Personalizada</h3>
-            <p class="text-xs text-gray-400 mt-2 leading-relaxed">
-              Atendemos tus requerimientos de manera directa en local o vía WhatsApp con respuestas rápidas.
-            </p>
-          </div>
-        </div>
-      </div>
 
-      <div data-reveal style="--delay:200ms" class="gradient-border p-[1px]">
-        <div class="rounded-[1.45rem] bg-dark p-7 h-full flex flex-col justify-between space-y-4">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-cyan/10 border border-cyan/20 flex items-center justify-center text-cyan mb-4">
-              <i class="fa-solid fa-truck-fast text-lg"></i>
-            </div>
-            <h3 class="font-display text-xl font-bold text-white">Pedidos Bajo Pedido</h3>
-            <p class="text-xs text-gray-400 mt-2 leading-relaxed">
-              Si buscas un producto especializado o un volumen mayor, nos encargamos de gestionarlo por ti.
-            </p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CATÁLOGO (ÁREA PREPARADA SIN RELLENO) -->
-  <section id="productos" class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-16 scroll-mt-20">
-    <div data-reveal class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-6">
-      <div>
-        <span class="text-pink text-[10px] font-black tracking-[0.2em] uppercase">// Catálogo de Productos</span>
-        <h2 class="font-display text-3xl sm:text-4xl font-black mt-1">
-          Nuestros <span class="gradient-text">Productos</span>
+    <!-- SECCIÓN NOSOTROS -->
+    <section id="nosotros" class="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-black/50 border-t border-white/5">
+      <div class="max-w-5xl mx-auto text-center" data-reveal>
+        <span class="text-xs font-bold tracking-widest text-yellow uppercase">Sobre Nosotros</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white mt-2">
+          Pasión por el <span class="gradient-text">detalle y el color</span>
         </h2>
-      </div>
-      <p class="text-xs text-gray-400 max-w-sm">
-        Consulta disponibilidad, marcas y precios vigentes escribiéndonos directamente.
-      </p>
-    </div>
-
-    <!-- Caja estado disponible para inventario futuro -->
-    <div data-reveal class="mt-8 placeholder-card rounded-3xl p-8 text-center space-y-4">
-      <div class="w-12 h-12 mx-auto rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400">
-        <i class="fa-solid fa-boxes-stacked text-xl"></i>
-      </div>
-      <div class="max-w-md mx-auto">
-        <h3 class="font-display font-bold text-lg text-white">Catálogo en Actualización</h3>
-        <p class="text-xs text-gray-400 mt-1">
-          Estamos organizando la lista detallada de productos. Puedes solicitar la información completa de stock y precios actuales por WhatsApp.
+        <p class="text-gray-300 text-sm sm:text-base mt-4 max-w-3xl mx-auto leading-relaxed">
+          En <strong>Tecni Color Encalada</strong> nos apasiona brindar soluciones de alta calidad en pinturas automotrices. Servimos con orgullo a la comunidad de Biblián y la provincia del Cañar, ofreciendo productos de primera línea y la mejor disposición para asesorarte en tus proyectos de repintado.
         </p>
       </div>
-      <div>
-        <a href="https://wa.me/593998290859?text=Hola%20Tecni%20Color%20Encalada%2C%20quisiera%20consultar%20sobre%20sus%20productos%20disponibles." target="_blank" rel="noopener" class="btn btn-wa !py-3 !px-6">
-          <i class="fa-brands fa-whatsapp text-sm"></i> Consultar Productos
-        </a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- BANNER CTA -->
-  <section class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-6">
-    <div data-reveal class="rounded-3xl border border-white/10 bg-gradient-to-r from-pink/10 via-yellow/5 to-cyan/10 p-8 sm:p-10 text-center">
-      <h2 class="font-display text-2xl sm:text-4xl font-black text-white">
-        ¿TIENES UN PROYECTO EN MENTE?
-      </h2>
-      <p class="text-gray-400 text-xs sm:text-sm max-w-xl mx-auto mt-2">
-        Consúltanos sin compromiso. Te ayudamos a calcular la cantidad exacta y los insumos necesarios.
-      </p>
-      <a href="https://wa.me/593998290859?text=Hola%20Tecni%20Color%20Encalada%2C%20necesito%20asesor%C3%ADa%20para%20un%20proyecto." target="_blank" rel="noopener" class="btn btn-main mt-6">
-        <i class="fa-brands fa-whatsapp text-sm"></i> Hablar con un Asesor
-      </a>
-    </div>
-  </section>
 
-  <!-- CONTACTO -->
-  <section id="contacto" class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-16 scroll-mt-20">
-    <div data-reveal class="glass rounded-3xl p-6 sm:p-10">
-      <div class="grid lg:grid-cols-2 gap-8 items-center">
-        
-        <div class="space-y-6">
-          <div>
-            <span class="text-yellow text-[10px] font-black tracking-[0.2em] uppercase">// Ubicación & Contacto</span>
-            <h2 class="font-display text-3xl sm:text-4xl font-black mt-1">
-              Visítanos en <span class="gradient-text">Biblián</span>
-            </h2>
-            <p class="text-xs sm:text-sm text-gray-400 mt-2">
-              Estamos ubicados en la provincia de Cañar. Te atendemos con gusto para resolver todas tus dudas sobre color.
-            </p>
-          </div>
+    <!-- SECCIÓN CONTACTO & UBICACIÓN -->
+    <section id="contacto" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 relative">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-12 gap-8">
+          
+          <!-- Datos de Contacto -->
+          <div class="lg:col-span-5 glass rounded-3xl p-6 sm:p-8 flex flex-col justify-between" data-reveal>
+            <div>
+              <span class="text-xs font-bold tracking-widest text-cyan uppercase">Ubicación & Atención</span>
+              <h2 class="font-display text-3xl font-extrabold text-white mt-2 mb-6">
+                Visítanos o <span class="gradient-text">Escríbenos</span>
+              </h2>
 
-          <div class="space-y-3.5">
-            <div class="flex items-center gap-3.5">
-              <div class="w-10 h-10 rounded-xl bg-pink/10 border border-pink/20 flex items-center justify-center text-pink shrink-0">
-                <i class="fa-solid fa-location-dot"></i>
-              </div>
-              <div>
-                <p class="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Dirección</p>
-                <p class="text-xs sm:text-sm font-semibold text-gray-200">Biblián, Cañar, Ecuador</p>
+              <div class="space-y-6">
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-cyan text-lg shrink-0">
+                    <i class="fa-solid fa-location-dot"></i>
+                  </div>
+                  <div>
+                    <p class="text-xs text-gray-400 font-semibold uppercase">Dirección</p>
+                    <p class="text-sm font-medium text-white mt-0.5">Biblián, Cañar — Ecuador</p>
+                    <p class="text-xs text-gray-400">Sector céntrico de la ciudad</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-green text-lg shrink-0">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </div>
+                  <div>
+                    <p class="text-xs text-gray-400 font-semibold uppercase">WhatsApp / Teléfono</p>
+                    <p class="text-sm font-medium text-white mt-0.5">+593 99 999 9999</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-pink text-lg shrink-0">
+                    <i class="fa-solid fa-clock"></i>
+                  </div>
+                  <div>
+                    <p class="text-xs text-gray-400 font-semibold uppercase">Horario de Atención</p>
+                    <p class="text-sm font-medium text-white mt-0.5">Lunes a Sábado: 08:00 - 18:00</p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div class="flex items-center gap-3.5">
-              <div class="w-10 h-10 rounded-xl bg-green/10 border border-green/20 flex items-center justify-center text-green shrink-0">
-                <i class="fa-brands fa-whatsapp"></i>
-              </div>
-              <div>
-                <p class="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Teléfono / WhatsApp</p>
-                <a href="tel:+593998290859" class="text-xs sm:text-sm font-semibold text-gray-200 hover:text-green transition">+593 99 829 0859</a>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-3.5">
-              <div class="w-10 h-10 rounded-xl bg-cyan/10 border border-cyan/20 flex items-center justify-center text-cyan shrink-0">
-                <i class="fa-brands fa-instagram"></i>
-              </div>
-              <div>
-                <p class="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Instagram</p>
-                <a href="https://instagram.com/tecnicolor_encalada" target="_blank" rel="noopener" class="text-xs sm:text-sm font-semibold text-gray-200 hover:text-cyan transition">@tecnicolor_encalada</a>
-              </div>
+            <div class="pt-8 mt-8 border-t border-white/10">
+              <a href="https://wa.me/593999999999" target="_blank" rel="noopener noreferrer" class="btn btn-wa w-full py-3.5">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                <span>Abrir Chat Directo</span>
+              </a>
             </div>
           </div>
-        </div>
 
-        <div class="flex flex-col gap-3">
-          <a href="https://wa.me/593998290859?text=Hola%20Tecni%20Color%20Encalada%2C%20deseo%20una%20cotizaci%C3%B3n." target="_blank" rel="noopener" class="btn btn-wa w-full !py-4">
-            <i class="fa-brands fa-whatsapp text-lg"></i> Enviar mensaje por WhatsApp
-          </a>
-          <a href="tel:+593998290859" class="btn btn-ghost w-full !py-4">
-            <i class="fa-solid fa-phone text-cyan"></i> Llamar Directamente
-          </a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Biblián,Cañar,Ecuador" target="_blank" rel="noopener" class="btn btn-ghost w-full !py-4">
-            <i class="fa-solid fa-map-location-dot text-yellow"></i> Ver Ubicación en Mapa
-          </a>
-        </div>
+          <!-- Mapa o Placeholder de Ubicación -->
+          <div class="lg:col-span-7 glass rounded-3xl p-2 overflow-hidden min-h-[350px] relative" data-reveal style="--delay: 200ms;">
+            <iframe 
+              title="Ubicación Tecni Color Encalada"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15941.536103606992!2d-78.8988!3d-2.7122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91ed123c5240212f%3A0x6a2c2b3f11d13f0!2sBibli%C3%A1n!5e0!3m2!1ses!2sec!4v1680000000000!5m2!1ses!2sec" 
+              class="w-full h-full min-h-[350px] rounded-2xl border-0 grayscale invert opacity-80 contrast-125" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
 
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="relative z-10 border-t border-white/10 bg-black/80">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+
+    <!-- PIE DE PÁGINA (FOOTER) -->
+    <footer class="mt-auto border-t border-white/10 bg-black/80 py-8 px-4 sm:px-6 lg:px-8 text-center sm:text-left text-xs text-gray-400">
+      <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         
-        <div class="text-center md:text-left">
-          <p class="font-display font-black text-xl">
-            TECNI<span class="gradient-text">COLOR</span> <span class="text-gray-500">ENCALADA</span>
-          </p>
-          <p class="text-[11px] text-gray-500 mt-0.5">Damos color a tus ideas · Biblián, Ecuador</p>
+        <div class="flex items-center gap-3">
+          <!-- Mini Logo SVG en Footer -->
+          <svg class="w-6 h-6 text-cyan" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 26C16 14 48 14 48 26" stroke="#888888" stroke-width="3"/>
+            <rect x="14" y="24" width="36" height="34" rx="4" fill="#18181b" stroke="#00e5ff" stroke-width="2"/>
+            <path d="M14 24C14 26 50 26 50 24C50 32 46 32 42 32C38 32 38 46 32 46C28 46 26 36 22 36C18 36 14 30 14 24Z" fill="#00e5ff"/>
+          </svg>
+          <span>&copy; 2026 <strong>Tecni Color Encalada</strong>. Todos los derechos reservados.</span>
         </div>
 
-        <div class="flex items-center gap-2.5">
-          <a href="https://wa.me/593998290859" target="_blank" rel="noopener" aria-label="WhatsApp" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-green hover:bg-green hover:text-black transition">
-            <i class="fa-brands fa-whatsapp text-sm"></i>
-          </a>
-          <a href="https://instagram.com/tecnicolor_encalada" target="_blank" rel="noopener" aria-label="Instagram" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-pink hover:bg-pink hover:text-white transition">
-            <i class="fa-brands fa-instagram text-sm"></i>
-          </a>
-        </div>
+        <p class="text-gray-400">
+          Biblián, Cañar — Ecuador
+        </p>
 
       </div>
+    </footer>
 
-      <div class="border-t border-white/5 mt-6 pt-4 text-center text-[10px] text-gray-600">
-        © <span id="year"></span> Tecni Color Encalada. Todos los derechos reservados.
-      </div>
-    </div>
-  </footer>
-
-  <!-- BARRA FIJA MÓVIL -->
-  <div class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-dark/95 backdrop-blur-xl border-t border-white/10 px-3 pt-2.5"
-       style="padding-bottom: calc(0.6rem + var(--safe-bottom));">
-    <div class="flex gap-2.5 max-w-md mx-auto">
-      <a href="tel:+593998290859" class="flex-1 py-2.5 rounded-xl bg-white/5 border border-white/15 text-white font-extrabold text-[10px] uppercase tracking-widest flex items-center justify-center gap-1.5">
-        <i class="fa-solid fa-phone text-cyan"></i> Llamar
-      </a>
-      <a href="https://wa.me/593998290859" target="_blank" rel="noopener" class="flex-[1.5] py-2.5 rounded-xl bg-green text-black font-extrabold text-[10px] uppercase tracking-widest flex items-center justify-center gap-1.5">
-        <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
-      </a>
-    </div>
   </div>
 
+
+  <!-- LÓGICA DE INTERACCIÓN Y NAVEGACIÓN -->
   <script>
-    (() => {
-      'use strict';
+    // Menú móvil
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
 
-      // Menú Móvil
-      const menuBtn = document.getElementById('menuBtn');
-      const menu = document.getElementById('mobileMenu');
-      const icon = document.getElementById('menuIcon');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
 
-      menuBtn?.addEventListener('click', () => {
-        const isOpen = !menu.classList.contains('hidden');
-        menu.classList.toggle('hidden', isOpen);
-        icon.className = isOpen ? 'fa-solid fa-bars' : 'fa-solid fa-xmark';
-        menuBtn.setAttribute('aria-expanded', String(!isOpen));
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Animaciones al hacer Scroll (Reveal)
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    // Cambiar enlace activo en navbar según scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= (sectionTop - 150)) {
+          current = section.getAttribute('id');
+        }
       });
 
-      document.querySelectorAll('.mobile-link').forEach(link => {
-        link.addEventListener('click', () => {
-          menu.classList.add('hidden');
-          icon.className = 'fa-solid fa-bars';
-          menuBtn.setAttribute('aria-expanded', 'false');
-        });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
       });
-
-      // Animación de Entrada (Reveal)
-      const revealElements = document.querySelectorAll('[data-reveal]');
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
-
-        revealElements.forEach(el => observer.observe(el));
-      } else {
-        revealElements.forEach(el => el.classList.add('visible'));
-      }
-
-      // ScrollSpy para el menú de navegación
-      const sections = document.querySelectorAll('section[id]');
-      const navLinks = document.querySelectorAll('.nav-link');
-
-      if ('IntersectionObserver' in window) {
-        const spy = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              navLinks.forEach(link => {
-                link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
-              });
-            }
-          });
-        }, { rootMargin: '-40% 0px -40% 0px', threshold: 0 });
-
-        sections.forEach(section => spy.observe(section));
-      }
-
-      // Año actual
-      document.getElementById('year').textContent = new Date().getFullYear();
-    })();
+    });
   </script>
 </body>
 </html>
